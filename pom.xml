@@ -27,7 +27,7 @@
     <groupId>com.forgerock.openbanking</groupId>
     <artifactId>openbanking-sdk</artifactId>
     <packaging>jar</packaging>
-    <version>3.1.2.6-SNAPSHOT</version>
+    <version>3.1.2.6</version>
     <name>openbanking-sdk</name>
     <description>
         A Java UK Data Model, generated from the swagger, to help implementing the Open Banking standard : https://www.openbanking.org.uk/read-write-apis/
@@ -200,7 +200,7 @@
         <connection>scm:git:https://github.com/OpenBankingToolkit/openbanking-uk-datamodel.git</connection>
         <developerConnection>scm:git:https://github.com/OpenBankingToolkit/openbanking-uk-datamodel.git</developerConnection>
         <url>https://github.com/OpenBankingToolkit/openbanking-uk-datamodel.git</url>
-        <tag>HEAD</tag>
+        <tag>openbanking-sdk-3.1.2.6</tag>
     </scm>
 
     <distributionManagement>
