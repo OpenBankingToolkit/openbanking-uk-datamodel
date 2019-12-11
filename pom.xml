@@ -24,15 +24,15 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.forgerock.openbanking</groupId>
-    <artifactId>openbanking-sdk</artifactId>
+    <groupId>com.forgerock.openbanking.uk</groupId>
+    <artifactId>openbanking-uk-datamodel</artifactId>
     <packaging>jar</packaging>
     <version>3.1.2.7-SNAPSHOT</version>
-    <name>openbanking-sdk</name>
+    <name>openbanking-uk-datamodel</name>
     <description>
         A Java UK Data Model, generated from the swagger, to help implementing the Open Banking standard : https://www.openbanking.org.uk/read-write-apis/
     </description>
-    <url>https://github.com/ForgeRock/OpenBanking-Java-SDK</url>
+    <url>https://github.com/OpenBankingToolkit/openbanking-uk-datamodel</url>
 
     <parent>
         <groupId>com.forgerock.openbanking</groupId>
