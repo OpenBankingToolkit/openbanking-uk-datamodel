@@ -1,19 +1,15 @@
-<!--
- * The contents of this file are subject to the terms of the Common Development and
- * Distribution License (the License). You may not use this file except in compliance with the
- * License.
- *
- * You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
- * specific language governing permission and limitations under the License.
- *
- * When distributing Covered Software, include this CDDL Header Notice in each file and include
- * the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
- * Header, with the fields enclosed by brackets [] replaced by your own identifying
- * information: "Portions copyright [year] [name of copyright owner]".
- *
- * Copyright 2017 ForgeRock AS.
--->
-[![Build Status](https://travis-ci.org/ForgeRock/OpenBanking-Java-SDK.svg?branch=master)](https://travis-ci.org/ForgeRock/OpenBanking-Java-SDK)
+[<img src="https://raw.githubusercontent.com/ForgeRock/forgerock-logo-dev/master/Logo-fr-dev.png" align="right" width="220px"/>](https://developer.forgerock.com/)
+
+| |Current Status|
+|---|---|
+|Build|[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FOpenBankingToolkit%2Fopenbanking-uk-datamodel%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/OpenBankingToolkit/openbanking-uk-datamodel/goto?ref=master)|
+|Code coverage|[![codecov](https://codecov.io/gh/OpenBankingToolkit/openbanking-uk-datamodel/branch/master/graph/badge.svg)](https://codecov.io/gh/OpenBankingToolkit/openbanking-uk-datamodel)
+|Bintray|[![Bintray](https://img.shields.io/bintray/v/openbanking-toolkit/OpenBankingToolkit/openbanking-uk-datamodel.svg?maxAge=2592000)](https://bintray.com/openbanking-toolkit/OpenBankingToolkit/openbanking-uk-datamodel)|
+|License|![license](https://img.shields.io/github/license/ACRA/acra.svg)|
+
+**_This repository is part of the Open Banking Tool kit. If you just landed to that repository looking for our tool kit,_
+_we recommend having a first read to_ https://github.com/OpenBankingToolkit/openbanking-toolkit**
+
 # OpenBanking-Java-SDK
 A Java SDK to help implementing the Open Banking standard : https://www.openbanking.org.uk/read-write-apis/  .
 This project is compiled with JDK 8.
@@ -23,7 +19,6 @@ This project is compiled with JDK 8.
 <dependency>
     <groupId>com.forgerock.openbanking</groupId>
     <artifactId>openbanking-sdk</artifactId>
-    <version>3.1.2.0</version>
 </dependency>
 
 ```
@@ -53,10 +48,3 @@ java -jar swagger-codegen-cli-2.4.5.jar generate \
  1. Run build to ensure everything compiles and copyrights are generated for new source files.
  1. Commit and raise PR.  
 
-## Release to maven central 
-This project is built and released to maven using Travis CI. When a change is merged to master branch, Travis CI will increment the version, build the project, sign the release artifacts and release it to maven central (https://oss.sonatype.org).
-We no longer use Bintray in this project.
-
-## Licence
-License:	CDDLv1.0 \
-License URL	: https://opensource.org/licenses/CDDL-1.0
