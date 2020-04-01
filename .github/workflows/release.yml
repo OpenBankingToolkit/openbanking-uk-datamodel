@@ -33,5 +33,5 @@ jobs:
       - name: Release package
         run:  mvn -B deploy
         env:
-          REPOSITORY_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
-          REPOSITORY_ACCESS_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
+          REPOSITORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+          REPOSITORY_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
