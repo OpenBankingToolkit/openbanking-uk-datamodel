@@ -1,0 +1,37 @@
+name: Publish package to the ForgeRock artifactory
+on:
+  release:
+    types: [published]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up forgerock maven repository
+        uses: actions/setup-java@v1
+        with: # running setup-java and overwrites the settings.xml
+          java-version: '11'
+          architecture: x64
+          server-id: maven.forgerock.org-community # Value of the distributionManagement/repository/id field of the pom.xml
+          server-username: REPOSITORY_USERNAME # env variable for username in deploy
+          server-password: REPOSITORY_ACCESS_TOKEN # env variable for token in deploy
+
+      - name: Set up snapshot forgerock maven repository
+        if: contains(github.ref, 'SNAPSHOT')
+        uses: actions/setup-java@v1
+        with: # running setup-java and overwrites the settings.xml
+          java-version: '11'
+          architecture: x64
+          server-id: maven.forgerock.org-community-snapshots # Value of the distributionManagement/repository/id field of the pom.xml
+          server-username: REPOSITORY_USERNAME # env variable for username in deploy
+          server-password: REPOSITORY_ACCESS_TOKEN # env variable for token in deploy
+
+
+      - name: Release package
+        run:  mvn -B deploy
+        env:
+          REPOSITORY_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
+          REPOSITORY_ACCESS_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
