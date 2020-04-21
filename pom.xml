@@ -197,8 +197,8 @@
     </profiles>
 
     <scm>
-        <connection>scm:git:https://github.com/OpenBankingToolkit/openbanking-uk-datamodel.git</connection>
-        <developerConnection>scm:git:https://github.com/OpenBankingToolkit/openbanking-uk-datamodel.git</developerConnection>
+        <connection>scm:git:git@github.com:OpenBankingToolkit/openbanking-uk-datamodel.git</connection>
+        <developerConnection>scm:git:git@github.com:OpenBankingToolkit/openbanking-uk-datamodel.git</developerConnection>
         <url>https://github.com/OpenBankingToolkit/openbanking-uk-datamodel.git</url>
         <tag>HEAD</tag>
     </scm>

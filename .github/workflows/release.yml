@@ -5,6 +5,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    name: Deploy release
     steps:
       - uses: actions/checkout@v2
         with:
@@ -16,8 +17,8 @@ jobs:
           java-version: '11'
           architecture: x64
           server-id: maven.forgerock.org-community # Value of the distributionManagement/repository/id field of the pom.xml
-          server-username: REPOSITORY_USERNAME # env variable for username in deploy
-          server-password: REPOSITORY_ACCESS_TOKEN # env variable for token in deploy
+          server-username: MAVEN_USERNAME # env variable for username in deploy
+          server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
 
       - name: Set up snapshot forgerock maven repository
         if: contains(github.ref, 'SNAPSHOT')
@@ -26,12 +27,11 @@ jobs:
           java-version: '11'
           architecture: x64
           server-id: maven.forgerock.org-community-snapshots # Value of the distributionManagement/repository/id field of the pom.xml
-          server-username: REPOSITORY_USERNAME # env variable for username in deploy
-          server-password: REPOSITORY_ACCESS_TOKEN # env variable for token in deploy
-
+          server-username: MAVEN_USERNAME # env variable for username in deploy
+          server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
 
       - name: Release package
         run:  mvn -B deploy
         env:
-          REPOSITORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
-          REPOSITORY_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
+          MAVEN_USERNAME: ${{ secrets.FR_ARTIFACTORY_USER }}
+          MAVEN_CENTRAL_TOKEN: ${{ secrets.FR_ARTIFACTORY_TOKEN }}
