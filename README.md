@@ -28,7 +28,7 @@ Many of the classes are generated from OB Swagger documentation. When a new vers
 the following steps are performed:
 1. Download the Swagger json files from OB Spec pages (e.g. for 3.1.1 accounts: https://openbanking.atlassian.net/wiki/spaces/DZ/pages/999622968/Account+and+Transaction+API+Specification+-+v3.1.1#AccountandTransactionAPISpecification-v3.1.1-SwaggerSpecification)
 >Note: there are currently swagger files for Accounts, Payments, Funds Confirmation, ASPSP Callback and TPP Events - more may be available in future releases).
-1. Download `swagger-codegen-cli-2.4.5.jar`
+1. Download `swagger-codegen-cli-2.4.5.jar` (using this version will match existing generated classes and uses the same dependencies).
 1. Run ```
 java -jar swagger-codegen-cli-2.4.5.jar generate \
   -i {your_json_file} \
@@ -43,7 +43,8 @@ java -jar swagger-codegen-cli-2.4.5.jar generate \
  1. Check the generated files and copy them into appropriate source directory. Do not overwrite existing files.
  1. Remove Links, Meta, OBError1 and OBErrorResponse1 - we use shared generic versions of these classes.
  1. Repeat generation for each new swagger json file
- 1. If using Intelij, run format and optimise imports on newly generated files. 
+ 1. If using Intelij, run format and optimise imports on newly generated files.
+ 1. Fix imports where necessary - e.g. use the Links and Meta from the `account` package and use `org.joda.time.DateTime` instead of `org.threeten.bp.OffsetDateTime.OffsetDateTime`.
  1. Increment the major or minor version in pom.xml
  1. Run build to ensure everything compiles and copyrights are generated for new source files.
  1. Commit and raise PR.  
