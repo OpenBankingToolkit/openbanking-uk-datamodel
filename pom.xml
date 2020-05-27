@@ -27,7 +27,7 @@
     <groupId>com.forgerock.openbanking.uk</groupId>
     <artifactId>openbanking-uk-datamodel</artifactId>
     <packaging>jar</packaging>
-    <version>3.1.2.15-SNAPSHOT</version>
+    <version>3.1.2.16-SNAPSHOT</version>
     <name>openbanking-uk-datamodel</name>
     <description>
         A Java UK Data Model, generated from the swagger, to help implementing the Open Banking standard : https://www.openbanking.org.uk/read-write-apis/
