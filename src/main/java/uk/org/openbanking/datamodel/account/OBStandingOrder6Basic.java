@@ -35,6 +35,7 @@ package uk.org.openbanking.datamodel.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -60,16 +61,16 @@ public class OBStandingOrder6Basic {
     private String reference = null;
 
     @JsonProperty("FirstPaymentDateTime")
-    private String firstPaymentDateTime = null;
+    private DateTime firstPaymentDateTime = null;
 
     @JsonProperty("NextPaymentDateTime")
-    private String nextPaymentDateTime = null;
+    private DateTime nextPaymentDateTime = null;
 
     @JsonProperty("LastPaymentDateTime")
-    private String lastPaymentDateTime = null;
+    private DateTime lastPaymentDateTime = null;
 
     @JsonProperty("FinalPaymentDateTime")
-    private String finalPaymentDateTime = null;
+    private DateTime finalPaymentDateTime = null;
 
     @JsonProperty("NumberOfPayments")
     private String numberOfPayments = null;
@@ -174,7 +175,7 @@ public class OBStandingOrder6Basic {
         this.reference = reference;
     }
 
-    public OBStandingOrder6Basic firstPaymentDateTime(String firstPaymentDateTime) {
+    public OBStandingOrder6Basic firstPaymentDateTime(DateTime firstPaymentDateTime) {
         this.firstPaymentDateTime = firstPaymentDateTime;
         return this;
     }
@@ -185,15 +186,15 @@ public class OBStandingOrder6Basic {
      * @return firstPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getFirstPaymentDateTime() {
+    public DateTime getFirstPaymentDateTime() {
         return firstPaymentDateTime;
     }
 
-    public void setFirstPaymentDateTime(String firstPaymentDateTime) {
+    public void setFirstPaymentDateTime(DateTime firstPaymentDateTime) {
         this.firstPaymentDateTime = firstPaymentDateTime;
     }
 
-    public OBStandingOrder6Basic nextPaymentDateTime(String nextPaymentDateTime) {
+    public OBStandingOrder6Basic nextPaymentDateTime(DateTime nextPaymentDateTime) {
         this.nextPaymentDateTime = nextPaymentDateTime;
         return this;
     }
@@ -204,15 +205,15 @@ public class OBStandingOrder6Basic {
      * @return nextPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getNextPaymentDateTime() {
+    public DateTime getNextPaymentDateTime() {
         return nextPaymentDateTime;
     }
 
-    public void setNextPaymentDateTime(String nextPaymentDateTime) {
+    public void setNextPaymentDateTime(DateTime nextPaymentDateTime) {
         this.nextPaymentDateTime = nextPaymentDateTime;
     }
 
-    public OBStandingOrder6Basic lastPaymentDateTime(String lastPaymentDateTime) {
+    public OBStandingOrder6Basic lastPaymentDateTime(DateTime lastPaymentDateTime) {
         this.lastPaymentDateTime = lastPaymentDateTime;
         return this;
     }
@@ -223,15 +224,15 @@ public class OBStandingOrder6Basic {
      * @return lastPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getLastPaymentDateTime() {
+    public DateTime getLastPaymentDateTime() {
         return lastPaymentDateTime;
     }
 
-    public void setLastPaymentDateTime(String lastPaymentDateTime) {
+    public void setLastPaymentDateTime(DateTime lastPaymentDateTime) {
         this.lastPaymentDateTime = lastPaymentDateTime;
     }
 
-    public OBStandingOrder6Basic finalPaymentDateTime(String finalPaymentDateTime) {
+    public OBStandingOrder6Basic finalPaymentDateTime(DateTime finalPaymentDateTime) {
         this.finalPaymentDateTime = finalPaymentDateTime;
         return this;
     }
@@ -242,11 +243,11 @@ public class OBStandingOrder6Basic {
      * @return finalPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getFinalPaymentDateTime() {
+    public DateTime getFinalPaymentDateTime() {
         return finalPaymentDateTime;
     }
 
-    public void setFinalPaymentDateTime(String finalPaymentDateTime) {
+    public void setFinalPaymentDateTime(DateTime finalPaymentDateTime) {
         this.finalPaymentDateTime = finalPaymentDateTime;
     }
 

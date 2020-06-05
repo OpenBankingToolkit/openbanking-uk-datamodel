@@ -36,6 +36,7 @@ package uk.org.openbanking.datamodel.account;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -72,10 +73,10 @@ public class OBTransaction6 {
     private OBTransactionMutability1Code transactionMutability = null;
 
     @JsonProperty("BookingDateTime")
-    private String bookingDateTime = null;
+    private DateTime bookingDateTime = null;
 
     @JsonProperty("ValueDateTime")
-    private String valueDateTime = null;
+    private DateTime valueDateTime = null;
 
     @JsonProperty("TransactionInformation")
     private String transactionInformation = null;
@@ -272,7 +273,7 @@ public class OBTransaction6 {
         this.transactionMutability = transactionMutability;
     }
 
-    public OBTransaction6 bookingDateTime(String bookingDateTime) {
+    public OBTransaction6 bookingDateTime(DateTime bookingDateTime) {
         this.bookingDateTime = bookingDateTime;
         return this;
     }
@@ -284,15 +285,15 @@ public class OBTransaction6 {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "")
-    public String getBookingDateTime() {
+    public DateTime getBookingDateTime() {
         return bookingDateTime;
     }
 
-    public void setBookingDateTime(String bookingDateTime) {
+    public void setBookingDateTime(DateTime bookingDateTime) {
         this.bookingDateTime = bookingDateTime;
     }
 
-    public OBTransaction6 valueDateTime(String valueDateTime) {
+    public OBTransaction6 valueDateTime(DateTime valueDateTime) {
         this.valueDateTime = valueDateTime;
         return this;
     }
@@ -303,11 +304,11 @@ public class OBTransaction6 {
      * @return valueDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getValueDateTime() {
+    public DateTime getValueDateTime() {
         return valueDateTime;
     }
 
-    public void setValueDateTime(String valueDateTime) {
+    public void setValueDateTime(DateTime valueDateTime) {
         this.valueDateTime = valueDateTime;
     }
 
