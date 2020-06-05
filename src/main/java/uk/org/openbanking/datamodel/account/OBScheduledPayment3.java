@@ -35,6 +35,7 @@ package uk.org.openbanking.datamodel.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -53,7 +54,7 @@ public class OBScheduledPayment3 {
     private String scheduledPaymentId = null;
 
     @JsonProperty("ScheduledPaymentDateTime")
-    private String scheduledPaymentDateTime = null;
+    private DateTime scheduledPaymentDateTime = null;
 
     @JsonProperty("ScheduledType")
     private OBExternalScheduleType1Code scheduledType = null;
@@ -114,7 +115,7 @@ public class OBScheduledPayment3 {
         this.scheduledPaymentId = scheduledPaymentId;
     }
 
-    public OBScheduledPayment3 scheduledPaymentDateTime(String scheduledPaymentDateTime) {
+    public OBScheduledPayment3 scheduledPaymentDateTime(DateTime scheduledPaymentDateTime) {
         this.scheduledPaymentDateTime = scheduledPaymentDateTime;
         return this;
     }
@@ -126,11 +127,11 @@ public class OBScheduledPayment3 {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "")
-    public String getScheduledPaymentDateTime() {
+    public DateTime getScheduledPaymentDateTime() {
         return scheduledPaymentDateTime;
     }
 
-    public void setScheduledPaymentDateTime(String scheduledPaymentDateTime) {
+    public void setScheduledPaymentDateTime(DateTime scheduledPaymentDateTime) {
         this.scheduledPaymentDateTime = scheduledPaymentDateTime;
     }
 
