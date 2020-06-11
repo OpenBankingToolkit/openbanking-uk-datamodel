@@ -27,7 +27,7 @@
     <groupId>com.forgerock.openbanking.uk</groupId>
     <artifactId>openbanking-uk-datamodel</artifactId>
     <packaging>jar</packaging>
-    <version>3.1.2.17-SNAPSHOT</version>
+    <version>3.1.2.16-SNAPSHOT</version>
     <name>openbanking-uk-datamodel</name>
     <description>
         A Java UK Data Model, generated from the swagger, to help implementing the Open Banking standard : https://www.openbanking.org.uk/read-write-apis/
@@ -37,10 +37,9 @@
     <parent>
         <groupId>com.forgerock.openbanking</groupId>
         <artifactId>forgerock-openbanking-starter-parent</artifactId>
-        <version>1.0.61</version>
+        <version>1.0.70</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
-
     
     <properties>
         <jersey.version>2.30</jersey.version>
@@ -97,6 +96,11 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
