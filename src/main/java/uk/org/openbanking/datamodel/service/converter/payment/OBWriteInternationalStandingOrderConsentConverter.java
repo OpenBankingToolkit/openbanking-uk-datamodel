@@ -29,16 +29,28 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBInternati
 
 public class OBWriteInternationalStandingOrderConsentConverter {
 
-    public static OBWriteInternationalStandingOrderConsent2 toOBWriteInternationalStandingOrderConsent2(OBWriteInternationalStandingOrderConsent1 obWriteInternationalStandingOrderConsent1) {
-        return (new OBWriteInternationalStandingOrderConsent2())
-                .data(toOBWriteDataInternationalStandingOrderConsent2(obWriteInternationalStandingOrderConsent1.getData()))
-                .risk(obWriteInternationalStandingOrderConsent1.getRisk());
+    public static OBWriteInternationalStandingOrderConsent1 toOBWriteInternationalStandingOrderConsent1(OBWriteInternationalStandingOrderConsent3 obWriteInternationalStandingOrderConsent3) {
+        return (new OBWriteInternationalStandingOrderConsent1())
+                .data(toOBWriteDataInternationalStandingOrderConsent1(obWriteInternationalStandingOrderConsent3.getData()))
+                .risk(obWriteInternationalStandingOrderConsent3.getRisk());
     }
 
     public static OBWriteInternationalStandingOrderConsent1 toOBWriteInternationalStandingOrderConsent1(OBWriteInternationalStandingOrderConsent2 obWriteInternationalStandingOrderConsent2) {
         return (new OBWriteInternationalStandingOrderConsent1())
                 .data(toOBWriteDataInternationalStandingOrderConsent1(obWriteInternationalStandingOrderConsent2.getData()))
                 .risk(obWriteInternationalStandingOrderConsent2.getRisk());
+    }
+
+    public static OBWriteInternationalStandingOrderConsent2 toOBWriteInternationalStandingOrderConsent2(OBWriteInternationalStandingOrderConsent1 obWriteInternationalStandingOrderConsent1) {
+        return (new OBWriteInternationalStandingOrderConsent2())
+                .data(toOBWriteDataInternationalStandingOrderConsent2(obWriteInternationalStandingOrderConsent1.getData()))
+                .risk(obWriteInternationalStandingOrderConsent1.getRisk());
+    }
+
+    public static OBWriteInternationalStandingOrderConsent2 toOBWriteInternationalStandingOrderConsent2(OBWriteInternationalStandingOrderConsent3 obWriteInternationalStandingOrderConsent3) {
+        return (new OBWriteInternationalStandingOrderConsent2())
+                .data(toOBWriteDataInternationalStandingOrderConsent2(obWriteInternationalStandingOrderConsent3.getData()))
+                .risk(obWriteInternationalStandingOrderConsent3.getRisk());
     }
 
     public static OBWriteInternationalStandingOrder2 toOBWriteInternationalStandingOrder2(OBWriteInternationalStandingOrder1 obWriteInternationalStandingOrder1) {
@@ -81,6 +93,20 @@ public class OBWriteInternationalStandingOrderConsentConverter {
         return data == null ? null : (new OBWriteDataInternationalStandingOrderConsent1())
                 .permission(data.getPermission())
                 .initiation(toOBInternationalStandingOrder1(data.getInitiation()))
+                .authorisation(data.getAuthorisation());
+    }
+
+    public static OBWriteDataInternationalStandingOrderConsent1 toOBWriteDataInternationalStandingOrderConsent1(OBWriteDataInternationalStandingOrderConsent3 data) {
+        return data == null ? null : (new OBWriteDataInternationalStandingOrderConsent1())
+                .permission(data.getPermission())
+                .initiation(toOBInternationalStandingOrder1(data.getInitiation()))
+                .authorisation(data.getAuthorisation());
+    }
+
+    public static OBWriteDataInternationalStandingOrderConsent2 toOBWriteDataInternationalStandingOrderConsent2(OBWriteDataInternationalStandingOrderConsent3 data) {
+        return data == null ? null : (new OBWriteDataInternationalStandingOrderConsent2())
+                .permission(data.getPermission())
+                .initiation(toOBInternationalStandingOrder2(data.getInitiation()))
                 .authorisation(data.getAuthorisation());
     }
 

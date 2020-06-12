@@ -25,6 +25,7 @@ import uk.org.openbanking.datamodel.payment.OBDomesticStandingOrder2;
 import uk.org.openbanking.datamodel.payment.OBDomesticStandingOrder3;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrder3DataInitiation;
 
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccount3;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccountCreditor3;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccountDebtor4;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomesticStandingOrder3DataInitiationCreditorAccount;
@@ -33,34 +34,66 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountCon
 
 public class OBDomesticStandingOrderConverter {
 
-    public static OBDomesticStandingOrder2 toOBDomesticStandingOrder2(OBDomesticStandingOrder1 domesticStandingOrder1) {
-        return (new OBDomesticStandingOrder2())
-                .creditorAccount(domesticStandingOrder1.getCreditorAccount())
-                .debtorAccount(domesticStandingOrder1.getDebtorAccount())
-                .finalPaymentAmount(domesticStandingOrder1.getFinalPaymentAmount())
-                .finalPaymentDateTime(domesticStandingOrder1.getFinalPaymentDateTime())
-                .firstPaymentAmount(domesticStandingOrder1.getFirstPaymentAmount())
-                .firstPaymentDateTime(domesticStandingOrder1.getFirstPaymentDateTime())
-                .recurringPaymentAmount(domesticStandingOrder1.getRecurringPaymentAmount())
-                .recurringPaymentDateTime(domesticStandingOrder1.getRecurringPaymentDateTime())
-                .frequency(domesticStandingOrder1.getFrequency())
-                .numberOfPayments(domesticStandingOrder1.getNumberOfPayments())
-                .reference(domesticStandingOrder1.getReference());
+    public static OBDomesticStandingOrder1 toOBDomesticStandingOrder1(OBDomesticStandingOrder2 obDomesticStandingOrder2) {
+        return obDomesticStandingOrder2 == null ? null : (new OBDomesticStandingOrder1())
+                .frequency(obDomesticStandingOrder2.getFrequency())
+                .reference(obDomesticStandingOrder2.getReference())
+                .numberOfPayments(obDomesticStandingOrder2.getNumberOfPayments())
+                .firstPaymentDateTime(obDomesticStandingOrder2.getFirstPaymentDateTime())
+                .recurringPaymentDateTime(obDomesticStandingOrder2.getRecurringPaymentDateTime())
+                .finalPaymentDateTime(obDomesticStandingOrder2.getFinalPaymentDateTime())
+                .firstPaymentAmount(obDomesticStandingOrder2.getFirstPaymentAmount())
+                .recurringPaymentAmount(obDomesticStandingOrder2.getRecurringPaymentAmount())
+                .finalPaymentAmount(obDomesticStandingOrder2.getFinalPaymentAmount())
+                .debtorAccount(obDomesticStandingOrder2.getDebtorAccount())
+                .creditorAccount(obDomesticStandingOrder2.getCreditorAccount());
     }
 
-    public static OBDomesticStandingOrder1 toOBDomesticStandingOrder1(OBDomesticStandingOrder2 domesticStandingOrder2) {
-        return (new OBDomesticStandingOrder1())
-                .creditorAccount(domesticStandingOrder2.getCreditorAccount())
-                .debtorAccount(domesticStandingOrder2.getDebtorAccount())
-                .finalPaymentAmount(domesticStandingOrder2.getFinalPaymentAmount())
-                .finalPaymentDateTime(domesticStandingOrder2.getFinalPaymentDateTime())
-                .firstPaymentAmount(domesticStandingOrder2.getFirstPaymentAmount())
-                .firstPaymentDateTime(domesticStandingOrder2.getFirstPaymentDateTime())
-                .recurringPaymentAmount(domesticStandingOrder2.getRecurringPaymentAmount())
-                .recurringPaymentDateTime(domesticStandingOrder2.getRecurringPaymentDateTime())
-                .frequency(domesticStandingOrder2.getFrequency())
-                .numberOfPayments(domesticStandingOrder2.getNumberOfPayments())
-                .reference(domesticStandingOrder2.getReference());
+    public static OBDomesticStandingOrder1 toOBDomesticStandingOrder1(OBDomesticStandingOrder3 obDomesticStandingOrder3) {
+        return obDomesticStandingOrder3 == null ? null : (new OBDomesticStandingOrder1())
+                .frequency(obDomesticStandingOrder3.getFrequency())
+                .reference(obDomesticStandingOrder3.getReference())
+                .numberOfPayments(obDomesticStandingOrder3.getNumberOfPayments())
+                .firstPaymentDateTime(obDomesticStandingOrder3.getFirstPaymentDateTime())
+                .recurringPaymentDateTime(obDomesticStandingOrder3.getRecurringPaymentDateTime())
+                .finalPaymentDateTime(obDomesticStandingOrder3.getFinalPaymentDateTime())
+                .firstPaymentAmount(toOBActiveOrHistoricCurrencyAndAmount(obDomesticStandingOrder3.getFirstPaymentAmount()))
+                .recurringPaymentAmount(toOBActiveOrHistoricCurrencyAndAmount(obDomesticStandingOrder3.getRecurringPaymentAmount()))
+                .finalPaymentAmount(toOBActiveOrHistoricCurrencyAndAmount(obDomesticStandingOrder3.getFinalPaymentAmount()))
+                .debtorAccount(toOBCashAccount3(obDomesticStandingOrder3.getDebtorAccount()))
+                .creditorAccount(toOBCashAccount3(obDomesticStandingOrder3.getCreditorAccount()));
+    }
+
+    public static OBDomesticStandingOrder2 toOBDomesticStandingOrder2(OBDomesticStandingOrder1 obDomesticStandingOrder1) {
+        return obDomesticStandingOrder1 == null ? null : (new OBDomesticStandingOrder2())
+                .frequency(obDomesticStandingOrder1.getFrequency())
+                .reference(obDomesticStandingOrder1.getReference())
+                .numberOfPayments(obDomesticStandingOrder1.getNumberOfPayments())
+                .firstPaymentDateTime(obDomesticStandingOrder1.getFirstPaymentDateTime())
+                .recurringPaymentDateTime(obDomesticStandingOrder1.getRecurringPaymentDateTime())
+                .finalPaymentDateTime(obDomesticStandingOrder1.getFinalPaymentDateTime())
+                .firstPaymentAmount(obDomesticStandingOrder1.getFirstPaymentAmount())
+                .recurringPaymentAmount(obDomesticStandingOrder1.getRecurringPaymentAmount())
+                .finalPaymentAmount(obDomesticStandingOrder1.getFinalPaymentAmount())
+                .debtorAccount(obDomesticStandingOrder1.getDebtorAccount())
+                .creditorAccount(obDomesticStandingOrder1.getCreditorAccount())
+                .supplementaryData(null);
+    }
+
+    public static OBDomesticStandingOrder2 toOBDomesticStandingOrder2(OBDomesticStandingOrder3 obDomesticStandingOrder3) {
+        return obDomesticStandingOrder3 == null ? null : (new OBDomesticStandingOrder2())
+                .frequency(obDomesticStandingOrder3.getFrequency())
+                .reference(obDomesticStandingOrder3.getReference())
+                .numberOfPayments(obDomesticStandingOrder3.getNumberOfPayments())
+                .firstPaymentDateTime(obDomesticStandingOrder3.getFirstPaymentDateTime())
+                .recurringPaymentDateTime(obDomesticStandingOrder3.getRecurringPaymentDateTime())
+                .finalPaymentDateTime(obDomesticStandingOrder3.getFinalPaymentDateTime())
+                .firstPaymentAmount(toOBActiveOrHistoricCurrencyAndAmount(obDomesticStandingOrder3.getFirstPaymentAmount()))
+                .recurringPaymentAmount(toOBActiveOrHistoricCurrencyAndAmount(obDomesticStandingOrder3.getRecurringPaymentAmount()))
+                .finalPaymentAmount(toOBActiveOrHistoricCurrencyAndAmount(obDomesticStandingOrder3.getFinalPaymentAmount()))
+                .debtorAccount(toOBCashAccount3(obDomesticStandingOrder3.getDebtorAccount()))
+                .creditorAccount(toOBCashAccount3(obDomesticStandingOrder3.getCreditorAccount()))
+                .supplementaryData(obDomesticStandingOrder3.getSupplementaryData());
     }
 
     public static OBDomesticStandingOrder3 toOBDomesticStandingOrder3(OBWriteDomesticStandingOrder3DataInitiation initiation) {
@@ -79,19 +112,19 @@ public class OBDomesticStandingOrderConverter {
                 .supplementaryData(initiation.getSupplementaryData());
     }
 
-    public static OBWriteDomesticStandingOrder3DataInitiation toOBWriteDomesticStandingOrder3DataInitiation(OBDomesticStandingOrder3 initiation) {
-        return initiation == null ? null : (new OBWriteDomesticStandingOrder3DataInitiation())
-                .frequency(initiation.getFrequency())
-                .reference(initiation.getReference())
-                .numberOfPayments(initiation.getNumberOfPayments())
-                .firstPaymentDateTime(initiation.getFirstPaymentDateTime())
-                .recurringPaymentDateTime(initiation.getRecurringPaymentDateTime())
-                .finalPaymentDateTime(initiation.getFinalPaymentDateTime())
-                .firstPaymentAmount(toOBWriteDomesticStandingOrder3DataInitiationFirstPaymentAmount(initiation.getFirstPaymentAmount()))
-                .recurringPaymentAmount(toOBWriteDomesticStandingOrder3DataInitiationRecurringPaymentAmount(initiation.getRecurringPaymentAmount()))
-                .finalPaymentAmount(toOBWriteDomesticStandingOrder3DataInitiationFinalPaymentAmount(initiation.getFinalPaymentAmount()))
-                .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(initiation.getDebtorAccount()))
-                .creditorAccount(toOBWriteDomesticStandingOrder3DataInitiationCreditorAccount(initiation.getCreditorAccount()))
-                .supplementaryData(initiation.getSupplementaryData());
+    public static OBWriteDomesticStandingOrder3DataInitiation toOBWriteDomesticStandingOrder3DataInitiation(OBDomesticStandingOrder3 obDomesticStandingOrder3) {
+        return obDomesticStandingOrder3 == null ? null : (new OBWriteDomesticStandingOrder3DataInitiation())
+                .frequency(obDomesticStandingOrder3.getFrequency())
+                .reference(obDomesticStandingOrder3.getReference())
+                .numberOfPayments(obDomesticStandingOrder3.getNumberOfPayments())
+                .firstPaymentDateTime(obDomesticStandingOrder3.getFirstPaymentDateTime())
+                .recurringPaymentDateTime(obDomesticStandingOrder3.getRecurringPaymentDateTime())
+                .finalPaymentDateTime(obDomesticStandingOrder3.getFinalPaymentDateTime())
+                .firstPaymentAmount(toOBWriteDomesticStandingOrder3DataInitiationFirstPaymentAmount(obDomesticStandingOrder3.getFirstPaymentAmount()))
+                .recurringPaymentAmount(toOBWriteDomesticStandingOrder3DataInitiationRecurringPaymentAmount(obDomesticStandingOrder3.getRecurringPaymentAmount()))
+                .finalPaymentAmount(toOBWriteDomesticStandingOrder3DataInitiationFinalPaymentAmount(obDomesticStandingOrder3.getFinalPaymentAmount()))
+                .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obDomesticStandingOrder3.getDebtorAccount()))
+                .creditorAccount(toOBWriteDomesticStandingOrder3DataInitiationCreditorAccount(obDomesticStandingOrder3.getCreditorAccount()))
+                .supplementaryData(obDomesticStandingOrder3.getSupplementaryData());
     }
 }

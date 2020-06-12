@@ -50,6 +50,14 @@ public class OBAccountConverter {
         return toAccount(new OBCashAccount3(), debtorAccount);
     }
 
+    public static OBCashAccount3 toOBCashAccount3(OBCashAccountDebtor4 debtorAccount) {
+        return toAccount(new OBCashAccount3(), debtorAccount);
+    }
+
+    public static OBCashAccount3 toOBCashAccount3(OBCashAccountCreditor3 creditorAccount) {
+        return toAccount(new OBCashAccount3(), creditorAccount);
+    }
+
     public static OBCashAccount5 toOBCashAccount5(OBWriteInternationalStandingOrder4DataInitiationCreditorAccount creditorAccount) {
         return toAccount(new OBCashAccount5(), creditorAccount);
     }

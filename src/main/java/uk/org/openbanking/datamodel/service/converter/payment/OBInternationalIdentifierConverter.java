@@ -35,6 +35,10 @@ public class OBInternationalIdentifierConverter {
         return toAgent(new OBWriteInternational3DataInitiationCreditorAgent(), creditorAgent);
     }
 
+    public static OBBranchAndFinancialInstitutionIdentification3 toOBBranchAndFinancialInstitutionIdentification3(OBBranchAndFinancialInstitutionIdentification6 creditorAgent) {
+        return toAgent(new OBBranchAndFinancialInstitutionIdentification3(), creditorAgent);
+    }
+
     public static OBBranchAndFinancialInstitutionIdentification3 toOBBranchAndFinancialInstitutionIdentification3(OBWriteInternational3DataInitiationCreditorAgent creditorAgent) {
         return toAgent(new OBBranchAndFinancialInstitutionIdentification3(), creditorAgent);
     }

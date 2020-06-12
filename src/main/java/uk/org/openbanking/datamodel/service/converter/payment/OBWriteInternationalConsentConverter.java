@@ -47,12 +47,6 @@ public class OBWriteInternationalConsentConverter {
                 .risk(obWriteInternational2.getRisk());
     }
 
-    public static OBWriteDataInternational1 toOBWriteDataInternational1(OBWriteDataInternational2 data) {
-        return data == null ? null : (new OBWriteDataInternational1())
-                .consentId(data.getConsentId())
-                .initiation(toOBInternational1(data.getInitiation()));
-    }
-
     public static OBWriteInternational2 toOBWriteInternational2(OBWriteInternational1 obWriteInternational1) {
         return (new OBWriteInternational2())
                 .data(toOBWriteDataInternational2(obWriteInternational1.getData()))
@@ -63,6 +57,12 @@ public class OBWriteInternationalConsentConverter {
         return (new OBWriteInternationalConsent4())
                 .data(toOBWriteInternationalConsent4Data(obWriteInternationalConsent2.getData()))
                 .risk(obWriteInternationalConsent2.getRisk());
+    }
+
+    public static OBWriteDataInternational1 toOBWriteDataInternational1(OBWriteDataInternational2 data) {
+        return data == null ? null : (new OBWriteDataInternational1())
+                .consentId(data.getConsentId())
+                .initiation(toOBInternational1(data.getInitiation()));
     }
 
     public static OBWriteDataInternational2 toOBWriteDataInternational2(OBWriteDataInternational1 data) {

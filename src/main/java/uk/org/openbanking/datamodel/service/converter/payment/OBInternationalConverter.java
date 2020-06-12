@@ -42,38 +42,22 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanc
 
 public class OBInternationalConverter {
 
-    public static OBInternational2 toOBInternational2(OBInternational1 obInternational1) {
-        return obInternational1 == null ? null : (new OBInternational2())
-                .creditorAccount(obInternational1.getCreditorAccount())
-                .debtorAccount(obInternational1.getDebtorAccount())
-                .endToEndIdentification(obInternational1.getEndToEndIdentification())
-                .instructedAmount(obInternational1.getInstructedAmount())
-                .instructionIdentification(obInternational1.getInstructionIdentification())
-                .localInstrument(obInternational1.getLocalInstrument())
-                .remittanceInformation(obInternational1.getRemittanceInformation())
-                .chargeBearer(obInternational1.getChargeBearer())
-                .creditor(obInternational1.getCreditor())
-                .creditorAgent(obInternational1.getCreditorAgent())
-                .currencyOfTransfer(obInternational1.getCurrencyOfTransfer())
-                .exchangeRateInformation(obInternational1.getExchangeRateInformation())
-                .instructionPriority(obInternational1.getInstructionPriority());
-    }
-
     public static OBInternational1 toOBInternational1(OBInternational2 obInternational2) {
         return obInternational2 == null ? null : (new OBInternational1())
-                .creditorAccount(obInternational2.getCreditorAccount())
-                .debtorAccount(obInternational2.getDebtorAccount())
-                .endToEndIdentification(obInternational2.getEndToEndIdentification())
-                .instructedAmount(obInternational2.getInstructedAmount())
                 .instructionIdentification(obInternational2.getInstructionIdentification())
+                .endToEndIdentification(obInternational2.getEndToEndIdentification())
                 .localInstrument(obInternational2.getLocalInstrument())
-                .remittanceInformation(obInternational2.getRemittanceInformation())
+                .instructionPriority(obInternational2.getInstructionPriority())
+                .purpose(obInternational2.getPurpose())
                 .chargeBearer(obInternational2.getChargeBearer())
+                .currencyOfTransfer(obInternational2.getCurrencyOfTransfer())
+                .instructedAmount(obInternational2.getInstructedAmount())
+                .exchangeRateInformation(obInternational2.getExchangeRateInformation())
+                .debtorAccount(obInternational2.getDebtorAccount())
                 .creditor(obInternational2.getCreditor())
                 .creditorAgent(obInternational2.getCreditorAgent())
-                .currencyOfTransfer(obInternational2.getCurrencyOfTransfer())
-                .exchangeRateInformation(obInternational2.getExchangeRateInformation())
-                .instructionPriority(obInternational2.getInstructionPriority());
+                .creditorAccount(obInternational2.getCreditorAccount())
+                .remittanceInformation(obInternational2.getRemittanceInformation());
     }
 
     public static OBInternational1 toOBInternational1(OBWriteInternational3DataInitiation initiation) {
@@ -92,6 +76,25 @@ public class OBInternationalConverter {
                 .creditorAgent(toOBBranchAndFinancialInstitutionIdentification3(initiation.getCreditorAgent()))
                 .creditorAccount(toOBCashAccount3(initiation.getCreditorAccount()))
                 .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()));
+    }
+
+    public static OBInternational2 toOBInternational2(OBInternational1 obInternational1) {
+        return obInternational1 == null ? null : (new OBInternational2())
+                .instructionIdentification(obInternational1.getInstructionIdentification())
+                .endToEndIdentification(obInternational1.getEndToEndIdentification())
+                .localInstrument(obInternational1.getLocalInstrument())
+                .instructionPriority(obInternational1.getInstructionPriority())
+                .purpose(obInternational1.getPurpose())
+                .chargeBearer(obInternational1.getChargeBearer())
+                .currencyOfTransfer(obInternational1.getCurrencyOfTransfer())
+                .instructedAmount(obInternational1.getInstructedAmount())
+                .exchangeRateInformation(obInternational1.getExchangeRateInformation())
+                .debtorAccount(obInternational1.getDebtorAccount())
+                .creditor(obInternational1.getCreditor())
+                .creditorAgent(obInternational1.getCreditorAgent())
+                .creditorAccount(obInternational1.getCreditorAccount())
+                .remittanceInformation(obInternational1.getRemittanceInformation())
+                .supplementaryData(null);
     }
 
     public static OBInternational2 toOBInternational2(OBWriteInternational3DataInitiation initiation) {

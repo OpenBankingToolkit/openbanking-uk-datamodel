@@ -54,7 +54,8 @@ public class OBFileConverter {
                 .localInstrument(obFile1.getLocalInstrument())
                 .numberOfTransactions(obFile1.getNumberOfTransactions())
                 .requestedExecutionDateTime(obFile1.getRequestedExecutionDateTime())
-                .remittanceInformation(obFile1.getRemittanceInformation());
+                .remittanceInformation(obFile1.getRemittanceInformation())
+                .supplementaryData(null);
     }
 
     public static OBFile2 toOBFile2(OBWriteFile2DataInitiation initiation) {

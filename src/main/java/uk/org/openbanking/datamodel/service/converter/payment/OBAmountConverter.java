@@ -38,6 +38,22 @@ public class OBAmountConverter {
         return toAmount(new OBActiveOrHistoricCurrencyAndAmount(), amount);
     }
 
+    public static OBActiveOrHistoricCurrencyAndAmount toOBActiveOrHistoricCurrencyAndAmount(OBDomestic2InstructedAmount amount) {
+        return toAmount(new OBActiveOrHistoricCurrencyAndAmount(), amount);
+    }
+
+    public static OBActiveOrHistoricCurrencyAndAmount toOBActiveOrHistoricCurrencyAndAmount(OBDomesticStandingOrder3FinalPaymentAmount amount) {
+        return toAmount(new OBActiveOrHistoricCurrencyAndAmount(), amount);
+    }
+
+    public static OBActiveOrHistoricCurrencyAndAmount toOBActiveOrHistoricCurrencyAndAmount(OBDomesticStandingOrder3RecurringPaymentAmount amount) {
+        return toAmount(new OBActiveOrHistoricCurrencyAndAmount(), amount);
+    }
+
+    public static OBActiveOrHistoricCurrencyAndAmount toOBActiveOrHistoricCurrencyAndAmount(OBDomesticStandingOrder3FirstPaymentAmount amount) {
+        return toAmount(new OBActiveOrHistoricCurrencyAndAmount(), amount);
+    }
+
     public static OBWriteDomestic2DataInitiationInstructedAmount toOBWriteDomestic2DataInitiationInstructedAmount(OBActiveOrHistoricCurrencyAndAmount amount) {
         return toAmount(new OBWriteDomestic2DataInitiationInstructedAmount(), amount);
     }

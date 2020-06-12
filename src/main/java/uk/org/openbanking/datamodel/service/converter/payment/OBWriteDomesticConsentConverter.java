@@ -33,16 +33,16 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticC
 
 public class OBWriteDomesticConsentConverter {
 
-    public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent1 obWriteDomesticConsent1) {
-        return (new OBWriteDomesticConsent2())
-                .data(toOBWriteDataDomesticConsent2(obWriteDomesticConsent1.getData()))
-                .risk(obWriteDomesticConsent1.getRisk());
-    }
-
     public static OBWriteDomesticConsent1 toOBWriteDomesticConsent1(OBWriteDomesticConsent2 obWriteDomesticConsent2) {
         return (new OBWriteDomesticConsent1())
                 .data(toOBWriteDataDomesticConsent1(obWriteDomesticConsent2.getData()))
                 .risk(obWriteDomesticConsent2.getRisk());
+    }
+
+    public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent1 obWriteDomesticConsent1) {
+        return (new OBWriteDomesticConsent2())
+                .data(toOBWriteDataDomesticConsent2(obWriteDomesticConsent1.getData()))
+                .risk(obWriteDomesticConsent1.getRisk());
     }
 
     public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent3 obWriteDomesticConsent3) {
@@ -53,20 +53,20 @@ public class OBWriteDomesticConsentConverter {
 
     public static OBWriteDataDomesticConsent1 toOBWriteDataDomesticConsent1(OBWriteDataDomesticConsent2 data) {
         return data == null ? null : (new OBWriteDataDomesticConsent1())
-                .authorisation(data.getAuthorisation())
-                .initiation(toOBDomestic1(data.getInitiation()));
+                .initiation(toOBDomestic1(data.getInitiation()))
+                .authorisation(data.getAuthorisation());
     }
 
     public static OBWriteDataDomesticConsent2 toOBWriteDataDomesticConsent2(OBWriteDataDomesticConsent1 data) {
         return data == null ? null : (new OBWriteDataDomesticConsent2())
-                .authorisation(data.getAuthorisation())
-                .initiation(toOBDomestic2(data.getInitiation()));
+                .initiation(toOBDomestic2(data.getInitiation()))
+                .authorisation(data.getAuthorisation());
     }
 
     public static OBWriteDataDomesticConsent2 toOBWriteDataDomesticConsent2(OBWriteDomesticConsent3Data data) {
         return data == null ? null : (new OBWriteDataDomesticConsent2())
-                .authorisation(toOBAuthorisation1(data.getAuthorisation()))
-                .initiation(toOBDomestic2(data.getInitiation()));
+                .initiation(toOBDomestic2(data.getInitiation()))
+                .authorisation(toOBAuthorisation1(data.getAuthorisation()));
     }
 
 }

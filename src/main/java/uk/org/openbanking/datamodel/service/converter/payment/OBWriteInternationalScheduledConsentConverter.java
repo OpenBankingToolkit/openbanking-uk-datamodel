@@ -30,22 +30,22 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBInternati
 
 public class OBWriteInternationalScheduledConsentConverter {
 
-    public static OBWriteInternationalScheduledConsent2 toOBWriteInternationalScheduledConsent2(OBWriteInternationalScheduledConsent1 obWriteInternationalScheduledConsent1) {
-        return (new OBWriteInternationalScheduledConsent2())
-                .data(toOBWriteDataInternationalScheduledConsent2(obWriteInternationalScheduledConsent1.getData()))
-                .risk(obWriteInternationalScheduledConsent1.getRisk());
-    }
-
     public static OBWriteInternationalScheduledConsent1 toOBWriteInternationalScheduledConsent1(OBWriteInternationalScheduledConsent2 obWriteInternationalScheduledConsent2) {
         return (new OBWriteInternationalScheduledConsent1())
                 .data(toOBWriteDataInternationalScheduledConsent1(obWriteInternationalScheduledConsent2.getData()))
                 .risk(obWriteInternationalScheduledConsent2.getRisk());
     }
 
-    public static OBWriteInternationalScheduled2 toOBWriteInternationalScheduled2(OBWriteInternationalScheduled1 obWriteInternationalScheduled1) {
-        return (new OBWriteInternationalScheduled2())
-                .data(toOBWriteDataInternationalScheduled2(obWriteInternationalScheduled1.getData()))
-                .risk(obWriteInternationalScheduled1.getRisk());
+    public static OBWriteInternationalScheduledConsent1 toOBWriteInternationalScheduledConsent1(OBWriteInternationalScheduledConsent4 obWriteInternationalScheduledConsent4) {
+        return (new OBWriteInternationalScheduledConsent1()
+                .data(toOBWriteDataInternationalScheduledConsent1(obWriteInternationalScheduledConsent4.getData()))
+                .risk(obWriteInternationalScheduledConsent4.getRisk()));
+    }
+
+    public static OBWriteInternationalScheduledConsent2 toOBWriteInternationalScheduledConsent2(OBWriteInternationalScheduledConsent1 obWriteInternationalScheduledConsent1) {
+        return (new OBWriteInternationalScheduledConsent2())
+                .data(toOBWriteDataInternationalScheduledConsent2(obWriteInternationalScheduledConsent1.getData()))
+                .risk(obWriteInternationalScheduledConsent1.getRisk());
     }
 
     public static OBWriteInternationalScheduled1 toOBWriteInternationalScheduled1(OBWriteInternationalScheduled2 obWriteInternationalScheduled2) {
@@ -54,11 +54,10 @@ public class OBWriteInternationalScheduledConsentConverter {
                 .risk(obWriteInternationalScheduled2.getRisk());
     }
 
-    public static OBWriteInternationalScheduledConsent1 toOBWriteInternationalScheduledConsent1(OBWriteInternationalScheduledConsent4 obWriteInternationalScheduledConsent4) {
-        return (new OBWriteInternationalScheduledConsent1()
-                .data(toOBWriteDataInternationalScheduledConsent1(obWriteInternationalScheduledConsent4.getData()))
-                .risk(obWriteInternationalScheduledConsent4.getRisk())
-        );
+    public static OBWriteInternationalScheduled2 toOBWriteInternationalScheduled2(OBWriteInternationalScheduled1 obWriteInternationalScheduled1) {
+        return (new OBWriteInternationalScheduled2())
+                .data(toOBWriteDataInternationalScheduled2(obWriteInternationalScheduled1.getData()))
+                .risk(obWriteInternationalScheduled1.getRisk());
     }
 
     public static OBWriteInternationalScheduledConsent4 toOBWriteInternationalScheduledConsent4(OBWriteInternationalScheduledConsent1 obWriteInternationalScheduledConsent1) {
