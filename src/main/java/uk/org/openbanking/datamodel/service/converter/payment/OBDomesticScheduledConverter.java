@@ -20,72 +20,85 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.*;
+import uk.org.openbanking.datamodel.payment.OBDomesticScheduled1;
+import uk.org.openbanking.datamodel.payment.OBDomesticScheduled2;
+import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduled2DataInitiation;
+
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccount3;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationCreditorAccount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationDebtorAccount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBActiveOrHistoricCurrencyAndAmount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBWriteDomestic2DataInitiationInstructedAmount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBRemittanceInformation1;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
 public class OBDomesticScheduledConverter {
 
-    public static OBDomesticScheduled2 toOBDomesticScheduled2(OBDomesticScheduled1 domesticScheduled1) {
-        return new OBDomesticScheduled2()
-                .creditorAccount(domesticScheduled1.getCreditorAccount())
-                .creditorPostalAddress(domesticScheduled1.getCreditorPostalAddress())
-                .debtorAccount(domesticScheduled1.getDebtorAccount())
-                .endToEndIdentification(domesticScheduled1.getEndToEndIdentification())
-                .instructedAmount(domesticScheduled1.getInstructedAmount())
-                .instructionIdentification(domesticScheduled1.getInstructionIdentification())
-                .localInstrument(domesticScheduled1.getLocalInstrument())
-                .remittanceInformation(domesticScheduled1.getRemittanceInformation())
-                .requestedExecutionDateTime(domesticScheduled1.getRequestedExecutionDateTime());
+    public static OBDomesticScheduled1 toOBDomesticScheduled1(OBDomesticScheduled2 obDomesticScheduled2) {
+        return obDomesticScheduled2 == null ? null : (new OBDomesticScheduled1())
+                .instructionIdentification(obDomesticScheduled2.getInstructionIdentification())
+                .endToEndIdentification(obDomesticScheduled2.getEndToEndIdentification())
+                .localInstrument(obDomesticScheduled2.getLocalInstrument())
+                .requestedExecutionDateTime(obDomesticScheduled2.getRequestedExecutionDateTime())
+                .instructedAmount(obDomesticScheduled2.getInstructedAmount())
+                .debtorAccount(obDomesticScheduled2.getDebtorAccount())
+                .creditorAccount(obDomesticScheduled2.getCreditorAccount())
+                .creditorPostalAddress(obDomesticScheduled2.getCreditorPostalAddress())
+                .remittanceInformation(obDomesticScheduled2.getRemittanceInformation());
     }
 
-    public static OBDomesticScheduled1 toOBDomesticScheduled1(OBDomesticScheduled2 domesticScheduled2) {
-        return new OBDomesticScheduled1()
-                .creditorAccount(domesticScheduled2.getCreditorAccount())
-                .creditorPostalAddress(domesticScheduled2.getCreditorPostalAddress())
-                .debtorAccount(domesticScheduled2.getDebtorAccount())
-                .endToEndIdentification(domesticScheduled2.getEndToEndIdentification())
-                .instructedAmount(domesticScheduled2.getInstructedAmount())
-                .instructionIdentification(domesticScheduled2.getInstructionIdentification())
-                .localInstrument(domesticScheduled2.getLocalInstrument())
-                .remittanceInformation(domesticScheduled2.getRemittanceInformation())
-                .requestedExecutionDateTime(domesticScheduled2.getRequestedExecutionDateTime());
+    public static OBDomesticScheduled1 toOBDomesticScheduled1(OBWriteDomesticScheduled2DataInitiation initiation) {
+        return initiation == null ? null : (new OBDomesticScheduled1())
+                .instructionIdentification(initiation.getInstructionIdentification())
+                .endToEndIdentification(initiation.getEndToEndIdentification())
+                .localInstrument(initiation.getLocalInstrument())
+                .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
+                .instructedAmount(toOBActiveOrHistoricCurrencyAndAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .creditorAccount(toOBCashAccount3(initiation.getCreditorAccount()))
+                .creditorPostalAddress(initiation.getCreditorPostalAddress())
+                .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()));
     }
 
-
-    public static OBWriteDomesticScheduledConsent2 toOBWriteDomesticScheduledConsent2(OBWriteDomesticScheduledConsent1 obWriteDomesticScheduledConsent1) {
-        return new OBWriteDomesticScheduledConsent2()
-                .data(new OBWriteDataDomesticScheduledConsent2()
-                        .authorisation(obWriteDomesticScheduledConsent1.getData().getAuthorisation())
-                        .initiation(toOBDomesticScheduled2(obWriteDomesticScheduledConsent1.getData().getInitiation()))
-                        .permission(obWriteDomesticScheduledConsent1.getData().getPermission())
-                )
-                .risk(obWriteDomesticScheduledConsent1.getRisk());
+    public static OBDomesticScheduled2 toOBDomesticScheduled2(OBDomesticScheduled1 obDomesticScheduled1) {
+        return obDomesticScheduled1 == null ? null : (new OBDomesticScheduled2())
+                .instructionIdentification(obDomesticScheduled1.getInstructionIdentification())
+                .endToEndIdentification(obDomesticScheduled1.getEndToEndIdentification())
+                .localInstrument(obDomesticScheduled1.getLocalInstrument())
+                .requestedExecutionDateTime(obDomesticScheduled1.getRequestedExecutionDateTime())
+                .instructedAmount(obDomesticScheduled1.getInstructedAmount())
+                .debtorAccount(obDomesticScheduled1.getDebtorAccount())
+                .creditorAccount(obDomesticScheduled1.getCreditorAccount())
+                .creditorPostalAddress(obDomesticScheduled1.getCreditorPostalAddress())
+                .remittanceInformation(obDomesticScheduled1.getRemittanceInformation())
+                .supplementaryData(null);
     }
 
-    public static OBWriteDomesticScheduledConsent1 toOBWriteDomesticScheduledConsent1(OBWriteDomesticScheduledConsent2 obWriteDomesticScheduledConsent2) {
-        return new OBWriteDomesticScheduledConsent1()
-                .data(new OBWriteDataDomesticScheduledConsent1()
-                        .authorisation(obWriteDomesticScheduledConsent2.getData().getAuthorisation())
-                        .initiation(toOBDomesticScheduled1(obWriteDomesticScheduledConsent2.getData().getInitiation()))
-                        .permission(obWriteDomesticScheduledConsent2.getData().getPermission())
-                )
-                .risk(obWriteDomesticScheduledConsent2.getRisk());
+    public static OBDomesticScheduled2 toOBDomesticScheduled2(OBWriteDomesticScheduled2DataInitiation initiation) {
+        return initiation == null ? null : (new OBDomesticScheduled2())
+                .instructionIdentification(initiation.getInstructionIdentification())
+                .endToEndIdentification(initiation.getEndToEndIdentification())
+                .localInstrument(initiation.getLocalInstrument())
+                .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
+                .instructedAmount(toOBActiveOrHistoricCurrencyAndAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .creditorAccount(toOBCashAccount3(initiation.getCreditorAccount()))
+                .creditorPostalAddress(initiation.getCreditorPostalAddress())
+                .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()))
+                .supplementaryData(initiation.getSupplementaryData());
     }
 
-    public static OBWriteDomesticScheduled2 toOBWriteDomesticScheduled2(OBWriteDomesticScheduled1 obWriteDomesticScheduled1) {
-        return new OBWriteDomesticScheduled2()
-                .data(new OBWriteDataDomesticScheduled2()
-                        .consentId(obWriteDomesticScheduled1.getData().getConsentId())
-                        .initiation(toOBDomesticScheduled2(obWriteDomesticScheduled1.getData().getInitiation()))
-                )
-                .risk(obWriteDomesticScheduled1.getRisk());
-    }
-
-    public static OBWriteDomesticScheduled1 toOBWriteDomesticScheduled1(OBWriteDomesticScheduled2 obWriteDomesticScheduled2) {
-        return new OBWriteDomesticScheduled1()
-                .data(new OBWriteDataDomesticScheduled1()
-                        .consentId(obWriteDomesticScheduled2.getData().getConsentId())
-                        .initiation(toOBDomesticScheduled1(obWriteDomesticScheduled2.getData().getInitiation()))
-                )
-                .risk(obWriteDomesticScheduled2.getRisk());
+    public static OBWriteDomesticScheduled2DataInitiation toOBWriteDomesticScheduled2DataInitiation(OBDomesticScheduled2 obDomesticScheduled2) {
+        return obDomesticScheduled2 == null ? null : (new OBWriteDomesticScheduled2DataInitiation())
+                .instructionIdentification(obDomesticScheduled2.getInstructionIdentification())
+                .endToEndIdentification(obDomesticScheduled2.getEndToEndIdentification())
+                .localInstrument(obDomesticScheduled2.getLocalInstrument())
+                .requestedExecutionDateTime(obDomesticScheduled2.getRequestedExecutionDateTime())
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obDomesticScheduled2.getInstructedAmount()))
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obDomesticScheduled2.getDebtorAccount()))
+                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(obDomesticScheduled2.getCreditorAccount()))
+                .creditorPostalAddress(obDomesticScheduled2.getCreditorPostalAddress())
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(obDomesticScheduled2.getRemittanceInformation()))
+                .supplementaryData(obDomesticScheduled2.getSupplementaryData());
     }
 }

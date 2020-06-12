@@ -20,67 +20,68 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.*;
+import uk.org.openbanking.datamodel.payment.OBDomestic1;
+import uk.org.openbanking.datamodel.payment.OBDomestic2;
+import uk.org.openbanking.datamodel.payment.OBWriteDomestic2DataInitiation;
+
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccount3;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationCreditorAccount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationDebtorAccount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBActiveOrHistoricCurrencyAndAmount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBWriteDomestic2DataInitiationInstructedAmount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBRemittanceInformation1;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
 public class OBDomesticConverter {
 
-    public static OBDomestic2 toOBDomestic2(OBDomestic1 domestic1) {
-        return new OBDomestic2()
-                .creditorAccount(domestic1.getCreditorAccount())
-                .creditorPostalAddress(domestic1.getCreditorPostalAddress())
-                .debtorAccount(domestic1.getDebtorAccount())
-                .endToEndIdentification(domestic1.getEndToEndIdentification())
-                .instructedAmount(domestic1.getInstructedAmount())
-                .instructionIdentification(domestic1.getInstructionIdentification())
-                .localInstrument(domestic1.getLocalInstrument())
-                .remittanceInformation(domestic1.getRemittanceInformation());
+    public static OBDomestic1 toOBDomestic1(OBDomestic2 obDomestic2) {
+        return obDomestic2 == null ? null : (new OBDomestic1())
+                .instructionIdentification(obDomestic2.getInstructionIdentification())
+                .endToEndIdentification(obDomestic2.getEndToEndIdentification())
+                .localInstrument(obDomestic2.getLocalInstrument())
+                .instructedAmount(obDomestic2.getInstructedAmount())
+                .debtorAccount(obDomestic2.getDebtorAccount())
+                .creditorAccount(obDomestic2.getCreditorAccount())
+                .creditorPostalAddress(obDomestic2.getCreditorPostalAddress())
+                .remittanceInformation(obDomestic2.getRemittanceInformation());
     }
 
-    public static OBDomestic1 toOBDomestic1(OBDomestic2 domestic2) {
-        return new OBDomestic1()
-                .creditorAccount(domestic2.getCreditorAccount())
-                .creditorPostalAddress(domestic2.getCreditorPostalAddress())
-                .debtorAccount(domestic2.getDebtorAccount())
-                .endToEndIdentification(domestic2.getEndToEndIdentification())
-                .instructedAmount(domestic2.getInstructedAmount())
-                .instructionIdentification(domestic2.getInstructionIdentification())
-                .localInstrument(domestic2.getLocalInstrument())
-                .remittanceInformation(domestic2.getRemittanceInformation());
+    public static OBDomestic2 toOBDomestic2(OBDomestic1 obDomestic1) {
+        return obDomestic1 == null ? null : (new OBDomestic2())
+                .instructionIdentification(obDomestic1.getInstructionIdentification())
+                .endToEndIdentification(obDomestic1.getEndToEndIdentification())
+                .localInstrument(obDomestic1.getLocalInstrument())
+                .instructedAmount(obDomestic1.getInstructedAmount())
+                .debtorAccount(obDomestic1.getDebtorAccount())
+                .creditorAccount(obDomestic1.getCreditorAccount())
+                .creditorPostalAddress(obDomestic1.getCreditorPostalAddress())
+                .remittanceInformation(obDomestic1.getRemittanceInformation())
+                .supplementaryData(null);
     }
 
-    public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent1 obWriteDomesticConsent1) {
-        return new OBWriteDomesticConsent2()
-                .data(new OBWriteDataDomesticConsent2()
-                        .authorisation(obWriteDomesticConsent1.getData().getAuthorisation())
-                        .initiation(toOBDomestic2(obWriteDomesticConsent1.getData().getInitiation()))
-                )
-                .risk(obWriteDomesticConsent1.getRisk());
+    public static OBDomestic2 toOBDomestic2(OBWriteDomestic2DataInitiation initiation) {
+        return initiation == null ? null : (new OBDomestic2())
+                .instructionIdentification(initiation.getInstructionIdentification())
+                .endToEndIdentification(initiation.getEndToEndIdentification())
+                .localInstrument(initiation.getLocalInstrument())
+                .instructedAmount(toOBActiveOrHistoricCurrencyAndAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .creditorAccount(toOBCashAccount3(initiation.getCreditorAccount()))
+                .creditorPostalAddress(initiation.getCreditorPostalAddress())
+                .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()))
+                .supplementaryData(initiation.getSupplementaryData());
     }
 
-    public static OBWriteDomesticConsent1 toOBWriteDomesticConsent1(OBWriteDomesticConsent2 obWriteDomesticConsent2) {
-        return new OBWriteDomesticConsent1()
-                .data(new OBWriteDataDomesticConsent1()
-                        .authorisation(obWriteDomesticConsent2.getData().getAuthorisation())
-                        .initiation(toOBDomestic1(obWriteDomesticConsent2.getData().getInitiation()))
-                )
-                .risk(obWriteDomesticConsent2.getRisk());
-    }
-
-    public static OBWriteDomestic2 toOBWriteDomestic2(OBWriteDomestic1 obWriteDomestic1) {
-        return new OBWriteDomestic2()
-                .data(new OBWriteDataDomestic2()
-                        .consentId(obWriteDomestic1.getData().getConsentId())
-                        .initiation(toOBDomestic2(obWriteDomestic1.getData().getInitiation()))
-                )
-                .risk(obWriteDomestic1.getRisk());
-    }
-
-    public static OBWriteDomestic1 toOBWriteDomestic1(OBWriteDomestic2 obWriteDomestic2) {
-        return new OBWriteDomestic1()
-                .data(new OBWriteDataDomestic1()
-                        .consentId(obWriteDomestic2.getData().getConsentId())
-                        .initiation(toOBDomestic1(obWriteDomestic2.getData().getInitiation()))
-                )
-                .risk(obWriteDomestic2.getRisk());
+    public static OBWriteDomestic2DataInitiation toOBWriteDomestic2DataInitiation(OBDomestic2 obDomestic2) {
+        return obDomestic2 == null ? null : (new OBWriteDomestic2DataInitiation())
+                .instructionIdentification(obDomestic2.getInstructionIdentification())
+                .endToEndIdentification(obDomestic2.getEndToEndIdentification())
+                .localInstrument(obDomestic2.getLocalInstrument())
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obDomestic2.getInstructedAmount()))
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obDomestic2.getDebtorAccount()))
+                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(obDomestic2.getCreditorAccount()))
+                .creditorPostalAddress(obDomestic2.getCreditorPostalAddress())
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(obDomestic2.getRemittanceInformation()))
+                .supplementaryData(obDomestic2.getSupplementaryData());
     }
 }
