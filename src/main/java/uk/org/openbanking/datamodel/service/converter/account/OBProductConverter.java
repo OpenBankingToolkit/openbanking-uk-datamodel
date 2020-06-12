@@ -18,7 +18,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package uk.org.openbanking.datamodel.service.converter;
+package uk.org.openbanking.datamodel.service.converter.account;
 
 import uk.org.openbanking.datamodel.account.OBExternalProductType1Code;
 import uk.org.openbanking.datamodel.account.OBExternalProductType2Code;
