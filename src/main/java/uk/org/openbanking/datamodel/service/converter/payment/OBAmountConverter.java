@@ -20,15 +20,7 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.OBActiveOrHistoricCurrencyAndAmount;
-import uk.org.openbanking.datamodel.payment.OBDomestic2InstructedAmount;
-import uk.org.openbanking.datamodel.payment.OBDomesticStandingOrder3FinalPaymentAmount;
-import uk.org.openbanking.datamodel.payment.OBDomesticStandingOrder3FirstPaymentAmount;
-import uk.org.openbanking.datamodel.payment.OBDomesticStandingOrder3RecurringPaymentAmount;
-import uk.org.openbanking.datamodel.payment.OBWriteDomestic2DataInitiationInstructedAmount;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrder3DataInitiationFinalPaymentAmount;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrder3DataInitiationFirstPaymentAmount;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrder3DataInitiationRecurringPaymentAmount;
+import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.ConverterHelper.copyField;
 
@@ -62,6 +54,10 @@ public class OBAmountConverter {
         return toAmount(new OBWriteDomestic2DataInitiationInstructedAmount(), amount);
     }
 
+    public static OBDomestic2InstructedAmount toOBDomestic2InstructedAmount(OBActiveOrHistoricCurrencyAndAmount amount) {
+        return toAmount(new OBDomestic2InstructedAmount(), amount);
+    }
+
     public static OBDomestic2InstructedAmount toOBDomestic2InstructedAmount(OBWriteDomestic2DataInitiationInstructedAmount amount) {
         return toAmount(new OBDomestic2InstructedAmount(), amount);
     }
@@ -87,6 +83,18 @@ public class OBAmountConverter {
     }
 
     public static OBDomesticStandingOrder3FinalPaymentAmount toOBDomesticStandingOrder3FinalPaymentAmount(OBWriteDomesticStandingOrder3DataInitiationFinalPaymentAmount amount) {
+        return toAmount(new OBDomesticStandingOrder3FinalPaymentAmount(), amount);
+    }
+
+    public static OBDomesticStandingOrder3FirstPaymentAmount toOBDomesticStandingOrder3FirstPaymentAmount(OBActiveOrHistoricCurrencyAndAmount amount) {
+        return toAmount(new OBDomesticStandingOrder3FirstPaymentAmount(), amount);
+    }
+
+    public static OBDomesticStandingOrder3RecurringPaymentAmount toOBDomesticStandingOrder3RecurringPaymentAmount(OBActiveOrHistoricCurrencyAndAmount amount) {
+        return toAmount(new OBDomesticStandingOrder3RecurringPaymentAmount(), amount);
+    }
+
+    public static OBDomesticStandingOrder3FinalPaymentAmount toOBDomesticStandingOrder3FinalPaymentAmount(OBActiveOrHistoricCurrencyAndAmount amount) {
         return toAmount(new OBDomesticStandingOrder3FinalPaymentAmount(), amount);
     }
 

@@ -20,13 +20,7 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.OBExternalPermissions2Code;
-import uk.org.openbanking.datamodel.payment.OBWriteDataDomesticScheduledConsent1;
-import uk.org.openbanking.datamodel.payment.OBWriteDataDomesticScheduledConsent2;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent1;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent2;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent3;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent3Data;
+import uk.org.openbanking.datamodel.payment.*;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent3Data.PermissionEnum;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBAuthorisation1;
@@ -61,6 +55,12 @@ public class OBWriteDomesticScheduledConsentConverter {
                 .risk(obWriteDomesticScheduledConsent2.getRisk());
     }
 
+    public static OBWriteDomesticScheduled2 toOBWriteDomesticScheduled2(OBWriteDomesticScheduled1 obWriteDomesticScheduled1) {
+        return (new OBWriteDomesticScheduled2())
+                .data(toOBWriteDataDomesticScheduled2(obWriteDomesticScheduled1.getData()))
+                .risk(obWriteDomesticScheduled1.getRisk());
+    }
+
     public static OBWriteDataDomesticScheduledConsent1 toOBWriteDataDomesticScheduledConsent1(OBWriteDataDomesticScheduledConsent2 data) {
         return data == null ? null : (new OBWriteDataDomesticScheduledConsent1())
                 .permission(OBExternalPermissions2Code.valueOf(data.getPermission().name()))
@@ -87,6 +87,12 @@ public class OBWriteDomesticScheduledConsentConverter {
                 .permission(toPermissionEnum(data))
                 .initiation(toOBWriteDomesticScheduled2DataInitiation(data.getInitiation()))
                 .authorisation(toOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()));
+    }
+
+    public static OBWriteDataDomesticScheduled2 toOBWriteDataDomesticScheduled2(OBWriteDataDomesticScheduled1 data) {
+        return data == null ? null : (new OBWriteDataDomesticScheduled2())
+                .consentId(data.getConsentId())
+                .initiation(toOBDomesticScheduled2(data.getInitiation()));
     }
 
     public static PermissionEnum toPermissionEnum(OBWriteDataDomesticScheduledConsent2 data) {

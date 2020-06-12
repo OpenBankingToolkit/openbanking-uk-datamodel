@@ -20,12 +20,7 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.OBWriteDataDomesticConsent1;
-import uk.org.openbanking.datamodel.payment.OBWriteDataDomesticConsent2;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent1;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent2;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3Data;
+import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBAuthorisation1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBDomestic1;
@@ -51,6 +46,12 @@ public class OBWriteDomesticConsentConverter {
                 .risk(obWriteDomesticConsent3.getRisk());
     }
 
+    public static OBWriteDomestic2 toOBWriteDomestic2(OBWriteDomestic1 obWriteDomestic1) {
+        return (new OBWriteDomestic2())
+                .data(toOBWriteDataDomestic2(obWriteDomestic1.getData()))
+                .risk(obWriteDomestic1.getRisk());
+    }
+
     public static OBWriteDataDomesticConsent1 toOBWriteDataDomesticConsent1(OBWriteDataDomesticConsent2 data) {
         return data == null ? null : (new OBWriteDataDomesticConsent1())
                 .initiation(toOBDomestic1(data.getInitiation()))
@@ -69,4 +70,9 @@ public class OBWriteDomesticConsentConverter {
                 .authorisation(toOBAuthorisation1(data.getAuthorisation()));
     }
 
+    public static OBWriteDataDomestic2 toOBWriteDataDomestic2(OBWriteDataDomestic1 data) {
+        return data == null ? null : (new OBWriteDataDomestic2())
+                .consentId(data.getConsentId())
+                .initiation(toOBDomestic2(data.getInitiation()));
+    }
 }

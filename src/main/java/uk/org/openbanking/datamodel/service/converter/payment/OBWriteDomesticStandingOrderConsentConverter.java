@@ -41,6 +41,12 @@ public class OBWriteDomesticStandingOrderConsentConverter {
                 .risk(obWriteDomesticStandingOrder1.getRisk());
     }
 
+    public static OBWriteDomesticStandingOrder3 toOBWriteDomesticStandingOrder3(OBWriteDomesticStandingOrder2 obWriteDomesticStandingOrder2) {
+        return (new OBWriteDomesticStandingOrder3())
+                .data(toOBWriteDataDomesticStandingOrder3(obWriteDomesticStandingOrder2.getData()))
+                .risk(obWriteDomesticStandingOrder2.getRisk());
+    }
+
     public static OBWriteDomesticStandingOrderConsent1 toOBWriteDomesticStandingOrderConsent1(OBWriteDomesticStandingOrderConsent2 obWriteDomesticStandingOrderConsent2) {
         return (new OBWriteDomesticStandingOrderConsent1())
                 .data(toOBWriteDataDomesticStandingOrderConsent1(obWriteDomesticStandingOrderConsent2.getData()))
@@ -66,6 +72,12 @@ public class OBWriteDomesticStandingOrderConsentConverter {
                 .risk(obWriteDomesticStandingOrderConsent1.getRisk());
     }
 
+    public static OBWriteDomesticStandingOrderConsent3 toOBWriteDomesticStandingOrderConsent3(OBWriteDomesticStandingOrderConsent2 obWriteDomesticStandingOrderConsent2) {
+        return (new OBWriteDomesticStandingOrderConsent3())
+                .data(toOBWriteDataDomesticStandingOrderConsent3(obWriteDomesticStandingOrderConsent2.getData()))
+                .risk(obWriteDomesticStandingOrderConsent2.getRisk());
+    }
+
     public static OBWriteDomesticStandingOrderConsent3 toOBWriteDomesticStandingOrderConsent3(OBWriteDomesticStandingOrderConsent4 obWriteDomesticStandingOrderConsent4) {
         return (new OBWriteDomesticStandingOrderConsent3())
                 .data(toOBWriteDataDomesticStandingOrderConsent3(obWriteDomesticStandingOrderConsent4.getData()))
@@ -82,6 +94,12 @@ public class OBWriteDomesticStandingOrderConsentConverter {
         return data == null ? null : (new OBWriteDataDomesticStandingOrder2())
                 .consentId(data.getConsentId())
                 .initiation(toOBDomesticStandingOrder2(data.getInitiation()));
+    }
+
+    public static OBWriteDataDomesticStandingOrder3 toOBWriteDataDomesticStandingOrder3(OBWriteDataDomesticStandingOrder2 data) {
+        return data == null ? null : (new OBWriteDataDomesticStandingOrder3())
+                .consentId(data.getConsentId())
+                .initiation(toOBDomesticStandingOrder3(data.getInitiation()));
     }
 
     public static OBWriteDataDomesticStandingOrderConsent1 toOBWriteDataDomesticStandingOrderConsent1(OBWriteDataDomesticStandingOrderConsent2 data) {
@@ -109,6 +127,13 @@ public class OBWriteDomesticStandingOrderConsentConverter {
         return data == null ? null : (new OBWriteDataDomesticStandingOrderConsent2())
                 .permission(data.getPermission())
                 .initiation(toOBDomesticStandingOrder2(data.getInitiation()))
+                .authorisation(data.getAuthorisation());
+    }
+
+    public static OBWriteDataDomesticStandingOrderConsent3 toOBWriteDataDomesticStandingOrderConsent3(OBWriteDataDomesticStandingOrderConsent2 data) {
+        return data == null ? null : (new OBWriteDataDomesticStandingOrderConsent3())
+                .permission(data.getPermission())
+                .initiation(toOBDomesticStandingOrder3(data.getInitiation()))
                 .authorisation(data.getAuthorisation());
     }
 

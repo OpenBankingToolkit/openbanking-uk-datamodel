@@ -94,6 +94,14 @@ public class OBAccountConverter {
         return toAccount(new OBCashAccountDebtor4(), debtorAccount);
     }
 
+    public static OBCashAccountDebtor4 toOBCashAccountDebtor4(OBCashAccount3 debtorAccount) {
+        return toAccount(new OBCashAccountDebtor4(), debtorAccount);
+    }
+
+    public static OBCashAccountCreditor3 toOBCashAccountCreditor3(OBCashAccount3 creditorAccount) {
+        return toAccount(new OBCashAccountCreditor3(), creditorAccount);
+    }
+
     public static OBCashAccountCreditor3 toOBCashAccountCreditor3(OBWriteDomesticStandingOrder3DataInitiationCreditorAccount creditorAccount) {
         return toAccount(new OBCashAccountCreditor3(), creditorAccount);
     }

@@ -92,6 +92,24 @@ public class OBInternationalStandingOrderConverter {
                 .supplementaryData(null);
     }
 
+    public static OBInternationalStandingOrder3 toOBInternationalStandingOrder3(OBInternationalStandingOrder2 obInternationalStandingOrder2) {
+        return obInternationalStandingOrder2 == null ? null : (new OBInternationalStandingOrder3())
+                .frequency(obInternationalStandingOrder2.getFrequency())
+                .reference(obInternationalStandingOrder2.getReference())
+                .numberOfPayments(obInternationalStandingOrder2.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder2.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder2.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder2.getPurpose())
+                .chargeBearer(obInternationalStandingOrder2.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder2.getCurrencyOfTransfer())
+                .instructedAmount(toOBDomestic2InstructedAmount(obInternationalStandingOrder2.getInstructedAmount()))
+                .debtorAccount(toOBCashAccountDebtor4(obInternationalStandingOrder2.getDebtorAccount()))
+                .creditor(obInternationalStandingOrder2.getCreditor())
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification6(obInternationalStandingOrder2.getCreditorAgent()))
+                .creditorAccount(toOBCashAccountCreditor3(obInternationalStandingOrder2.getCreditorAccount()))
+                .supplementaryData(obInternationalStandingOrder2.getSupplementaryData());
+    }
+
     public static OBInternationalStandingOrder2 toOBInternationalStandingOrder2(OBInternationalStandingOrder3 obInternationalStandingOrder3) {
         return (new OBInternationalStandingOrder2())
                 .frequency(obInternationalStandingOrder3.getFrequency())

@@ -96,6 +96,22 @@ public class OBDomesticStandingOrderConverter {
                 .supplementaryData(obDomesticStandingOrder3.getSupplementaryData());
     }
 
+    public static OBDomesticStandingOrder3 toOBDomesticStandingOrder3(OBDomesticStandingOrder2 obDomesticStandingOrder2) {
+        return obDomesticStandingOrder2 == null ? null : (new OBDomesticStandingOrder3())
+                .frequency(obDomesticStandingOrder2.getFrequency())
+                .reference(obDomesticStandingOrder2.getReference())
+                .numberOfPayments(obDomesticStandingOrder2.getNumberOfPayments())
+                .firstPaymentDateTime(obDomesticStandingOrder2.getFirstPaymentDateTime())
+                .recurringPaymentDateTime(obDomesticStandingOrder2.getRecurringPaymentDateTime())
+                .finalPaymentDateTime(obDomesticStandingOrder2.getFinalPaymentDateTime())
+                .firstPaymentAmount(toOBDomesticStandingOrder3FirstPaymentAmount(obDomesticStandingOrder2.getFirstPaymentAmount()))
+                .recurringPaymentAmount(toOBDomesticStandingOrder3RecurringPaymentAmount(obDomesticStandingOrder2.getRecurringPaymentAmount()))
+                .finalPaymentAmount(toOBDomesticStandingOrder3FinalPaymentAmount(obDomesticStandingOrder2.getFinalPaymentAmount()))
+                .debtorAccount(toOBCashAccountDebtor4(obDomesticStandingOrder2.getDebtorAccount()))
+                .creditorAccount(toOBCashAccountCreditor3(obDomesticStandingOrder2.getCreditorAccount()))
+                .supplementaryData(obDomesticStandingOrder2.getSupplementaryData());
+    }
+
     public static OBDomesticStandingOrder3 toOBDomesticStandingOrder3(OBWriteDomesticStandingOrder3DataInitiation initiation) {
         return initiation == null ? null : (new OBDomesticStandingOrder3())
                 .frequency(initiation.getFrequency())
