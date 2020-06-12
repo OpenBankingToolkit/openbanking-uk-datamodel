@@ -20,21 +20,30 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.OBExternalPermissions2Code;
+import uk.org.openbanking.datamodel.payment.OBWriteDataDomesticConsent1;
 import uk.org.openbanking.datamodel.payment.OBWriteDataDomesticConsent2;
-import uk.org.openbanking.datamodel.payment.OBWriteDataDomesticScheduledConsent1;
+import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent1;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent2;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3Data;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent1;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent3;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent3Data;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBAuthorisation1;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBDomestic1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBDomestic2;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticScheduledConverter.toOBDomesticScheduled1;
 
 public class OBWriteDomesticConsentConverter {
+
+    public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent1 obWriteDomesticConsent1) {
+        return (new OBWriteDomesticConsent2())
+                .data(toOBWriteDataDomesticConsent2(obWriteDomesticConsent1.getData()))
+                .risk(obWriteDomesticConsent1.getRisk());
+    }
+
+    public static OBWriteDomesticConsent1 toOBWriteDomesticConsent1(OBWriteDomesticConsent2 obWriteDomesticConsent2) {
+        return (new OBWriteDomesticConsent1())
+                .data(toOBWriteDataDomesticConsent1(obWriteDomesticConsent2.getData()))
+                .risk(obWriteDomesticConsent2.getRisk());
+    }
 
     public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent3 obWriteDomesticConsent3) {
         return (new OBWriteDomesticConsent2())
@@ -42,23 +51,22 @@ public class OBWriteDomesticConsentConverter {
                 .risk(obWriteDomesticConsent3.getRisk());
     }
 
-    public static OBWriteDomesticScheduledConsent1 toOBWriteDomesticScheduledConsent1(OBWriteDomesticScheduledConsent3 domesticScheduledConsent3) {
-        return (new OBWriteDomesticScheduledConsent1())
-                .data(toOBWriteDataDomesticScheduledConsent1(domesticScheduledConsent3.getData()))
-                .risk(domesticScheduledConsent3.getRisk());
+    public static OBWriteDataDomesticConsent1 toOBWriteDataDomesticConsent1(OBWriteDataDomesticConsent2 data) {
+        return data == null ? null : (new OBWriteDataDomesticConsent1())
+                .authorisation(data.getAuthorisation())
+                .initiation(toOBDomestic1(data.getInitiation()));
+    }
+
+    public static OBWriteDataDomesticConsent2 toOBWriteDataDomesticConsent2(OBWriteDataDomesticConsent1 data) {
+        return data == null ? null : (new OBWriteDataDomesticConsent2())
+                .authorisation(data.getAuthorisation())
+                .initiation(toOBDomestic2(data.getInitiation()));
     }
 
     public static OBWriteDataDomesticConsent2 toOBWriteDataDomesticConsent2(OBWriteDomesticConsent3Data data) {
         return data == null ? null : (new OBWriteDataDomesticConsent2())
                 .authorisation(toOBAuthorisation1(data.getAuthorisation()))
                 .initiation(toOBDomestic2(data.getInitiation()));
-    }
-
-    public static OBWriteDataDomesticScheduledConsent1 toOBWriteDataDomesticScheduledConsent1(OBWriteDomesticScheduledConsent3Data data) {
-        return (new OBWriteDataDomesticScheduledConsent1())
-                .permission(OBExternalPermissions2Code.valueOf(data.getPermission().name()))
-                .initiation(toOBDomesticScheduled1(data.getInitiation()))
-                .authorisation(toOBAuthorisation1(data.getAuthorisation()));
     }
 
 }

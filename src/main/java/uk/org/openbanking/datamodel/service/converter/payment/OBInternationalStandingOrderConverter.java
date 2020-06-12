@@ -40,6 +40,40 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBInternati
 
 public class OBInternationalStandingOrderConverter {
 
+    public static OBInternationalStandingOrder2 toOBInternationalStandingOrder2(OBInternationalStandingOrder1 obInternationalStandingOrder1) {
+        return (new OBInternationalStandingOrder2())
+                .chargeBearer(obInternationalStandingOrder1.getChargeBearer())
+                .creditor(obInternationalStandingOrder1.getCreditor())
+                .creditorAccount(obInternationalStandingOrder1.getCreditorAccount())
+                .creditorAgent(obInternationalStandingOrder1.getCreditorAgent())
+                .currencyOfTransfer(obInternationalStandingOrder1.getCurrencyOfTransfer())
+                .debtorAccount(obInternationalStandingOrder1.getDebtorAccount())
+                .finalPaymentDateTime(obInternationalStandingOrder1.getFinalPaymentDateTime())
+                .firstPaymentDateTime(obInternationalStandingOrder1.getFirstPaymentDateTime())
+                .frequency(obInternationalStandingOrder1.getFrequency())
+                .instructedAmount(obInternationalStandingOrder1.getInstructedAmount())
+                .numberOfPayments(obInternationalStandingOrder1.getNumberOfPayments())
+                .purpose(obInternationalStandingOrder1.getPurpose())
+                .reference(obInternationalStandingOrder1.getReference());
+    }
+
+    public static OBInternationalStandingOrder1 toOBInternationalStandingOrder1(OBInternationalStandingOrder2 obInternationalStandingOrder2) {
+        return (new OBInternationalStandingOrder1())
+                .chargeBearer(obInternationalStandingOrder2.getChargeBearer())
+                .creditor(obInternationalStandingOrder2.getCreditor())
+                .creditorAccount(obInternationalStandingOrder2.getCreditorAccount())
+                .creditorAgent(obInternationalStandingOrder2.getCreditorAgent())
+                .currencyOfTransfer(obInternationalStandingOrder2.getCurrencyOfTransfer())
+                .debtorAccount(obInternationalStandingOrder2.getDebtorAccount())
+                .finalPaymentDateTime(obInternationalStandingOrder2.getFinalPaymentDateTime())
+                .firstPaymentDateTime(obInternationalStandingOrder2.getFirstPaymentDateTime())
+                .frequency(obInternationalStandingOrder2.getFrequency())
+                .instructedAmount(obInternationalStandingOrder2.getInstructedAmount())
+                .numberOfPayments(obInternationalStandingOrder2.getNumberOfPayments())
+                .purpose(obInternationalStandingOrder2.getPurpose())
+                .reference(obInternationalStandingOrder2.getReference());
+    }
+
     public static OBInternationalStandingOrder1 toOBInternationalStandingOrder1(OBWriteInternationalStandingOrder4DataInitiation initiation) {
         return initiation == null ? null : (new OBInternationalStandingOrder1())
                 .frequency(initiation.getFrequency())

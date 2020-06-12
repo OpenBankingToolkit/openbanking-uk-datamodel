@@ -20,6 +20,7 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
+import uk.org.openbanking.datamodel.payment.OBDomestic1;
 import uk.org.openbanking.datamodel.payment.OBDomestic2;
 import uk.org.openbanking.datamodel.payment.OBWriteDomestic2DataInitiation;
 
@@ -32,6 +33,30 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanc
 import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
 public class OBDomesticConverter {
+
+    public static OBDomestic2 toOBDomestic2(OBDomestic1 domestic1) {
+        return (new OBDomestic2())
+                .creditorAccount(domestic1.getCreditorAccount())
+                .creditorPostalAddress(domestic1.getCreditorPostalAddress())
+                .debtorAccount(domestic1.getDebtorAccount())
+                .endToEndIdentification(domestic1.getEndToEndIdentification())
+                .instructedAmount(domestic1.getInstructedAmount())
+                .instructionIdentification(domestic1.getInstructionIdentification())
+                .localInstrument(domestic1.getLocalInstrument())
+                .remittanceInformation(domestic1.getRemittanceInformation());
+    }
+
+    public static OBDomestic1 toOBDomestic1(OBDomestic2 domestic2) {
+        return (new OBDomestic1())
+                .creditorAccount(domestic2.getCreditorAccount())
+                .creditorPostalAddress(domestic2.getCreditorPostalAddress())
+                .debtorAccount(domestic2.getDebtorAccount())
+                .endToEndIdentification(domestic2.getEndToEndIdentification())
+                .instructedAmount(domestic2.getInstructedAmount())
+                .instructionIdentification(domestic2.getInstructionIdentification())
+                .localInstrument(domestic2.getLocalInstrument())
+                .remittanceInformation(domestic2.getRemittanceInformation());
+    }
 
     public static OBDomestic2 toOBDomestic2(OBWriteDomestic2DataInitiation initiation) {
         return initiation == null ? null : (new OBDomestic2())

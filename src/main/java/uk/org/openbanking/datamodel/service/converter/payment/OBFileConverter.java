@@ -20,6 +20,7 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
+import uk.org.openbanking.datamodel.payment.OBFile1;
 import uk.org.openbanking.datamodel.payment.OBFile2;
 import uk.org.openbanking.datamodel.payment.OBWriteFile2DataInitiation;
 
@@ -29,6 +30,32 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanc
 import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
 public class OBFileConverter {
+
+    public static OBFile1 toOBFile1(OBFile2 obFile2) {
+        return (new OBFile1())
+                .controlSum(obFile2.getControlSum())
+                .debtorAccount(obFile2.getDebtorAccount())
+                .fileHash(obFile2.getFileHash())
+                .fileReference(obFile2.getFileReference())
+                .fileType(obFile2.getFileType())
+                .localInstrument(obFile2.getLocalInstrument())
+                .numberOfTransactions(obFile2.getNumberOfTransactions())
+                .requestedExecutionDateTime(obFile2.getRequestedExecutionDateTime())
+                .remittanceInformation(obFile2.getRemittanceInformation());
+    }
+
+    public static OBFile2 toOBFile2(OBFile1 obFile1) {
+        return (new OBFile2())
+                .controlSum(obFile1.getControlSum())
+                .debtorAccount(obFile1.getDebtorAccount())
+                .fileHash(obFile1.getFileHash())
+                .fileReference(obFile1.getFileReference())
+                .fileType(obFile1.getFileType())
+                .localInstrument(obFile1.getLocalInstrument())
+                .numberOfTransactions(obFile1.getNumberOfTransactions())
+                .requestedExecutionDateTime(obFile1.getRequestedExecutionDateTime())
+                .remittanceInformation(obFile1.getRemittanceInformation());
+    }
 
     public static OBFile2 toOBFile2(OBWriteFile2DataInitiation initiation) {
         return initiation == null ? null : (new OBFile2())

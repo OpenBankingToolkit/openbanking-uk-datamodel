@@ -20,25 +20,59 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
+import uk.org.openbanking.datamodel.payment.OBWriteDataFileConsent1;
 import uk.org.openbanking.datamodel.payment.OBWriteDataFileConsent2;
+import uk.org.openbanking.datamodel.payment.OBWriteFileConsent1;
 import uk.org.openbanking.datamodel.payment.OBWriteFileConsent2;
 import uk.org.openbanking.datamodel.payment.OBWriteFileConsent3;
 import uk.org.openbanking.datamodel.payment.OBWriteFileConsent3Data;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBAuthorisation1;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBFileConverter.toOBFile1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBFileConverter.toOBFile2;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBFileConverter.toOBWriteFile2DataInitiation;
 
 public class OBWriteFileConsentConverter {
+
+    public static OBWriteFileConsent1 toOBWriteFileConsent1(OBWriteFileConsent2 obWriteFileConsent2) {
+        return (new OBWriteFileConsent1())
+                .data(toOBWriteDataFileConsent1(obWriteFileConsent2.getData()));
+    }
+
+    public static OBWriteFileConsent2 toOBWriteFileConsent2(OBWriteFileConsent1 obWriteFileConsent1) {
+        return (new OBWriteFileConsent2())
+                .data(toOBWriteDataFileConsent2(obWriteFileConsent1.getData()));
+    }
 
     public static OBWriteFileConsent2 toOBWriteFileConsent2(OBWriteFileConsent3 obWriteFileConsent3) {
         return (new OBWriteFileConsent2())
                 .data(toOBWriteDataFileConsent2(obWriteFileConsent3.getData()));
     }
 
+    public static OBWriteDataFileConsent1 toOBWriteDataFileConsent1(OBWriteDataFileConsent2 data) {
+        return data == null ? null : (new OBWriteDataFileConsent1())
+                .initiation(toOBFile1(data.getInitiation()))
+                .authorisation(data.getAuthorisation());
+    }
+
+    public static OBWriteDataFileConsent2 toOBWriteDataFileConsent2(OBWriteDataFileConsent1 data) {
+        return data == null ? null : (new OBWriteDataFileConsent2())
+                .initiation(toOBFile2(data.getInitiation()))
+                .authorisation(data.getAuthorisation());
+    }
+
     public static OBWriteDataFileConsent2 toOBWriteDataFileConsent2(OBWriteFileConsent3Data data) {
         return data == null ? null : (new OBWriteDataFileConsent2())
                 .initiation(toOBFile2(data.getInitiation()))
                 .authorisation(toOBAuthorisation1(data.getAuthorisation()));
+    }
+
+    public static OBWriteFileConsent3Data toOBWriteFileConsent3Data(OBWriteDataFileConsent2 data) {
+        return data == null ? null : (new OBWriteFileConsent3Data())
+                .initiation(toOBWriteFile2DataInitiation(data.getInitiation()))
+                .authorisation(toOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(null);
     }
 
 }
