@@ -42,6 +42,8 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanc
 
 public class OBInternationalScheduledConverter {
 
+    private static String DEFAULT_COUNTRY_CODE = "GB";
+
     public static OBInternationalScheduled1 toOBInternationalScheduled1(OBInternationalScheduled2 obInternationalScheduled2) {
         return obInternationalScheduled2 == null ? null : (new OBInternationalScheduled1())
                 .instructionIdentification(obInternationalScheduled2.getInstructionIdentification())
@@ -130,6 +132,7 @@ public class OBInternationalScheduledConverter {
                 .chargeBearer(obInternationalScheduled1.getChargeBearer())
                 .requestedExecutionDateTime(obInternationalScheduled1.getRequestedExecutionDateTime())
                 .currencyOfTransfer(obInternationalScheduled1.getCurrencyOfTransfer())
+                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalScheduled1.getInstructedAmount()))
                 .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(obInternationalScheduled1.getExchangeRateInformation()))
                 .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obInternationalScheduled1.getDebtorAccount()))
@@ -150,6 +153,7 @@ public class OBInternationalScheduledConverter {
                 .chargeBearer(obInternationalScheduled2.getChargeBearer())
                 .requestedExecutionDateTime(obInternationalScheduled2.getRequestedExecutionDateTime())
                 .currencyOfTransfer(obInternationalScheduled2.getCurrencyOfTransfer())
+                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalScheduled2.getInstructedAmount()))
                 .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(obInternationalScheduled2.getExchangeRateInformation()))
                 .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obInternationalScheduled2.getDebtorAccount()))

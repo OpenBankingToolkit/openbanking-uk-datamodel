@@ -42,6 +42,8 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanc
 
 public class OBInternationalConverter {
 
+    private static String DEFAULT_COUNTRY_CODE = "GB";
+
     public static OBInternational1 toOBInternational1(OBInternational2 obInternational2) {
         return obInternational2 == null ? null : (new OBInternational1())
                 .instructionIdentification(obInternational2.getInstructionIdentification())
@@ -116,6 +118,27 @@ public class OBInternationalConverter {
                 .supplementaryData(initiation.getSupplementaryData());
     }
 
+    public static OBWriteInternational3DataInitiation toOBWriteInternational3DataInitiation(OBInternational1 initiation) {
+        return initiation == null ? null : (new OBWriteInternational3DataInitiation())
+                .instructionIdentification(initiation.getInstructionIdentification())
+                .endToEndIdentification(initiation.getEndToEndIdentification())
+                .localInstrument(initiation.getLocalInstrument())
+                .instructionPriority(OBWriteInternational3DataInitiation.InstructionPriorityEnum.valueOf(initiation.getInstructionPriority().name()))
+                .purpose(initiation.getPurpose())
+                .extendedPurpose(null)
+                .chargeBearer(initiation.getChargeBearer())
+                .currencyOfTransfer(initiation.getCurrencyOfTransfer())
+                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(initiation.getInstructedAmount()))
+                .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(initiation.getExchangeRateInformation()))
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(initiation.getDebtorAccount()))
+                .creditor(toOBWriteInternational3DataInitiationCreditor(initiation.getCreditor()))
+                .creditorAgent(toOBWriteInternational3DataInitiationCreditorAgent(initiation.getCreditorAgent()))
+                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(initiation.getCreditorAccount()))
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(initiation.getRemittanceInformation()))
+                .supplementaryData(null);
+    }
+
     public static OBWriteInternational3DataInitiation toOBWriteInternational3DataInitiation(OBInternational2 obInternational2) {
         return obInternational2 == null ? null : (new OBWriteInternational3DataInitiation())
                 .instructionIdentification(obInternational2.getInstructionIdentification())
@@ -125,6 +148,7 @@ public class OBInternationalConverter {
                 .purpose(obInternational2.getPurpose())
                 .chargeBearer(obInternational2.getChargeBearer())
                 .currencyOfTransfer(obInternational2.getCurrencyOfTransfer())
+                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternational2.getInstructedAmount()))
                 .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(obInternational2.getExchangeRateInformation()))
                 .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obInternational2.getDebtorAccount()))

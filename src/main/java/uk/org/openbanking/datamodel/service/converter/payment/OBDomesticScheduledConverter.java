@@ -88,6 +88,20 @@ public class OBDomesticScheduledConverter {
                 .supplementaryData(initiation.getSupplementaryData());
     }
 
+    public static OBWriteDomesticScheduled2DataInitiation toOBWriteDomesticScheduled2DataInitiation(OBDomesticScheduled1 obDomesticScheduled1) {
+        return obDomesticScheduled1 == null ? null : (new OBWriteDomesticScheduled2DataInitiation())
+                .instructionIdentification(obDomesticScheduled1.getInstructionIdentification())
+                .endToEndIdentification(obDomesticScheduled1.getEndToEndIdentification())
+                .localInstrument(obDomesticScheduled1.getLocalInstrument())
+                .requestedExecutionDateTime(obDomesticScheduled1.getRequestedExecutionDateTime())
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obDomesticScheduled1.getInstructedAmount()))
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obDomesticScheduled1.getDebtorAccount()))
+                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(obDomesticScheduled1.getCreditorAccount()))
+                .creditorPostalAddress(obDomesticScheduled1.getCreditorPostalAddress())
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(obDomesticScheduled1.getRemittanceInformation()))
+                .supplementaryData(null);
+    }
+
     public static OBWriteDomesticScheduled2DataInitiation toOBWriteDomesticScheduled2DataInitiation(OBDomesticScheduled2 obDomesticScheduled2) {
         return obDomesticScheduled2 == null ? null : (new OBWriteDomesticScheduled2DataInitiation())
                 .instructionIdentification(obDomesticScheduled2.getInstructionIdentification())
