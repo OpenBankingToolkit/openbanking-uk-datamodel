@@ -55,6 +55,12 @@ public class OBWriteDomesticScheduledConsentConverter {
                 .risk(obWriteDomesticScheduledConsent2.getRisk());
     }
 
+    public static OBWriteDomesticScheduledConsent3 toOBWriteDomesticScheduledConsent3(OBWriteDomesticScheduledConsent1 obWriteDomesticScheduledConsent1) {
+        return (new OBWriteDomesticScheduledConsent3())
+                .data(toOBWriteDomesticScheduledConsent3Data(obWriteDomesticScheduledConsent1.getData()))
+                .risk(obWriteDomesticScheduledConsent1.getRisk());
+    }
+
     public static OBWriteDomesticScheduled2 toOBWriteDomesticScheduled2(OBWriteDomesticScheduled1 obWriteDomesticScheduled1) {
         return (new OBWriteDomesticScheduled2())
                 .data(toOBWriteDataDomesticScheduled2(obWriteDomesticScheduled1.getData()))
@@ -82,6 +88,13 @@ public class OBWriteDomesticScheduledConsentConverter {
                 .authorisation(data.getAuthorisation());
     }
 
+    public static OBWriteDomesticScheduledConsent3Data toOBWriteDomesticScheduledConsent3Data(OBWriteDataDomesticScheduledConsent1 data) {
+        return data == null ? null : (new OBWriteDomesticScheduledConsent3Data())
+                .permission(OBWriteDomesticScheduledConsent3Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .initiation(toOBWriteDomesticScheduled2DataInitiation(data.getInitiation()))
+                .authorisation(toOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(null);
+    }
     public static OBWriteDomesticScheduledConsent3Data toOBWriteDomesticScheduledConsent3Data(OBWriteDataDomesticScheduledConsent2 data) {
         return data == null ? null : (new OBWriteDomesticScheduledConsent3Data())
                 .permission(toPermissionEnum(data))

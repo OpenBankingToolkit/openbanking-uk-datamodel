@@ -64,7 +64,7 @@ public class OBWriteInternationalConsentConverterTest {
                 .extendedPurpose(null)
                 .chargeBearer(initiation.getChargeBearer())
                 .currencyOfTransfer(initiation.getCurrencyOfTransfer())
-                .destinationCountryCode(null)
+                .destinationCountryCode("GB")
                 .instructedAmount((new OBWriteDomestic2DataInitiationInstructedAmount())
                         .currency(initiation.getInstructedAmount().getCurrency())
                         .amount(initiation.getInstructedAmount().getAmount()))

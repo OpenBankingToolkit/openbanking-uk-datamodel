@@ -96,6 +96,22 @@ public class OBDomesticStandingOrderConverter {
                 .supplementaryData(obDomesticStandingOrder3.getSupplementaryData());
     }
 
+    public static OBDomesticStandingOrder3 toOBDomesticStandingOrder3(OBDomesticStandingOrder1 obDomesticStandingOrder1) {
+        return obDomesticStandingOrder1 == null ? null : (new OBDomesticStandingOrder3())
+                .frequency(obDomesticStandingOrder1.getFrequency())
+                .reference(obDomesticStandingOrder1.getReference())
+                .numberOfPayments(obDomesticStandingOrder1.getNumberOfPayments())
+                .firstPaymentDateTime(obDomesticStandingOrder1.getFirstPaymentDateTime())
+                .recurringPaymentDateTime(obDomesticStandingOrder1.getRecurringPaymentDateTime())
+                .finalPaymentDateTime(obDomesticStandingOrder1.getFinalPaymentDateTime())
+                .firstPaymentAmount(toOBDomesticStandingOrder3FirstPaymentAmount(obDomesticStandingOrder1.getFirstPaymentAmount()))
+                .recurringPaymentAmount(toOBDomesticStandingOrder3RecurringPaymentAmount(obDomesticStandingOrder1.getRecurringPaymentAmount()))
+                .finalPaymentAmount(toOBDomesticStandingOrder3FinalPaymentAmount(obDomesticStandingOrder1.getFinalPaymentAmount()))
+                .debtorAccount(toOBCashAccountDebtor4(obDomesticStandingOrder1.getDebtorAccount()))
+                .creditorAccount(toOBCashAccountCreditor3(obDomesticStandingOrder1.getCreditorAccount()))
+                .supplementaryData(null);
+    }
+
     public static OBDomesticStandingOrder3 toOBDomesticStandingOrder3(OBDomesticStandingOrder2 obDomesticStandingOrder2) {
         return obDomesticStandingOrder2 == null ? null : (new OBDomesticStandingOrder3())
                 .frequency(obDomesticStandingOrder2.getFrequency())

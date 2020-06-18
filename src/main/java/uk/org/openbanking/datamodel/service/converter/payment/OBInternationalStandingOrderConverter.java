@@ -37,8 +37,11 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBInternati
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBBranchAndFinancialInstitutionIdentification6;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBPartyIdentification43;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBWriteInternational3DataInitiationCreditor;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent;
 
 public class OBInternationalStandingOrderConverter {
+
+    private static String DEFAULT_COUNTRY_CODE = "GB";
 
     public static OBInternationalStandingOrder1 toOBInternationalStandingOrder1(OBInternationalStandingOrder2 obInternationalStandingOrder2) {
         return (new OBInternationalStandingOrder1())
@@ -182,6 +185,26 @@ public class OBInternationalStandingOrderConverter {
                 .supplementaryData(initiation.getSupplementaryData());
     }
 
+    public static OBWriteInternationalStandingOrder4DataInitiation toOBWriteInternationalStandingOrder4DataInitiation(OBInternationalStandingOrder1 obInternationalStandingOrder1) {
+        return obInternationalStandingOrder1 == null ? null : (new OBWriteInternationalStandingOrder4DataInitiation())
+                .frequency(obInternationalStandingOrder1.getFrequency())
+                .reference(obInternationalStandingOrder1.getReference())
+                .numberOfPayments(obInternationalStandingOrder1.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder1.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder1.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder1.getPurpose())
+                .extendedPurpose(null)
+                .chargeBearer(obInternationalStandingOrder1.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder1.getCurrencyOfTransfer())
+                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder1.getInstructedAmount()))
+                .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder1.getDebtorAccount()))
+                .creditor(toOBWriteInternational3DataInitiationCreditor(obInternationalStandingOrder1.getCreditor()))
+                .creditorAgent(toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent(obInternationalStandingOrder1.getCreditorAgent()))
+                .creditorAccount(toOBWriteInternationalStandingOrder4DataInitiationCreditorAccount(obInternationalStandingOrder1.getCreditorAccount()))
+                .supplementaryData(null);
+    }
+
     public static OBWriteInternationalStandingOrder4DataInitiation toOBWriteInternationalStandingOrder4DataInitiation(OBInternationalStandingOrder2 obInternationalStandingOrder2) {
         return obInternationalStandingOrder2 == null ? null : (new OBWriteInternationalStandingOrder4DataInitiation())
                 .frequency(obInternationalStandingOrder2.getFrequency())
@@ -192,6 +215,7 @@ public class OBInternationalStandingOrderConverter {
                 .purpose(obInternationalStandingOrder2.getPurpose())
                 .chargeBearer(obInternationalStandingOrder2.getChargeBearer())
                 .currencyOfTransfer(obInternationalStandingOrder2.getCurrencyOfTransfer())
+                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder2.getInstructedAmount()))
                 .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder2.getDebtorAccount()))
                 .creditor(toOBWriteInternational3DataInitiationCreditor(obInternationalStandingOrder2.getCreditor()))
@@ -211,6 +235,7 @@ public class OBInternationalStandingOrderConverter {
                 .purpose(obInternationalStandingOrder3.getPurpose())
                 .chargeBearer(obInternationalStandingOrder3.getChargeBearer())
                 .currencyOfTransfer(obInternationalStandingOrder3.getCurrencyOfTransfer())
+                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder3.getInstructedAmount()))
                 .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder3.getDebtorAccount()))
                 .creditor(toOBWriteInternational3DataInitiationCreditor(obInternationalStandingOrder3.getCreditor()))
