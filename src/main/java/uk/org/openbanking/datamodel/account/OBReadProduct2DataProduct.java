@@ -9,7 +9,7 @@
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
@@ -201,7 +201,6 @@ public class OBReadProduct2DataProduct {
      *
      * @return otherProductType
      **/
-
     @Valid
     @ApiModelProperty(value = "")
     public OBReadProduct2DataOtherProductType getOtherProductType() {
@@ -235,13 +234,10 @@ public class OBReadProduct2DataProduct {
         this.BCA = BCA;
     }
 
-
     public OBReadProduct2DataProduct PCA(PCA PCA) {
         this.PCA = PCA;
         return this;
     }
-
-
 
     /**
      * Get PCA
@@ -319,13 +315,9 @@ public class OBReadProduct2DataProduct {
      */
     public enum ProductTypeEnum {
         BUSINESSCURRENTACCOUNT("BusinessCurrentAccount"),
-
         COMMERCIALCREDITCARD("CommercialCreditCard"),
-
         OTHER("Other"),
-
         PERSONALCURRENTACCOUNT("PersonalCurrentAccount"),
-
         SMELOAN("SMELoan");
 
         private String value;
@@ -356,4 +348,3 @@ public class OBReadProduct2DataProduct {
     }
 
 }
-
