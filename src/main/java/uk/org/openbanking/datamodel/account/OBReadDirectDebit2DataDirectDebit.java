@@ -36,6 +36,7 @@ package uk.org.openbanking.datamodel.account;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -64,7 +65,7 @@ public class OBReadDirectDebit2DataDirectDebit {
     private String name = null;
 
     @JsonProperty("PreviousPaymentDateTime")
-    private String previousPaymentDateTime = null;
+    private DateTime previousPaymentDateTime = null;
 
     @JsonProperty("Frequency")
     private String frequency = null;
@@ -175,7 +176,7 @@ public class OBReadDirectDebit2DataDirectDebit {
         this.name = name;
     }
 
-    public OBReadDirectDebit2DataDirectDebit previousPaymentDateTime(String previousPaymentDateTime) {
+    public OBReadDirectDebit2DataDirectDebit previousPaymentDateTime(DateTime previousPaymentDateTime) {
         this.previousPaymentDateTime = previousPaymentDateTime;
         return this;
     }
@@ -186,11 +187,11 @@ public class OBReadDirectDebit2DataDirectDebit {
      * @return previousPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getPreviousPaymentDateTime() {
+    public DateTime getPreviousPaymentDateTime() {
         return previousPaymentDateTime;
     }
 
-    public void setPreviousPaymentDateTime(String previousPaymentDateTime) {
+    public void setPreviousPaymentDateTime(DateTime previousPaymentDateTime) {
         this.previousPaymentDateTime = previousPaymentDateTime;
     }
 
