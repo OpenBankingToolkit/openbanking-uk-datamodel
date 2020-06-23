@@ -33,9 +33,7 @@
 
 package uk.org.openbanking.datamodel.account;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -203,6 +201,7 @@ public class OBReadProduct2DataProduct {
      *
      * @return otherProductType
      **/
+
     @Valid
     @ApiModelProperty(value = "")
     public OBReadProduct2DataOtherProductType getOtherProductType() {
@@ -223,20 +222,26 @@ public class OBReadProduct2DataProduct {
      *
      * @return BCA
      **/
+
     @Valid
     @ApiModelProperty(value = "")
+    @JsonGetter("BCA")
     public BCA getBCA() {
         return BCA;
     }
 
+    @JsonSetter("BCA")
     public void setBCA(BCA BCA) {
         this.BCA = BCA;
     }
+
 
     public OBReadProduct2DataProduct PCA(PCA PCA) {
         this.PCA = PCA;
         return this;
     }
+
+
 
     /**
      * Get PCA
@@ -245,10 +250,12 @@ public class OBReadProduct2DataProduct {
      **/
     @Valid
     @ApiModelProperty(value = "")
+    @JsonGetter("PCA")
     public PCA getPCA() {
         return PCA;
     }
 
+    @JsonSetter("PCA")
     public void setPCA(PCA PCA) {
         this.PCA = PCA;
     }
