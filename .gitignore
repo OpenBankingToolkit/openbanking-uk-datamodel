@@ -4,3 +4,5 @@ target/
 # Intellij
 .idea/
 *.iml
+release.properties
+*.releaseBackup
