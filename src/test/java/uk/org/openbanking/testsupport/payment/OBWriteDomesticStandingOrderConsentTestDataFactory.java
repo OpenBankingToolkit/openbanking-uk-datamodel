@@ -21,7 +21,6 @@
 package uk.org.openbanking.testsupport.payment;
 
 import org.joda.time.DateTime;
-import uk.org.openbanking.datamodel.payment.OBRisk1;
 import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrder3DataInitiation;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent4;
@@ -35,16 +34,21 @@ import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aVa
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationFirstPaymentAmount;
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationRecurringPaymentAmount;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
 
 /**
  * Test data factory for the various "OBWriteDomesticStandingOrderConsent" classes.
  */
 public class OBWriteDomesticStandingOrderConsentTestDataFactory {
 
+    private static final String FREQUENCY = "EvryWorkgDay";
+    private static final String REFERENCE = "Ipsum Non Arcu Inc.";
+    private static final String NUMBER_OF_PAYMENTS = "1";
+
     public static OBWriteDomesticStandingOrderConsent4 aValidOBWriteDomesticStandingOrderConsent4() {
         return (new OBWriteDomesticStandingOrderConsent4())
                 .data(aValidOBWriteDomesticStandingOrderConsent4Data())
-                .risk(new OBRisk1());
+                .risk(aValidOBRisk1());
     }
 
     public static OBWriteDomesticStandingOrderConsent4Data aValidOBWriteDomesticStandingOrderConsent4Data() {
@@ -57,9 +61,9 @@ public class OBWriteDomesticStandingOrderConsentTestDataFactory {
     public static OBWriteDomesticStandingOrder3DataInitiation aValidOBWriteDomesticStandingOrder3DataInitiation() {
         DateTime now = now();
         return (new OBWriteDomesticStandingOrder3DataInitiation())
-                .frequency("EvryWorkgDay")
-                .reference("Ipsum Non Arcu Inc.")
-                .numberOfPayments("1")
+                .frequency(FREQUENCY)
+                .reference(REFERENCE)
+                .numberOfPayments(NUMBER_OF_PAYMENTS)
                 .firstPaymentDateTime(now)
                 .recurringPaymentDateTime(now)
                 .finalPaymentDateTime(now)

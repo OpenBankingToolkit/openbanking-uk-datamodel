@@ -23,31 +23,48 @@ package uk.org.openbanking.testsupport.payment;
 import org.joda.time.DateTime;
 import uk.org.openbanking.datamodel.payment.*;
 
-import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccount3;
-import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccountCreditor3;
-import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccountDebtor4;
+import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.*;
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBActiveOrHistoricCurrencyAndAmount;
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBDomestic2InstructedAmount;
+import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomestic2DataInitiationInstructedAmount;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBAuthorisation1;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBBranchAndFinancialInstitutionIdentification3;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBBranchAndFinancialInstitutionIdentification6;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBPartyIdentification43;
+import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.*;
+import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
 
 /**
  * Test data factory for the various "OBWriteInternationalStandingOrderConsent" classes.
  */
 public class OBWriteInternationalStandingOrderConsentTestDataFactory {
 
+    private static final String FREQUENCY = "EvryWorkgDay";
+    private static final String REFERENCE = "Ipsum Non Arcu Inc.";
+    private static final String NUMBER_OF_PAYMENTS = "1";
+    private static final String PURPOSE = "CDCD";
+    private static final String CURRENCY = "USD";
+
     public static OBWriteInternationalStandingOrderConsent2 aValidOBWriteInternationalStandingOrderConsent2() {
         return (new OBWriteInternationalStandingOrderConsent2())
                 .data(aValidOBWriteDataInternationalStandingOrderConsent2())
-                .risk(new OBRisk1());
+                .risk(aValidOBRisk1());
     }
 
     public static OBWriteInternationalStandingOrderConsent3 aValidOBWriteInternationalStandingOrderConsent3() {
         return (new OBWriteInternationalStandingOrderConsent3())
                 .data(aValidOBWriteDataInternationalStandingOrderConsent3())
-                .risk(new OBRisk1());
+                .risk(aValidOBRisk1());
+    }
+
+    public static OBWriteInternationalStandingOrderConsent4 aValidOBWriteInternationalStandingOrderConsent4() {
+        return (new OBWriteInternationalStandingOrderConsent4())
+                .data(aValidOBWriteInternationalStandingOrderConsent4Data())
+                .risk(aValidOBRisk1());
+    }
+
+    public static OBWriteInternationalStandingOrderConsent5 aValidOBWriteInternationalStandingOrderConsent5() {
+        return (new OBWriteInternationalStandingOrderConsent5())
+                .data(aValidOBWriteInternationalStandingOrderConsent5Data())
+                .risk(aValidOBRisk1());
     }
 
     public static OBWriteDataInternationalStandingOrderConsent2 aValidOBWriteDataInternationalStandingOrderConsent2() {
@@ -64,17 +81,33 @@ public class OBWriteInternationalStandingOrderConsentTestDataFactory {
                 .authorisation(aValidOBAuthorisation1());
     }
 
+    public static OBWriteInternationalStandingOrderConsent4Data aValidOBWriteInternationalStandingOrderConsent4Data() {
+        return (new OBWriteInternationalStandingOrderConsent4Data())
+                .permission(OBWriteInternationalStandingOrderConsent4Data.PermissionEnum.CREATE)
+                .initiation(aValidOBWriteInternationalStandingOrder3DataInitiation())
+                .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
+                .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
+    }
+
+    public static OBWriteInternationalStandingOrderConsent5Data aValidOBWriteInternationalStandingOrderConsent5Data() {
+        return (new OBWriteInternationalStandingOrderConsent5Data())
+                .permission(OBWriteInternationalStandingOrderConsent5Data.PermissionEnum.CREATE)
+                .initiation(aValidOBWriteInternationalStandingOrder4DataInitiation())
+                .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
+                .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
+    }
+
     public static OBInternationalStandingOrder2 aValidOBInternationalStandingOrder2() {
         DateTime now = DateTime.now();
         return (new OBInternationalStandingOrder2())
-                .frequency("EvryWorkgDay")
-                .reference("Ipsum Non Arcu Inc.")
-                .numberOfPayments("1")
+                .frequency(FREQUENCY)
+                .reference(REFERENCE)
+                .numberOfPayments(NUMBER_OF_PAYMENTS)
                 .firstPaymentDateTime(now)
                 .finalPaymentDateTime(now)
-                .purpose("CDCD")
+                .purpose(PURPOSE)
                 .chargeBearer(OBChargeBearerType1Code.SHARED)
-                .currencyOfTransfer("USD")
+                .currencyOfTransfer(CURRENCY)
                 .instructedAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
                 .debtorAccount(aValidOBCashAccount3())
                 .creditor(aValidOBPartyIdentification43())
@@ -83,22 +116,63 @@ public class OBWriteInternationalStandingOrderConsentTestDataFactory {
                 .supplementaryData(new OBSupplementaryData1());
     }
 
-    private static OBInternationalStandingOrder3 aValidOBInternationalStandingOrder3() {
+    public static OBInternationalStandingOrder3 aValidOBInternationalStandingOrder3() {
         DateTime now = DateTime.now();
         return (new OBInternationalStandingOrder3())
-                .frequency("EvryWorkgDay")
-                .reference("Ipsum Non Arcu Inc.")
-                .numberOfPayments("1")
+                .frequency(FREQUENCY)
+                .reference(REFERENCE)
+                .numberOfPayments(NUMBER_OF_PAYMENTS)
                 .firstPaymentDateTime(now)
                 .finalPaymentDateTime(now)
-                .purpose("CDCD")
+                .purpose(PURPOSE)
                 .chargeBearer(OBChargeBearerType1Code.SHARED)
-                .currencyOfTransfer("USD")
+                .currencyOfTransfer(CURRENCY)
                 .instructedAmount(aValidOBDomestic2InstructedAmount())
                 .debtorAccount(aValidOBCashAccountDebtor4())
                 .creditor(aValidOBPartyIdentification43())
                 .creditorAgent(aValidOBBranchAndFinancialInstitutionIdentification6())
                 .creditorAccount(aValidOBCashAccountCreditor3())
+                .supplementaryData(new OBSupplementaryData1());
+    }
+
+    public static OBWriteInternationalStandingOrder3DataInitiation aValidOBWriteInternationalStandingOrder3DataInitiation() {
+        DateTime now = DateTime.now();
+        return (new OBWriteInternationalStandingOrder3DataInitiation())
+                .frequency(FREQUENCY)
+                .reference(REFERENCE)
+                .numberOfPayments(NUMBER_OF_PAYMENTS)
+                .firstPaymentDateTime(now)
+                .finalPaymentDateTime(now)
+                .purpose(PURPOSE)
+                .chargeBearer(OBChargeBearerType1Code.SHARED)
+                .currencyOfTransfer(CURRENCY)
+                .instructedAmount(aValidOBWriteDomestic2DataInitiationInstructedAmount())
+                .debtorAccount(aValidOBWriteDomesticStandingOrder3DataInitiationDebtorAccount())
+                .creditor(aValidOBWriteInternational2DataInitiationCreditor())
+                .creditorAgent(aValidOBWriteInternationalStandingOrder3DataInitiationCreditorAgent())
+                .creditorAccount(aValidOBWriteInternationalStandingOrder3DataInitiationCreditorAccount())
+                .supplementaryData(new OBSupplementaryData1());
+    }
+
+
+    public static OBWriteInternationalStandingOrder4DataInitiation aValidOBWriteInternationalStandingOrder4DataInitiation() {
+        DateTime now = DateTime.now();
+        return (new OBWriteInternationalStandingOrder4DataInitiation())
+                .frequency(FREQUENCY)
+                .reference(REFERENCE)
+                .numberOfPayments(NUMBER_OF_PAYMENTS)
+                .firstPaymentDateTime(now)
+                .finalPaymentDateTime(now)
+                .purpose(PURPOSE)
+                .extendedPurpose("Extended purpose")
+                .chargeBearer(OBChargeBearerType1Code.SHARED)
+                .currencyOfTransfer(CURRENCY)
+                .destinationCountryCode("GB")
+                .instructedAmount(aValidOBWriteDomestic2DataInitiationInstructedAmount())
+                .debtorAccount(aValidOBWriteDomesticStandingOrder3DataInitiationDebtorAccount())
+                .creditor(OBInternationalIdentifierTestDataFactory.aValidOBWriteInternational3DataInitiationCreditor())
+                .creditorAgent(aValidOBWriteInternationalStandingOrder4DataInitiationCreditorAgent())
+                .creditorAccount(aValidOBWriteInternationalStandingOrder4DataInitiationCreditorAccount())
                 .supplementaryData(new OBSupplementaryData1());
     }
 }

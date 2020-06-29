@@ -23,46 +23,85 @@ package uk.org.openbanking.testsupport.payment;
 import uk.org.openbanking.datamodel.payment.OBBranchAndFinancialInstitutionIdentification3;
 import uk.org.openbanking.datamodel.payment.OBBranchAndFinancialInstitutionIdentification6;
 import uk.org.openbanking.datamodel.payment.OBPartyIdentification43;
+import uk.org.openbanking.datamodel.payment.OBWriteInternational2DataInitiationCreditor;
+import uk.org.openbanking.datamodel.payment.OBWriteInternational2DataInitiationCreditorAgent;
 import uk.org.openbanking.datamodel.payment.OBWriteInternational3DataInitiationCreditor;
 import uk.org.openbanking.datamodel.payment.OBWriteInternational3DataInitiationCreditorAgent;
+import uk.org.openbanking.datamodel.payment.OBWriteInternationalStandingOrder3DataInitiationCreditorAgent;
+import uk.org.openbanking.datamodel.payment.OBWriteInternationalStandingOrder4DataInitiationCreditorAgent;
 
 import static uk.org.openbanking.testsupport.payment.OBPostalAddress6TestDataFactory.aValidOBPostalAddress6;
 
 public class OBInternationalIdentifierTestDataFactory {
 
+    private static final String SCHEME_NAME = "UK.OBIE.SortCodeAccountNumber";
+    private static final String IDENTIFICATION = "40400411270111";
+    private static final String CREDITOR_AGENT_NAME = "Creditor Agent Name";
+    private static final String CREDITOR_NAME = "Creditor Name";
+
     public static OBBranchAndFinancialInstitutionIdentification3 aValidOBBranchAndFinancialInstitutionIdentification3() {
         return (new OBBranchAndFinancialInstitutionIdentification3())
-                .schemeName("UK.OBIE.SortCodeAccountNumber")
-                .identification("40400411270111")
-                .name("Creditor Agent Name")
+                .schemeName(SCHEME_NAME)
+                .identification(IDENTIFICATION)
+                .name(CREDITOR_AGENT_NAME)
                 .postalAddress(aValidOBPostalAddress6());
     }
 
     public static OBBranchAndFinancialInstitutionIdentification6 aValidOBBranchAndFinancialInstitutionIdentification6() {
         return (new OBBranchAndFinancialInstitutionIdentification6())
-                .schemeName("UK.OBIE.SortCodeAccountNumber")
-                .identification("40400411270111")
-                .name("Creditor Agent Name")
+                .schemeName(SCHEME_NAME)
+                .identification(IDENTIFICATION)
+                .name(CREDITOR_AGENT_NAME)
+                .postalAddress(aValidOBPostalAddress6());
+    }
+
+    public static OBWriteInternational2DataInitiationCreditorAgent aValidOBWriteInternational2DataInitiationCreditorAgent() {
+        return (new OBWriteInternational2DataInitiationCreditorAgent())
+                .schemeName(SCHEME_NAME)
+                .identification(IDENTIFICATION)
+                .name(CREDITOR_AGENT_NAME)
                 .postalAddress(aValidOBPostalAddress6());
     }
 
     public static OBWriteInternational3DataInitiationCreditorAgent aValidOBWriteInternational3DataInitiationCreditorAgent() {
         return (new OBWriteInternational3DataInitiationCreditorAgent())
-                .schemeName("UK.OBIE.SortCodeAccountNumber")
-                .identification("40400411270111")
-                .name("Creditor Agent Name")
+                .schemeName(SCHEME_NAME)
+                .identification(IDENTIFICATION)
+                .name(CREDITOR_AGENT_NAME)
+                .postalAddress(aValidOBPostalAddress6());
+    }
+
+    public static OBWriteInternationalStandingOrder3DataInitiationCreditorAgent aValidOBWriteInternationalStandingOrder3DataInitiationCreditorAgent() {
+        return (new OBWriteInternationalStandingOrder3DataInitiationCreditorAgent())
+                .schemeName(SCHEME_NAME)
+                .identification(IDENTIFICATION)
+                .name(CREDITOR_AGENT_NAME)
+                .postalAddress(aValidOBPostalAddress6());
+    }
+
+    public static OBWriteInternationalStandingOrder4DataInitiationCreditorAgent aValidOBWriteInternationalStandingOrder4DataInitiationCreditorAgent() {
+        return (new OBWriteInternationalStandingOrder4DataInitiationCreditorAgent())
+                .schemeName(SCHEME_NAME)
+                .identification(IDENTIFICATION)
+                .name(CREDITOR_AGENT_NAME)
                 .postalAddress(aValidOBPostalAddress6());
     }
 
     public static OBPartyIdentification43 aValidOBPartyIdentification43() {
         return (new OBPartyIdentification43())
-                .name("Creditor Name")
+                .name(CREDITOR_NAME)
+                .postalAddress(aValidOBPostalAddress6());
+    }
+
+    public static OBWriteInternational2DataInitiationCreditor aValidOBWriteInternational2DataInitiationCreditor() {
+        return (new OBWriteInternational2DataInitiationCreditor())
+                .name(CREDITOR_NAME)
                 .postalAddress(aValidOBPostalAddress6());
     }
 
     public static OBWriteInternational3DataInitiationCreditor aValidOBWriteInternational3DataInitiationCreditor() {
         return (new OBWriteInternational3DataInitiationCreditor())
-                .name("Creditor Name")
+                .name(CREDITOR_NAME)
                 .postalAddress(aValidOBPostalAddress6());
     }
 }

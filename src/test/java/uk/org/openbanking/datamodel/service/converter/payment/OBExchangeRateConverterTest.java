@@ -51,7 +51,7 @@ public class OBExchangeRateConverterTest {
         // Then
         assertThat(obExchangeRate1.getUnitCurrency()).isEqualTo(sourceExchangeRate.getUnitCurrency());
         assertThat(obExchangeRate1.getExchangeRate()).isEqualTo(sourceExchangeRate.getExchangeRate());
-        assertThat(obExchangeRate1.getRateType()).isEqualTo(OBExchangeRateType2Code.INDICATIVE);
+        assertThat(obExchangeRate1.getRateType()).isEqualTo(OBExchangeRateType2Code.AGREED);
         assertThat(obExchangeRate1.getContractIdentification()).isEqualTo(sourceExchangeRate.getContractIdentification());
     }
 
@@ -66,7 +66,7 @@ public class OBExchangeRateConverterTest {
         // Then
         assertThat(obExchangeRate2.getUnitCurrency()).isEqualTo(sourceExchangeRate.getUnitCurrency());
         assertThat(obExchangeRate2.getExchangeRate()).isEqualTo(sourceExchangeRate.getExchangeRate());
-        assertThat(obExchangeRate2.getRateType()).isEqualTo(OBExchangeRateType2Code.INDICATIVE);
+        assertThat(obExchangeRate2.getRateType()).isEqualTo(OBExchangeRateType2Code.AGREED);
         assertThat(obExchangeRate2.getContractIdentification()).isEqualTo(sourceExchangeRate.getContractIdentification());
         assertThat(obExchangeRate2.getExpirationDateTime()).isEqualTo(sourceExchangeRate.getExpirationDateTime());
     }
@@ -82,7 +82,7 @@ public class OBExchangeRateConverterTest {
         // Then
         assertThat(exchangeRateInformation.getUnitCurrency()).isEqualTo(sourceExchangeRate.getUnitCurrency());
         assertThat(exchangeRateInformation.getExchangeRate()).isEqualTo(sourceExchangeRate.getExchangeRate());
-        assertThat(exchangeRateInformation.getRateType()).isEqualTo(OBWriteInternational3DataInitiationExchangeRateInformation.RateTypeEnum.INDICATIVE);
+        assertThat(exchangeRateInformation.getRateType()).isEqualTo(OBWriteInternational3DataInitiationExchangeRateInformation.RateTypeEnum.AGREED);
         assertThat(exchangeRateInformation.getContractIdentification()).isEqualTo(sourceExchangeRate.getContractIdentification());
     }
 
