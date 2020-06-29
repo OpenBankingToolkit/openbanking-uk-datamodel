@@ -22,7 +22,6 @@ package uk.org.openbanking.testsupport.payment;
 
 import org.joda.time.DateTime;
 import uk.org.openbanking.datamodel.payment.*;
-import uk.org.openbanking.datamodel.payment.OBWriteInternationalScheduledConsent4Data.PermissionEnum;
 
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccount3;
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBWriteDomestic2DataInitiationCreditorAccount;
@@ -32,35 +31,46 @@ import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aVa
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBAuthorisation1;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBExchangeRateTestDataFactory.aValidOBExchangeRate1;
+import static uk.org.openbanking.testsupport.payment.OBExchangeRateTestDataFactory.aValidOBWriteInternational2DataInitiationExchangeRateInformation;
 import static uk.org.openbanking.testsupport.payment.OBExchangeRateTestDataFactory.aValidOBWriteInternational3DataInitiationExchangeRateInformation;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBBranchAndFinancialInstitutionIdentification3;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBPartyIdentification43;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBWriteInternational3DataInitiationCreditor;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBWriteInternational3DataInitiationCreditorAgent;
+import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.*;
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBRemittanceInformation1;
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBWriteDomestic2DataInitiationRemittanceInformation;
+import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
 
 /**
  * Test data factory for the various "OBWriteInternationalScheduledConsent" classes.
  */
 public class OBWriteInternationalScheduledConsentTestDataFactory {
 
+    private static final String INSTRUCTION_IDENTIFICATION = "ANSM020";
+    private static final String END_TO_END_IDENTIFICATION = "FRESCO.21302.GFX.01";
+    private static final String LOCAL_INSTRUMENT = "UK.OBIE.BACS";
+    private static final String PURPOSE = "CDCD";
+    private static final String CURRENCY = "USD";
+
     public static OBWriteInternationalScheduledConsent1 aValidOBWriteInternationalScheduledConsent1() {
         return (new OBWriteInternationalScheduledConsent1())
                 .data(aValidOBWriteDataInternationalScheduledConsent1())
-                .risk(new OBRisk1());
+                .risk(aValidOBRisk1());
     }
 
     public static OBWriteInternationalScheduledConsent2 aValidOBWriteInternationalScheduledConsent2() {
         return (new OBWriteInternationalScheduledConsent2())
                 .data(aValidOBWriteDataInternationalScheduledConsent2())
-                .risk(new OBRisk1());
+                .risk(aValidOBRisk1());
+    }
+
+    public static OBWriteInternationalScheduledConsent3 aValidOBWriteInternationalScheduledConsent3() {
+        return (new OBWriteInternationalScheduledConsent3())
+                .data(aValidOBWriteInternationalScheduledConsent3Data())
+                .risk(aValidOBRisk1());
     }
 
     public static OBWriteInternationalScheduledConsent4 aValidOBWriteInternationalScheduledConsent4() {
         return (new OBWriteInternationalScheduledConsent4())
                 .data(aValidOBWriteInternationalScheduledConsent4Data())
-                .risk(new OBRisk1());
+                .risk(aValidOBRisk1());
     }
 
     public static OBWriteDataInternationalScheduledConsent1 aValidOBWriteDataInternationalScheduledConsent1() {
@@ -77,44 +87,32 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
                 .authorisation(aValidOBAuthorisation1());
     }
 
+    public static OBWriteInternationalScheduledConsent3Data aValidOBWriteInternationalScheduledConsent3Data() {
+        return (new OBWriteInternationalScheduledConsent3Data())
+                .permission(OBWriteInternationalScheduledConsent3Data.PermissionEnum.CREATE)
+                .initiation(aValidOBWriteInternationalScheduled2DataInitiation())
+                .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
+                .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
+    }
+
     public static OBWriteInternationalScheduledConsent4Data aValidOBWriteInternationalScheduledConsent4Data() {
         return (new OBWriteInternationalScheduledConsent4Data())
-                .permission(PermissionEnum.CREATE)
+                .permission(OBWriteInternationalScheduledConsent4Data.PermissionEnum.CREATE)
                 .initiation(aValidOBWriteInternationalScheduled3DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
                 .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
     }
 
-    public static OBWriteInternationalScheduled3DataInitiation aValidOBWriteInternationalScheduled3DataInitiation() {
-        return (new OBWriteInternationalScheduled3DataInitiation())
-                .instructionIdentification("ANSM020")
-                .endToEndIdentification("FRESCO.21302.GFX.01")
-                .localInstrument("UK.OBIE.BACS")
-                .instructionPriority(OBWriteInternationalScheduled3DataInitiation.InstructionPriorityEnum.URGENT)
-                .purpose("CDCD")
-                .extendedPurpose("Extended purpose")
-                .chargeBearer(OBChargeBearerType1Code.SHARED)
-                .currencyOfTransfer("USD")
-                .destinationCountryCode("GB")
-                .instructedAmount(aValidOBWriteDomestic2DataInitiationInstructedAmount())
-                .exchangeRateInformation(aValidOBWriteInternational3DataInitiationExchangeRateInformation())
-                .debtorAccount(aValidOBWriteDomestic2DataInitiationDebtorAccount())
-                .creditor(aValidOBWriteInternational3DataInitiationCreditor())
-                .creditorAgent(aValidOBWriteInternational3DataInitiationCreditorAgent())
-                .creditorAccount(aValidOBWriteDomestic2DataInitiationCreditorAccount())
-                .remittanceInformation(aValidOBWriteDomestic2DataInitiationRemittanceInformation())
-                .supplementaryData(new OBSupplementaryData1());
-    }
-
     public static OBInternationalScheduled1 aValidOBInternationalScheduled1() {
         return (new OBInternationalScheduled1())
-                .instructionIdentification("ANSM020")
-                .endToEndIdentification("FRESCO.21302.GFX.01")
-                .localInstrument("UK.OBIE.BACS")
+                .instructionIdentification(INSTRUCTION_IDENTIFICATION)
+                .endToEndIdentification(END_TO_END_IDENTIFICATION)
+                .localInstrument(LOCAL_INSTRUMENT)
                 .instructionPriority(OBPriority2Code.URGENT)
-                .purpose("CDCD")
+                .purpose(PURPOSE)
                 .chargeBearer(OBChargeBearerType1Code.SHARED)
-                .currencyOfTransfer("USD")
+                .requestedExecutionDateTime(DateTime.now().plusDays(1))
+                .currencyOfTransfer(CURRENCY)
                 .instructedAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
                 .exchangeRateInformation(aValidOBExchangeRate1())
                 .debtorAccount(aValidOBCashAccount3())
@@ -126,14 +124,14 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
 
     public static OBInternationalScheduled2 aValidOBInternationalScheduled2() {
         return (new OBInternationalScheduled2())
-                .instructionIdentification("ANSM020")
-                .endToEndIdentification("FRESCO.21302.GFX.01")
-                .localInstrument("UK.OBIE.BACS")
+                .instructionIdentification(INSTRUCTION_IDENTIFICATION)
+                .endToEndIdentification(END_TO_END_IDENTIFICATION)
+                .localInstrument(LOCAL_INSTRUMENT)
                 .instructionPriority(OBPriority2Code.URGENT)
-                .purpose("CDCD")
+                .purpose(PURPOSE)
                 .chargeBearer(OBChargeBearerType1Code.SHARED)
-                .requestedExecutionDateTime(DateTime.now())
-                .currencyOfTransfer("USD")
+                .requestedExecutionDateTime(DateTime.now().plusDays(1))
+                .currencyOfTransfer(CURRENCY)
                 .instructedAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
                 .exchangeRateInformation(aValidOBExchangeRate1())
                 .debtorAccount(aValidOBCashAccount3())
@@ -143,4 +141,47 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
                 .remittanceInformation(aValidOBRemittanceInformation1())
                 .supplementaryData(new OBSupplementaryData1());
     }
+
+    public static OBWriteInternationalScheduled2DataInitiation aValidOBWriteInternationalScheduled2DataInitiation() {
+        return (new OBWriteInternationalScheduled2DataInitiation())
+                .instructionIdentification(INSTRUCTION_IDENTIFICATION)
+                .endToEndIdentification(END_TO_END_IDENTIFICATION)
+                .localInstrument(LOCAL_INSTRUMENT)
+                .instructionPriority(OBWriteInternationalScheduled2DataInitiation.InstructionPriorityEnum.URGENT)
+                .purpose(PURPOSE)
+                .chargeBearer(OBChargeBearerType1Code.SHARED)
+                .requestedExecutionDateTime(DateTime.now().plusDays(1))
+                .currencyOfTransfer(CURRENCY)
+                .instructedAmount(aValidOBWriteDomestic2DataInitiationInstructedAmount())
+                .exchangeRateInformation(aValidOBWriteInternational2DataInitiationExchangeRateInformation())
+                .debtorAccount(aValidOBWriteDomestic2DataInitiationDebtorAccount())
+                .creditor(aValidOBWriteInternational2DataInitiationCreditor())
+                .creditorAgent(aValidOBWriteInternational2DataInitiationCreditorAgent())
+                .creditorAccount(aValidOBWriteDomestic2DataInitiationCreditorAccount())
+                .remittanceInformation(aValidOBWriteDomestic2DataInitiationRemittanceInformation())
+                .supplementaryData(new OBSupplementaryData1());
+    }
+
+    public static OBWriteInternationalScheduled3DataInitiation aValidOBWriteInternationalScheduled3DataInitiation() {
+        return (new OBWriteInternationalScheduled3DataInitiation())
+                .instructionIdentification(INSTRUCTION_IDENTIFICATION)
+                .endToEndIdentification(END_TO_END_IDENTIFICATION)
+                .localInstrument(LOCAL_INSTRUMENT)
+                .instructionPriority(OBWriteInternationalScheduled3DataInitiation.InstructionPriorityEnum.URGENT)
+                .purpose(PURPOSE)
+                .extendedPurpose("Extended purpose")
+                .chargeBearer(OBChargeBearerType1Code.SHARED)
+                .requestedExecutionDateTime(DateTime.now().plusDays(1))
+                .currencyOfTransfer(CURRENCY)
+                .destinationCountryCode("GB")
+                .instructedAmount(aValidOBWriteDomestic2DataInitiationInstructedAmount())
+                .exchangeRateInformation(aValidOBWriteInternational3DataInitiationExchangeRateInformation())
+                .debtorAccount(aValidOBWriteDomestic2DataInitiationDebtorAccount())
+                .creditor(aValidOBWriteInternational3DataInitiationCreditor())
+                .creditorAgent(aValidOBWriteInternational3DataInitiationCreditorAgent())
+                .creditorAccount(aValidOBWriteDomestic2DataInitiationCreditorAccount())
+                .remittanceInformation(aValidOBWriteDomestic2DataInitiationRemittanceInformation())
+                .supplementaryData(new OBSupplementaryData1());
+    }
+
 }
