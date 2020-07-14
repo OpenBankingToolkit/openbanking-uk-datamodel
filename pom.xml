@@ -43,7 +43,7 @@
     
     <properties>
         <jersey.version>2.30</jersey.version>
-        <springfox-version>2.9.2</springfox-version>
+        <springfox-version>3.0.0</springfox-version>
     </properties>
 
     <dependencyManagement>
