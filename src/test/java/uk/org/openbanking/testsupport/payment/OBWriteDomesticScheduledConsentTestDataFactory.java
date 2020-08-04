@@ -21,15 +21,7 @@
 package uk.org.openbanking.testsupport.payment;
 
 import org.joda.time.DateTime;
-import uk.org.openbanking.datamodel.payment.OBDomesticScheduled2;
-import uk.org.openbanking.datamodel.payment.OBExternalPermissions2Code;
-import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
-import uk.org.openbanking.datamodel.payment.OBWriteDataDomesticScheduledConsent2;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataSCASupportData;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduled2DataInitiation;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent2;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent3;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticScheduledConsent3Data;
+import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccount3;
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBWriteDomestic2DataInitiationCreditorAccount;
@@ -38,10 +30,13 @@ import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aVa
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomestic2DataInitiationInstructedAmount;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBAuthorisation1;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBPostalAddress6TestDataFactory.aValidOBPostalAddress6;
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBRemittanceInformation1;
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBWriteDomestic2DataInitiationRemittanceInformation;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent3DataSCASupportData;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent4DataSCASupportData;
 
 /**
  * Test data factory for the various "OBWriteDomesticScheduledConsent" classes.
@@ -64,6 +59,12 @@ public class OBWriteDomesticScheduledConsentTestDataFactory {
                 .risk(aValidOBRisk1());
     }
 
+    public static OBWriteDomesticScheduledConsent4 aValidOBWriteDomesticScheduledConsent4() {
+        return (new OBWriteDomesticScheduledConsent4())
+                .data(aValidOBWriteDomesticScheduledConsent4Data())
+                .risk(aValidOBRisk1());
+    }
+
     public static OBWriteDataDomesticScheduledConsent2 aValidOBWriteDataDomesticScheduledConsent2() {
         return (new OBWriteDataDomesticScheduledConsent2())
                 .permission(OBExternalPermissions2Code.CREATE)
@@ -76,7 +77,16 @@ public class OBWriteDomesticScheduledConsentTestDataFactory {
                 .permission(OBWriteDomesticScheduledConsent3Data.PermissionEnum.CREATE)
                 .initiation(aValidOBWriteDomesticScheduled2DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
-                .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
+                .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
+    }
+
+    public static OBWriteDomesticScheduledConsent4Data aValidOBWriteDomesticScheduledConsent4Data() {
+        return (new OBWriteDomesticScheduledConsent4Data())
+                .permission(OBWriteDomesticScheduledConsent4Data.PermissionEnum.CREATE)
+                .initiation(aValidOBWriteDomesticScheduled2DataInitiation())
+                .authorisation(aValidOBWriteDomesticConsent4DataAuthorisation())
+                .scASupportData(aValidOBWriteDomesticConsent4DataSCASupportData())
+                .readRefundAccount(OBWriteDomesticScheduledConsent4Data.ReadRefundAccountEnum.NO);
     }
 
     public static OBDomesticScheduled2 aValidOBDomesticScheduled2() {

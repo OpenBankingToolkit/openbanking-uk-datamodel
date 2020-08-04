@@ -30,6 +30,7 @@ import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aVa
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomestic2DataInitiationInstructedAmount;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBAuthorisation1;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBExchangeRateTestDataFactory.aValidOBExchangeRate1;
 import static uk.org.openbanking.testsupport.payment.OBExchangeRateTestDataFactory.aValidOBWriteInternational2DataInitiationExchangeRateInformation;
 import static uk.org.openbanking.testsupport.payment.OBExchangeRateTestDataFactory.aValidOBWriteInternational3DataInitiationExchangeRateInformation;
@@ -37,6 +38,8 @@ import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTe
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBRemittanceInformation1;
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBWriteDomestic2DataInitiationRemittanceInformation;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent3DataSCASupportData;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent4DataSCASupportData;
 
 /**
  * Test data factory for the various "OBWriteInternationalScheduledConsent" classes.
@@ -73,6 +76,12 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
                 .risk(aValidOBRisk1());
     }
 
+    public static OBWriteInternationalScheduledConsent5 aValidOBWriteInternationalScheduledConsent5() {
+        return (new OBWriteInternationalScheduledConsent5())
+                .data(aValidOBWriteInternationalScheduledConsent5Data())
+                .risk(aValidOBRisk1());
+    }
+
     public static OBWriteDataInternationalScheduledConsent1 aValidOBWriteDataInternationalScheduledConsent1() {
         return (new OBWriteDataInternationalScheduledConsent1())
                 .permission(OBExternalPermissions2Code.CREATE)
@@ -100,7 +109,16 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
                 .permission(OBWriteInternationalScheduledConsent4Data.PermissionEnum.CREATE)
                 .initiation(aValidOBWriteInternationalScheduled3DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
-                .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
+                .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
+    }
+
+    public static OBWriteInternationalScheduledConsent5Data aValidOBWriteInternationalScheduledConsent5Data() {
+        return (new OBWriteInternationalScheduledConsent5Data())
+                .permission(OBWriteInternationalScheduledConsent5Data.PermissionEnum.CREATE)
+                .initiation(aValidOBWriteInternationalScheduled3DataInitiation())
+                .authorisation(aValidOBWriteDomesticConsent4DataAuthorisation())
+                .scASupportData(aValidOBWriteDomesticConsent4DataSCASupportData())
+                .readRefundAccount(OBWriteInternationalScheduledConsent5Data.ReadRefundAccountEnum.NO);
     }
 
     public static OBInternationalScheduled1 aValidOBInternationalScheduled1() {

@@ -24,6 +24,7 @@ import org.joda.time.DateTime;
 import uk.org.openbanking.datamodel.payment.OBAuthorisation1;
 import uk.org.openbanking.datamodel.payment.OBExternalAuthorisation1Code;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataAuthorisation;
+import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent4DataAuthorisation;
 
 /**
  * Test data factory for various OB consent authorisation types.
@@ -39,6 +40,12 @@ public class OBConsentAuthorisationTestDataFactory {
     public static OBWriteDomesticConsent3DataAuthorisation aValidOBWriteDomesticConsent3DataAuthorisation() {
         return (new OBWriteDomesticConsent3DataAuthorisation())
                 .authorisationType(OBWriteDomesticConsent3DataAuthorisation.AuthorisationTypeEnum.ANY)
+                .completionDateTime(DateTime.now());
+    }
+
+    public static OBWriteDomesticConsent4DataAuthorisation aValidOBWriteDomesticConsent4DataAuthorisation() {
+        return (new OBWriteDomesticConsent4DataAuthorisation())
+                .authorisationType(OBWriteDomesticConsent4DataAuthorisation.AuthorisationTypeEnum.ANY)
                 .completionDateTime(DateTime.now());
     }
 }

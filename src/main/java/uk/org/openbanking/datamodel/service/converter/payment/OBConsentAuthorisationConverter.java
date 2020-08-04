@@ -21,7 +21,9 @@
 package uk.org.openbanking.datamodel.service.converter.payment;
 
 import uk.org.openbanking.datamodel.payment.OBAuthorisation1;
+import uk.org.openbanking.datamodel.payment.OBExternalAuthorisation1Code;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataAuthorisation;
+import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent4DataAuthorisation;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAuthorisationCodeConverter.toAuthorisationTypeEnum;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAuthorisationCodeConverter.toOBExternalAuthorisation1Code;
@@ -34,10 +36,33 @@ public class OBConsentAuthorisationConverter {
                 .completionDateTime(authorisation.getCompletionDateTime());
     }
 
+    public static OBWriteDomesticConsent3DataAuthorisation toOBWriteDomesticConsent3DataAuthorisation(OBWriteDomesticConsent4DataAuthorisation authorisation) {
+        return authorisation == null ? null : (new OBWriteDomesticConsent3DataAuthorisation())
+                .authorisationType(OBWriteDomesticConsent3DataAuthorisation.AuthorisationTypeEnum.valueOf(authorisation.getAuthorisationType().name()))
+                .completionDateTime(authorisation.getCompletionDateTime());
+    }
+
+    public static OBWriteDomesticConsent4DataAuthorisation toOBWriteDomesticConsent4DataAuthorisation(OBAuthorisation1 authorisation) {
+        return authorisation == null ? null : (new OBWriteDomesticConsent4DataAuthorisation())
+                .authorisationType(OBWriteDomesticConsent4DataAuthorisation.AuthorisationTypeEnum.valueOf(authorisation.getAuthorisationType().name()))
+                .completionDateTime(authorisation.getCompletionDateTime());
+    }
+
+    public static OBWriteDomesticConsent4DataAuthorisation toOBWriteDomesticConsent4DataAuthorisation(OBWriteDomesticConsent3DataAuthorisation authorisation) {
+        return authorisation == null ? null : (new OBWriteDomesticConsent4DataAuthorisation())
+                .authorisationType(OBWriteDomesticConsent4DataAuthorisation.AuthorisationTypeEnum.valueOf(authorisation.getAuthorisationType().name()))
+                .completionDateTime(authorisation.getCompletionDateTime());
+    }
+
     public static OBAuthorisation1 toOBAuthorisation1(OBWriteDomesticConsent3DataAuthorisation authorisation) {
         return authorisation == null ? null : (new OBAuthorisation1())
                 .authorisationType(toOBExternalAuthorisation1Code(authorisation.getAuthorisationType()))
                 .completionDateTime(authorisation.getCompletionDateTime());
     }
 
+    public static OBAuthorisation1 toOBAuthorisation1(OBWriteDomesticConsent4DataAuthorisation authorisation) {
+        return authorisation == null ? null : (new OBAuthorisation1())
+                .authorisationType(OBExternalAuthorisation1Code.valueOf(authorisation.getAuthorisationType().name()))
+                .completionDateTime(authorisation.getCompletionDateTime());
+    }
 }

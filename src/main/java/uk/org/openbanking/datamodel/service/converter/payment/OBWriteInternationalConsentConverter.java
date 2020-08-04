@@ -23,23 +23,13 @@ package uk.org.openbanking.datamodel.service.converter.payment;
 import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalConverter.toOBInternational1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalConverter.toOBInternational2;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalConverter.toOBWriteInternational3DataInitiation;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBWriteDomesticConsentConverter.toOBWriteDomesticConsent4DataSCASupportData;
 
 public class OBWriteInternationalConsentConverter {
-
-    public static OBWriteInternationalConsent1 toOBWriteInternationalConsent1(OBWriteInternationalConsent2 obWriteInternationalConsent2) {
-        return (new OBWriteInternationalConsent1())
-                .data(toOBWriteDataInternationalConsent1(obWriteInternationalConsent2.getData()))
-                .risk(obWriteInternationalConsent2.getRisk());
-    }
-
-    public static OBWriteInternationalConsent2 toOBWriteInternationalConsent2(OBWriteInternationalConsent1 obWriteInternationalConsent1) {
-        return (new OBWriteInternationalConsent2())
-                .data(toOBWriteDataInternationalConsent2(obWriteInternationalConsent1.getData()))
-                .risk(obWriteInternationalConsent1.getRisk());
-    }
 
     public static OBWriteInternational1 toOBWriteInternational1(OBWriteInternational2 obWriteInternational2) {
         return (new OBWriteInternational1())
@@ -53,6 +43,18 @@ public class OBWriteInternationalConsentConverter {
                 .risk(obWriteInternational1.getRisk());
     }
 
+    public static OBWriteInternationalConsent1 toOBWriteInternationalConsent1(OBWriteInternationalConsent2 obWriteInternationalConsent2) {
+        return (new OBWriteInternationalConsent1())
+                .data(toOBWriteDataInternationalConsent1(obWriteInternationalConsent2.getData()))
+                .risk(obWriteInternationalConsent2.getRisk());
+    }
+
+    public static OBWriteInternationalConsent2 toOBWriteInternationalConsent2(OBWriteInternationalConsent1 obWriteInternationalConsent1) {
+        return (new OBWriteInternationalConsent2())
+                .data(toOBWriteDataInternationalConsent2(obWriteInternationalConsent1.getData()))
+                .risk(obWriteInternationalConsent1.getRisk());
+    }
+
     public static OBWriteInternationalConsent4 toOBWriteInternationalConsent4(OBWriteInternationalConsent1 obWriteInternationalConsent1) {
         return (new OBWriteInternationalConsent4())
                 .data(toOBWriteInternationalConsent4Data(obWriteInternationalConsent1.getData()))
@@ -63,6 +65,24 @@ public class OBWriteInternationalConsentConverter {
         return (new OBWriteInternationalConsent4())
                 .data(toOBWriteInternationalConsent4Data(obWriteInternationalConsent2.getData()))
                 .risk(obWriteInternationalConsent2.getRisk());
+    }
+
+    public static OBWriteInternationalConsent5 toOBWriteInternationalConsent5(OBWriteInternationalConsent1 obWriteInternationalConsent1) {
+        return new OBWriteInternationalConsent5()
+                .data(toOBWriteInternationalConsent5Data(obWriteInternationalConsent1.getData()))
+                .risk(obWriteInternationalConsent1.getRisk());
+    }
+
+    public static OBWriteInternationalConsent5 toOBWriteInternationalConsent5(OBWriteInternationalConsent2 obWriteInternationalConsent2) {
+        return (new OBWriteInternationalConsent5())
+                .data(toOBWriteInternationalConsent5Data(obWriteInternationalConsent2.getData()))
+                .risk(obWriteInternationalConsent2.getRisk());
+    }
+
+    public static OBWriteInternationalConsent5 toOBWriteInternationalConsent5(OBWriteInternationalConsent4 obWriteInternationalConsent4) {
+        return (new OBWriteInternationalConsent5())
+                .data(toOBWriteInternationalConsent5Data(obWriteInternationalConsent4.getData()))
+                .risk(obWriteInternationalConsent4.getRisk());
     }
 
     public static OBWriteDataInternational1 toOBWriteDataInternational1(OBWriteDataInternational2 data) {
@@ -101,5 +121,29 @@ public class OBWriteInternationalConsentConverter {
                 .initiation(toOBWriteInternational3DataInitiation(data.getInitiation()))
                 .authorisation(toOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()))
                 .scASupportData(null);
+    }
+
+    public static OBWriteInternationalConsent5Data toOBWriteInternationalConsent5Data(OBWriteDataInternationalConsent1 data) {
+        return data == null ? null : (new OBWriteInternationalConsent5Data())
+                .readRefundAccount(null)
+                .initiation(toOBWriteInternational3DataInitiation(data.getInitiation()))
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(null);
+    }
+
+    public static OBWriteInternationalConsent5Data toOBWriteInternationalConsent5Data(OBWriteDataInternationalConsent2 data) {
+        return data == null ? null : (new OBWriteInternationalConsent5Data())
+                .readRefundAccount(null)
+                .initiation(toOBWriteInternational3DataInitiation(data.getInitiation()))
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(null);
+    }
+
+    public static OBWriteInternationalConsent5Data toOBWriteInternationalConsent5Data(OBWriteInternationalConsent4Data data) {
+        return data == null ? null : (new OBWriteInternationalConsent5Data())
+                .initiation(data.getInitiation())
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .readRefundAccount(null)
+                .scASupportData(toOBWriteDomesticConsent4DataSCASupportData(data.getScASupportData()));
     }
 }

@@ -23,6 +23,7 @@ package uk.org.openbanking.testsupport.payment;
 import org.joda.time.DateTime;
 import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 import uk.org.openbanking.datamodel.payment.OBWriteFile2DataInitiation;
+import uk.org.openbanking.datamodel.payment.OBWriteFileConsent3;
 import uk.org.openbanking.datamodel.payment.OBWriteFileConsent3Data;
 
 import java.math.BigDecimal;
@@ -30,11 +31,16 @@ import java.math.BigDecimal;
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBWriteDomestic2DataInitiationDebtorAccount;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBWriteDomestic2DataInitiationRemittanceInformation;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent3DataSCASupportData;
 
 /**
  * Test data factory for the {@link OBWriteFileConsent3Data}.
  */
 public class OBWriteFileConsentTestDataFactory {
+
+    public static OBWriteFileConsent3 aValidOBWriteFileConsent3() {
+        return new OBWriteFileConsent3().data(aValidOBWriteFileConsent3Data());
+    }
 
     public static OBWriteFileConsent3Data aValidOBWriteFileConsent3Data() {
         DateTime now = DateTime.now();
@@ -50,6 +56,7 @@ public class OBWriteFileConsentTestDataFactory {
                         .debtorAccount(aValidOBWriteDomestic2DataInitiationDebtorAccount())
                         .remittanceInformation(aValidOBWriteDomestic2DataInitiationRemittanceInformation())
                         .supplementaryData(new OBSupplementaryData1()))
-                .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation());
+                .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
+                .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
     }
 }

@@ -24,9 +24,11 @@ import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBAuthorisation1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalScheduledConverter.toOBInternationalScheduled1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalScheduledConverter.toOBInternationalScheduled2;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalScheduledConverter.toOBWriteInternationalScheduled3DataInitiation;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBWriteDomesticConsentConverter.toOBWriteDomesticConsent4DataSCASupportData;
 
 public class OBWriteInternationalScheduledConsentConverter {
 
@@ -40,6 +42,12 @@ public class OBWriteInternationalScheduledConsentConverter {
         return (new OBWriteInternationalScheduledConsent1()
                 .data(toOBWriteDataInternationalScheduledConsent1(obWriteInternationalScheduledConsent4.getData()))
                 .risk(obWriteInternationalScheduledConsent4.getRisk()));
+    }
+
+    public static OBWriteInternationalScheduledConsent1 toOBWriteInternationalScheduledConsent1(OBWriteInternationalScheduledConsent5 obWriteInternationalScheduledConsent5) {
+        return obWriteInternationalScheduledConsent5 == null ? null : (new OBWriteInternationalScheduledConsent1())
+                .data(toOBWriteDataInternationalScheduledConsent1(obWriteInternationalScheduledConsent5.getData()))
+                .risk(obWriteInternationalScheduledConsent5.getRisk());
     }
 
     public static OBWriteInternationalScheduledConsent2 toOBWriteInternationalScheduledConsent2(OBWriteInternationalScheduledConsent1 obWriteInternationalScheduledConsent1) {
@@ -72,6 +80,24 @@ public class OBWriteInternationalScheduledConsentConverter {
                 .risk(obWriteInternationalScheduledConsent2.getRisk());
     }
 
+    public static OBWriteInternationalScheduledConsent5 toOBWriteInternationalScheduledConsent5(OBWriteInternationalScheduledConsent1 obWriteInternationalScheduledConsent1) {
+        return (new OBWriteInternationalScheduledConsent5())
+                .data(toOBWriteInternationalScheduledConsent5Data(obWriteInternationalScheduledConsent1.getData()))
+                .risk(obWriteInternationalScheduledConsent1.getRisk());
+    }
+
+    public static OBWriteInternationalScheduledConsent5 toOBWriteInternationalScheduledConsent5(OBWriteInternationalScheduledConsent2 obWriteInternationalScheduledConsent2) {
+        return (new OBWriteInternationalScheduledConsent5())
+                .data(toOBWriteInternationalScheduledConsent5Data(obWriteInternationalScheduledConsent2.getData()))
+                .risk(obWriteInternationalScheduledConsent2.getRisk());
+    }
+
+    public static OBWriteInternationalScheduledConsent5 toOBWriteInternationalScheduledConsent5(OBWriteInternationalScheduledConsent4 obWriteInternationalScheduledConsent4) {
+        return (new OBWriteInternationalScheduledConsent5())
+                .data(toOBWriteInternationalScheduledConsent5Data(obWriteInternationalScheduledConsent4.getData()))
+                .risk(obWriteInternationalScheduledConsent4.getRisk());
+    }
+
     public static OBWriteDataInternationalScheduled1 toOBWriteDataInternationalScheduled1(OBWriteDataInternationalScheduled2 data) {
         return data == null ? null : (new OBWriteDataInternationalScheduled1())
                 .consentId(data.getConsentId())
@@ -94,6 +120,13 @@ public class OBWriteInternationalScheduledConsentConverter {
     public static OBWriteDataInternationalScheduledConsent1 toOBWriteDataInternationalScheduledConsent1(OBWriteInternationalScheduledConsent4Data data) {
         return data == null ? null : (new OBWriteDataInternationalScheduledConsent1())
                 .permission(toOBExternalPermissions2Code(data.getPermission()))
+                .initiation(toOBInternationalScheduled1(data.getInitiation()))
+                .authorisation(toOBAuthorisation1(data.getAuthorisation()));
+    }
+
+    public static OBWriteDataInternationalScheduledConsent1 toOBWriteDataInternationalScheduledConsent1(OBWriteInternationalScheduledConsent5Data data) {
+        return data == null ? null : (new OBWriteDataInternationalScheduledConsent1())
+                .permission(OBExternalPermissions2Code.valueOf(data.getPermission().name()))
                 .initiation(toOBInternationalScheduled1(data.getInitiation()))
                 .authorisation(toOBAuthorisation1(data.getAuthorisation()));
     }
@@ -121,11 +154,42 @@ public class OBWriteInternationalScheduledConsentConverter {
                 .scASupportData(null);
     }
 
+    public static OBWriteInternationalScheduledConsent5Data toOBWriteInternationalScheduledConsent5Data(OBWriteDataInternationalScheduledConsent1 data) {
+        return data == null ? null : (new OBWriteInternationalScheduledConsent5Data())
+                .permission(OBWriteInternationalScheduledConsent5Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .readRefundAccount(null)
+                .initiation(toOBWriteInternationalScheduled3DataInitiation(data.getInitiation()))
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(null);
+    }
+
+    public static OBWriteInternationalScheduledConsent5Data toOBWriteInternationalScheduledConsent5Data(OBWriteDataInternationalScheduledConsent2 data) {
+        return data == null ? null : (new OBWriteInternationalScheduledConsent5Data())
+                .permission(OBWriteInternationalScheduledConsent5Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .readRefundAccount(null)
+                .initiation(toOBWriteInternationalScheduled3DataInitiation(data.getInitiation()))
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(null);
+    }
+
+    public static OBWriteInternationalScheduledConsent5Data toOBWriteInternationalScheduledConsent5Data(OBWriteInternationalScheduledConsent4Data data) {
+        return data == null ? null : (new OBWriteInternationalScheduledConsent5Data())
+                .permission(OBWriteInternationalScheduledConsent5Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .readRefundAccount(null)
+                .initiation(data.getInitiation())
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(toOBWriteDomesticConsent4DataSCASupportData(data.getScASupportData()));
+    }
+
     public static OBWriteInternationalScheduledConsent4Data.PermissionEnum toPermissionEnum(OBExternalPermissions2Code permission) {
         return permission == null ? null : OBWriteInternationalScheduledConsent4Data.PermissionEnum.valueOf(permission.name());
     }
 
     public static OBExternalPermissions2Code toOBExternalPermissions2Code(OBWriteInternationalScheduledConsent4Data.PermissionEnum permission) {
+        return permission == null ? null : OBExternalPermissions2Code.valueOf(permission.name());
+    }
+
+    public static OBExternalPermissions2Code toOBExternalPermissions2Code(OBWriteInternationalScheduledConsent5Data.PermissionEnum permission) {
         return permission == null ? null : OBExternalPermissions2Code.valueOf(permission.name());
     }
 }

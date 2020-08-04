@@ -44,6 +44,19 @@ public class OBFileConverter {
                 .remittanceInformation(obFile2.getRemittanceInformation());
     }
 
+    public static OBFile1 toOBFile1(OBWriteFile2DataInitiation initiation) {
+        return initiation == null ? null : (new OBFile1())
+                .fileType(initiation.getFileType())
+                .fileHash(initiation.getFileHash())
+                .fileReference(initiation.getFileReference())
+                .numberOfTransactions(initiation.getNumberOfTransactions())
+                .controlSum(initiation.getControlSum())
+                .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
+                .localInstrument(initiation.getLocalInstrument())
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()));
+    }
+
     public static OBFile2 toOBFile2(OBFile1 obFile1) {
         return (new OBFile2())
                 .controlSum(obFile1.getControlSum())
@@ -70,6 +83,20 @@ public class OBFileConverter {
                 .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
                 .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()))
                 .supplementaryData(initiation.getSupplementaryData());
+    }
+
+    public static OBWriteFile2DataInitiation toOBWriteFile2DataInitiation(OBFile1 initiation) {
+        return initiation == null ? null : (new OBWriteFile2DataInitiation())
+                .fileType(initiation.getFileType())
+                .fileHash(initiation.getFileHash())
+                .fileReference(initiation.getFileReference())
+                .numberOfTransactions(initiation.getNumberOfTransactions())
+                .controlSum(initiation.getControlSum())
+                .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
+                .localInstrument(initiation.getLocalInstrument())
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(initiation.getDebtorAccount()))
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(initiation.getRemittanceInformation()))
+                .supplementaryData(null);
     }
 
     public static OBWriteFile2DataInitiation toOBWriteFile2DataInitiation(OBFile2 initiation) {

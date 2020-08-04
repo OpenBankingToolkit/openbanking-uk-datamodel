@@ -25,7 +25,8 @@ import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrder3DataInitiation;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent4;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent4Data;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent4Data.PermissionEnum;
+import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent5;
+import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent5Data;
 
 import static org.joda.time.DateTime.now;
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationCreditorAccount;
@@ -34,7 +35,10 @@ import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aVa
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationFirstPaymentAmount;
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationRecurringPaymentAmount;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent3DataSCASupportData;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent4DataSCASupportData;
 
 /**
  * Test data factory for the various "OBWriteDomesticStandingOrderConsent" classes.
@@ -51,11 +55,27 @@ public class OBWriteDomesticStandingOrderConsentTestDataFactory {
                 .risk(aValidOBRisk1());
     }
 
+    public static OBWriteDomesticStandingOrderConsent5 aValidOBWriteDomesticStandingOrderConsent5() {
+        return (new OBWriteDomesticStandingOrderConsent5())
+                .data(aValidOBWriteDomesticStandingOrderConsent5Data())
+                .risk(aValidOBRisk1());
+    }
+
     public static OBWriteDomesticStandingOrderConsent4Data aValidOBWriteDomesticStandingOrderConsent4Data() {
         return (new OBWriteDomesticStandingOrderConsent4Data())
-                .permission(PermissionEnum.CREATE)
+                .permission(OBWriteDomesticStandingOrderConsent4Data.PermissionEnum.CREATE)
                 .initiation(aValidOBWriteDomesticStandingOrder3DataInitiation())
-                .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation());
+                .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
+                .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
+    }
+
+    public static OBWriteDomesticStandingOrderConsent5Data aValidOBWriteDomesticStandingOrderConsent5Data() {
+        return (new OBWriteDomesticStandingOrderConsent5Data())
+                .permission(OBWriteDomesticStandingOrderConsent5Data.PermissionEnum.CREATE)
+                .initiation(aValidOBWriteDomesticStandingOrder3DataInitiation())
+                .authorisation(aValidOBWriteDomesticConsent4DataAuthorisation())
+                .scASupportData(aValidOBWriteDomesticConsent4DataSCASupportData())
+                .readRefundAccount(OBWriteDomesticStandingOrderConsent5Data.ReadRefundAccountEnum.NO);
     }
 
     public static OBWriteDomesticStandingOrder3DataInitiation aValidOBWriteDomesticStandingOrder3DataInitiation() {
