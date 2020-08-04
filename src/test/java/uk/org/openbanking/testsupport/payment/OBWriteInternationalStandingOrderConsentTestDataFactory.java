@@ -29,8 +29,11 @@ import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aVa
 import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomestic2DataInitiationInstructedAmount;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBAuthorisation1;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.*;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent3DataSCASupportData;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent4DataSCASupportData;
 
 /**
  * Test data factory for the various "OBWriteInternationalStandingOrderConsent" classes.
@@ -67,6 +70,12 @@ public class OBWriteInternationalStandingOrderConsentTestDataFactory {
                 .risk(aValidOBRisk1());
     }
 
+    public static OBWriteInternationalStandingOrderConsent6 aValidOBWriteInternationalStandingOrderConsent6() {
+        return (new OBWriteInternationalStandingOrderConsent6())
+                .data(aValidOBWriteInternationalStandingOrderConsent6Data())
+                .risk(aValidOBRisk1());
+    }
+
     public static OBWriteDataInternationalStandingOrderConsent2 aValidOBWriteDataInternationalStandingOrderConsent2() {
         return (new OBWriteDataInternationalStandingOrderConsent2())
                 .permission(OBExternalPermissions2Code.CREATE)
@@ -94,7 +103,16 @@ public class OBWriteInternationalStandingOrderConsentTestDataFactory {
                 .permission(OBWriteInternationalStandingOrderConsent5Data.PermissionEnum.CREATE)
                 .initiation(aValidOBWriteInternationalStandingOrder4DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
-                .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
+                .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
+    }
+
+    public static OBWriteInternationalStandingOrderConsent6Data aValidOBWriteInternationalStandingOrderConsent6Data() {
+        return (new OBWriteInternationalStandingOrderConsent6Data())
+                .permission(OBWriteInternationalStandingOrderConsent6Data.PermissionEnum.CREATE)
+                .initiation(aValidOBWriteInternationalStandingOrder4DataInitiation())
+                .authorisation(aValidOBWriteDomesticConsent4DataAuthorisation())
+                .scASupportData(aValidOBWriteDomesticConsent4DataSCASupportData())
+                .readRefundAccount(OBWriteInternationalStandingOrderConsent6Data.ReadRefundAccountEnum.NO);
     }
 
     public static OBInternationalStandingOrder2 aValidOBInternationalStandingOrder2() {
