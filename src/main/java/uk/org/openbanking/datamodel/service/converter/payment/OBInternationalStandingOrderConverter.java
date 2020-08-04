@@ -131,6 +131,23 @@ public class OBInternationalStandingOrderConverter {
                 .supplementaryData(obInternationalStandingOrder3.getSupplementaryData());
     }
 
+    public static OBInternationalStandingOrder3 toOBInternationalStandingOrder3(OBInternationalStandingOrder1 initiation) {
+        return initiation == null ? null : (new OBInternationalStandingOrder3())
+                .frequency(initiation.getFrequency())
+                .reference(initiation.getReference())
+                .numberOfPayments(initiation.getNumberOfPayments())
+                .firstPaymentDateTime(initiation.getFirstPaymentDateTime())
+                .finalPaymentDateTime(initiation.getFinalPaymentDateTime())
+                .purpose(initiation.getPurpose())
+                .chargeBearer(initiation.getChargeBearer())
+                .currencyOfTransfer(initiation.getCurrencyOfTransfer())
+                .instructedAmount(toOBDomestic2InstructedAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccountDebtor4(initiation.getDebtorAccount()))
+                .creditor(initiation.getCreditor())
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification6(initiation.getCreditorAgent()))
+                .creditorAccount(toOBCashAccountCreditor3(initiation.getCreditorAccount()))
+                .supplementaryData(null);
+    }
 
     public static OBInternationalStandingOrder1 toOBInternationalStandingOrder1(OBWriteInternationalStandingOrder4DataInitiation initiation) {
         return initiation == null ? null : (new OBInternationalStandingOrder1())

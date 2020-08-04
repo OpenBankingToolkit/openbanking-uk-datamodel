@@ -23,8 +23,10 @@ package uk.org.openbanking.datamodel.service.converter.payment;
 import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBAuthorisation1;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBDomestic1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBDomestic2;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBWriteDomestic2DataInitiation;
 
 public class OBWriteDomesticConsentConverter {
 
@@ -32,6 +34,12 @@ public class OBWriteDomesticConsentConverter {
         return (new OBWriteDomesticConsent1())
                 .data(toOBWriteDataDomesticConsent1(obWriteDomesticConsent2.getData()))
                 .risk(obWriteDomesticConsent2.getRisk());
+    }
+
+    public static OBWriteDomesticConsent1 toOBWriteDomesticConsent1(OBWriteDomesticConsent4 domesticConsent4) {
+        return domesticConsent4 == null ? null : (new OBWriteDomesticConsent1())
+                .data(toOBWriteDataDomesticConsent1(domesticConsent4.getData()))
+                .risk(domesticConsent4.getRisk());
     }
 
     public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent1 obWriteDomesticConsent1) {
@@ -43,6 +51,24 @@ public class OBWriteDomesticConsentConverter {
     public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent3 obWriteDomesticConsent3) {
         return (new OBWriteDomesticConsent2())
                 .data(toOBWriteDataDomesticConsent2(obWriteDomesticConsent3.getData()))
+                .risk(obWriteDomesticConsent3.getRisk());
+    }
+
+    public static OBWriteDomesticConsent4 toOBWriteDomesticConsent4(OBWriteDomesticConsent1 obWriteDomesticConsent1) {
+        return (new OBWriteDomesticConsent4())
+                .data(toOBWriteDomesticConsent4Data(obWriteDomesticConsent1.getData()))
+                .risk(obWriteDomesticConsent1.getRisk());
+    }
+
+    public static OBWriteDomesticConsent4 toOBWriteDomesticConsent4(OBWriteDomesticConsent2 obWriteDomesticConsent2) {
+        return (new OBWriteDomesticConsent4())
+                .data(toOBWriteDomesticConsent4Data(obWriteDomesticConsent2.getData()))
+                .risk(obWriteDomesticConsent2.getRisk());
+    }
+
+    public static OBWriteDomesticConsent4 toOBWriteDomesticConsent4(OBWriteDomesticConsent3 obWriteDomesticConsent3) {
+        return obWriteDomesticConsent3 == null ? null : (new OBWriteDomesticConsent4())
+                .data(toOBWriteDomesticConsent4Data(obWriteDomesticConsent3.getData()))
                 .risk(obWriteDomesticConsent3.getRisk());
     }
 
@@ -58,10 +84,31 @@ public class OBWriteDomesticConsentConverter {
                 .authorisation(data.getAuthorisation());
     }
 
+    public static OBWriteDataDomesticConsent1 toOBWriteDataDomesticConsent1(OBWriteDomesticConsent4Data data) {
+        return data == null ? null : (new OBWriteDataDomesticConsent1())
+                .initiation(toOBDomestic1(data.getInitiation()))
+                .authorisation(toOBAuthorisation1(data.getAuthorisation()));
+    }
+
     public static OBWriteDataDomesticConsent2 toOBWriteDataDomesticConsent2(OBWriteDataDomesticConsent1 data) {
         return data == null ? null : (new OBWriteDataDomesticConsent2())
                 .initiation(toOBDomestic2(data.getInitiation()))
                 .authorisation(data.getAuthorisation());
+    }
+
+    public static OBWriteDomesticConsent4Data toOBWriteDomesticConsent4Data(OBWriteDataDomesticConsent2 data) {
+        return data == null ? null : (new OBWriteDomesticConsent4Data())
+                .readRefundAccount(null)
+                .initiation(toOBWriteDomestic2DataInitiation(data.getInitiation()))
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(null);
+    }
+
+    public static OBWriteDomesticConsent4Data toOBWriteDomesticConsent4Data(OBWriteDomesticConsent3Data data) {
+        return data == null ? null : (new OBWriteDomesticConsent4Data())
+                .initiation(data.getInitiation())
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(toOBWriteDomesticConsent4DataSCASupportData(data.getScASupportData()));
     }
 
     public static OBWriteDataDomesticConsent2 toOBWriteDataDomesticConsent2(OBWriteDomesticConsent3Data data) {
@@ -70,9 +117,31 @@ public class OBWriteDomesticConsentConverter {
                 .authorisation(toOBAuthorisation1(data.getAuthorisation()));
     }
 
+    public static OBWriteDomesticConsent4Data toOBWriteDomesticConsent4Data(OBWriteDataDomesticConsent1 data) {
+        return data == null ? null : (new OBWriteDomesticConsent4Data())
+                .readRefundAccount(null)
+                .initiation(toOBWriteDomestic2DataInitiation(data.getInitiation()))
+                .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
+                .scASupportData(null);
+    }
+
     public static OBWriteDataDomestic2 toOBWriteDataDomestic2(OBWriteDataDomestic1 data) {
         return data == null ? null : (new OBWriteDataDomestic2())
                 .consentId(data.getConsentId())
                 .initiation(toOBDomestic2(data.getInitiation()));
+    }
+
+    public static OBWriteDomesticConsent4DataSCASupportData toOBWriteDomesticConsent4DataSCASupportData(OBWriteDomesticConsent3DataSCASupportData scASupportData) {
+        return scASupportData == null ? null : (new OBWriteDomesticConsent4DataSCASupportData())
+                .requestedSCAExemptionType(OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum.valueOf(scASupportData.getRequestedSCAExemptionType().name()))
+                .appliedAuthenticationApproach(OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum.valueOf(scASupportData.getAppliedAuthenticationApproach().name()))
+                .referencePaymentOrderId(scASupportData.getReferencePaymentOrderId());
+    }
+
+    public static OBWriteDomesticConsent3DataSCASupportData toOBWriteDomesticConsent3DataSCASupportData(OBWriteDomesticConsent4DataSCASupportData scASupportData) {
+        return scASupportData == null ? null : (new OBWriteDomesticConsent3DataSCASupportData())
+                .requestedSCAExemptionType(OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum.valueOf(scASupportData.getRequestedSCAExemptionType().name()))
+                .appliedAuthenticationApproach(OBWriteDomesticConsent3DataSCASupportData.AppliedAuthenticationApproachEnum.valueOf(scASupportData.getAppliedAuthenticationApproach().name()))
+                .referencePaymentOrderId(scASupportData.getReferencePaymentOrderId());
     }
 }

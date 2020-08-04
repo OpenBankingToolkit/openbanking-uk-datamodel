@@ -59,6 +59,18 @@ public class OBDomesticConverter {
                 .supplementaryData(null);
     }
 
+    public static OBDomestic1 toOBDomestic1(OBWriteDomestic2DataInitiation initiation) {
+        return initiation == null ? null : (new OBDomestic1())
+                .instructionIdentification(initiation.getInstructionIdentification())
+                .endToEndIdentification(initiation.getEndToEndIdentification())
+                .localInstrument(initiation.getLocalInstrument())
+                .instructedAmount(toOBActiveOrHistoricCurrencyAndAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .creditorAccount(toOBCashAccount3(initiation.getCreditorAccount()))
+                .creditorPostalAddress(initiation.getCreditorPostalAddress())
+                .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()));
+    }
+
     public static OBDomestic2 toOBDomestic2(OBWriteDomestic2DataInitiation initiation) {
         return initiation == null ? null : (new OBDomestic2())
                 .instructionIdentification(initiation.getInstructionIdentification())
@@ -83,5 +95,18 @@ public class OBDomesticConverter {
                 .creditorPostalAddress(obDomestic2.getCreditorPostalAddress())
                 .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(obDomestic2.getRemittanceInformation()))
                 .supplementaryData(obDomestic2.getSupplementaryData());
+    }
+
+    public static OBWriteDomestic2DataInitiation toOBWriteDomestic2DataInitiation(OBDomestic1 initiation) {
+        return initiation == null ? null : (new OBWriteDomestic2DataInitiation())
+                .instructionIdentification(initiation.getInstructionIdentification())
+                .endToEndIdentification(initiation.getEndToEndIdentification())
+                .localInstrument(initiation.getLocalInstrument())
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(initiation.getDebtorAccount()))
+                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(initiation.getCreditorAccount()))
+                .creditorPostalAddress(initiation.getCreditorPostalAddress())
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(initiation.getRemittanceInformation()))
+                .supplementaryData(null);
     }
 }
