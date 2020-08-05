@@ -126,7 +126,7 @@ public class OBWriteInternationalScheduledConsentConverter {
 
     public static OBWriteDataInternationalScheduledConsent1 toOBWriteDataInternationalScheduledConsent1(OBWriteInternationalScheduledConsent5Data data) {
         return data == null ? null : (new OBWriteDataInternationalScheduledConsent1())
-                .permission(OBExternalPermissions2Code.valueOf(data.getPermission().name()))
+                .permission(toOBExternalPermissions2Code(data.getPermission()))
                 .initiation(toOBInternationalScheduled1(data.getInitiation()))
                 .authorisation(toOBAuthorisation1(data.getAuthorisation()));
     }
@@ -140,7 +140,7 @@ public class OBWriteInternationalScheduledConsentConverter {
 
     public static OBWriteInternationalScheduledConsent4Data toOBWriteInternationalScheduledConsent4Data(OBWriteDataInternationalScheduledConsent1 data) {
         return data == null ? null : (new OBWriteInternationalScheduledConsent4Data())
-                .permission(toPermissionEnum(data.getPermission()))
+                .permission(toOBWriteInternationalScheduledConsent4DataPermission(data.getPermission()))
                 .initiation(toOBWriteInternationalScheduled3DataInitiation(data.getInitiation()))
                 .authorisation(toOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()))
                 .scASupportData(null);
@@ -148,7 +148,7 @@ public class OBWriteInternationalScheduledConsentConverter {
 
     public static OBWriteInternationalScheduledConsent4Data toOBWriteInternationalScheduledConsent4Data(OBWriteDataInternationalScheduledConsent2 data) {
         return data == null ? null : (new OBWriteInternationalScheduledConsent4Data())
-                .permission(toPermissionEnum(data.getPermission()))
+                .permission(toOBWriteInternationalScheduledConsent4DataPermission(data.getPermission()))
                 .initiation(toOBWriteInternationalScheduled3DataInitiation(data.getInitiation()))
                 .authorisation(toOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()))
                 .scASupportData(null);
@@ -156,7 +156,7 @@ public class OBWriteInternationalScheduledConsentConverter {
 
     public static OBWriteInternationalScheduledConsent5Data toOBWriteInternationalScheduledConsent5Data(OBWriteDataInternationalScheduledConsent1 data) {
         return data == null ? null : (new OBWriteInternationalScheduledConsent5Data())
-                .permission(OBWriteInternationalScheduledConsent5Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .permission(toOBWriteInternationalScheduledConsent5DataPermission(data.getPermission()))
                 .readRefundAccount(null)
                 .initiation(toOBWriteInternationalScheduled3DataInitiation(data.getInitiation()))
                 .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
@@ -165,7 +165,7 @@ public class OBWriteInternationalScheduledConsentConverter {
 
     public static OBWriteInternationalScheduledConsent5Data toOBWriteInternationalScheduledConsent5Data(OBWriteDataInternationalScheduledConsent2 data) {
         return data == null ? null : (new OBWriteInternationalScheduledConsent5Data())
-                .permission(OBWriteInternationalScheduledConsent5Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .permission(toOBWriteInternationalScheduledConsent5DataPermission(data.getPermission()))
                 .readRefundAccount(null)
                 .initiation(toOBWriteInternationalScheduled3DataInitiation(data.getInitiation()))
                 .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
@@ -174,15 +174,11 @@ public class OBWriteInternationalScheduledConsentConverter {
 
     public static OBWriteInternationalScheduledConsent5Data toOBWriteInternationalScheduledConsent5Data(OBWriteInternationalScheduledConsent4Data data) {
         return data == null ? null : (new OBWriteInternationalScheduledConsent5Data())
-                .permission(OBWriteInternationalScheduledConsent5Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .permission(toOBWriteInternationalScheduledConsent5DataPermission(data.getPermission()))
                 .readRefundAccount(null)
                 .initiation(data.getInitiation())
                 .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
                 .scASupportData(toOBWriteDomesticConsent4DataSCASupportData(data.getScASupportData()));
-    }
-
-    public static OBWriteInternationalScheduledConsent4Data.PermissionEnum toPermissionEnum(OBExternalPermissions2Code permission) {
-        return permission == null ? null : OBWriteInternationalScheduledConsent4Data.PermissionEnum.valueOf(permission.name());
     }
 
     public static OBExternalPermissions2Code toOBExternalPermissions2Code(OBWriteInternationalScheduledConsent4Data.PermissionEnum permission) {
@@ -191,5 +187,17 @@ public class OBWriteInternationalScheduledConsentConverter {
 
     public static OBExternalPermissions2Code toOBExternalPermissions2Code(OBWriteInternationalScheduledConsent5Data.PermissionEnum permission) {
         return permission == null ? null : OBExternalPermissions2Code.valueOf(permission.name());
+    }
+
+    public static OBWriteInternationalScheduledConsent4Data.PermissionEnum toOBWriteInternationalScheduledConsent4DataPermission(OBExternalPermissions2Code permission) {
+        return permission == null ? null : OBWriteInternationalScheduledConsent4Data.PermissionEnum.valueOf(permission.name());
+    }
+
+    public static OBWriteInternationalScheduledConsent5Data.PermissionEnum toOBWriteInternationalScheduledConsent5DataPermission(OBExternalPermissions2Code permission) {
+        return permission == null ? null : OBWriteInternationalScheduledConsent5Data.PermissionEnum.valueOf(permission.name());
+    }
+
+    public static OBWriteInternationalScheduledConsent5Data.PermissionEnum toOBWriteInternationalScheduledConsent5DataPermission(OBWriteInternationalScheduledConsent4Data.PermissionEnum permission) {
+        return permission == null ? null : OBWriteInternationalScheduledConsent5Data.PermissionEnum.valueOf(permission.name());
     }
 }

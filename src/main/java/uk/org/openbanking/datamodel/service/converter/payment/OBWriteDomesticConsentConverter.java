@@ -131,17 +131,33 @@ public class OBWriteDomesticConsentConverter {
                 .initiation(toOBDomestic2(data.getInitiation()));
     }
 
-    public static OBWriteDomesticConsent4DataSCASupportData toOBWriteDomesticConsent4DataSCASupportData(OBWriteDomesticConsent3DataSCASupportData scASupportData) {
-        return scASupportData == null ? null : (new OBWriteDomesticConsent4DataSCASupportData())
-                .requestedSCAExemptionType(OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum.valueOf(scASupportData.getRequestedSCAExemptionType().name()))
-                .appliedAuthenticationApproach(OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum.valueOf(scASupportData.getAppliedAuthenticationApproach().name()))
+    public static OBWriteDomesticConsent3DataSCASupportData toOBWriteDomesticConsent3DataSCASupportData(OBWriteDomesticConsent4DataSCASupportData scASupportData) {
+        return scASupportData == null ? null : (new OBWriteDomesticConsent3DataSCASupportData())
+                .requestedSCAExemptionType(toRequestedSCAExemptionType(scASupportData.getRequestedSCAExemptionType()))
+                .appliedAuthenticationApproach(toAppliedAuthenticationApproach(scASupportData.getAppliedAuthenticationApproach()))
                 .referencePaymentOrderId(scASupportData.getReferencePaymentOrderId());
     }
 
-    public static OBWriteDomesticConsent3DataSCASupportData toOBWriteDomesticConsent3DataSCASupportData(OBWriteDomesticConsent4DataSCASupportData scASupportData) {
-        return scASupportData == null ? null : (new OBWriteDomesticConsent3DataSCASupportData())
-                .requestedSCAExemptionType(OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum.valueOf(scASupportData.getRequestedSCAExemptionType().name()))
-                .appliedAuthenticationApproach(OBWriteDomesticConsent3DataSCASupportData.AppliedAuthenticationApproachEnum.valueOf(scASupportData.getAppliedAuthenticationApproach().name()))
+    public static OBWriteDomesticConsent4DataSCASupportData toOBWriteDomesticConsent4DataSCASupportData(OBWriteDomesticConsent3DataSCASupportData scASupportData) {
+        return scASupportData == null ? null : (new OBWriteDomesticConsent4DataSCASupportData())
+                .requestedSCAExemptionType(toRequestedSCAExemptionType(scASupportData.getRequestedSCAExemptionType()))
+                .appliedAuthenticationApproach(toAppliedAuthenticationApproach(scASupportData.getAppliedAuthenticationApproach()))
                 .referencePaymentOrderId(scASupportData.getReferencePaymentOrderId());
+    }
+
+    public static OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum toRequestedSCAExemptionType(OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+        return requestedSCAExemptionType == null ? null : OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum.valueOf(requestedSCAExemptionType.name());
+    }
+
+    public static OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum toRequestedSCAExemptionType(OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+        return requestedSCAExemptionType == null ? null : OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum.valueOf(requestedSCAExemptionType.name());
+    }
+
+    public static OBWriteDomesticConsent3DataSCASupportData.AppliedAuthenticationApproachEnum toAppliedAuthenticationApproach(OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+        return appliedAuthenticationApproach == null ? null : OBWriteDomesticConsent3DataSCASupportData.AppliedAuthenticationApproachEnum.valueOf(appliedAuthenticationApproach.name());
+    }
+
+    public static OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum toAppliedAuthenticationApproach(OBWriteDomesticConsent3DataSCASupportData.AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+        return appliedAuthenticationApproach == null ? null : OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum.valueOf(appliedAuthenticationApproach.name());
     }
 }

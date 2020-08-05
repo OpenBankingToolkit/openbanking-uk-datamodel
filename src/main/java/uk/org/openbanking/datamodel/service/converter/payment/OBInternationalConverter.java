@@ -123,7 +123,7 @@ public class OBInternationalConverter {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(OBWriteInternational3DataInitiation.InstructionPriorityEnum.valueOf(initiation.getInstructionPriority().name()))
+                .instructionPriority(toOBWriteInternational3DataInitiationInstructionPriorityEnum(initiation.getInstructionPriority()))
                 .purpose(initiation.getPurpose())
                 .extendedPurpose(null)
                 .chargeBearer(initiation.getChargeBearer())
