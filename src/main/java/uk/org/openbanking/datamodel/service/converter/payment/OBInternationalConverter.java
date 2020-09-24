@@ -20,10 +20,12 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
+import uk.org.openbanking.datamodel.account.OBCashAccount3;
 import uk.org.openbanking.datamodel.payment.OBInternational1;
 import uk.org.openbanking.datamodel.payment.OBInternational2;
 import uk.org.openbanking.datamodel.payment.OBWriteInternational3DataInitiation;
 
+import static uk.org.openbanking.datamodel.service.converter.payment.CountryCodeHelper.determineCountryCode;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccount3;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationCreditorAccount;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationDebtorAccount;
@@ -41,8 +43,6 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanc
 import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
 public class OBInternationalConverter {
-
-    private static String DEFAULT_COUNTRY_CODE = "GB";
 
     public static OBInternational1 toOBInternational1(OBInternational2 obInternational2) {
         return obInternational2 == null ? null : (new OBInternational1())
@@ -119,6 +119,7 @@ public class OBInternationalConverter {
     }
 
     public static OBWriteInternational3DataInitiation toOBWriteInternational3DataInitiation(OBInternational1 initiation) {
+        OBCashAccount3 creditorAccount = initiation.getCreditorAccount();
         return initiation == null ? null : (new OBWriteInternational3DataInitiation())
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
@@ -128,7 +129,28 @@ public class OBInternationalConverter {
                 .extendedPurpose(null)
                 .chargeBearer(initiation.getChargeBearer())
                 .currencyOfTransfer(initiation.getCurrencyOfTransfer())
-                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
+                .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(initiation.getInstructedAmount()))
+                .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(initiation.getExchangeRateInformation()))
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(initiation.getDebtorAccount()))
+                .creditor(toOBWriteInternational3DataInitiationCreditor(initiation.getCreditor()))
+                .creditorAgent(toOBWriteInternational3DataInitiationCreditorAgent(initiation.getCreditorAgent()))
+                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(creditorAccount))
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(initiation.getRemittanceInformation()))
+                .supplementaryData(null);
+    }
+
+    public static OBWriteInternational3DataInitiation toOBWriteInternational3DataInitiation(OBInternational2 initiation) {
+        OBCashAccount3 creditorAccount = initiation.getCreditorAccount();
+        return initiation == null ? null : (new OBWriteInternational3DataInitiation())
+                .instructionIdentification(initiation.getInstructionIdentification())
+                .endToEndIdentification(initiation.getEndToEndIdentification())
+                .localInstrument(initiation.getLocalInstrument())
+                .instructionPriority(toOBWriteInternational3DataInitiationInstructionPriorityEnum(initiation.getInstructionPriority()))
+                .purpose(initiation.getPurpose())
+                .chargeBearer(initiation.getChargeBearer())
+                .currencyOfTransfer(initiation.getCurrencyOfTransfer())
+                .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(initiation.getInstructedAmount()))
                 .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(initiation.getExchangeRateInformation()))
                 .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(initiation.getDebtorAccount()))
@@ -136,26 +158,6 @@ public class OBInternationalConverter {
                 .creditorAgent(toOBWriteInternational3DataInitiationCreditorAgent(initiation.getCreditorAgent()))
                 .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(initiation.getCreditorAccount()))
                 .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(initiation.getRemittanceInformation()))
-                .supplementaryData(null);
-    }
-
-    public static OBWriteInternational3DataInitiation toOBWriteInternational3DataInitiation(OBInternational2 obInternational2) {
-        return obInternational2 == null ? null : (new OBWriteInternational3DataInitiation())
-                .instructionIdentification(obInternational2.getInstructionIdentification())
-                .endToEndIdentification(obInternational2.getEndToEndIdentification())
-                .localInstrument(obInternational2.getLocalInstrument())
-                .instructionPriority(toOBWriteInternational3DataInitiationInstructionPriorityEnum(obInternational2.getInstructionPriority()))
-                .purpose(obInternational2.getPurpose())
-                .chargeBearer(obInternational2.getChargeBearer())
-                .currencyOfTransfer(obInternational2.getCurrencyOfTransfer())
-                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
-                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternational2.getInstructedAmount()))
-                .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(obInternational2.getExchangeRateInformation()))
-                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obInternational2.getDebtorAccount()))
-                .creditor(toOBWriteInternational3DataInitiationCreditor(obInternational2.getCreditor()))
-                .creditorAgent(toOBWriteInternational3DataInitiationCreditorAgent(obInternational2.getCreditorAgent()))
-                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(obInternational2.getCreditorAccount()))
-                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(obInternational2.getRemittanceInformation()))
-                .supplementaryData(obInternational2.getSupplementaryData());
+                .supplementaryData(initiation.getSupplementaryData());
     }
 }
