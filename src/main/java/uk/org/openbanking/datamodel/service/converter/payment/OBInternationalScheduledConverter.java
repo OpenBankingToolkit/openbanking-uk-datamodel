@@ -20,10 +20,12 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
+import uk.org.openbanking.datamodel.account.OBCashAccount3;
 import uk.org.openbanking.datamodel.payment.OBInternationalScheduled1;
 import uk.org.openbanking.datamodel.payment.OBInternationalScheduled2;
 import uk.org.openbanking.datamodel.payment.OBWriteInternationalScheduled3DataInitiation;
 
+import static uk.org.openbanking.datamodel.service.converter.payment.CountryCodeHelper.determineCountryCode;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccount3;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationCreditorAccount;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationDebtorAccount;
@@ -41,8 +43,6 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanc
 import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
 public class OBInternationalScheduledConverter {
-
-    private static String DEFAULT_COUNTRY_CODE = "GB";
 
     public static OBInternationalScheduled1 toOBInternationalScheduled1(OBInternationalScheduled2 obInternationalScheduled2) {
         return obInternationalScheduled2 == null ? null : (new OBInternationalScheduled1())
@@ -123,6 +123,7 @@ public class OBInternationalScheduledConverter {
     }
 
     public static OBWriteInternationalScheduled3DataInitiation toOBWriteInternationalScheduled3DataInitiation(OBInternationalScheduled1 obInternationalScheduled1) {
+        OBCashAccount3 creditorAccount = obInternationalScheduled1.getCreditorAccount();
         return obInternationalScheduled1 == null ? null : (new OBWriteInternationalScheduled3DataInitiation())
                 .instructionIdentification(obInternationalScheduled1.getInstructionIdentification())
                 .endToEndIdentification(obInternationalScheduled1.getEndToEndIdentification())
@@ -132,18 +133,19 @@ public class OBInternationalScheduledConverter {
                 .chargeBearer(obInternationalScheduled1.getChargeBearer())
                 .requestedExecutionDateTime(obInternationalScheduled1.getRequestedExecutionDateTime())
                 .currencyOfTransfer(obInternationalScheduled1.getCurrencyOfTransfer())
-                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
+                .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalScheduled1.getInstructedAmount()))
                 .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(obInternationalScheduled1.getExchangeRateInformation()))
                 .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obInternationalScheduled1.getDebtorAccount()))
                 .creditor(toOBWriteInternational3DataInitiationCreditor(obInternationalScheduled1.getCreditor()))
                 .creditorAgent(toOBWriteInternational3DataInitiationCreditorAgent(obInternationalScheduled1.getCreditorAgent()))
-                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(obInternationalScheduled1.getCreditorAccount()))
+                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(creditorAccount))
                 .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(obInternationalScheduled1.getRemittanceInformation()))
                 .supplementaryData(null);
     }
 
     public static OBWriteInternationalScheduled3DataInitiation toOBWriteInternationalScheduled3DataInitiation(OBInternationalScheduled2 obInternationalScheduled2) {
+        OBCashAccount3 creditorAccount = obInternationalScheduled2.getCreditorAccount();
         return obInternationalScheduled2 == null ? null : (new OBWriteInternationalScheduled3DataInitiation())
                 .instructionIdentification(obInternationalScheduled2.getInstructionIdentification())
                 .endToEndIdentification(obInternationalScheduled2.getEndToEndIdentification())
@@ -153,13 +155,13 @@ public class OBInternationalScheduledConverter {
                 .chargeBearer(obInternationalScheduled2.getChargeBearer())
                 .requestedExecutionDateTime(obInternationalScheduled2.getRequestedExecutionDateTime())
                 .currencyOfTransfer(obInternationalScheduled2.getCurrencyOfTransfer())
-                .destinationCountryCode(DEFAULT_COUNTRY_CODE) // to prevent validation error
+                .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalScheduled2.getInstructedAmount()))
                 .exchangeRateInformation(toOBWriteInternational3DataInitiationExchangeRateInformation(obInternationalScheduled2.getExchangeRateInformation()))
                 .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(obInternationalScheduled2.getDebtorAccount()))
                 .creditor(toOBWriteInternational3DataInitiationCreditor(obInternationalScheduled2.getCreditor()))
                 .creditorAgent(toOBWriteInternational3DataInitiationCreditorAgent(obInternationalScheduled2.getCreditorAgent()))
-                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(obInternationalScheduled2.getCreditorAccount()))
+                .creditorAccount(toOBWriteDomestic2DataInitiationCreditorAccount(creditorAccount))
                 .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(obInternationalScheduled2.getRemittanceInformation()))
                 .supplementaryData(obInternationalScheduled2.getSupplementaryData());
     }

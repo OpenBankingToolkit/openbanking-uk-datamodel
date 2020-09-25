@@ -54,6 +54,12 @@ public class OBWriteDomesticConsentConverter {
                 .risk(obWriteDomesticConsent3.getRisk());
     }
 
+    public static OBWriteDomesticConsent2 toOBWriteDomesticConsent2(OBWriteDomesticConsent4 obWriteDomesticConsent4) {
+        return (new OBWriteDomesticConsent2())
+                .data(toOBWriteDataDomesticConsent2(obWriteDomesticConsent4.getData()))
+                .risk(obWriteDomesticConsent4.getRisk());
+    }
+
     public static OBWriteDomesticConsent4 toOBWriteDomesticConsent4(OBWriteDomesticConsent1 obWriteDomesticConsent1) {
         return (new OBWriteDomesticConsent4())
                 .data(toOBWriteDomesticConsent4Data(obWriteDomesticConsent1.getData()))
@@ -94,6 +100,12 @@ public class OBWriteDomesticConsentConverter {
         return data == null ? null : (new OBWriteDataDomesticConsent2())
                 .initiation(toOBDomestic2(data.getInitiation()))
                 .authorisation(data.getAuthorisation());
+    }
+
+    public static OBWriteDataDomesticConsent2 toOBWriteDataDomesticConsent2(OBWriteDomesticConsent4Data data) {
+        return data == null ? null : (new OBWriteDataDomesticConsent2())
+                .initiation(toOBDomestic2(data.getInitiation()))
+                .authorisation(toOBAuthorisation1(data.getAuthorisation()));
     }
 
     public static OBWriteDomesticConsent4Data toOBWriteDomesticConsent4Data(OBWriteDataDomesticConsent2 data) {
