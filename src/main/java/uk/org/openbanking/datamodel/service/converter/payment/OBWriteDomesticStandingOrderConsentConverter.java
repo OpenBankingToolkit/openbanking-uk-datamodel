@@ -46,13 +46,13 @@ public class OBWriteDomesticStandingOrderConsentConverter {
 
     public static OBWriteDomesticStandingOrder3 toOBWriteDomesticStandingOrder3(OBWriteDomesticStandingOrder1 obWriteDomesticStandingOrder1) {
         return (new OBWriteDomesticStandingOrder3())
-                .data(toOBWriteDataDomesticStandingOrder3(obWriteDomesticStandingOrder1.getData()))
+                .data(toOBWriteDomesticStandingOrder3Data(obWriteDomesticStandingOrder1.getData()))
                 .risk(obWriteDomesticStandingOrder1.getRisk());
     }
 
     public static OBWriteDomesticStandingOrder3 toOBWriteDomesticStandingOrder3(OBWriteDomesticStandingOrder2 obWriteDomesticStandingOrder2) {
         return (new OBWriteDomesticStandingOrder3())
-                .data(toOBWriteDataDomesticStandingOrder3(obWriteDomesticStandingOrder2.getData()))
+                .data(toOBWriteDomesticStandingOrder3Data(obWriteDomesticStandingOrder2.getData()))
                 .risk(obWriteDomesticStandingOrder2.getRisk());
     }
 
@@ -157,6 +157,18 @@ public class OBWriteDomesticStandingOrderConsentConverter {
         return data == null ? null : (new OBWriteDataDomesticStandingOrder3())
                 .consentId(data.getConsentId())
                 .initiation(toOBDomesticStandingOrder3(data.getInitiation()));
+    }
+
+    public static OBWriteDomesticStandingOrder3Data toOBWriteDomesticStandingOrder3Data(OBWriteDataDomesticStandingOrder1 data) {
+        return data == null ? null : (new OBWriteDomesticStandingOrder3Data())
+                .consentId(data.getConsentId())
+                .initiation(toOBWriteDomesticStandingOrder3DataInitiation(data.getInitiation()));
+    }
+
+    public static OBWriteDomesticStandingOrder3Data toOBWriteDomesticStandingOrder3Data(OBWriteDataDomesticStandingOrder2 data) {
+        return data == null ? null : (new OBWriteDomesticStandingOrder3Data())
+                .consentId(data.getConsentId())
+                .initiation(toOBWriteDomesticStandingOrder3DataInitiation(data.getInitiation()));
     }
 
     public static OBWriteDataDomesticStandingOrder3 toOBWriteDataDomesticStandingOrder3(OBWriteDataDomesticStandingOrder2 data) {

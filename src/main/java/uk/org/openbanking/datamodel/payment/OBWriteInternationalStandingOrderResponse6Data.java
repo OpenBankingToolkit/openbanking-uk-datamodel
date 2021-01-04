@@ -49,7 +49,7 @@ import java.util.Objects;
 /**
  * OBWriteInternationalStandingOrderResponse6Data
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-19T14:14:13.501+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-19T14:14:13.501+01:00", comments = "updated at 2020-12-23T13:31:35.768Z")
 public class OBWriteInternationalStandingOrderResponse6Data {
     @JsonProperty("InternationalStandingOrderId")
     private String internationalStandingOrderId = null;
@@ -106,7 +106,7 @@ public class OBWriteInternationalStandingOrderResponse6Data {
     private DateTime statusUpdateDateTime = null;
 
     @JsonProperty("Refund")
-    private OBWriteInternationalRefundResponse1DataRefund refund = null;
+    private OBWriteInternationalResponse4DataRefund refund = null;
 
     @JsonProperty("Charges")
     private List<OBWriteDomesticConsentResponse4DataCharges> charges = null;
@@ -221,7 +221,7 @@ public class OBWriteInternationalStandingOrderResponse6Data {
         this.statusUpdateDateTime = statusUpdateDateTime;
     }
 
-    public OBWriteInternationalStandingOrderResponse6Data refund(OBWriteInternationalRefundResponse1DataRefund refund) {
+    public OBWriteInternationalStandingOrderResponse6Data refund(OBWriteInternationalResponse4DataRefund refund) {
         this.refund = refund;
         return this;
     }
@@ -233,11 +233,11 @@ public class OBWriteInternationalStandingOrderResponse6Data {
      **/
     @Valid
     @ApiModelProperty(value = "")
-    public OBWriteInternationalRefundResponse1DataRefund getRefund() {
+    public OBWriteInternationalResponse4DataRefund getRefund() {
         return refund;
     }
 
-    public void setRefund(OBWriteInternationalRefundResponse1DataRefund refund) {
+    public void setRefund(OBWriteInternationalResponse4DataRefund refund) {
         this.refund = refund;
     }
 
