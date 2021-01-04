@@ -46,12 +46,12 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-23T11:45:43.255+01:00")
 public class OBWriteDomesticStandingOrder3 {
     @JsonProperty("Data")
-    private OBWriteDataDomesticStandingOrder3 data = null;
+    private OBWriteDomesticStandingOrder3Data data = null;
 
     @JsonProperty("Risk")
     private OBRisk1 risk = null;
 
-    public OBWriteDomesticStandingOrder3 data(OBWriteDataDomesticStandingOrder3 data) {
+    public OBWriteDomesticStandingOrder3 data(OBWriteDomesticStandingOrder3Data data) {
         this.data = data;
         return this;
     }
@@ -64,11 +64,11 @@ public class OBWriteDomesticStandingOrder3 {
     @NotNull
     @Valid
     @ApiModelProperty(required = true, value = "")
-    public OBWriteDataDomesticStandingOrder3 getData() {
+    public OBWriteDomesticStandingOrder3Data getData() {
         return data;
     }
 
-    public void setData(OBWriteDataDomesticStandingOrder3 data) {
+    public void setData(OBWriteDomesticStandingOrder3Data data) {
         this.data = data;
     }
 
