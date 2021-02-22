@@ -52,7 +52,7 @@
         <javax.el.version>3.0.1-b11</javax.el.version>
         <jaxb.javax.version>2.2</jaxb.javax.version>
         <!-- test -->
-        <junit.version>4.13.1</junit.version>
+        <junit.version>4.13.2</junit.version>
         <!-- plugins -->
         <license-maven-plugin.version>3.0</license-maven-plugin.version>
         <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
