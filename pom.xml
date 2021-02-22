@@ -47,7 +47,7 @@
         <jodatime.version>2.9.9</jodatime.version>
         <javax.validation>2.0.1.Final</javax.validation>
         <jackson-databind.version>2.9.10.7</jackson-databind.version>
-        <assertj.core.version>3.17.2</assertj.core.version>
+        <assertj.core.version>3.19.0</assertj.core.version>
         <hibernate.validator.version>5.2.4.Final</hibernate.validator.version>
         <javax.el.version>3.0.1-b11</javax.el.version>
         <jaxb.javax.version>2.2</jaxb.javax.version>
