@@ -42,7 +42,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- libraries -->
-        <springfox-version>2.9.2</springfox-version>
+        <springfox-version>3.0.0</springfox-version>
         <javax.annotations.version>1.3.2</javax.annotations.version>
         <jodatime.version>2.9.9</jodatime.version>
         <javax.validation>2.0.1.Final</javax.validation>
