@@ -28,6 +28,7 @@ import io.swagger.annotations.ApiModel;
         use = JsonTypeInfo.Id.NAME
 )
 @JsonSubTypes({
+        @JsonSubTypes.Type(value = GenericOBDiscoveryAPILinks.class, name = "GenericOBDiscoveryAPILinks"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksAccount1.class, name = "OBDiscoveryAPILinksAccount1"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksAccount2.class, name = "OBDiscoveryAPILinksAccount2"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksAccount3.class, name = "OBDiscoveryAPILinksAccount3"),
