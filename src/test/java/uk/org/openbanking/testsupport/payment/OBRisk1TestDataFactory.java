@@ -46,7 +46,7 @@ public class OBRisk1TestDataFactory {
                 .streetName("Queen Square")
                 .townName("Bristol")
                 .country("GB")
-                .countrySubDivision(Collections.singletonList("en"))
+                .countrySubDivision("en")
                 .postCode("BS1 1AA");
     }
 }
