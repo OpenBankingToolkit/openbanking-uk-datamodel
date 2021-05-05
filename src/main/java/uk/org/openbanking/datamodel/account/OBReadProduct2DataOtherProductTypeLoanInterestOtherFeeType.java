@@ -38,58 +38,82 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account.
+ * Other fee type code which is not available in the standard code set
  */
-@ApiModel(description = "Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account.")
+@ApiModel(description = "Other fee type code which is not available in the standard code set")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-05T09:20:17.613+01:00")
-public class OBBranchAndFinancialInstitutionIdentification51 {
-    @JsonProperty("Identification")
-    private String identification = null;
+public class OBReadProduct2DataOtherProductTypeLoanInterestOtherFeeType {
+    @JsonProperty("Code")
+    private String code = null;
 
-    @JsonProperty("SchemeName")
-    private String schemeName = null;
+    @JsonProperty("Description")
+    private String description = null;
 
-    public OBBranchAndFinancialInstitutionIdentification51 identification(String identification) {
-        this.identification = identification;
+    @JsonProperty("Name")
+    private String name = null;
+
+    public OBReadProduct2DataOtherProductTypeLoanInterestOtherFeeType code(String code) {
+        this.code = code;
         return this;
     }
 
     /**
-     * Get identification
-     * @return identification
+     * Get code
+     * @return code
      **/
-    @NotNull
-    @Size(min = 1, max = 35)
-    @ApiModelProperty(required = true, value = "")
-    public String getIdentification() {
-        return identification;
+    @Pattern(regexp = "^\\w{0,4}$")
+    @ApiModelProperty(value = "")
+    public String getCode() {
+        return code;
     }
 
-    public void setIdentification(String identification) {
-        this.identification = identification;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public OBBranchAndFinancialInstitutionIdentification51 schemeName(String schemeName) {
-        this.schemeName = schemeName;
+    public OBReadProduct2DataOtherProductTypeLoanInterestOtherFeeType description(String description) {
+        this.description = description;
         return this;
     }
 
     /**
-     * Get schemeName
-     * @return schemeName
+     * Get description
+     * @return description
      **/
     @NotNull
+    @Size(min = 1, max = 350)
     @ApiModelProperty(required = true, value = "")
-    public String getSchemeName() {
-        return schemeName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSchemeName(String schemeName) {
-        this.schemeName = schemeName;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public OBReadProduct2DataOtherProductTypeLoanInterestOtherFeeType name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Get name
+     * @return name
+     **/
+    @NotNull
+    @Size(min = 1, max = 70)
+    @ApiModelProperty(required = true, value = "")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 
@@ -101,24 +125,26 @@ public class OBBranchAndFinancialInstitutionIdentification51 {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OBBranchAndFinancialInstitutionIdentification51 obBranchAndFinancialInstitutionIdentification51 = (OBBranchAndFinancialInstitutionIdentification51) o;
-        return Objects.equals(this.identification, obBranchAndFinancialInstitutionIdentification51.identification) &&
-                Objects.equals(this.schemeName, obBranchAndFinancialInstitutionIdentification51.schemeName);
+        OBReadProduct2DataOtherProductTypeLoanInterestOtherFeeType obReadProduct2DataOtherProductTypeLoanInterestOtherFeeType = (OBReadProduct2DataOtherProductTypeLoanInterestOtherFeeType) o;
+        return Objects.equals(this.code, obReadProduct2DataOtherProductTypeLoanInterestOtherFeeType.code) &&
+                Objects.equals(this.description, obReadProduct2DataOtherProductTypeLoanInterestOtherFeeType.description) &&
+                Objects.equals(this.name, obReadProduct2DataOtherProductTypeLoanInterestOtherFeeType.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(identification, schemeName);
+        return Objects.hash(code, description, name);
     }
 
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class OBBranchAndFinancialInstitutionIdentification51 {\n");
+        sb.append("class OBReadProduct2DataOtherProductTypeLoanInterestOtherFeeType {\n");
 
-        sb.append("    identification: ").append(toIndentedString(identification)).append("\n");
-        sb.append("    schemeName: ").append(toIndentedString(schemeName)).append("\n");
+        sb.append("    code: ").append(toIndentedString(code)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

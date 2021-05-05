@@ -39,94 +39,94 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-25T23:06:46.214+01:00")
 
 public class OBEquivalentAmount {
-  @JsonProperty("Amount")
-  private OBActiveOrHistoricCurrencyAndAmount amount = null;
+    @JsonProperty("Amount")
+    private OBActiveOrHistoricCurrencyAndAmount amount = null;
 
-  @JsonProperty("CurrencyOfTransfer")
-  private String currencyOfTransfer = null;
+    @JsonProperty("CurrencyOfTransfer")
+    private String currencyOfTransfer = null;
 
-  public OBEquivalentAmount amount(OBActiveOrHistoricCurrencyAndAmount amount) {
-    this.amount = amount;
-    return this;
-  }
-
-  /**
-   * Get amount
-   * @return amount
-  **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-
-  public OBActiveOrHistoricCurrencyAndAmount getAmount() {
-    return amount;
-  }
-
-  public void setAmount(OBActiveOrHistoricCurrencyAndAmount amount) {
-    this.amount = amount;
-  }
-
-  public OBEquivalentAmount currencyOfTransfer(String currencyOfTransfer) {
-    this.currencyOfTransfer = currencyOfTransfer;
-    return this;
-  }
-
-  /**
-   * Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account.
-   * @return currencyOfTransfer
-  **/
-  @ApiModelProperty(required = true, value = "Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account.")
-  @NotNull
-
-@Pattern(regexp="^[A-Z]{3,3}$") 
-  public String getCurrencyOfTransfer() {
-    return currencyOfTransfer;
-  }
-
-  public void setCurrencyOfTransfer(String currencyOfTransfer) {
-    this.currencyOfTransfer = currencyOfTransfer;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public OBEquivalentAmount amount(OBActiveOrHistoricCurrencyAndAmount amount) {
+        this.amount = amount;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get amount
+     * @return amount
+     **/
+    @ApiModelProperty(required = true, value = "")
+    @NotNull
+
+    @Valid
+
+    public OBActiveOrHistoricCurrencyAndAmount getAmount() {
+        return amount;
     }
-    OBEquivalentAmount obTransaction2EquivalentAmount = (OBEquivalentAmount) o;
-    return Objects.equals(this.amount, obTransaction2EquivalentAmount.amount) &&
-        Objects.equals(this.currencyOfTransfer, obTransaction2EquivalentAmount.currencyOfTransfer);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(amount, currencyOfTransfer);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OBEquivalentAmount {\n");
-
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    currencyOfTransfer: ").append(toIndentedString(currencyOfTransfer)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setAmount(OBActiveOrHistoricCurrencyAndAmount amount) {
+        this.amount = amount;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public OBEquivalentAmount currencyOfTransfer(String currencyOfTransfer) {
+        this.currencyOfTransfer = currencyOfTransfer;
+        return this;
+    }
+
+    /**
+     * Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account.
+     * @return currencyOfTransfer
+     **/
+    @ApiModelProperty(required = true, value = "Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account.")
+    @NotNull
+
+    @Pattern(regexp = "^[A-Z]{3,3}$")
+    public String getCurrencyOfTransfer() {
+        return currencyOfTransfer;
+    }
+
+    public void setCurrencyOfTransfer(String currencyOfTransfer) {
+        this.currencyOfTransfer = currencyOfTransfer;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        OBEquivalentAmount obTransaction2EquivalentAmount = (OBEquivalentAmount) o;
+        return Objects.equals(this.amount, obTransaction2EquivalentAmount.amount) &&
+                Objects.equals(this.currencyOfTransfer, obTransaction2EquivalentAmount.currencyOfTransfer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, currencyOfTransfer);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OBEquivalentAmount {\n");
+
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+        sb.append("    currencyOfTransfer: ").append(toIndentedString(currencyOfTransfer)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 
