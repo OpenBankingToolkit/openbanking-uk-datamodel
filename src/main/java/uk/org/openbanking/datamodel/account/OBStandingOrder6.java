@@ -35,6 +35,7 @@ package uk.org.openbanking.datamodel.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -60,13 +61,13 @@ public class OBStandingOrder6 {
     private OBActiveOrHistoricCurrencyAndAmount4 finalPaymentAmount = null;
 
     @JsonProperty("FinalPaymentDateTime")
-    private String finalPaymentDateTime = null;
+    private DateTime finalPaymentDateTime = null;
 
     @JsonProperty("FirstPaymentAmount")
     private OBActiveOrHistoricCurrencyAndAmount2 firstPaymentAmount = null;
 
     @JsonProperty("FirstPaymentDateTime")
-    private String firstPaymentDateTime = null;
+    private DateTime firstPaymentDateTime = null;
 
     @JsonProperty("Frequency")
     private String frequency = null;
@@ -75,13 +76,13 @@ public class OBStandingOrder6 {
     private OBActiveOrHistoricCurrencyAndAmount11 lastPaymentAmount = null;
 
     @JsonProperty("LastPaymentDateTime")
-    private String lastPaymentDateTime = null;
+    private DateTime lastPaymentDateTime = null;
 
     @JsonProperty("NextPaymentAmount")
     private OBActiveOrHistoricCurrencyAndAmount3 nextPaymentAmount = null;
 
     @JsonProperty("NextPaymentDateTime")
-    private String nextPaymentDateTime = null;
+    private DateTime nextPaymentDateTime = null;
 
     @JsonProperty("NumberOfPayments")
     private String numberOfPayments = null;
@@ -179,7 +180,7 @@ public class OBStandingOrder6 {
         this.finalPaymentAmount = finalPaymentAmount;
     }
 
-    public OBStandingOrder6 finalPaymentDateTime(String finalPaymentDateTime) {
+    public OBStandingOrder6 finalPaymentDateTime(DateTime finalPaymentDateTime) {
         this.finalPaymentDateTime = finalPaymentDateTime;
         return this;
     }
@@ -190,11 +191,11 @@ public class OBStandingOrder6 {
      * @return finalPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getFinalPaymentDateTime() {
+    public DateTime getFinalPaymentDateTime() {
         return finalPaymentDateTime;
     }
 
-    public void setFinalPaymentDateTime(String finalPaymentDateTime) {
+    public void setFinalPaymentDateTime(DateTime finalPaymentDateTime) {
         this.finalPaymentDateTime = finalPaymentDateTime;
     }
 
@@ -218,7 +219,7 @@ public class OBStandingOrder6 {
         this.firstPaymentAmount = firstPaymentAmount;
     }
 
-    public OBStandingOrder6 firstPaymentDateTime(String firstPaymentDateTime) {
+    public OBStandingOrder6 firstPaymentDateTime(DateTime firstPaymentDateTime) {
         this.firstPaymentDateTime = firstPaymentDateTime;
         return this;
     }
@@ -229,11 +230,11 @@ public class OBStandingOrder6 {
      * @return firstPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getFirstPaymentDateTime() {
+    public DateTime getFirstPaymentDateTime() {
         return firstPaymentDateTime;
     }
 
-    public void setFirstPaymentDateTime(String firstPaymentDateTime) {
+    public void setFirstPaymentDateTime(DateTime firstPaymentDateTime) {
         this.firstPaymentDateTime = firstPaymentDateTime;
     }
 
@@ -278,7 +279,7 @@ public class OBStandingOrder6 {
         this.lastPaymentAmount = lastPaymentAmount;
     }
 
-    public OBStandingOrder6 lastPaymentDateTime(String lastPaymentDateTime) {
+    public OBStandingOrder6 lastPaymentDateTime(DateTime lastPaymentDateTime) {
         this.lastPaymentDateTime = lastPaymentDateTime;
         return this;
     }
@@ -289,11 +290,11 @@ public class OBStandingOrder6 {
      * @return lastPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getLastPaymentDateTime() {
+    public DateTime getLastPaymentDateTime() {
         return lastPaymentDateTime;
     }
 
-    public void setLastPaymentDateTime(String lastPaymentDateTime) {
+    public void setLastPaymentDateTime(DateTime lastPaymentDateTime) {
         this.lastPaymentDateTime = lastPaymentDateTime;
     }
 
@@ -317,7 +318,7 @@ public class OBStandingOrder6 {
         this.nextPaymentAmount = nextPaymentAmount;
     }
 
-    public OBStandingOrder6 nextPaymentDateTime(String nextPaymentDateTime) {
+    public OBStandingOrder6 nextPaymentDateTime(DateTime nextPaymentDateTime) {
         this.nextPaymentDateTime = nextPaymentDateTime;
         return this;
     }
@@ -328,11 +329,11 @@ public class OBStandingOrder6 {
      * @return nextPaymentDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getNextPaymentDateTime() {
+    public DateTime getNextPaymentDateTime() {
         return nextPaymentDateTime;
     }
 
-    public void setNextPaymentDateTime(String nextPaymentDateTime) {
+    public void setNextPaymentDateTime(DateTime nextPaymentDateTime) {
         this.nextPaymentDateTime = nextPaymentDateTime;
     }
 

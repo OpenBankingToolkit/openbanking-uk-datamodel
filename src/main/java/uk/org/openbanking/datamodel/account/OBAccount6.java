@@ -36,6 +36,7 @@ package uk.org.openbanking.datamodel.account;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -70,13 +71,13 @@ public class OBAccount6 {
     private String description = null;
 
     @JsonProperty("MaturityDate")
-    private String maturityDate = null;
+    private DateTime maturityDate = null;
 
     @JsonProperty("Nickname")
     private String nickname = null;
 
     @JsonProperty("OpeningDate")
-    private String openingDate = null;
+    private DateTime openingDate = null;
 
     @JsonProperty("Servicer")
     private OBBranchAndFinancialInstitutionIdentification50 servicer = null;
@@ -85,7 +86,7 @@ public class OBAccount6 {
     private OBAccountStatus1Code status = null;
 
     @JsonProperty("StatusUpdateDateTime")
-    private String statusUpdateDateTime = null;
+    private DateTime statusUpdateDateTime = null;
 
     @JsonProperty("SwitchStatus")
     private String switchStatus = null;
@@ -219,7 +220,7 @@ public class OBAccount6 {
         this.description = description;
     }
 
-    public OBAccount6 maturityDate(String maturityDate) {
+    public OBAccount6 maturityDate(DateTime maturityDate) {
         this.maturityDate = maturityDate;
         return this;
     }
@@ -230,11 +231,11 @@ public class OBAccount6 {
      * @return maturityDate
      **/
     @ApiModelProperty(value = "")
-    public String getMaturityDate() {
+    public DateTime getMaturityDate() {
         return maturityDate;
     }
 
-    public void setMaturityDate(String maturityDate) {
+    public void setMaturityDate(DateTime maturityDate) {
         this.maturityDate = maturityDate;
     }
 
@@ -258,7 +259,7 @@ public class OBAccount6 {
         this.nickname = nickname;
     }
 
-    public OBAccount6 openingDate(String openingDate) {
+    public OBAccount6 openingDate(DateTime openingDate) {
         this.openingDate = openingDate;
         return this;
     }
@@ -269,11 +270,11 @@ public class OBAccount6 {
      * @return openingDate
      **/
     @ApiModelProperty(value = "")
-    public String getOpeningDate() {
+    public DateTime getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(String openingDate) {
+    public void setOpeningDate(DateTime openingDate) {
         this.openingDate = openingDate;
     }
 
@@ -317,7 +318,7 @@ public class OBAccount6 {
         this.status = status;
     }
 
-    public OBAccount6 statusUpdateDateTime(String statusUpdateDateTime) {
+    public OBAccount6 statusUpdateDateTime(DateTime statusUpdateDateTime) {
         this.statusUpdateDateTime = statusUpdateDateTime;
         return this;
     }
@@ -328,11 +329,11 @@ public class OBAccount6 {
      * @return statusUpdateDateTime
      **/
     @ApiModelProperty(value = "")
-    public String getStatusUpdateDateTime() {
+    public DateTime getStatusUpdateDateTime() {
         return statusUpdateDateTime;
     }
 
-    public void setStatusUpdateDateTime(String statusUpdateDateTime) {
+    public void setStatusUpdateDateTime(DateTime statusUpdateDateTime) {
         this.statusUpdateDateTime = statusUpdateDateTime;
     }
 

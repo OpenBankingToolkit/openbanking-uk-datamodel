@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -53,10 +54,10 @@ public class OBReadConsentResponse1Data {
     private String consentId = null;
 
     @JsonProperty("CreationDateTime")
-    private String creationDateTime = null;
+    private DateTime creationDateTime = null;
 
     @JsonProperty("ExpirationDateTime")
-    private String expirationDateTime = null;
+    private DateTime expirationDateTime = null;
 
     /**
      * Specifies the Open Banking account access data types. This is a list of the data clusters being consented by the PSU, and requested for authorisation with the ASPSP.
@@ -177,13 +178,13 @@ public class OBReadConsentResponse1Data {
     private StatusEnum status = null;
 
     @JsonProperty("StatusUpdateDateTime")
-    private String statusUpdateDateTime = null;
+    private DateTime statusUpdateDateTime = null;
 
     @JsonProperty("TransactionFromDateTime")
-    private String transactionFromDateTime = null;
+    private DateTime transactionFromDateTime = null;
 
     @JsonProperty("TransactionToDateTime")
-    private String transactionToDateTime = null;
+    private DateTime transactionToDateTime = null;
 
     public OBReadConsentResponse1Data consentId(String consentId) {
         this.consentId = consentId;
@@ -205,7 +206,7 @@ public class OBReadConsentResponse1Data {
         this.consentId = consentId;
     }
 
-    public OBReadConsentResponse1Data creationDateTime(String creationDateTime) {
+    public OBReadConsentResponse1Data creationDateTime(DateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
         return this;
     }
@@ -216,15 +217,15 @@ public class OBReadConsentResponse1Data {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "")
-    public String getCreationDateTime() {
+    public DateTime getCreationDateTime() {
         return creationDateTime;
     }
 
-    public void setCreationDateTime(String creationDateTime) {
+    public void setCreationDateTime(DateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
     }
 
-    public OBReadConsentResponse1Data expirationDateTime(String expirationDateTime) {
+    public OBReadConsentResponse1Data expirationDateTime(DateTime expirationDateTime) {
         this.expirationDateTime = expirationDateTime;
         return this;
     }
@@ -234,11 +235,11 @@ public class OBReadConsentResponse1Data {
      * @return expirationDateTime
      **/
     @ApiModelProperty(value = "Specified date and time the permissions will expire. If this is not populated, the permissions will be open ended.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00")
-    public String getExpirationDateTime() {
+    public DateTime getExpirationDateTime() {
         return expirationDateTime;
     }
 
-    public void setExpirationDateTime(String expirationDateTime) {
+    public void setExpirationDateTime(DateTime expirationDateTime) {
         this.expirationDateTime = expirationDateTime;
     }
 
@@ -286,7 +287,7 @@ public class OBReadConsentResponse1Data {
         this.status = status;
     }
 
-    public OBReadConsentResponse1Data statusUpdateDateTime(String statusUpdateDateTime) {
+    public OBReadConsentResponse1Data statusUpdateDateTime(DateTime statusUpdateDateTime) {
         this.statusUpdateDateTime = statusUpdateDateTime;
         return this;
     }
@@ -297,15 +298,15 @@ public class OBReadConsentResponse1Data {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "")
-    public String getStatusUpdateDateTime() {
+    public DateTime getStatusUpdateDateTime() {
         return statusUpdateDateTime;
     }
 
-    public void setStatusUpdateDateTime(String statusUpdateDateTime) {
+    public void setStatusUpdateDateTime(DateTime statusUpdateDateTime) {
         this.statusUpdateDateTime = statusUpdateDateTime;
     }
 
-    public OBReadConsentResponse1Data transactionFromDateTime(String transactionFromDateTime) {
+    public OBReadConsentResponse1Data transactionFromDateTime(DateTime transactionFromDateTime) {
         this.transactionFromDateTime = transactionFromDateTime;
         return this;
     }
@@ -315,15 +316,15 @@ public class OBReadConsentResponse1Data {
      * @return transactionFromDateTime
      **/
     @ApiModelProperty(value = "Specified start date and time for the transaction query period. If this is not populated, the start date will be open ended, and data will be returned from the earliest available transaction.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00")
-    public String getTransactionFromDateTime() {
+    public DateTime getTransactionFromDateTime() {
         return transactionFromDateTime;
     }
 
-    public void setTransactionFromDateTime(String transactionFromDateTime) {
+    public void setTransactionFromDateTime(DateTime transactionFromDateTime) {
         this.transactionFromDateTime = transactionFromDateTime;
     }
 
-    public OBReadConsentResponse1Data transactionToDateTime(String transactionToDateTime) {
+    public OBReadConsentResponse1Data transactionToDateTime(DateTime transactionToDateTime) {
         this.transactionToDateTime = transactionToDateTime;
         return this;
     }
@@ -333,11 +334,11 @@ public class OBReadConsentResponse1Data {
      * @return transactionToDateTime
      **/
     @ApiModelProperty(value = "Specified end date and time for the transaction query period. If this is not populated, the end date will be open ended, and data will be returned to the latest available transaction.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00")
-    public String getTransactionToDateTime() {
+    public DateTime getTransactionToDateTime() {
         return transactionToDateTime;
     }
 
-    public void setTransactionToDateTime(String transactionToDateTime) {
+    public void setTransactionToDateTime(DateTime transactionToDateTime) {
         this.transactionToDateTime = transactionToDateTime;
     }
 

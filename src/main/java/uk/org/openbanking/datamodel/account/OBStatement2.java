@@ -36,6 +36,7 @@ package uk.org.openbanking.datamodel.account;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -54,13 +55,13 @@ public class OBStatement2 {
     private String accountId = null;
 
     @JsonProperty("CreationDateTime")
-    private String creationDateTime = null;
+    private DateTime creationDateTime = null;
 
     @JsonProperty("EndDateTime")
-    private String endDateTime = null;
+    private DateTime endDateTime = null;
 
     @JsonProperty("StartDateTime")
-    private String startDateTime = null;
+    private DateTime startDateTime = null;
 
     @JsonProperty("StatementAmount")
     private List<OBStatement2StatementAmount> statementAmount = null;
@@ -116,7 +117,7 @@ public class OBStatement2 {
         this.accountId = accountId;
     }
 
-    public OBStatement2 creationDateTime(String creationDateTime) {
+    public OBStatement2 creationDateTime(DateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
         return this;
     }
@@ -128,15 +129,15 @@ public class OBStatement2 {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "")
-    public String getCreationDateTime() {
+    public DateTime getCreationDateTime() {
         return creationDateTime;
     }
 
-    public void setCreationDateTime(String creationDateTime) {
+    public void setCreationDateTime(DateTime creationDateTime) {
         this.creationDateTime = creationDateTime;
     }
 
-    public OBStatement2 endDateTime(String endDateTime) {
+    public OBStatement2 endDateTime(DateTime endDateTime) {
         this.endDateTime = endDateTime;
         return this;
     }
@@ -148,15 +149,15 @@ public class OBStatement2 {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "")
-    public String getEndDateTime() {
+    public DateTime getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(String endDateTime) {
+    public void setEndDateTime(DateTime endDateTime) {
         this.endDateTime = endDateTime;
     }
 
-    public OBStatement2 startDateTime(String startDateTime) {
+    public OBStatement2 startDateTime(DateTime startDateTime) {
         this.startDateTime = startDateTime;
         return this;
     }
@@ -168,11 +169,11 @@ public class OBStatement2 {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "")
-    public String getStartDateTime() {
+    public DateTime getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(String startDateTime) {
+    public void setStartDateTime(DateTime startDateTime) {
         this.startDateTime = startDateTime;
     }
 

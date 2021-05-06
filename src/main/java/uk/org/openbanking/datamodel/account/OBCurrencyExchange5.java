@@ -36,6 +36,7 @@ package uk.org.openbanking.datamodel.account;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -60,7 +61,7 @@ public class OBCurrencyExchange5 {
     private OBCurrencyExchange5InstructedAmount instructedAmount = null;
 
     @JsonProperty("QuotationDate")
-    private String quotationDate = null;
+    private DateTime quotationDate = null;
 
     @JsonProperty("SourceCurrency")
     private String sourceCurrency = null;
@@ -129,7 +130,7 @@ public class OBCurrencyExchange5 {
         this.instructedAmount = instructedAmount;
     }
 
-    public OBCurrencyExchange5 quotationDate(String quotationDate) {
+    public OBCurrencyExchange5 quotationDate(DateTime quotationDate) {
         this.quotationDate = quotationDate;
         return this;
     }
@@ -139,11 +140,11 @@ public class OBCurrencyExchange5 {
      * @return quotationDate
      **/
     @ApiModelProperty(value = "Date and time at which an exchange rate is quoted.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00")
-    public String getQuotationDate() {
+    public DateTime getQuotationDate() {
         return quotationDate;
     }
 
-    public void setQuotationDate(String quotationDate) {
+    public void setQuotationDate(DateTime quotationDate) {
         this.quotationDate = quotationDate;
     }
 

@@ -36,6 +36,7 @@ package uk.org.openbanking.datamodel.account;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -47,12 +48,12 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-13T15:59:01.633+01:00")
 public class OBStatement2StatementDateTime {
     @JsonProperty("DateTime")
-    private String dateTime = null;
+    private DateTime dateTime = null;
 
     @JsonProperty("Type")
     private String type = null;
 
-    public OBStatement2StatementDateTime dateTime(String dateTime) {
+    public OBStatement2StatementDateTime dateTime(DateTime dateTime) {
         this.dateTime = dateTime;
         return this;
     }
@@ -64,11 +65,11 @@ public class OBStatement2StatementDateTime {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "")
-    public String getDateTime() {
+    public DateTime getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(DateTime dateTime) {
         this.dateTime = dateTime;
     }
 
