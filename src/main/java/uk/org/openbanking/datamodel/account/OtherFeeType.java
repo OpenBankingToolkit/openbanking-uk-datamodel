@@ -56,41 +56,6 @@ public class OtherFeeType {
     @JsonProperty("Description")
     private String description = null;
 
-    /**
-     * Categorisation of fees and charges into standard categories.
-     */
-    public enum FeeCategoryEnum {
-        OTHER("Other"),
-
-        SERVICING("Servicing");
-
-        private String value;
-
-        FeeCategoryEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static FeeCategoryEnum fromValue(String text) {
-            for (FeeCategoryEnum b : FeeCategoryEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
     @JsonProperty("FeeCategory")
     private FeeCategoryEnum feeCategory = null;
 
@@ -220,6 +185,41 @@ public class OtherFeeType {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Categorisation of fees and charges into standard categories.
+     */
+    public enum FeeCategoryEnum {
+        OTHER("Other"),
+
+        SERVICING("Servicing");
+
+        private String value;
+
+        FeeCategoryEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static FeeCategoryEnum fromValue(String text) {
+            for (FeeCategoryEnum b : FeeCategoryEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
     }
 
 }

@@ -47,107 +47,40 @@ import java.util.Objects;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-05T09:20:17.613+01:00")
 public class ProductDetails {
+    @JsonProperty("Segment")
+    private List<SegmentEnum> segment = null;
     @JsonProperty("FeeFreeLength")
     private Float feeFreeLength = null;
-
-    /**
-     * The unit of period (days, weeks, months etc.) of the promotional length
-     */
-    public enum FeeFreeLengthPeriodEnum {
-        DAY("Day"),
-
-        HALF_YEAR("Half Year"),
-
-        MONTH("Month"),
-
-        QUARTER("Quarter"),
-
-        WEEK("Week"),
-
-        YEAR("Year");
-
-        private String value;
-
-        FeeFreeLengthPeriodEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static FeeFreeLengthPeriodEnum fromValue(String text) {
-            for (FeeFreeLengthPeriodEnum b : FeeFreeLengthPeriodEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
     @JsonProperty("FeeFreeLengthPeriod")
     private FeeFreeLengthPeriodEnum feeFreeLengthPeriod = null;
-
     @JsonProperty("Notes")
     private List<String> notes = null;
 
-    /**
-     * Market segmentation is a marketing term referring to the aggregating of prospective buyers into groups, or segments, that have common needs and respond similarly to a marketing action. Market segmentation enables companies to target different categories of consumers who perceive the full value of certain products and services differently from one another.  Read more: Market Segmentation http://www.investopedia.com/terms/m/marketsegmentation.asp#ixzz4gfEEalTd  With respect to BCA products, they are segmented in relation to different markets that they wish to focus on.
-     */
-    public enum SegmentEnum {
-        CLIENTACCOUNT("ClientAccount"),
-
-        STANDARD("Standard"),
-
-        NONCOMMERCIALCHAITIESCLBSOC("NonCommercialChaitiesClbSoc"),
-
-        NONCOMMERCIALPUBLICAUTHGOVT("NonCommercialPublicAuthGovt"),
-
-        RELIGIOUS("Religious"),
-
-        SECTORSPECIFIC("SectorSpecific"),
-
-        STARTUP("Startup"),
-
-        SWITCHER("Switcher");
-
-        private String value;
-
-        SegmentEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static SegmentEnum fromValue(String text) {
-            for (SegmentEnum b : SegmentEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
+    public ProductDetails segment(List<SegmentEnum> segment) {
+        this.segment = segment;
+        return this;
     }
 
-    @JsonProperty("Segment")
-    private List<SegmentEnum> segment = null;
+    public ProductDetails addSegmentItem(SegmentEnum segmentItem) {
+        if (this.segment == null) {
+            this.segment = new ArrayList<SegmentEnum>();
+        }
+        this.segment.add(segmentItem);
+        return this;
+    }
+
+    /**
+     * Market segmentation is a marketing term referring to the aggregating of prospective buyers into groups, or segments, that have common needs and respond similarly to a marketing action. Market segmentation enables companies to target different categories of consumers who perceive the full value of certain products and services differently from one another.  Read more: Market Segmentation http://www.investopedia.com/terms/m/marketsegmentation.asp#ixzz4gfEEalTd  With respect to BCA products, they are segmented in relation to different markets that they wish to focus on.
+     * @return segment
+     **/
+    @ApiModelProperty(value = "Market segmentation is a marketing term referring to the aggregating of prospective buyers into groups, or segments, that have common needs and respond similarly to a marketing action. Market segmentation enables companies to target different categories of consumers who perceive the full value of certain products and services differently from one another.  Read more: Market Segmentation http://www.investopedia.com/terms/m/marketsegmentation.asp#ixzz4gfEEalTd  With respect to BCA products, they are segmented in relation to different markets that they wish to focus on. ")
+    public List<SegmentEnum> getSegment() {
+        return segment;
+    }
+
+    public void setSegment(List<SegmentEnum> segment) {
+        this.segment = segment;
+    }
 
     public ProductDetails feeFreeLength(Float feeFreeLength) {
         this.feeFreeLength = feeFreeLength;
@@ -211,33 +144,6 @@ public class ProductDetails {
         this.notes = notes;
     }
 
-    public ProductDetails segment(List<SegmentEnum> segment) {
-        this.segment = segment;
-        return this;
-    }
-
-    public ProductDetails addSegmentItem(SegmentEnum segmentItem) {
-        if (this.segment == null) {
-            this.segment = new ArrayList<SegmentEnum>();
-        }
-        this.segment.add(segmentItem);
-        return this;
-    }
-
-    /**
-     * Market segmentation is a marketing term referring to the aggregating of prospective buyers into groups, or segments, that have common needs and respond similarly to a marketing action. Market segmentation enables companies to target different categories of consumers who perceive the full value of certain products and services differently from one another.  Read more: Market Segmentation http://www.investopedia.com/terms/m/marketsegmentation.asp#ixzz4gfEEalTd  With respect to BCA products, they are segmented in relation to different markets that they wish to focus on.
-     * @return segment
-     **/
-    @ApiModelProperty(value = "Market segmentation is a marketing term referring to the aggregating of prospective buyers into groups, or segments, that have common needs and respond similarly to a marketing action. Market segmentation enables companies to target different categories of consumers who perceive the full value of certain products and services differently from one another.  Read more: Market Segmentation http://www.investopedia.com/terms/m/marketsegmentation.asp#ixzz4gfEEalTd  With respect to BCA products, they are segmented in relation to different markets that they wish to focus on. ")
-    public List<SegmentEnum> getSegment() {
-        return segment;
-    }
-
-    public void setSegment(List<SegmentEnum> segment) {
-        this.segment = segment;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -281,6 +187,96 @@ public class ProductDetails {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Market segmentation is a marketing term referring to the aggregating of prospective buyers into groups, or segments, that have common needs and respond similarly to a marketing action. Market segmentation enables companies to target different categories of consumers who perceive the full value of certain products and services differently from one another.  Read more: Market Segmentation http://www.investopedia.com/terms/m/marketsegmentation.asp#ixzz4gfEEalTd  With respect to BCA products, they are segmented in relation to different markets that they wish to focus on.
+     */
+    public enum SegmentEnum {
+        CLIENTACCOUNT("ClientAccount"),
+
+        STANDARD("Standard"),
+
+        NONCOMMERCIALCHAITIESCLBSOC("NonCommercialChaitiesClbSoc"),
+
+        NONCOMMERCIALPUBLICAUTHGOVT("NonCommercialPublicAuthGovt"),
+
+        RELIGIOUS("Religious"),
+
+        SECTORSPECIFIC("SectorSpecific"),
+
+        STARTUP("Startup"),
+
+        SWITCHER("Switcher");
+
+        private String value;
+
+        SegmentEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static SegmentEnum fromValue(String text) {
+            for (SegmentEnum b : SegmentEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+    }
+
+    /**
+     * The unit of period (days, weeks, months etc.) of the promotional length
+     */
+    public enum FeeFreeLengthPeriodEnum {
+        DAY("Day"),
+
+        HALF_YEAR("Half Year"),
+
+        MONTH("Month"),
+
+        QUARTER("Quarter"),
+
+        WEEK("Week"),
+
+        YEAR("Year");
+
+        private String value;
+
+        FeeFreeLengthPeriodEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static FeeFreeLengthPeriodEnum fromValue(String text) {
+            for (FeeFreeLengthPeriodEnum b : FeeFreeLengthPeriodEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
     }
 
 }

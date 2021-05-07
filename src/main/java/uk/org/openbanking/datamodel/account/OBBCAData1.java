@@ -46,17 +46,19 @@ import java.util.Objects;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-05T09:20:17.613+01:00")
 public class OBBCAData1 {
+
+    @JsonProperty("ProductDetails")
+    private ProductDetails productDetails = null;
+
     @JsonProperty("CreditInterest")
     private CreditInterest creditInterest = null;
-
-    @JsonProperty("OtherFeesCharges")
-    private List<OBBCAData1OtherFeesCharges> otherFeesCharges = null;
 
     @JsonProperty("Overdraft")
     private Overdraft overdraft = null;
 
-    @JsonProperty("ProductDetails")
-    private ProductDetails productDetails = null;
+    @JsonProperty("OtherFeesCharges")
+    private List<OBBCAData1OtherFeesCharges> otherFeesCharges = null;
+
 
     public OBBCAData1 creditInterest(CreditInterest creditInterest) {
         this.creditInterest = creditInterest;

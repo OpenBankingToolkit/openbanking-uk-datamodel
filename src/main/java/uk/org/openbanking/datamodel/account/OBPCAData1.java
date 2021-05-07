@@ -44,74 +44,14 @@ import java.util.Objects;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-05T09:20:17.613+01:00")
 public class OBPCAData1 {
-    @JsonProperty("CreditInterest")
-    private CreditInterest1 creditInterest = null;
-
-    @JsonProperty("OtherFeesCharges")
-    private OtherFeesCharges otherFeesCharges = null;
-
-    @JsonProperty("Overdraft")
-    private Overdraft1 overdraft = null;
-
     @JsonProperty("ProductDetails")
     private ProductDetails1 productDetails = null;
-
-    public OBPCAData1 creditInterest(CreditInterest1 creditInterest) {
-        this.creditInterest = creditInterest;
-        return this;
-    }
-
-    /**
-     * Get creditInterest
-     * @return creditInterest
-     **/
-    @Valid
-    @ApiModelProperty(value = "")
-    public CreditInterest1 getCreditInterest() {
-        return creditInterest;
-    }
-
-    public void setCreditInterest(CreditInterest1 creditInterest) {
-        this.creditInterest = creditInterest;
-    }
-
-    public OBPCAData1 otherFeesCharges(OtherFeesCharges otherFeesCharges) {
-        this.otherFeesCharges = otherFeesCharges;
-        return this;
-    }
-
-    /**
-     * Get otherFeesCharges
-     * @return otherFeesCharges
-     **/
-    @Valid
-    @ApiModelProperty(value = "")
-    public OtherFeesCharges getOtherFeesCharges() {
-        return otherFeesCharges;
-    }
-
-    public void setOtherFeesCharges(OtherFeesCharges otherFeesCharges) {
-        this.otherFeesCharges = otherFeesCharges;
-    }
-
-    public OBPCAData1 overdraft(Overdraft1 overdraft) {
-        this.overdraft = overdraft;
-        return this;
-    }
-
-    /**
-     * Get overdraft
-     * @return overdraft
-     **/
-    @Valid
-    @ApiModelProperty(value = "")
-    public Overdraft1 getOverdraft() {
-        return overdraft;
-    }
-
-    public void setOverdraft(Overdraft1 overdraft) {
-        this.overdraft = overdraft;
-    }
+    @JsonProperty("CreditInterest")
+    private CreditInterest1 creditInterest = null;
+    @JsonProperty("Overdraft")
+    private Overdraft1 overdraft = null;
+    @JsonProperty("OtherFeesCharges")
+    private OtherFeesCharges otherFeesCharges = null;
 
     public OBPCAData1 productDetails(ProductDetails1 productDetails) {
         this.productDetails = productDetails;
@@ -133,6 +73,63 @@ public class OBPCAData1 {
     }
 
 
+    public OBPCAData1 creditInterest(CreditInterest1 creditInterest) {
+        this.creditInterest = creditInterest;
+        return this;
+    }
+
+    /**
+     * Get creditInterest
+     * @return creditInterest
+     **/
+    @Valid
+    @ApiModelProperty(value = "")
+    public CreditInterest1 getCreditInterest() {
+        return creditInterest;
+    }
+
+    public void setCreditInterest(CreditInterest1 creditInterest) {
+        this.creditInterest = creditInterest;
+    }
+
+    public OBPCAData1 overdraft(Overdraft1 overdraft) {
+        this.overdraft = overdraft;
+        return this;
+    }
+
+    /**
+     * Get overdraft
+     * @return overdraft
+     **/
+    @Valid
+    @ApiModelProperty(value = "")
+    public Overdraft1 getOverdraft() {
+        return overdraft;
+    }
+
+    public void setOverdraft(Overdraft1 overdraft) {
+        this.overdraft = overdraft;
+    }
+
+    public OBPCAData1 otherFeesCharges(OtherFeesCharges otherFeesCharges) {
+        this.otherFeesCharges = otherFeesCharges;
+        return this;
+    }
+
+    /**
+     * Get otherFeesCharges
+     * @return otherFeesCharges
+     **/
+    @Valid
+    @ApiModelProperty(value = "")
+    public OtherFeesCharges getOtherFeesCharges() {
+        return otherFeesCharges;
+    }
+
+    public void setOtherFeesCharges(OtherFeesCharges otherFeesCharges) {
+        this.otherFeesCharges = otherFeesCharges;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -142,27 +139,26 @@ public class OBPCAData1 {
             return false;
         }
         OBPCAData1 obPCAData1 = (OBPCAData1) o;
-        return Objects.equals(this.creditInterest, obPCAData1.creditInterest) &&
-                Objects.equals(this.otherFeesCharges, obPCAData1.otherFeesCharges) &&
+        return Objects.equals(this.productDetails, obPCAData1.productDetails) &&
+                Objects.equals(this.creditInterest, obPCAData1.creditInterest) &&
                 Objects.equals(this.overdraft, obPCAData1.overdraft) &&
-                Objects.equals(this.productDetails, obPCAData1.productDetails);
+                Objects.equals(this.otherFeesCharges, obPCAData1.otherFeesCharges);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(creditInterest, otherFeesCharges, overdraft, productDetails);
+        return Objects.hash(productDetails, creditInterest, overdraft, otherFeesCharges);
     }
-
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class OBPCAData1 {\n");
 
-        sb.append("    creditInterest: ").append(toIndentedString(creditInterest)).append("\n");
-        sb.append("    otherFeesCharges: ").append(toIndentedString(otherFeesCharges)).append("\n");
-        sb.append("    overdraft: ").append(toIndentedString(overdraft)).append("\n");
         sb.append("    productDetails: ").append(toIndentedString(productDetails)).append("\n");
+        sb.append("    creditInterest: ").append(toIndentedString(creditInterest)).append("\n");
+        sb.append("    overdraft: ").append(toIndentedString(overdraft)).append("\n");
+        sb.append("    otherFeesCharges: ").append(toIndentedString(otherFeesCharges)).append("\n");
         sb.append("}");
         return sb.toString();
     }
