@@ -40,108 +40,108 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-25T23:06:46.214+01:00")
 
 public class OBOverdraft1 {
-  @JsonProperty("Notes")
-  @Valid
-  private List<String> notes = null;
+    @JsonProperty("Notes")
+    @Valid
+    private List<String> notes = null;
 
-  @JsonProperty("OverdraftTierBandSet")
-  @Valid
-  private List<OBOverdraftTierbandSet1> overdraftTierBandSet = new ArrayList<OBOverdraftTierbandSet1>();
+    @JsonProperty("OverdraftTierBandSet")
+    @Valid
+    private List<OBOverdraftTierbandSet1> overdraftTierBandSet = new ArrayList<OBOverdraftTierbandSet1>();
 
-  public OBOverdraft1 notes(List<String> notes) {
-    this.notes = notes;
-    return this;
-  }
-
-  public OBOverdraft1 addNotesItem(String notesItem) {
-    if (this.notes == null) {
-      this.notes = new ArrayList<String>();
+    public OBOverdraft1 notes(List<String> notes) {
+        this.notes = notes;
+        return this;
     }
-    this.notes.add(notesItem);
-    return this;
-  }
 
-  /**
-   * Associated Notes about the overdraft rates
-   * @return notes
-  **/
-  @ApiModelProperty(value = "Associated Notes about the overdraft rates")
-
-
-  public List<String> getNotes() {
-    return notes;
-  }
-
-  public void setNotes(List<String> notes) {
-    this.notes = notes;
-  }
-
-  public OBOverdraft1 overdraftTierBandSet(List<OBOverdraftTierbandSet1> overdraftTierBandSet) {
-    this.overdraftTierBandSet = overdraftTierBandSet;
-    return this;
-  }
-
-  public OBOverdraft1 addOverdraftTierBandSetItem(OBOverdraftTierbandSet1 overdraftTierBandSetItem) {
-    this.overdraftTierBandSet.add(overdraftTierBandSetItem);
-    return this;
-  }
-
-  /**
-   * Tier band set details
-   * @return overdraftTierBandSet
-  **/
-  @ApiModelProperty(required = true, value = "Tier band set details")
-  @NotNull
-
-  @Valid
-@Size(min=1) 
-  public List<OBOverdraftTierbandSet1> getOverdraftTierBandSet() {
-    return overdraftTierBandSet;
-  }
-
-  public void setOverdraftTierBandSet(List<OBOverdraftTierbandSet1> overdraftTierBandSet) {
-    this.overdraftTierBandSet = overdraftTierBandSet;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public OBOverdraft1 addNotesItem(String notesItem) {
+        if (this.notes == null) {
+            this.notes = new ArrayList<String>();
+        }
+        this.notes.add(notesItem);
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Associated Notes about the overdraft rates
+     * @return notes
+     **/
+    @ApiModelProperty(value = "Associated Notes about the overdraft rates")
+
+
+    public List<String> getNotes() {
+        return notes;
     }
-    OBOverdraft1 overdraft1 = (OBOverdraft1) o;
-    return Objects.equals(this.notes, overdraft1.notes) &&
-        Objects.equals(this.overdraftTierBandSet, overdraft1.overdraftTierBandSet);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(notes, overdraftTierBandSet);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OBOverdraft1 {\n");
-
-    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
-    sb.append("    overdraftTierBandSet: ").append(toIndentedString(overdraftTierBandSet)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setNotes(List<String> notes) {
+        this.notes = notes;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public OBOverdraft1 overdraftTierBandSet(List<OBOverdraftTierbandSet1> overdraftTierBandSet) {
+        this.overdraftTierBandSet = overdraftTierBandSet;
+        return this;
+    }
+
+    public OBOverdraft1 addOverdraftTierBandSetItem(OBOverdraftTierbandSet1 overdraftTierBandSetItem) {
+        this.overdraftTierBandSet.add(overdraftTierBandSetItem);
+        return this;
+    }
+
+    /**
+     * Tier band set details
+     * @return overdraftTierBandSet
+     **/
+    @ApiModelProperty(required = true, value = "Tier band set details")
+    @NotNull
+
+    @Valid
+    @Size(min = 1)
+    public List<OBOverdraftTierbandSet1> getOverdraftTierBandSet() {
+        return overdraftTierBandSet;
+    }
+
+    public void setOverdraftTierBandSet(List<OBOverdraftTierbandSet1> overdraftTierBandSet) {
+        this.overdraftTierBandSet = overdraftTierBandSet;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        OBOverdraft1 overdraft1 = (OBOverdraft1) o;
+        return Objects.equals(this.notes, overdraft1.notes) &&
+                Objects.equals(this.overdraftTierBandSet, overdraft1.overdraftTierBandSet);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(notes, overdraftTierBandSet);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OBOverdraft1 {\n");
+
+        sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
+        sb.append("    overdraftTierBandSet: ").append(toIndentedString(overdraftTierBandSet)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 
