@@ -36,6 +36,7 @@ package uk.org.openbanking.datamodel.account;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -63,7 +64,7 @@ public class OBReadBalance1DataBalance {
     private List<OBReadBalance1DataCreditLine> creditLine = null;
 
     @JsonProperty("DateTime")
-    private String dateTime = null;
+    private DateTime dateTime = null;
 
     @JsonProperty("Type")
     private OBBalanceType1Code type = null;
@@ -155,7 +156,7 @@ public class OBReadBalance1DataBalance {
         this.creditLine = creditLine;
     }
 
-    public OBReadBalance1DataBalance dateTime(String dateTime) {
+    public OBReadBalance1DataBalance dateTime(DateTime dateTime) {
         this.dateTime = dateTime;
         return this;
     }
@@ -166,11 +167,11 @@ public class OBReadBalance1DataBalance {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "Indicates the date (and time) of the balance.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00")
-    public String getDateTime() {
+    public DateTime getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(DateTime dateTime) {
         this.dateTime = dateTime;
     }
 

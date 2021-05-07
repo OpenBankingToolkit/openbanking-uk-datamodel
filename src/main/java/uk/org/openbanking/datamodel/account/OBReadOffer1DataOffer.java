@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -59,7 +60,7 @@ public class OBReadOffer1DataOffer {
   private String description = null;
 
   @JsonProperty("EndDateTime")
-  private String endDateTime = null;
+  private DateTime endDateTime = null;
 
   @JsonProperty("Fee")
   private OBReadOffer1DataFee fee = null;
@@ -115,7 +116,7 @@ public class OBReadOffer1DataOffer {
   private String rate = null;
 
   @JsonProperty("StartDateTime")
-  private String startDateTime = null;
+  private DateTime startDateTime = null;
 
   @JsonProperty("Term")
   private String term = null;
@@ -182,7 +183,7 @@ public class OBReadOffer1DataOffer {
     this.description = description;
   }
 
-  public OBReadOffer1DataOffer endDateTime(String endDateTime) {
+  public OBReadOffer1DataOffer endDateTime(DateTime endDateTime) {
     this.endDateTime = endDateTime;
     return this;
   }
@@ -192,11 +193,11 @@ public class OBReadOffer1DataOffer {
    * @return endDateTime
   **/
   @ApiModelProperty(value = "Date and time at which the offer ends.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00")
-  public String getEndDateTime() {
+  public DateTime getEndDateTime() {
     return endDateTime;
   }
 
-  public void setEndDateTime(String endDateTime) {
+  public void setEndDateTime(DateTime endDateTime) {
     this.endDateTime = endDateTime;
   }
 
@@ -273,7 +274,7 @@ public class OBReadOffer1DataOffer {
     this.rate = rate;
   }
 
-  public OBReadOffer1DataOffer startDateTime(String startDateTime) {
+  public OBReadOffer1DataOffer startDateTime(DateTime startDateTime) {
     this.startDateTime = startDateTime;
     return this;
   }
@@ -283,11 +284,11 @@ public class OBReadOffer1DataOffer {
    * @return startDateTime
   **/
   @ApiModelProperty(value = "Date and time at which the offer starts.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00")
-  public String getStartDateTime() {
+  public DateTime getStartDateTime() {
     return startDateTime;
   }
 
-  public void setStartDateTime(String startDateTime) {
+  public void setStartDateTime(DateTime startDateTime) {
     this.startDateTime = startDateTime;
   }
 

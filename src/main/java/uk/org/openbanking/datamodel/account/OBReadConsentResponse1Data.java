@@ -33,12 +33,11 @@
 
 package uk.org.openbanking.datamodel.account;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 import org.joda.time.DateTime;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -59,123 +58,12 @@ public class OBReadConsentResponse1Data {
     @JsonProperty("ExpirationDateTime")
     private DateTime expirationDateTime = null;
 
-    /**
-     * Specifies the Open Banking account access data types. This is a list of the data clusters being consented by the PSU, and requested for authorisation with the ASPSP.
-     */
-    public enum PermissionsEnum {
-        READACCOUNTSBASIC("ReadAccountsBasic"),
-
-        READACCOUNTSDETAIL("ReadAccountsDetail"),
-
-        READBALANCES("ReadBalances"),
-
-        READBENEFICIARIESBASIC("ReadBeneficiariesBasic"),
-
-        READBENEFICIARIESDETAIL("ReadBeneficiariesDetail"),
-
-        READDIRECTDEBITS("ReadDirectDebits"),
-
-        READOFFERS("ReadOffers"),
-
-        READPAN("ReadPAN"),
-
-        READPARTY("ReadParty"),
-
-        READPARTYPSU("ReadPartyPSU"),
-
-        READPRODUCTS("ReadProducts"),
-
-        READSCHEDULEDPAYMENTSBASIC("ReadScheduledPaymentsBasic"),
-
-        READSCHEDULEDPAYMENTSDETAIL("ReadScheduledPaymentsDetail"),
-
-        READSTANDINGORDERSBASIC("ReadStandingOrdersBasic"),
-
-        READSTANDINGORDERSDETAIL("ReadStandingOrdersDetail"),
-
-        READSTATEMENTSBASIC("ReadStatementsBasic"),
-
-        READSTATEMENTSDETAIL("ReadStatementsDetail"),
-
-        READTRANSACTIONSBASIC("ReadTransactionsBasic"),
-
-        READTRANSACTIONSCREDITS("ReadTransactionsCredits"),
-
-        READTRANSACTIONSDEBITS("ReadTransactionsDebits"),
-
-        READTRANSACTIONSDETAIL("ReadTransactionsDetail");
-
-        private String value;
-
-        PermissionsEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static PermissionsEnum fromValue(String text) {
-            for (PermissionsEnum b : PermissionsEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
     @JsonProperty("Permissions")
-    private List<PermissionsEnum> permissions = new ArrayList<PermissionsEnum>();
-
-    /**
-     * Specifies the status of consent resource in code form.
-     */
-    public enum StatusEnum {
-        AUTHORISED("Authorised"),
-
-        AWAITINGAUTHORISATION("AwaitingAuthorisation"),
-
-        REJECTED("Rejected"),
-
-        REVOKED("Revoked");
-
-        private String value;
-
-        StatusEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static StatusEnum fromValue(String text) {
-            for (StatusEnum b : StatusEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
+    @Valid
+    private List<OBExternalPermissions1Code> permissions = new ArrayList<OBExternalPermissions1Code>();
 
     @JsonProperty("Status")
-    private StatusEnum status = null;
+    private OBExternalRequestStatus1Code status = null;
 
     @JsonProperty("StatusUpdateDateTime")
     private DateTime statusUpdateDateTime = null;
@@ -243,32 +131,35 @@ public class OBReadConsentResponse1Data {
         this.expirationDateTime = expirationDateTime;
     }
 
-    public OBReadConsentResponse1Data permissions(List<PermissionsEnum> permissions) {
+    public OBReadConsentResponse1Data permissions(List<OBExternalPermissions1Code> permissions) {
         this.permissions = permissions;
         return this;
     }
 
-    public OBReadConsentResponse1Data addPermissionsItem(PermissionsEnum permissionsItem) {
+    public OBReadConsentResponse1Data addPermissionsItem(OBExternalPermissions1Code permissionsItem) {
         this.permissions.add(permissionsItem);
         return this;
     }
 
     /**
-     * Get permissions
+     * Specifies the Open Banking account access data types. This is a list of the data clusters being consented by the PSU, and requested for authorisation with the ASPSP.
+     *
      * @return permissions
      **/
+    @ApiModelProperty(required = true, value = "Specifies the Open Banking account access data types. This is a list of the data clusters being consented by the PSU, and requested for authorisation with the ASPSP.")
     @NotNull
+
+    @Valid
     @Size(min = 1)
-    @ApiModelProperty(required = true, value = "")
-    public List<PermissionsEnum> getPermissions() {
+    public List<OBExternalPermissions1Code> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(List<PermissionsEnum> permissions) {
+    public void setPermissions(List<OBExternalPermissions1Code> permissions) {
         this.permissions = permissions;
     }
 
-    public OBReadConsentResponse1Data status(StatusEnum status) {
+    public OBReadConsentResponse1Data status(OBExternalRequestStatus1Code status) {
         this.status = status;
         return this;
     }
@@ -279,11 +170,11 @@ public class OBReadConsentResponse1Data {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "Specifies the status of consent resource in code form.")
-    public StatusEnum getStatus() {
+    public OBExternalRequestStatus1Code getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(OBExternalRequestStatus1Code status) {
         this.status = status;
     }
 

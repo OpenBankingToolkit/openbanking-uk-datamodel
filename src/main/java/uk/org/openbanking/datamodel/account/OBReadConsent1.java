@@ -46,12 +46,12 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-05T09:20:17.613+01:00")
 public class OBReadConsent1 {
     @JsonProperty("Data")
-    private OBReadConsent1Data data = null;
+    private OBReadData1 data = null;
 
     @JsonProperty("Risk")
     private OBRisk2 risk = null;
 
-    public OBReadConsent1 data(OBReadConsent1Data data) {
+    public OBReadConsent1 data(OBReadData1 data) {
         this.data = data;
         return this;
     }
@@ -63,11 +63,11 @@ public class OBReadConsent1 {
     @NotNull
     @Valid
     @ApiModelProperty(required = true, value = "")
-    public OBReadConsent1Data getData() {
+    public OBReadData1 getData() {
         return data;
     }
 
-    public void setData(OBReadConsent1Data data) {
+    public void setData(OBReadData1 data) {
         this.data = data;
     }
 
