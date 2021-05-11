@@ -29,9 +29,9 @@ import uk.org.openbanking.datamodel.payment.OBWriteFileConsent3Data;
 import java.math.BigDecimal;
 
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBWriteDomestic2DataInitiationDebtorAccount;
-import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
+import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBWriteDomestic2DataInitiationRemittanceInformation;
-import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent3DataSCASupportData;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBSCASupportData1;
 
 /**
  * Test data factory for the {@link OBWriteFileConsent3Data}.
@@ -56,7 +56,7 @@ public class OBWriteFileConsentTestDataFactory {
                         .debtorAccount(aValidOBWriteDomestic2DataInitiationDebtorAccount())
                         .remittanceInformation(aValidOBWriteDomestic2DataInitiationRemittanceInformation())
                         .supplementaryData(new OBSupplementaryData1()))
-                .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
-                .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
+                .authorisation(aValidOBWriteDomesticConsent4DataAuthorisation())
+                .scASupportData(aValidOBSCASupportData1());
     }
 }

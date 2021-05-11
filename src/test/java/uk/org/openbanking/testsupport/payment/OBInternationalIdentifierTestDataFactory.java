@@ -20,15 +20,7 @@
  */
 package uk.org.openbanking.testsupport.payment;
 
-import uk.org.openbanking.datamodel.payment.OBBranchAndFinancialInstitutionIdentification3;
-import uk.org.openbanking.datamodel.payment.OBBranchAndFinancialInstitutionIdentification6;
-import uk.org.openbanking.datamodel.payment.OBPartyIdentification43;
-import uk.org.openbanking.datamodel.payment.OBWriteInternational2DataInitiationCreditor;
-import uk.org.openbanking.datamodel.payment.OBWriteInternational2DataInitiationCreditorAgent;
-import uk.org.openbanking.datamodel.payment.OBWriteInternational3DataInitiationCreditor;
-import uk.org.openbanking.datamodel.payment.OBWriteInternational3DataInitiationCreditorAgent;
-import uk.org.openbanking.datamodel.payment.OBWriteInternationalStandingOrder3DataInitiationCreditorAgent;
-import uk.org.openbanking.datamodel.payment.OBWriteInternationalStandingOrder4DataInitiationCreditorAgent;
+import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.testsupport.payment.OBPostalAddress6TestDataFactory.aValidOBPostalAddress6;
 
@@ -101,6 +93,12 @@ public class OBInternationalIdentifierTestDataFactory {
 
     public static OBWriteInternational3DataInitiationCreditor aValidOBWriteInternational3DataInitiationCreditor() {
         return (new OBWriteInternational3DataInitiationCreditor())
+                .name(CREDITOR_NAME)
+                .postalAddress(aValidOBPostalAddress6());
+    }
+
+    public static OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor aValidOBWriteInternationalScheduledConsentResponse6DataInitiationCreditor() {
+        return (new OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor())
                 .name(CREDITOR_NAME)
                 .postalAddress(aValidOBPostalAddress6());
     }

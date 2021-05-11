@@ -36,12 +36,12 @@ import java.util.Objects;
 
 public class OBWriteDomesticScheduled2   {
   @JsonProperty("Data")
-  private OBWriteDataDomesticScheduled2 data = null;
+  private OBWriteDomesticScheduled2Data data = null;
 
   @JsonProperty("Risk")
   private OBRisk1 risk = null;
 
-  public OBWriteDomesticScheduled2 data(OBWriteDataDomesticScheduled2 data) {
+  public OBWriteDomesticScheduled2 data(OBWriteDomesticScheduled2Data data) {
     this.data = data;
     return this;
   }
@@ -52,14 +52,12 @@ public class OBWriteDomesticScheduled2   {
   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
-
   @Valid
-
-  public OBWriteDataDomesticScheduled2 getData() {
+  public OBWriteDomesticScheduled2Data getData() {
     return data;
   }
 
-  public void setData(OBWriteDataDomesticScheduled2 data) {
+  public void setData(OBWriteDomesticScheduled2Data data) {
     this.data = data;
   }
 
@@ -74,9 +72,7 @@ public class OBWriteDomesticScheduled2   {
   **/
   @ApiModelProperty(required = true, value = "")
   @NotNull
-
   @Valid
-
   public OBRisk1 getRisk() {
     return risk;
   }
@@ -84,7 +80,6 @@ public class OBWriteDomesticScheduled2   {
   public void setRisk(OBRisk1 risk) {
     this.risk = risk;
   }
-
 
   @Override
   public boolean equals(Object o) {
