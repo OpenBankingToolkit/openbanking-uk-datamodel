@@ -25,32 +25,35 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
-import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * Set of elements used to identify a person or an organisation.
+ * Party to which an amount of money is due.
  */
-@ApiModel(description = "Set of elements used to identify a person or an organisation.")
+@ApiModel(description = "Party to which an amount of money is due.")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-10T15:22:08.964Z")
-public class OBDebtorIdentification1 extends HashMap<String, Object> {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-20T10:23:11.959Z")
+public class OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor {
     @JsonProperty("Name")
     private String name = null;
 
-    public OBDebtorIdentification1 name(String name) {
+    @JsonProperty("PostalAddress")
+    private OBPostalAddress6 postalAddress = null;
+
+    public OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor name(String name) {
         this.name = name;
         return this;
     }
 
     /**
-     * The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account.
+     * Name by which a party is known and which is usually used to identify that party.
      *
      * @return name
      **/
-    @ApiModelProperty(value = "The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account.")
-    @Size(min = 0, max = 350)
+    @ApiModelProperty(value = "Name by which a party is known and which is usually used to identify that party.")
+    @Size(min = 1, max = 350)
     public String getName() {
         return name;
     }
@@ -59,31 +62,52 @@ public class OBDebtorIdentification1 extends HashMap<String, Object> {
         this.name = name;
     }
 
+    public OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor postalAddress(OBPostalAddress6 postalAddress) {
+        this.postalAddress = postalAddress;
+        return this;
+    }
+
+    /**
+     * Get postalAddress
+     *
+     * @return postalAddress
+     **/
+    @ApiModelProperty(value = "")
+    @Valid
+    public OBPostalAddress6 getPostalAddress() {
+        return postalAddress;
+    }
+
+    public void setPostalAddress(OBPostalAddress6 postalAddress) {
+        this.postalAddress = postalAddress;
+    }
+
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(java.lang.Object o) {
         if (this == o) {
             return true;
         }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OBDebtorIdentification1 obDebtorIdentification1 = (OBDebtorIdentification1) o;
-        return Objects.equals(this.name, obDebtorIdentification1.name) &&
-                super.equals(o);
+        OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor obWriteInternationalScheduledConsentResponse6DataInitiationCreditor = (OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor) o;
+        return Objects.equals(this.name, obWriteInternationalScheduledConsentResponse6DataInitiationCreditor.name) &&
+                Objects.equals(this.postalAddress, obWriteInternationalScheduledConsentResponse6DataInitiationCreditor.postalAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, super.hashCode());
+        return Objects.hash(name, postalAddress);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class OBDebtorIdentification1 {\n");
-        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+        sb.append("class OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor {\n");
+
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    postalAddress: ").append(toIndentedString(postalAddress)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -92,7 +116,7 @@ public class OBDebtorIdentification1 extends HashMap<String, Object> {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(Object o) {
+    private String toIndentedString(java.lang.Object o) {
         if (o == null) {
             return "null";
         }
