@@ -20,12 +20,7 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.OBBranchAndFinancialInstitutionIdentification3;
-import uk.org.openbanking.datamodel.payment.OBBranchAndFinancialInstitutionIdentification6;
-import uk.org.openbanking.datamodel.payment.OBPartyIdentification43;
-import uk.org.openbanking.datamodel.payment.OBWriteInternational3DataInitiationCreditor;
-import uk.org.openbanking.datamodel.payment.OBWriteInternational3DataInitiationCreditorAgent;
-import uk.org.openbanking.datamodel.payment.OBWriteInternationalStandingOrder4DataInitiationCreditorAgent;
+import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.ConverterHelper.copyField;
 
@@ -67,7 +62,15 @@ public class OBInternationalIdentifierConverter {
         return toCreditor(new OBWriteInternational3DataInitiationCreditor(), creditor);
     }
 
+    public static OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor toOBWriteInternationalScheduledConsentResponse6DataInitiationCreditor(OBPartyIdentification43 creditor) {
+        return toCreditor(new OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor(), creditor);
+    }
+
     public static OBPartyIdentification43 toOBPartyIdentification43(OBWriteInternational3DataInitiationCreditor creditor) {
+        return toCreditor(new OBPartyIdentification43(), creditor);
+    }
+
+    public static OBPartyIdentification43 toOBPartyIdentification43(OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor creditor) {
         return toCreditor(new OBPartyIdentification43(), creditor);
     }
 

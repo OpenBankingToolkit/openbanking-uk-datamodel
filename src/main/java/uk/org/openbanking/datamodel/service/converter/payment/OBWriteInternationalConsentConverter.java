@@ -24,10 +24,8 @@ import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent3DataAuthorisation;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent4DataAuthorisation;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalConverter.toOBInternational1;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalConverter.toOBInternational2;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalConverter.toOBWriteInternational3DataInitiation;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBWriteDomesticConsentConverter.toOBWriteDomesticConsent4DataSCASupportData;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalConverter.*;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBWriteDomesticConsentConverter.toOBSCASupportData1;
 
 public class OBWriteInternationalConsentConverter {
 
@@ -144,6 +142,6 @@ public class OBWriteInternationalConsentConverter {
                 .initiation(data.getInitiation())
                 .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
                 .readRefundAccount(null)
-                .scASupportData(toOBWriteDomesticConsent4DataSCASupportData(data.getScASupportData()));
+                .scASupportData(toOBSCASupportData1(data.getScASupportData()));
     }
 }

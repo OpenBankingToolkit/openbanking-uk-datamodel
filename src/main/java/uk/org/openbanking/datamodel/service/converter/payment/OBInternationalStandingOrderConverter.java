@@ -36,11 +36,7 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountCo
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBActiveOrHistoricCurrencyAndAmount;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBDomestic2InstructedAmount;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBWriteDomestic2DataInitiationInstructedAmount;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBBranchAndFinancialInstitutionIdentification3;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBBranchAndFinancialInstitutionIdentification6;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBPartyIdentification43;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBWriteInternational3DataInitiationCreditor;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.*;
 
 public class OBInternationalStandingOrderConverter {
 
@@ -218,7 +214,7 @@ public class OBInternationalStandingOrderConverter {
                 .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder1.getInstructedAmount()))
                 .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder1.getDebtorAccount()))
-                .creditor(toOBWriteInternational3DataInitiationCreditor(obInternationalStandingOrder1.getCreditor()))
+                .creditor(toOBWriteInternationalScheduledConsentResponse6DataInitiationCreditor(obInternationalStandingOrder1.getCreditor()))
                 .creditorAgent(toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent(obInternationalStandingOrder1.getCreditorAgent()))
                 .creditorAccount(toOBWriteInternationalStandingOrder4DataInitiationCreditorAccount(creditorAccount))
                 .supplementaryData(null);
@@ -238,7 +234,7 @@ public class OBInternationalStandingOrderConverter {
                 .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder2.getInstructedAmount()))
                 .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder2.getDebtorAccount()))
-                .creditor(toOBWriteInternational3DataInitiationCreditor(obInternationalStandingOrder2.getCreditor()))
+                .creditor(toOBWriteInternationalScheduledConsentResponse6DataInitiationCreditor(obInternationalStandingOrder2.getCreditor()))
                 .creditorAgent(OBInternationalIdentifierConverter.toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent(obInternationalStandingOrder2.getCreditorAgent()))
                 .creditorAccount(toOBWriteInternationalStandingOrder4DataInitiationCreditorAccount(creditorAccount))
                 .supplementaryData(obInternationalStandingOrder2.getSupplementaryData());
@@ -259,7 +255,7 @@ public class OBInternationalStandingOrderConverter {
                 .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
                 .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder3.getInstructedAmount()))
                 .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder3.getDebtorAccount()))
-                .creditor(toOBWriteInternational3DataInitiationCreditor(obInternationalStandingOrder3.getCreditor()))
+                .creditor(toOBWriteInternationalScheduledConsentResponse6DataInitiationCreditor(obInternationalStandingOrder3.getCreditor()))
                 .creditorAgent(OBInternationalIdentifierConverter.toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent(obInternationalStandingOrder3.getCreditorAgent()))
                 .creditorAccount(toOBWriteInternationalStandingOrder4DataInitiationCreditorAccount(creditorAccount))
                 .supplementaryData(obInternationalStandingOrder3.getSupplementaryData());

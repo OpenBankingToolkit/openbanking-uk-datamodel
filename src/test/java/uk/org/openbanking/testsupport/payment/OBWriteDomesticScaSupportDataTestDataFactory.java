@@ -20,6 +20,7 @@
  */
 package uk.org.openbanking.testsupport.payment;
 
+import uk.org.openbanking.datamodel.payment.OBSCASupportData1;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataSCASupportData;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent4DataSCASupportData;
 
@@ -42,5 +43,12 @@ public class OBWriteDomesticScaSupportDataTestDataFactory {
                 .appliedAuthenticationApproach(OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum.CA)
                 .referencePaymentOrderId(UUID.randomUUID().toString())
                 .requestedSCAExemptionType(OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum.BILLPAYMENT);
+    }
+
+    public static OBSCASupportData1 aValidOBSCASupportData1() {
+        return (new OBSCASupportData1())
+                .appliedAuthenticationApproach(OBSCASupportData1.AppliedAuthenticationApproachEnum.CA)
+                .referencePaymentOrderId(UUID.randomUUID().toString())
+                .requestedSCAExemptionType(OBSCASupportData1.RequestedSCAExemptionTypeEnum.BILLPAYMENT);
     }
 }

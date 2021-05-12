@@ -81,7 +81,7 @@ public class OBWriteDomesticScheduledConsentConverter {
 
     public static OBWriteDomesticScheduled2 toOBWriteDomesticScheduled2(OBWriteDomesticScheduled1 obWriteDomesticScheduled1) {
         return (new OBWriteDomesticScheduled2())
-                .data(toOBWriteDataDomesticScheduled2(obWriteDomesticScheduled1.getData()))
+                .data(toOBWriteDomesticScheduled2Data(obWriteDomesticScheduled1.getData()))
                 .risk(obWriteDomesticScheduled1.getRisk());
     }
 
@@ -150,6 +150,12 @@ public class OBWriteDomesticScheduledConsentConverter {
         return data == null ? null : (new OBWriteDataDomesticScheduled2())
                 .consentId(data.getConsentId())
                 .initiation(toOBDomesticScheduled2(data.getInitiation()));
+    }
+
+    public static OBWriteDomesticScheduled2Data toOBWriteDomesticScheduled2Data(OBWriteDataDomesticScheduled1 data) {
+        return data == null ? null : (new OBWriteDomesticScheduled2Data())
+                .consentId(data.getConsentId())
+                .initiation(toOBWriteDomesticScheduled2DataInitiation(data.getInitiation()));
     }
 
     public static OBExternalPermissions2Code toOBExternalPermissions2Code(OBWriteDomesticScheduledConsent3Data.PermissionEnum permission) {

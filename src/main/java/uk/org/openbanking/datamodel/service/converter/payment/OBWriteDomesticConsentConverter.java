@@ -24,9 +24,7 @@ import uk.org.openbanking.datamodel.payment.*;
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBAuthorisation1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent4DataAuthorisation;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBDomestic1;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBDomestic2;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.toOBWriteDomestic2DataInitiation;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBDomesticConverter.*;
 
 public class OBWriteDomesticConsentConverter {
 
@@ -120,7 +118,7 @@ public class OBWriteDomesticConsentConverter {
         return data == null ? null : (new OBWriteDomesticConsent4Data())
                 .initiation(data.getInitiation())
                 .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
-                .scASupportData(toOBWriteDomesticConsent4DataSCASupportData(data.getScASupportData()));
+                .scASupportData(toOBSCASupportData1(data.getScASupportData()));
     }
 
     public static OBWriteDataDomesticConsent2 toOBWriteDataDomesticConsent2(OBWriteDomesticConsent3Data data) {
@@ -157,8 +155,19 @@ public class OBWriteDomesticConsentConverter {
                 .referencePaymentOrderId(scASupportData.getReferencePaymentOrderId());
     }
 
+    public static OBSCASupportData1 toOBSCASupportData1(OBWriteDomesticConsent3DataSCASupportData scASupportData) {
+        return scASupportData == null ? null : (new OBSCASupportData1())
+                .requestedSCAExemptionType(toRequestedSCAExemptionTypeEnum(scASupportData.getRequestedSCAExemptionType()))
+                .appliedAuthenticationApproach(toAppliedAuthenticationApproachEnum(scASupportData.getAppliedAuthenticationApproach()))
+                .referencePaymentOrderId(scASupportData.getReferencePaymentOrderId());
+    }
+
     public static OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum toRequestedSCAExemptionType(OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
         return requestedSCAExemptionType == null ? null : OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum.valueOf(requestedSCAExemptionType.name());
+    }
+
+    private static OBSCASupportData1.RequestedSCAExemptionTypeEnum toRequestedSCAExemptionTypeEnum(OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+        return requestedSCAExemptionType == null ? null : OBSCASupportData1.RequestedSCAExemptionTypeEnum.valueOf(requestedSCAExemptionType.name());
     }
 
     public static OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum toRequestedSCAExemptionType(OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
@@ -171,5 +180,9 @@ public class OBWriteDomesticConsentConverter {
 
     public static OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum toAppliedAuthenticationApproach(OBWriteDomesticConsent3DataSCASupportData.AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
         return appliedAuthenticationApproach == null ? null : OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum.valueOf(appliedAuthenticationApproach.name());
+    }
+
+    public static OBSCASupportData1.AppliedAuthenticationApproachEnum toAppliedAuthenticationApproachEnum(OBWriteDomesticConsent3DataSCASupportData.AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+        return appliedAuthenticationApproach == null ? null : OBSCASupportData1.AppliedAuthenticationApproachEnum.valueOf(appliedAuthenticationApproach.name());
     }
 }

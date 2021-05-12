@@ -25,11 +25,8 @@ import uk.org.openbanking.datamodel.payment.OBWriteInternationalStandingOrderCon
 
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent3DataAuthorisation;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent4DataAuthorisation;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalStandingOrderConverter.toOBInternationalStandingOrder1;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalStandingOrderConverter.toOBInternationalStandingOrder2;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalStandingOrderConverter.toOBInternationalStandingOrder3;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalStandingOrderConverter.toOBWriteInternationalStandingOrder4DataInitiation;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBWriteDomesticConsentConverter.toOBWriteDomesticConsent4DataSCASupportData;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalStandingOrderConverter.*;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBWriteDomesticConsentConverter.toOBSCASupportData1;
 
 public class OBWriteInternationalStandingOrderConsentConverter {
 
@@ -230,7 +227,7 @@ public class OBWriteInternationalStandingOrderConsentConverter {
                 .readRefundAccount(null)
                 .initiation(data.getInitiation())
                 .authorisation(toOBWriteDomesticConsent4DataAuthorisation(data.getAuthorisation()))
-                .scASupportData(toOBWriteDomesticConsent4DataSCASupportData(data.getScASupportData()));
+                .scASupportData(toOBSCASupportData1(data.getScASupportData()));
     }
 
     public static OBExternalPermissions2Code toOBExternalPermissions2Code(PermissionEnum permission) {

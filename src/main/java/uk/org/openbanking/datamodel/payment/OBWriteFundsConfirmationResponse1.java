@@ -38,7 +38,7 @@ import java.util.Objects;
 
 public class OBWriteFundsConfirmationResponse1   {
   @JsonProperty("Data")
-  private OBWriteDataFundsConfirmationResponse1 data = null;
+  private OBWriteFundsConfirmationResponse1Data data = null;
 
   @JsonProperty("Links")
   private Links links = null;
@@ -46,7 +46,7 @@ public class OBWriteFundsConfirmationResponse1   {
   @JsonProperty("Meta")
   private Meta meta = null;
 
-  public OBWriteFundsConfirmationResponse1 data(OBWriteDataFundsConfirmationResponse1 data) {
+  public OBWriteFundsConfirmationResponse1 data(OBWriteFundsConfirmationResponse1Data data) {
     this.data = data;
     return this;
   }
@@ -60,11 +60,11 @@ public class OBWriteFundsConfirmationResponse1   {
 
   @Valid
 
-  public OBWriteDataFundsConfirmationResponse1 getData() {
+  public OBWriteFundsConfirmationResponse1Data getData() {
     return data;
   }
 
-  public void setData(OBWriteDataFundsConfirmationResponse1 data) {
+  public void setData(OBWriteFundsConfirmationResponse1Data data) {
     this.data = data;
   }
 
