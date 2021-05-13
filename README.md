@@ -62,6 +62,15 @@ java -jar swagger-codegen-cli-2.4.5.jar generate \
    
 > Note that these guidelines originally advised not to overwrite existing files, but this is flawed since OB regularly make changes/fixes to existing classes.
 > Therefore, it is necessary to overwrite all files and then selectively rollback the changes, depending on what's changed. This is a long painstaking process!
+
+> Another option is to overwrite all the files and then check if any new classes are used by the existing (modified) ones. If they are, then you could rollback
+> all the classes except the ones that are using the new classes. This isn't foolproof and might miss minor changes to other files (e.g. to validation), but it's
+> likely to cover the main changes. Otherwise, comparing hundreds of files is very difficult, especially when the order of fields has often changed.
+
+> An additional point worth noting is that some of the generated files appear to have changed significantly (e.g. `OBReadConsent1` switching to
+> `OBReadConsent1Data` and its new `PermissionsEnum`). It's important to compare the effect on the JSON (plus any changes to the validation), as the
+> change often makes no difference to the API, and yet the impact on `openbanking-aspsp` might be significant. As a result of this, we have not switched to
+> `OBReadConsent1Data`.
 2. Remove Links, Meta, OBError1 and OBErrorResponse1 - we use shared generic versions of these classes.
 1. Repeat generation for each new swagger json file
 1. If using Intelij, run format and optimise imports on newly generated files.
