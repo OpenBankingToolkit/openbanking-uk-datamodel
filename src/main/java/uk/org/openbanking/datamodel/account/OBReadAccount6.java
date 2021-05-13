@@ -38,7 +38,6 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -46,7 +45,7 @@ import java.util.Objects;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-21T08:14:55.356Z")
-public class OBReadAccount6 extends HashMap<String, Object> {
+public class OBReadAccount6 {
   @JsonProperty("Data")
   private OBReadAccount6Data data = null;
 
