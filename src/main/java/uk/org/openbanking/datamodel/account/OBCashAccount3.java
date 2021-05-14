@@ -60,7 +60,6 @@ public class OBCashAccount3 {
      **/
     @ApiModelProperty(required = true, value = "Name of the identification scheme, in a coded form as published in an external list.")
     @NotNull
-
     @Size(min = 1, max = 40)
     public String getSchemeName() {
         return schemeName;
@@ -81,7 +80,6 @@ public class OBCashAccount3 {
      **/
     @ApiModelProperty(required = true, value = "Beneficiary account identification.")
     @NotNull
-
     @Size(min = 1, max = 256)
     public String getIdentification() {
         return identification;
@@ -101,8 +99,7 @@ public class OBCashAccount3 {
      * @return name
      **/
     @ApiModelProperty(value = "Name of the account, as assigned by the account servicing institution. Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account.")
-
-    @Size(min = 1, max = 70)
+    @Size(min = 1, max = 350)
     public String getName() {
         return name;
     }
@@ -121,7 +118,6 @@ public class OBCashAccount3 {
      * @return secondaryIdentification
      **/
     @ApiModelProperty(value = "This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination).")
-
     @Size(min = 1, max = 34)
     public String getSecondaryIdentification() {
         return secondaryIdentification;
