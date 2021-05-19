@@ -25,56 +25,34 @@ This project is compiled with JDK 11.
 
 ## Class generation
 
-**NOTE** There are two ways to generate the model and API classes - either using the Swagger 2 codegen tool, or doing it via https://editor.swagger.io/.
+Many of the classes are generated from the OB Swagger documentation. The project is setup to make it easy to generate
+the  OB model classes and skeleton API classes using Maven. For efficiency, the default maven profile does not generate
+the code, but it is easy to do so using `code-gen` profile (see below).
 
-Many of the classes are generated from OB Swagger documentation. When a new version of OB API is released,
-the following steps are performed:
-1. Download the Read/Write API's Swagger json files from OB's github (https://github.com/OpenBankingUK/read-write-api-specs/releases)
-1. Then choose one of the following methods to generate the class files:
+The configuration for the swagger generation is currently within this project's main `pom.xml` and the swagger
+specification is within `src/main/resources/specification`.
 
-### Swagger Spec using Sagger 2 Codegen
-1. Download `swagger-codegen-cli-2.4.5.jar` (using this version will match existing generated classes up to 3.1.7 and uses the same dependencies).
-1. Run:
-```   
-java -jar swagger-codegen-cli-2.4.5.jar generate \
-  -i {your_json_file} \
-  -DuseBeanValidation=true \
-  -Dmodels \
-  --model-package uk.org.openbanking.datamodel \
-  --group-id com.forgerock.openbanking \
-  --artifact-id openbanking-sdk \
-  -l java \
-  --library resttemplate \
-  -o generated
-```
-> Refer to https://github.com/swagger-api/swagger-codegen#getting-started for more information (e.g. how to generate the API controller interfaces).
+When a new version of OB API is released, the following steps should be performed:
+1. Download the Swagger yaml files from OB Spec pages (https://github.com/OpenBankingUK/read-write-api-specs/releases).
+   As of v3.1.8, there are swagger files for Accounts, Payments, Funds Confirmation, Events and Variable Recurring Payments.
+1. Place the swagger files under `src/main/resources/specification` (replacing existing ones where applicable).
+1. Run ```mvn clean install -Pcode-gen```
+   > This will generate classes into `target/generated-sources/swagger`
+1. Check the generated files and copy them into the appropriate source folder (e.g. `src/main/java`).
 
-### Generation using Swagger Editor
-1. Copy & paste the relevant swagger spec into https://editor.swagger.io/.
-1. From here, you can click on 'Generate Server' and then choose 'Spring'. This will download a zip file containing all class file.
+   > Note that these guidelines originally advised not to overwrite existing files, but this is flawed since OB regularly
+   makes changes/fixes to existing classes. Therefore, it is necessary to overwrite all files and then selectively rollback
+   the changes, depending on what's changed. This is a long and painstaking process!
 
-> This approach will generate the model and controller files and will work with either a Swagger spec or Open API spec. Note that OB appears to be moving
-> towards only supporting Open API specs.
+   > It is worth noting that some of the generated files appear to have changed significantly (e.g. `OBReadConsent1`
+   switching to `OBReadConsent1Data` and its new `PermissionsEnum`). However, it is important to compare the effect
+   on the resulting JSON (plus any changes to the validation), as the change often makes no difference to the API,
+   and yet the impact may be significant elsewhere (e.g. on `openbanking-aspsp`). As a result of this, we have  not
+   switched to `OBReadConsent1Data`.
 
-### Copy generated files
-
-1. Copy the generated class files into the appropriate source directory (if you copy them into IntelliJ directly then the packages will be corrected - if necessary).
-   
-> Note that these guidelines originally advised not to overwrite existing files, but this is flawed since OB regularly make changes/fixes to existing classes.
-> Therefore, it is necessary to overwrite all files and then selectively rollback the changes, depending on what's changed. This is a long painstaking process!
-
-> Another option is to overwrite all the files and then check if any new classes are used by the existing (modified) ones. If they are, then you could rollback
-> all the classes except the ones that are using the new classes. This isn't foolproof and might miss minor changes to other files (e.g. to validation), but it's
-> likely to cover the main changes. Otherwise, comparing hundreds of files is very difficult, especially when the order of fields has often changed.
-
-> An additional point worth noting is that some of the generated files appear to have changed significantly (e.g. `OBReadConsent1` switching to
-> `OBReadConsent1Data` and its new `PermissionsEnum`). It's important to compare the effect on the JSON (plus any changes to the validation), as the
-> change often makes no difference to the API, and yet the impact on `openbanking-aspsp` might be significant. As a result of this, we have not switched to
-> `OBReadConsent1Data`.
-2. Remove Links, Meta, OBError1 and OBErrorResponse1 - we use shared generic versions of these classes.
-1. Repeat generation for each new swagger json file
-1. If using Intelij, run format and optimise imports on newly generated files.
-1. Fix imports where necessary - e.g. use the Links and Meta from the `account` package and use `org.joda.time.DateTime` instead of `org.threeten.bp.DateTime.DateTime`.
-1. Increment the major or minor version in pom.xml
+1. Remove Links, Meta, OBError1 and OBErrorResponse1 - we use shared generic versions of these classes.
+1. Uncomment the relevant `<inputSpec>` listing within the `openapi-generator-maven-plugin` in the pom for the next
+   swagger spec (and repeat for each new swagger YAML file).
+1. If using Intellij, run format and optimise imports on newly generated files.
 1. Run build to ensure everything compiles and copyrights are generated for new source files.
-1. Commit and raise PR.  
+1. Commit and raise PR.
