@@ -27,29 +27,37 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Methods of calculating interest
  */
 public enum OBInterestCalculationMethod1Code {
-    COMPOUND("Compound"),
 
-    SIMPLEINTEREST("SimpleInterest");
+  ITCO("ITCO"),
 
-    private String value;
+  ITOT("ITOT"),
 
-    OBInterestCalculationMethod1Code(String value) {
-        this.value = value;
+  ITSI("ITSI");
+
+  private String value;
+
+  OBInterestCalculationMethod1Code(String value) {
+    this.value = value;
+  }
+
+  @JsonValue
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  @JsonCreator
+  public static OBInterestCalculationMethod1Code fromValue(String value) {
+    for (OBInterestCalculationMethod1Code b : OBInterestCalculationMethod1Code.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
     }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OBInterestCalculationMethod1Code fromValue(String text) {
-        for (OBInterestCalculationMethod1Code b : OBInterestCalculationMethod1Code.values()) {
-            if (String.valueOf(b.value).equals(text)) {
-                return b;
-            }
-        }
-        return null;
-    }
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+  }
 }
+
