@@ -22,7 +22,6 @@ package uk.org.openbanking.datamodel.payment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -31,15 +30,14 @@ import java.util.Objects;
 /**
  * OBWriteDomestic2
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-28T11:15:38.268Z")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-20T11:30:55.433304+01:00[Europe/London]")
 
 public class OBWriteDomestic2   {
   @JsonProperty("Data")
-  private OBWriteDataDomestic2 data = null;
+  private OBWriteDataDomestic2 data; // hand-edited (avoided switch to OBWriteDomestic2Data as JSON is the same)
 
   @JsonProperty("Risk")
-  private OBRisk1 risk = null;
+  private OBRisk1 risk;
 
   public OBWriteDomestic2 data(OBWriteDataDomestic2 data) {
     this.data = data;
@@ -48,13 +46,12 @@ public class OBWriteDomestic2   {
 
   /**
    * Get data
+   *
    * @return data
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   @NotNull
-
   @Valid
-
   public OBWriteDataDomestic2 getData() {
     return data;
   }
@@ -71,12 +68,10 @@ public class OBWriteDomestic2   {
   /**
    * Get risk
    * @return risk
-  **/
+  */
   @ApiModelProperty(required = true, value = "")
   @NotNull
-
   @Valid
-
   public OBRisk1 getRisk() {
     return risk;
   }
