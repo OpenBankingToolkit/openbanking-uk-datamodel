@@ -26,7 +26,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.joda.time.DateTime;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -38,61 +37,98 @@ import java.util.Objects;
  * The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment.
  */
 @ApiModel(description = "The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment.")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-08-20T10:23:11.959Z")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-20T11:30:55.433304+01:00[Europe/London]")
+
 public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
     @JsonProperty("InstructionIdentification")
-    private String instructionIdentification = null;
+    private String instructionIdentification;
 
     @JsonProperty("EndToEndIdentification")
-    private String endToEndIdentification = null;
+    private String endToEndIdentification;
 
     @JsonProperty("LocalInstrument")
-    private String localInstrument = null;
+    private String localInstrument;
+
+    /**
+     * Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.
+     */
+    public enum InstructionPriorityEnum {
+        NORMAL("Normal"),
+
+        URGENT("Urgent");
+
+        private String value;
+
+        InstructionPriorityEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static InstructionPriorityEnum fromValue(String value) {
+            for (InstructionPriorityEnum b : InstructionPriorityEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
 
     @JsonProperty("InstructionPriority")
-    private InstructionPriorityEnum instructionPriority = null;
+    private InstructionPriorityEnum instructionPriority;
 
     @JsonProperty("Purpose")
-    private String purpose = null;
+    private String purpose;
 
     @JsonProperty("ExtendedPurpose")
-    private String extendedPurpose = null;
+    private String extendedPurpose;
 
     @JsonProperty("ChargeBearer")
-    private OBChargeBearerType1Code chargeBearer = null;
+    private OBChargeBearerType1Code chargeBearer;
 
     @JsonProperty("RequestedExecutionDateTime")
-    private DateTime requestedExecutionDateTime = null;
+    @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
+    private DateTime requestedExecutionDateTime;
 
     @JsonProperty("CurrencyOfTransfer")
-    private String currencyOfTransfer = null;
+    private String currencyOfTransfer;
 
     @JsonProperty("DestinationCountryCode")
-    private String destinationCountryCode = null;
+    private String destinationCountryCode;
 
     @JsonProperty("InstructedAmount")
-    private OBWriteDomestic2DataInitiationInstructedAmount instructedAmount = null;
+    private OBWriteDomestic2DataInitiationInstructedAmount instructedAmount;
 
     @JsonProperty("ExchangeRateInformation")
-    private OBWriteInternational3DataInitiationExchangeRateInformation exchangeRateInformation = null;
+    private OBWriteInternational3DataInitiationExchangeRateInformation exchangeRateInformation;
 
     @JsonProperty("DebtorAccount")
-    private OBWriteDomestic2DataInitiationDebtorAccount debtorAccount = null;
+    private OBWriteDomestic2DataInitiationDebtorAccount debtorAccount;
 
     @JsonProperty("Creditor")
-    private OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor creditor = null;
+    private OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor creditor;
 
     @JsonProperty("CreditorAgent")
-    private OBWriteInternational3DataInitiationCreditorAgent creditorAgent = null;
+    private OBWriteInternational3DataInitiationCreditorAgent creditorAgent;
 
     @JsonProperty("CreditorAccount")
-    private OBWriteDomestic2DataInitiationCreditorAccount creditorAccount = null;
+    private OBWriteDomestic2DataInitiationCreditorAccount creditorAccount;
 
     @JsonProperty("RemittanceInformation")
-    private OBWriteDomestic2DataInitiationRemittanceInformation remittanceInformation = null;
+    private OBWriteDomestic2DataInitiationRemittanceInformation remittanceInformation;
 
     @JsonProperty("SupplementaryData")
+    @Valid
     private OBSupplementaryData1 supplementaryData = null;
 
     public OBWriteInternationalScheduledConsentResponse6DataInitiation instructionIdentification(String instructionIdentification) {
@@ -104,7 +140,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the  instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction.
      *
      * @return instructionIdentification
-     **/
+     */
     @ApiModelProperty(required = true, value = "Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the  instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction.")
     @NotNull
     @Size(min = 1, max = 35)
@@ -125,7 +161,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field.
      *
      * @return endToEndIdentification
-     **/
+     */
     @ApiModelProperty(value = "Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field.")
     @Size(min = 1, max = 35)
     public String getEndToEndIdentification() {
@@ -142,11 +178,11 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
     }
 
     /**
-     * Get localInstrument
+     * User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
      *
      * @return localInstrument
-     **/
-    @ApiModelProperty(value = "")
+     */
+    @ApiModelProperty(value = "User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.")
     public String getLocalInstrument() {
         return localInstrument;
     }
@@ -164,7 +200,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.
      *
      * @return instructionPriority
-     **/
+     */
     @ApiModelProperty(value = "Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.")
     public InstructionPriorityEnum getInstructionPriority() {
         return instructionPriority;
@@ -183,7 +219,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org.
      *
      * @return purpose
-     **/
+     */
     @ApiModelProperty(value = "Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org.")
     @Size(min = 1, max = 4)
     public String getPurpose() {
@@ -203,7 +239,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes.
      *
      * @return extendedPurpose
-     **/
+     */
     @ApiModelProperty(value = "Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes.")
     @Size(min = 1, max = 140)
     public String getExtendedPurpose() {
@@ -223,7 +259,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Get chargeBearer
      *
      * @return chargeBearer
-     **/
+     */
     @ApiModelProperty(value = "")
     @Valid
     public OBChargeBearerType1Code getChargeBearer() {
@@ -243,7 +279,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Date at which the initiating party requests the clearing agent to process the payment.  Usage: This is the date on which the debtor's account is to be debited.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00
      *
      * @return requestedExecutionDateTime
-     **/
+     */
     @ApiModelProperty(required = true, value = "Date at which the initiating party requests the clearing agent to process the payment.  Usage: This is the date on which the debtor's account is to be debited.All dates in the JSON payloads are represented in ISO 8601 date-time format.  All date-time fields in responses must include the timezone. An example is below: 2017-04-05T10:43:07+00:00")
     @NotNull
     @Valid
@@ -264,10 +300,9 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account.
      *
      * @return currencyOfTransfer
-     **/
+     */
     @ApiModelProperty(required = true, value = "Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account.")
     @NotNull
-
     @Pattern(regexp = "^[A-Z]{3,3}$")
     public String getCurrencyOfTransfer() {
         return currencyOfTransfer;
@@ -286,9 +321,8 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Country in which Credit Account is domiciled. Code to identify a country, a dependency, or another area of particular geopolitical interest, on the basis of country names obtained from the United Nations (ISO 3166, Alpha-2 code).
      *
      * @return destinationCountryCode
-     **/
+     */
     @ApiModelProperty(value = "Country in which Credit Account is domiciled. Code to identify a country, a dependency, or another area of particular geopolitical interest, on the basis of country names obtained from the United Nations (ISO 3166, Alpha-2 code).")
-
     @Pattern(regexp = "[A-Z]{2,2}")
     public String getDestinationCountryCode() {
         return destinationCountryCode;
@@ -307,12 +341,10 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Get instructedAmount
      *
      * @return instructedAmount
-     **/
+     */
     @ApiModelProperty(required = true, value = "")
     @NotNull
-
     @Valid
-
     public OBWriteDomestic2DataInitiationInstructedAmount getInstructedAmount() {
         return instructedAmount;
     }
@@ -330,11 +362,9 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Get exchangeRateInformation
      *
      * @return exchangeRateInformation
-     **/
+     */
     @ApiModelProperty(value = "")
-
     @Valid
-
     public OBWriteInternational3DataInitiationExchangeRateInformation getExchangeRateInformation() {
         return exchangeRateInformation;
     }
@@ -352,11 +382,9 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Get debtorAccount
      *
      * @return debtorAccount
-     **/
+     */
     @ApiModelProperty(value = "")
-
     @Valid
-
     public OBWriteDomestic2DataInitiationDebtorAccount getDebtorAccount() {
         return debtorAccount;
     }
@@ -374,11 +402,9 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Get creditor
      *
      * @return creditor
-     **/
+     */
     @ApiModelProperty(value = "")
-
     @Valid
-
     public OBWriteInternationalScheduledConsentResponse6DataInitiationCreditor getCreditor() {
         return creditor;
     }
@@ -396,11 +422,9 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Get creditorAgent
      *
      * @return creditorAgent
-     **/
+     */
     @ApiModelProperty(value = "")
-
     @Valid
-
     public OBWriteInternational3DataInitiationCreditorAgent getCreditorAgent() {
         return creditorAgent;
     }
@@ -418,12 +442,10 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Get creditorAccount
      *
      * @return creditorAccount
-     **/
+     */
     @ApiModelProperty(required = true, value = "")
     @NotNull
-
     @Valid
-
     public OBWriteDomestic2DataInitiationCreditorAccount getCreditorAccount() {
         return creditorAccount;
     }
@@ -441,11 +463,9 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Get remittanceInformation
      *
      * @return remittanceInformation
-     **/
+     */
     @ApiModelProperty(value = "")
-
     @Valid
-
     public OBWriteDomestic2DataInitiationRemittanceInformation getRemittanceInformation() {
         return remittanceInformation;
     }
@@ -460,14 +480,11 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
     }
 
     /**
-     * Get supplementaryData
+     * Additional information that can not be captured in the structured fields and/or any other specific block.
      *
      * @return supplementaryData
-     **/
-    @ApiModelProperty(value = "")
-
-    @Valid
-
+     */
+    @ApiModelProperty(value = "Additional information that can not be captured in the structured fields and/or any other specific block.")
     public OBSupplementaryData1 getSupplementaryData() {
         return supplementaryData;
     }
@@ -478,7 +495,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
 
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -542,42 +559,11 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.
-     */
-    public enum InstructionPriorityEnum {
-        NORMAL("Normal"),
-
-        URGENT("Urgent");
-
-        private String value;
-
-        InstructionPriorityEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        @JsonValue
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static InstructionPriorityEnum fromValue(String text) {
-            for (InstructionPriorityEnum b : InstructionPriorityEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
     }
 }
 

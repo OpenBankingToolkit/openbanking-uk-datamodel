@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
 import java.util.Objects;
@@ -34,122 +33,147 @@ import java.util.Objects;
  * Supporting Data provided by TPP, when requesting SCA Exemption.
  */
 @ApiModel(description = "Supporting Data provided by TPP, when requesting SCA Exemption.")
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-10T14:02:35.556Z")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-20T11:30:55.433304+01:00[Europe/London]")
 
 public class OBSCASupportData1   {
-  /**
-   * Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP
-   */
-  public enum AppliedAuthenticationApproachEnum {
-    CA("CA"),
-    
-    SCA("SCA");
-
-    private String value;
-
-    AppliedAuthenticationApproachEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AppliedAuthenticationApproachEnum fromValue(String text) {
-      for (AppliedAuthenticationApproachEnum b : AppliedAuthenticationApproachEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("AppliedAuthenticationApproach")
-  private AppliedAuthenticationApproachEnum appliedAuthenticationApproach = null;
-
-  @JsonProperty("ReferencePaymentOrderId")
-  private String referencePaymentOrderId = null;
-
   /**
    * This field allows a PISP to request specific SCA Exemption for a Payment Initiation
    */
   public enum RequestedSCAExemptionTypeEnum {
     BILLPAYMENT("BillPayment"),
-    
-    CONTACTLESSTRAVEL("ContactlessTravel"),
-    
-    ECOMMERCEGOODS("EcommerceGoods"),
-    
-    ECOMMERCESERVICES("EcommerceServices"),
-    
-    KIOSK("Kiosk"),
-    
-    PARKING("Parking"),
-    
-    PARTYTOPARTY("PartyToParty");
 
-    private String value;
+      CONTACTLESSTRAVEL("ContactlessTravel"),
 
-    RequestedSCAExemptionTypeEnum(String value) {
-      this.value = value;
-    }
+      ECOMMERCEGOODS("EcommerceGoods"),
 
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
+      ECOMMERCESERVICES("EcommerceServices"),
 
-    @JsonCreator
-    public static RequestedSCAExemptionTypeEnum fromValue(String text) {
-      for (RequestedSCAExemptionTypeEnum b : RequestedSCAExemptionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
+      KIOSK("Kiosk"),
+
+      PARKING("Parking"),
+
+      PARTYTOPARTY("PartyToParty");
+
+      private String value;
+
+      RequestedSCAExemptionTypeEnum(String value) {
+          this.value = value;
       }
-      return null;
+
+      @JsonValue
+      public String getValue() {
+          return value;
+      }
+
+      @Override
+      public String toString() {
+          return String.valueOf(value);
+      }
+
+      @JsonCreator
+      public static RequestedSCAExemptionTypeEnum fromValue(String value) {
+          for (RequestedSCAExemptionTypeEnum b : RequestedSCAExemptionTypeEnum.values()) {
+              if (b.value.equals(value)) {
+                  return b;
+              }
+          }
+          throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      }
+  }
+
+    @JsonProperty("RequestedSCAExemptionType")
+    private RequestedSCAExemptionTypeEnum requestedSCAExemptionType;
+
+    /**
+     * Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP
+     */
+    public enum AppliedAuthenticationApproachEnum {
+        CA("CA"),
+
+        SCA("SCA");
+
+        private String value;
+
+        AppliedAuthenticationApproachEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static AppliedAuthenticationApproachEnum fromValue(String value) {
+            for (AppliedAuthenticationApproachEnum b : AppliedAuthenticationApproachEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
-  }
 
-  @JsonProperty("RequestedSCAExemptionType")
-  private RequestedSCAExemptionTypeEnum requestedSCAExemptionType = null;
+    @JsonProperty("AppliedAuthenticationApproach")
+    private AppliedAuthenticationApproachEnum appliedAuthenticationApproach;
 
-  public OBSCASupportData1 appliedAuthenticationApproach(AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
-    this.appliedAuthenticationApproach = appliedAuthenticationApproach;
-    return this;
-  }
+    @JsonProperty("ReferencePaymentOrderId")
+    private String referencePaymentOrderId;
 
-  /**
-   * Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP
-   * @return appliedAuthenticationApproach
-  **/
-  @ApiModelProperty(value = "Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP")
-  public AppliedAuthenticationApproachEnum getAppliedAuthenticationApproach() {
-    return appliedAuthenticationApproach;
-  }
+    public OBSCASupportData1 requestedSCAExemptionType(RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+        this.requestedSCAExemptionType = requestedSCAExemptionType;
+        return this;
+    }
 
-  public void setAppliedAuthenticationApproach(AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
-    this.appliedAuthenticationApproach = appliedAuthenticationApproach;
-  }
+    /**
+     * This field allows a PISP to request specific SCA Exemption for a Payment Initiation
+     *
+     * @return requestedSCAExemptionType
+     */
+    @ApiModelProperty(value = "This field allows a PISP to request specific SCA Exemption for a Payment Initiation")
+    public RequestedSCAExemptionTypeEnum getRequestedSCAExemptionType() {
+        return requestedSCAExemptionType;
+    }
 
-  public OBSCASupportData1 referencePaymentOrderId(String referencePaymentOrderId) {
-    this.referencePaymentOrderId = referencePaymentOrderId;
+    public void setRequestedSCAExemptionType(RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+        this.requestedSCAExemptionType = requestedSCAExemptionType;
+    }
+
+    public OBSCASupportData1 appliedAuthenticationApproach(AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+        this.appliedAuthenticationApproach = appliedAuthenticationApproach;
+        return this;
+    }
+
+    /**
+     * Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP
+     *
+     * @return appliedAuthenticationApproach
+     */
+    @ApiModelProperty(value = "Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP")
+    public AppliedAuthenticationApproachEnum getAppliedAuthenticationApproach() {
+        return appliedAuthenticationApproach;
+    }
+
+    public void setAppliedAuthenticationApproach(AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+        this.appliedAuthenticationApproach = appliedAuthenticationApproach;
+    }
+
+    public OBSCASupportData1 referencePaymentOrderId(String referencePaymentOrderId) {
+        this.referencePaymentOrderId = referencePaymentOrderId;
     return this;
   }
 
   /**
    * If the payment is recurring, then this field is populated with the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. The value here refers to the payment id e.g. DomesticPaymentId  
    * @return referencePaymentOrderId
-  **/
+   */
   @ApiModelProperty(value = "If the payment is recurring, then this field is populated with the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. The value here refers to the payment id e.g. DomesticPaymentId  ")
-
-@Size(min=1,max=40) 
+  @Size(min = 1, max = 40)
   public String getReferencePaymentOrderId() {
     return referencePaymentOrderId;
   }
@@ -158,56 +182,36 @@ public class OBSCASupportData1   {
     this.referencePaymentOrderId = referencePaymentOrderId;
   }
 
-  public OBSCASupportData1 requestedSCAExemptionType(RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
-    this.requestedSCAExemptionType = requestedSCAExemptionType;
-    return this;
-  }
-
-  /**
-   * This field allows a PISP to request specific SCA Exemption for a Payment Initiation
-   * @return requestedSCAExemptionType
-  **/
-  @ApiModelProperty(value = "This field allows a PISP to request specific SCA Exemption for a Payment Initiation")
-
-
-  public RequestedSCAExemptionTypeEnum getRequestedSCAExemptionType() {
-    return requestedSCAExemptionType;
-  }
-
-  public void setRequestedSCAExemptionType(RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
-    this.requestedSCAExemptionType = requestedSCAExemptionType;
-  }
-
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    OBSCASupportData1 obSCASupportData1 = (OBSCASupportData1) o;
-    return Objects.equals(this.appliedAuthenticationApproach, obSCASupportData1.appliedAuthenticationApproach) &&
-        Objects.equals(this.referencePaymentOrderId, obSCASupportData1.referencePaymentOrderId) &&
-        Objects.equals(this.requestedSCAExemptionType, obSCASupportData1.requestedSCAExemptionType);
+      if (this == o) {
+          return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+          return false;
+      }
+      OBSCASupportData1 obSCASupportData1 = (OBSCASupportData1) o;
+      return Objects.equals(this.requestedSCAExemptionType, obSCASupportData1.requestedSCAExemptionType) &&
+              Objects.equals(this.appliedAuthenticationApproach, obSCASupportData1.appliedAuthenticationApproach) &&
+              Objects.equals(this.referencePaymentOrderId, obSCASupportData1.referencePaymentOrderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appliedAuthenticationApproach, referencePaymentOrderId, requestedSCAExemptionType);
+      return Objects.hash(requestedSCAExemptionType, appliedAuthenticationApproach, referencePaymentOrderId);
   }
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OBSCASupportData1 {\n");
-    
-    sb.append("    appliedAuthenticationApproach: ").append(toIndentedString(appliedAuthenticationApproach)).append("\n");
-    sb.append("    referencePaymentOrderId: ").append(toIndentedString(referencePaymentOrderId)).append("\n");
-    sb.append("    requestedSCAExemptionType: ").append(toIndentedString(requestedSCAExemptionType)).append("\n");
-    sb.append("}");
-    return sb.toString();
+      StringBuilder sb = new StringBuilder();
+      sb.append("class OBSCASupportData1 {\n");
+
+      sb.append("    requestedSCAExemptionType: ").append(toIndentedString(requestedSCAExemptionType)).append("\n");
+      sb.append("    appliedAuthenticationApproach: ").append(toIndentedString(appliedAuthenticationApproach)).append("\n");
+      sb.append("    referencePaymentOrderId: ").append(toIndentedString(referencePaymentOrderId)).append("\n");
+      sb.append("}");
+      return sb.toString();
   }
 
   /**
