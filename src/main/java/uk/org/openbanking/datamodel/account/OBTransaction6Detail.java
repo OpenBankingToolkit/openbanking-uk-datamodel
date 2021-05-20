@@ -111,7 +111,7 @@ public class OBTransaction6Detail {
 
   @JsonProperty("SupplementaryData")
   @Valid
-  private Map<String, Object> supplementaryData = null;
+  private OBSupplementaryData1 supplementaryData = null;
 
   public OBTransaction6Detail accountId(String accountId) {
     this.accountId = accountId;
@@ -587,16 +587,8 @@ public class OBTransaction6Detail {
     this.cardInstrument = cardInstrument;
   }
 
-  public OBTransaction6Detail supplementaryData(Map<String, Object> supplementaryData) {
+  public OBTransaction6Detail supplementaryData(OBSupplementaryData1 supplementaryData) {
     this.supplementaryData = supplementaryData;
-    return this;
-  }
-
-  public OBTransaction6Detail putSupplementaryDataItem(String key, Object supplementaryDataItem) {
-    if (this.supplementaryData == null) {
-      this.supplementaryData = new HashMap<String, Object>();
-    }
-    this.supplementaryData.put(key, supplementaryDataItem);
     return this;
   }
 
@@ -608,11 +600,11 @@ public class OBTransaction6Detail {
   @ApiModelProperty(value = "Additional information that can not be captured in the structured fields and/or any other specific block.")
 
 
-  public Map<String, Object> getSupplementaryData() {
+  public OBSupplementaryData1 getSupplementaryData() {
     return supplementaryData;
   }
 
-  public void setSupplementaryData(Map<String, Object> supplementaryData) {
+  public void setSupplementaryData(OBSupplementaryData1 supplementaryData) {
     this.supplementaryData = supplementaryData;
   }
 

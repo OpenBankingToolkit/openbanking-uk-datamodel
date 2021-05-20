@@ -28,7 +28,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -92,7 +91,7 @@ public class OBStandingOrder6Detail {
 
     @JsonProperty("SupplementaryData")
     @Valid
-    private Map<String, Object> supplementaryData = null;
+    private OBSupplementaryData1 supplementaryData = null;
 
     public OBStandingOrder6Detail accountId(String accountId) {
         this.accountId = accountId;
@@ -417,16 +416,8 @@ public class OBStandingOrder6Detail {
         this.creditorAccount = creditorAccount;
     }
 
-    public OBStandingOrder6Detail supplementaryData(Map<String, Object> supplementaryData) {
+    public OBStandingOrder6Detail supplementaryData(OBSupplementaryData1 supplementaryData) {
         this.supplementaryData = supplementaryData;
-        return this;
-    }
-
-    public OBStandingOrder6Detail putSupplementaryDataItem(String key, Object supplementaryDataItem) {
-        if (this.supplementaryData == null) {
-            this.supplementaryData = new HashMap<String, Object>();
-        }
-        this.supplementaryData.put(key, supplementaryDataItem);
         return this;
     }
 
@@ -436,11 +427,11 @@ public class OBStandingOrder6Detail {
      * @return supplementaryData
      */
     @ApiModelProperty(value = "Additional information that can not be captured in the structured fields and/or any other specific block.")
-    public Map<String, Object> getSupplementaryData() {
+    public OBSupplementaryData1 getSupplementaryData() {
         return supplementaryData;
     }
 
-    public void setSupplementaryData(Map<String, Object> supplementaryData) {
+    public void setSupplementaryData(OBSupplementaryData1 supplementaryData) {
         this.supplementaryData = supplementaryData;
     }
 

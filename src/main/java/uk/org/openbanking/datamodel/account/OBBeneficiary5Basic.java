@@ -25,8 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -49,7 +47,7 @@ public class OBBeneficiary5Basic {
 
   @JsonProperty("SupplementaryData")
   @Valid
-  private Map<String, Object> supplementaryData = null;
+  private OBSupplementaryData1 supplementaryData = null;
 
   public OBBeneficiary5Basic accountId(String accountId) {
     this.accountId = accountId;
@@ -131,16 +129,8 @@ public class OBBeneficiary5Basic {
     this.reference = reference;
   }
 
-  public OBBeneficiary5Basic supplementaryData(Map<String, Object> supplementaryData) {
+  public OBBeneficiary5Basic supplementaryData(OBSupplementaryData1 supplementaryData) {
     this.supplementaryData = supplementaryData;
-    return this;
-  }
-
-  public OBBeneficiary5Basic putSupplementaryDataItem(String key, Object supplementaryDataItem) {
-    if (this.supplementaryData == null) {
-      this.supplementaryData = new HashMap<String, Object>();
-    }
-    this.supplementaryData.put(key, supplementaryDataItem);
     return this;
   }
 
@@ -152,11 +142,11 @@ public class OBBeneficiary5Basic {
   @ApiModelProperty(value = "Additional information that can not be captured in the structured fields and/or any other specific block.")
 
 
-  public Map<String, Object> getSupplementaryData() {
+  public OBSupplementaryData1 getSupplementaryData() {
     return supplementaryData;
   }
 
-  public void setSupplementaryData(Map<String, Object> supplementaryData) {
+  public void setSupplementaryData(OBSupplementaryData1 supplementaryData) {
     this.supplementaryData = supplementaryData;
   }
 
