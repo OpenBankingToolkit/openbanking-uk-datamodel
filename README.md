@@ -44,11 +44,16 @@ When a new version of OB API is released, the following steps should be performe
    makes changes/fixes to existing classes. Therefore, it is necessary to overwrite all files and then selectively rollback
    the changes, depending on what's changed. This is a long and painstaking process!
 
-   > It is worth noting that some of the generated files appear to have changed significantly (e.g. `OBReadConsent1`
-   switching to `OBReadConsent1Data` and its new `PermissionsEnum`). However, it is important to compare the effect
-   on the resulting JSON (plus any changes to the validation), as the change often makes no difference to the API,
-   and yet the impact may be significant elsewhere (e.g. on `openbanking-aspsp`). As a result of this, we have  not
-   switched to `OBReadConsent1Data`.
+   > It is worth noting that a number of generated files appear to have changed significantly (e.g. `OBReadConsent1`
+   switching to `OBReadConsent1Data` and its new `PermissionsEnum`). However, it is important to compare the effect on
+   the resulting JSON (plus any changes to the validation), as the change often makes no difference to the API, and yet
+   the impact may be significant elsewhere (e.g. on `openbanking-aspsp`). As a result of this, we have  not switched
+   to `OBReadConsent1Data`.
+   
+   > Other notable changes include things like `OBEventSubscriptionResponse1Data` switching from a `String` to a `URL`
+   for the `callbackUrl` or `httpopenbankingOrgUkrid` within `OBEventSubject1` being renamed to
+   `httpColonOpenbankingOrgUkRid`, but the `@JsonProperty` annotation remaining the same. Again, neither of these make
+   any difference to the resulting JSON, so these changes have not been applied.
 
 1. Remove Links, Meta, OBError1 and OBErrorResponse1 - we use shared generic versions of these classes.
 1. Uncomment the relevant `<inputSpec>` listing within the `openapi-generator-maven-plugin` in the pom for the next
