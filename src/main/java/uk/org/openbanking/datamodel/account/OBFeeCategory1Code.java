@@ -27,9 +27,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Categorisation of fees and charges into standard categories.
  */
 public enum OBFeeCategory1Code {
-    OTHER("Other"),
 
-    SERVICING("Servicing");
+    FCOT("FCOT"),
+
+    FCRE("FCRE"),
+
+    FCSV("FCSV");
 
     private String value;
 
@@ -37,19 +40,24 @@ public enum OBFeeCategory1Code {
         this.value = value;
     }
 
-    @Override
     @JsonValue
+    public String getValue() {
+        return value;
+    }
+
+    @Override
     public String toString() {
         return String.valueOf(value);
     }
 
     @JsonCreator
-    public static OBFeeCategory1Code fromValue(String text) {
+    public static OBFeeCategory1Code fromValue(String value) {
         for (OBFeeCategory1Code b : OBFeeCategory1Code.values()) {
-            if (String.valueOf(b.value).equals(text)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 }
+
