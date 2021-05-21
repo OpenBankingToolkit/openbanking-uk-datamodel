@@ -87,7 +87,7 @@ public class OBWriteInternationalScheduledConsentConverterTest {
 
     private OBWriteInternationalScheduledConsent4Data expectedOBWriteInternationalScheduledConsent4Data(OBWriteDataInternationalScheduledConsent1 data) {
         return (new OBWriteInternationalScheduledConsent4Data())
-                .permission(OBWriteInternationalScheduledConsent4Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .permission(data.getPermission())
                 .initiation(expectedOBWriteInternationalScheduled3DataInitiation(data.getInitiation()))
                 .authorisation(expectedOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()))
                 .scASupportData(null);
@@ -95,7 +95,7 @@ public class OBWriteInternationalScheduledConsentConverterTest {
 
     private OBWriteInternationalScheduledConsent4Data expectedOBWriteInternationalScheduledConsent4Data(OBWriteDataInternationalScheduledConsent2 data) {
         return (new OBWriteInternationalScheduledConsent4Data())
-                .permission(OBWriteInternationalScheduledConsent4Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .permission(data.getPermission())
                 .initiation(expectedOBWriteInternationalScheduled3DataInitiation(data.getInitiation()))
                 .authorisation(expectedOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()))
                 .scASupportData(null);
@@ -147,7 +147,7 @@ public class OBWriteInternationalScheduledConsentConverterTest {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(OBWriteInternationalScheduled3DataInitiation.InstructionPriorityEnum.valueOf(initiation.getInstructionPriority().name()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .extendedPurpose(null)
                 .chargeBearer(initiation.getChargeBearer())
@@ -160,7 +160,7 @@ public class OBWriteInternationalScheduledConsentConverterTest {
                 .exchangeRateInformation((new OBWriteInternational3DataInitiationExchangeRateInformation())
                         .unitCurrency(initiation.getExchangeRateInformation().getUnitCurrency())
                         .exchangeRate(initiation.getExchangeRateInformation().getExchangeRate())
-                        .rateType(OBWriteInternational3DataInitiationExchangeRateInformation.RateTypeEnum.valueOf(initiation.getExchangeRateInformation().getRateType().name()))
+                        .rateType(initiation.getExchangeRateInformation().getRateType())
                         .contractIdentification(initiation.getExchangeRateInformation().getContractIdentification()))
                 .debtorAccount((new OBWriteDomestic2DataInitiationDebtorAccount())
                         .schemeName(initiation.getDebtorAccount().getSchemeName())
@@ -191,7 +191,7 @@ public class OBWriteInternationalScheduledConsentConverterTest {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(OBWriteInternationalScheduled3DataInitiation.InstructionPriorityEnum.valueOf(initiation.getInstructionPriority().name()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .extendedPurpose(null)
                 .chargeBearer(initiation.getChargeBearer())
@@ -204,7 +204,7 @@ public class OBWriteInternationalScheduledConsentConverterTest {
                 .exchangeRateInformation((new OBWriteInternational3DataInitiationExchangeRateInformation())
                         .unitCurrency(initiation.getExchangeRateInformation().getUnitCurrency())
                         .exchangeRate(initiation.getExchangeRateInformation().getExchangeRate())
-                        .rateType(OBWriteInternational3DataInitiationExchangeRateInformation.RateTypeEnum.valueOf(initiation.getExchangeRateInformation().getRateType().name()))
+                        .rateType(initiation.getExchangeRateInformation().getRateType())
                         .contractIdentification(initiation.getExchangeRateInformation().getContractIdentification()))
                 .debtorAccount((new OBWriteDomestic2DataInitiationDebtorAccount())
                         .schemeName(initiation.getDebtorAccount().getSchemeName())
@@ -238,7 +238,7 @@ public class OBWriteInternationalScheduledConsentConverterTest {
 
     private OBWriteDomesticConsent3DataAuthorisation expectedOBWriteDomesticConsent3DataAuthorisation(OBAuthorisation1 authorisation) {
         return (new OBWriteDomesticConsent3DataAuthorisation())
-                .authorisationType(OBWriteDomesticConsent3DataAuthorisation.AuthorisationTypeEnum.valueOf(authorisation.getAuthorisationType().name()))
+                .authorisationType(authorisation.getAuthorisationType())
                 .completionDateTime(authorisation.getCompletionDateTime());
     }
 

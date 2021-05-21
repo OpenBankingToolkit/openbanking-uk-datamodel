@@ -102,43 +102,8 @@ public class OBWriteDomesticConsentResponse4Data {
     @JsonProperty("StatusUpdateDateTime")
     private DateTime statusUpdateDateTime = null;
 
-    /**
-     * Specifies to share the refund account details with PISP
-     */
-    public enum ReadRefundAccountEnum {
-        NO("No"),
-
-        YES("Yes");
-
-        private String value;
-
-        ReadRefundAccountEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ReadRefundAccountEnum fromValue(String text) {
-            for (ReadRefundAccountEnum b : ReadRefundAccountEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
     @JsonProperty("ReadRefundAccount")
-    private ReadRefundAccountEnum readRefundAccount = null;
+    private OBReadRefundAccountEnum readRefundAccount = null;
 
     @JsonProperty("CutOffDateTime")
     private DateTime cutOffDateTime = null;
@@ -244,7 +209,7 @@ public class OBWriteDomesticConsentResponse4Data {
         this.statusUpdateDateTime = statusUpdateDateTime;
     }
 
-    public OBWriteDomesticConsentResponse4Data readRefundAccount(ReadRefundAccountEnum readRefundAccount) {
+    public OBWriteDomesticConsentResponse4Data readRefundAccount(OBReadRefundAccountEnum readRefundAccount) {
         this.readRefundAccount = readRefundAccount;
         return this;
     }
@@ -255,11 +220,11 @@ public class OBWriteDomesticConsentResponse4Data {
      * @return readRefundAccount
      **/
     @ApiModelProperty(value = "Specifies to share the refund account details with PISP")
-    public ReadRefundAccountEnum getReadRefundAccount() {
+    public OBReadRefundAccountEnum getReadRefundAccount() {
         return readRefundAccount;
     }
 
-    public void setReadRefundAccount(ReadRefundAccountEnum readRefundAccount) {
+    public void setReadRefundAccount(OBReadRefundAccountEnum readRefundAccount) {
         this.readRefundAccount = readRefundAccount;
     }
 

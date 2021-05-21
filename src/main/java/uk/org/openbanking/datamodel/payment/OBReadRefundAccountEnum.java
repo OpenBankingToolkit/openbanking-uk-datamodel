@@ -24,37 +24,41 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Specifies the Open Banking service request types.
+ * Specifies to share the refund account details with PISP.
  *
  * <p>
- * N.B. This enum should be used instead of all the equivalent 'Permission' inner enums that are created in
- * classes such as {@link OBWriteDomesticScheduledConsent3Data} or {@link OBWriteDomesticScheduledConsent4Data}
- * etc. This makes migrating to new API versions considerably easier.
+ * N.B. This enum has been created manually and should be used instead of all the equivalent enums that are created in
+ * classes such as {@link OBWriteDomesticConsentResponse5Data} or {@link OBWriteInternationalConsent5Data} etc. This
+ * makes migrating to new API versions considerably easier.
  */
-public enum OBExternalPermissions2Code {
-  
-  CREATE("Create");
+public enum OBReadRefundAccountEnum {
+    NO("No"),
 
-  private String value;
+    YES("Yes");
 
-  OBExternalPermissions2Code(String value) {
-    this.value = value;
-  }
+    private String value;
 
-  @Override
-  @JsonValue
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static OBExternalPermissions2Code fromValue(String text) {
-    for (OBExternalPermissions2Code b : OBExternalPermissions2Code.values()) {
-      if (String.valueOf(b.value).equals(text)) {
-        return b;
-      }
+    OBReadRefundAccountEnum(String value) {
+        this.value = value;
     }
-    return null;
-  }
-}
 
+    @JsonValue
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static OBReadRefundAccountEnum fromValue(String text) {
+        for (OBReadRefundAccountEnum b : OBReadRefundAccountEnum.values()) {
+            if (String.valueOf(b.value).equals(text)) {
+                return b;
+            }
+        }
+        return null;
+    }
+}

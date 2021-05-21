@@ -39,13 +39,13 @@ public class OBConsentAuthorisationTestDataFactory {
 
     public static OBWriteDomesticConsent3DataAuthorisation aValidOBWriteDomesticConsent3DataAuthorisation() {
         return (new OBWriteDomesticConsent3DataAuthorisation())
-                .authorisationType(OBWriteDomesticConsent3DataAuthorisation.AuthorisationTypeEnum.ANY)
+                .authorisationType(OBExternalAuthorisation1Code.ANY)
                 .completionDateTime(DateTime.now());
     }
 
     public static OBWriteDomesticConsent4DataAuthorisation aValidOBWriteDomesticConsent4DataAuthorisation() {
         return (new OBWriteDomesticConsent4DataAuthorisation())
-                .authorisationType(OBWriteDomesticConsent4DataAuthorisation.AuthorisationTypeEnum.ANY)
+                .authorisationType(OBExternalAuthorisation1Code.ANY)
                 .completionDateTime(DateTime.now());
     }
 }

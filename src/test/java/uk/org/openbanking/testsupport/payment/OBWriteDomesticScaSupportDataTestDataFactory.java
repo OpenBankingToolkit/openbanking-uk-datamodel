@@ -20,9 +20,7 @@
  */
 package uk.org.openbanking.testsupport.payment;
 
-import uk.org.openbanking.datamodel.payment.OBSCASupportData1;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataSCASupportData;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent4DataSCASupportData;
+import uk.org.openbanking.datamodel.payment.*;
 
 import java.util.UUID;
 
@@ -33,22 +31,22 @@ public class OBWriteDomesticScaSupportDataTestDataFactory {
 
     public static OBWriteDomesticConsent3DataSCASupportData aValidOBWriteDomesticConsent3DataSCASupportData() {
         return (new OBWriteDomesticConsent3DataSCASupportData())
-                .appliedAuthenticationApproach(OBWriteDomesticConsent3DataSCASupportData.AppliedAuthenticationApproachEnum.CA)
+                .appliedAuthenticationApproach(OBAppliedAuthenticationApproachEnum.CA)
                 .referencePaymentOrderId(UUID.randomUUID().toString())
-                .requestedSCAExemptionType(OBWriteDomesticConsent3DataSCASupportData.RequestedSCAExemptionTypeEnum.BILLPAYMENT);
+                .requestedSCAExemptionType(OBRequestedSCAExemptionTypeEnum.BILLPAYMENT);
     }
 
     public static OBWriteDomesticConsent4DataSCASupportData aValidOBWriteDomesticConsent4DataSCASupportData() {
         return (new OBWriteDomesticConsent4DataSCASupportData())
-                .appliedAuthenticationApproach(OBWriteDomesticConsent4DataSCASupportData.AppliedAuthenticationApproachEnum.CA)
+                .appliedAuthenticationApproach(OBAppliedAuthenticationApproachEnum.CA)
                 .referencePaymentOrderId(UUID.randomUUID().toString())
-                .requestedSCAExemptionType(OBWriteDomesticConsent4DataSCASupportData.RequestedSCAExemptionTypeEnum.BILLPAYMENT);
+                .requestedSCAExemptionType(OBRequestedSCAExemptionTypeEnum.BILLPAYMENT);
     }
 
     public static OBSCASupportData1 aValidOBSCASupportData1() {
         return (new OBSCASupportData1())
-                .appliedAuthenticationApproach(OBSCASupportData1.AppliedAuthenticationApproachEnum.CA)
+                .appliedAuthenticationApproach(OBAppliedAuthenticationApproachEnum.CA)
                 .referencePaymentOrderId(UUID.randomUUID().toString())
-                .requestedSCAExemptionType(OBSCASupportData1.RequestedSCAExemptionTypeEnum.BILLPAYMENT);
+                .requestedSCAExemptionType(OBRequestedSCAExemptionTypeEnum.BILLPAYMENT);
     }
 }

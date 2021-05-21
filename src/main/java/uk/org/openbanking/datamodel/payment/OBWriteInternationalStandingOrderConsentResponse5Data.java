@@ -102,41 +102,8 @@ public class OBWriteInternationalStandingOrderConsentResponse5Data {
     @JsonProperty("StatusUpdateDateTime")
     private DateTime statusUpdateDateTime = null;
 
-    /**
-     * Specifies the Open Banking service request types.
-     */
-    public enum PermissionEnum {
-        CREATE("Create");
-
-        private String value;
-
-        PermissionEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static PermissionEnum fromValue(String text) {
-            for (PermissionEnum b : PermissionEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
     @JsonProperty("Permission")
-    private PermissionEnum permission = null;
+    private OBExternalPermissions2Code permission = null;
 
     @JsonProperty("CutOffDateTime")
     private DateTime cutOffDateTime = null;
@@ -236,7 +203,7 @@ public class OBWriteInternationalStandingOrderConsentResponse5Data {
         this.statusUpdateDateTime = statusUpdateDateTime;
     }
 
-    public OBWriteInternationalStandingOrderConsentResponse5Data permission(PermissionEnum permission) {
+    public OBWriteInternationalStandingOrderConsentResponse5Data permission(OBExternalPermissions2Code permission) {
         this.permission = permission;
         return this;
     }
@@ -248,11 +215,11 @@ public class OBWriteInternationalStandingOrderConsentResponse5Data {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "Specifies the Open Banking service request types.")
-    public PermissionEnum getPermission() {
+    public OBExternalPermissions2Code getPermission() {
         return permission;
     }
 
-    public void setPermission(PermissionEnum permission) {
+    public void setPermission(OBExternalPermissions2Code permission) {
         this.permission = permission;
     }
 

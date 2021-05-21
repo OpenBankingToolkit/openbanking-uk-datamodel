@@ -33,9 +33,7 @@
 
 package uk.org.openbanking.datamodel.payment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -48,96 +46,17 @@ import java.util.Objects;
 @ApiModel(description = "Supporting Data provided by TPP, when requesting SCA Exemption.")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-19T14:14:13.501+01:00")
 public class OBWriteDomesticConsent4DataSCASupportData {
-    /**
-     * This field allows a PISP to request specific SCA Exemption for a Payment Initiation
-     */
-    public enum RequestedSCAExemptionTypeEnum {
-        BILLPAYMENT("BillPayment"),
-
-        CONTACTLESSTRAVEL("ContactlessTravel"),
-
-        ECOMMERCEGOODS("EcommerceGoods"),
-
-        ECOMMERCESERVICES("EcommerceServices"),
-
-        KIOSK("Kiosk"),
-
-        PARKING("Parking"),
-
-        PARTYTOPARTY("PartyToParty");
-
-        private String value;
-
-        RequestedSCAExemptionTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static RequestedSCAExemptionTypeEnum fromValue(String text) {
-            for (RequestedSCAExemptionTypeEnum b : RequestedSCAExemptionTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
 
     @JsonProperty("RequestedSCAExemptionType")
-    private RequestedSCAExemptionTypeEnum requestedSCAExemptionType = null;
-
-    /**
-     * Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP
-     */
-    public enum AppliedAuthenticationApproachEnum {
-        CA("CA"),
-
-        SCA("SCA");
-
-        private String value;
-
-        AppliedAuthenticationApproachEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static AppliedAuthenticationApproachEnum fromValue(String text) {
-            for (AppliedAuthenticationApproachEnum b : AppliedAuthenticationApproachEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
+    private OBRequestedSCAExemptionTypeEnum requestedSCAExemptionType = null;
 
     @JsonProperty("AppliedAuthenticationApproach")
-    private AppliedAuthenticationApproachEnum appliedAuthenticationApproach = null;
+    private OBAppliedAuthenticationApproachEnum appliedAuthenticationApproach = null;
 
     @JsonProperty("ReferencePaymentOrderId")
     private String referencePaymentOrderId = null;
 
-    public OBWriteDomesticConsent4DataSCASupportData requestedSCAExemptionType(RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+    public OBWriteDomesticConsent4DataSCASupportData requestedSCAExemptionType(OBRequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
         this.requestedSCAExemptionType = requestedSCAExemptionType;
         return this;
     }
@@ -148,15 +67,15 @@ public class OBWriteDomesticConsent4DataSCASupportData {
      * @return requestedSCAExemptionType
      **/
     @ApiModelProperty(value = "This field allows a PISP to request specific SCA Exemption for a Payment Initiation")
-    public RequestedSCAExemptionTypeEnum getRequestedSCAExemptionType() {
+    public OBRequestedSCAExemptionTypeEnum getRequestedSCAExemptionType() {
         return requestedSCAExemptionType;
     }
 
-    public void setRequestedSCAExemptionType(RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+    public void setRequestedSCAExemptionType(OBRequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
         this.requestedSCAExemptionType = requestedSCAExemptionType;
     }
 
-    public OBWriteDomesticConsent4DataSCASupportData appliedAuthenticationApproach(AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+    public OBWriteDomesticConsent4DataSCASupportData appliedAuthenticationApproach(OBAppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
         this.appliedAuthenticationApproach = appliedAuthenticationApproach;
         return this;
     }
@@ -167,11 +86,11 @@ public class OBWriteDomesticConsent4DataSCASupportData {
      * @return appliedAuthenticationApproach
      **/
     @ApiModelProperty(value = "Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP")
-    public AppliedAuthenticationApproachEnum getAppliedAuthenticationApproach() {
+    public OBAppliedAuthenticationApproachEnum getAppliedAuthenticationApproach() {
         return appliedAuthenticationApproach;
     }
 
-    public void setAppliedAuthenticationApproach(AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+    public void setAppliedAuthenticationApproach(OBAppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
         this.appliedAuthenticationApproach = appliedAuthenticationApproach;
     }
 

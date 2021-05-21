@@ -91,7 +91,7 @@ public class OBWriteInternationalStandingOrderConsentTestDataFactory {
 
     public static OBWriteInternationalStandingOrderConsent4Data aValidOBWriteInternationalStandingOrderConsent4Data() {
         return (new OBWriteInternationalStandingOrderConsent4Data())
-                .permission(OBWriteInternationalStandingOrderConsent4Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(aValidOBWriteInternationalStandingOrder3DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
                 .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
@@ -99,7 +99,7 @@ public class OBWriteInternationalStandingOrderConsentTestDataFactory {
 
     public static OBWriteInternationalStandingOrderConsent5Data aValidOBWriteInternationalStandingOrderConsent5Data() {
         return (new OBWriteInternationalStandingOrderConsent5Data())
-                .permission(OBWriteInternationalStandingOrderConsent5Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(aValidOBWriteInternationalStandingOrder4DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
                 .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
@@ -107,11 +107,11 @@ public class OBWriteInternationalStandingOrderConsentTestDataFactory {
 
     public static OBWriteInternationalStandingOrderConsent6Data aValidOBWriteInternationalStandingOrderConsent6Data() {
         return (new OBWriteInternationalStandingOrderConsent6Data())
-                .permission(OBWriteInternationalStandingOrderConsent6Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(aValidOBWriteInternationalStandingOrder4DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent4DataAuthorisation())
                 .scASupportData(aValidOBSCASupportData1())
-                .readRefundAccount(OBWriteInternationalStandingOrderConsent6Data.ReadRefundAccountEnum.NO);
+                .readRefundAccount(OBReadRefundAccountEnum.NO);
     }
 
     public static OBInternationalStandingOrder2 aValidOBInternationalStandingOrder2() {

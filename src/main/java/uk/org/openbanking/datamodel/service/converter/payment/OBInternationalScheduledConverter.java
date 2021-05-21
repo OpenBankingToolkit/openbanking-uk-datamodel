@@ -37,8 +37,6 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBInternati
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBPartyIdentification43;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBWriteInternational3DataInitiationCreditor;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBWriteInternational3DataInitiationCreditorAgent;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBPriorityCodeConverter.toOBPriority2Code;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBPriorityCodeConverter.toOBWriteInternationalScheduled3DataInitiationInstructionPriorityEnum;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBRemittanceInformation1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
@@ -68,7 +66,7 @@ public class OBInternationalScheduledConverter {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(toOBPriority2Code(initiation.getInstructionPriority()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .chargeBearer(initiation.getChargeBearer())
                 .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
@@ -107,7 +105,7 @@ public class OBInternationalScheduledConverter {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(toOBPriority2Code(initiation.getInstructionPriority()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .chargeBearer(initiation.getChargeBearer())
                 .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
@@ -128,7 +126,7 @@ public class OBInternationalScheduledConverter {
                 .instructionIdentification(obInternationalScheduled1.getInstructionIdentification())
                 .endToEndIdentification(obInternationalScheduled1.getEndToEndIdentification())
                 .localInstrument(obInternationalScheduled1.getLocalInstrument())
-                .instructionPriority(toOBWriteInternationalScheduled3DataInitiationInstructionPriorityEnum(obInternationalScheduled1.getInstructionPriority()))
+                .instructionPriority(obInternationalScheduled1.getInstructionPriority())
                 .purpose(obInternationalScheduled1.getPurpose())
                 .chargeBearer(obInternationalScheduled1.getChargeBearer())
                 .requestedExecutionDateTime(obInternationalScheduled1.getRequestedExecutionDateTime())
@@ -150,7 +148,7 @@ public class OBInternationalScheduledConverter {
                 .instructionIdentification(obInternationalScheduled2.getInstructionIdentification())
                 .endToEndIdentification(obInternationalScheduled2.getEndToEndIdentification())
                 .localInstrument(obInternationalScheduled2.getLocalInstrument())
-                .instructionPriority(toOBWriteInternationalScheduled3DataInitiationInstructionPriorityEnum(obInternationalScheduled2.getInstructionPriority()))
+                .instructionPriority(obInternationalScheduled2.getInstructionPriority())
                 .purpose(obInternationalScheduled2.getPurpose())
                 .chargeBearer(obInternationalScheduled2.getChargeBearer())
                 .requestedExecutionDateTime(obInternationalScheduled2.getRequestedExecutionDateTime())

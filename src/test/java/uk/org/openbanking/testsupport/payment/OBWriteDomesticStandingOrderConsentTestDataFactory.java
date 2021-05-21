@@ -21,23 +21,17 @@
 package uk.org.openbanking.testsupport.payment;
 
 import org.joda.time.DateTime;
-import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrder3DataInitiation;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent4;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent4Data;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent5;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticStandingOrderConsent5Data;
+import uk.org.openbanking.datamodel.payment.*;
 
 import static org.joda.time.DateTime.now;
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationCreditorAccount;
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationDebtorAccount;
-import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationFinalPaymentAmount;
-import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationFirstPaymentAmount;
-import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBWriteDomesticStandingOrder3DataInitiationRecurringPaymentAmount;
+import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.*;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent4DataAuthorisation;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
-import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.*;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBSCASupportData1;
+import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.aValidOBWriteDomesticConsent3DataSCASupportData;
 
 /**
  * Test data factory for the various "OBWriteDomesticStandingOrderConsent" classes.
@@ -62,7 +56,7 @@ public class OBWriteDomesticStandingOrderConsentTestDataFactory {
 
     public static OBWriteDomesticStandingOrderConsent4Data aValidOBWriteDomesticStandingOrderConsent4Data() {
         return (new OBWriteDomesticStandingOrderConsent4Data())
-                .permission(OBWriteDomesticStandingOrderConsent4Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(aValidOBWriteDomesticStandingOrder3DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
                 .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
@@ -70,11 +64,11 @@ public class OBWriteDomesticStandingOrderConsentTestDataFactory {
 
     public static OBWriteDomesticStandingOrderConsent5Data aValidOBWriteDomesticStandingOrderConsent5Data() {
         return (new OBWriteDomesticStandingOrderConsent5Data())
-                .permission(OBWriteDomesticStandingOrderConsent5Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(aValidOBWriteDomesticStandingOrder3DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent4DataAuthorisation())
                 .scASupportData(aValidOBSCASupportData1())
-                .readRefundAccount(OBWriteDomesticStandingOrderConsent5Data.ReadRefundAccountEnum.NO);
+                .readRefundAccount(OBReadRefundAccountEnum.NO);
     }
 
     public static OBWriteDomesticStandingOrder3DataInitiation aValidOBWriteDomesticStandingOrder3DataInitiation() {
