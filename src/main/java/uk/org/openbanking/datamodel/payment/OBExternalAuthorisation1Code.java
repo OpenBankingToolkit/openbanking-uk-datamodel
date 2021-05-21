@@ -25,6 +25,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Type of authorisation flow requested.
+ *
+ * <p>
+ * N.B. This enum should be used instead of all the equivalent 'AuthorisationType' inner enums that are created in
+ * classes such as {@link OBWriteDomesticConsent3DataAuthorisation} or {@link OBWriteDomesticConsent4DataAuthorisation}
+ * etc. This makes migrating to new API versions considerably easier.
  */
 public enum OBExternalAuthorisation1Code {
   

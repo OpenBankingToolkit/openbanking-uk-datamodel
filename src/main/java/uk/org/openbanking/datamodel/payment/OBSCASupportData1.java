@@ -20,9 +20,7 @@
  */
 package uk.org.openbanking.datamodel.payment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -36,96 +34,17 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-20T11:30:55.433304+01:00[Europe/London]")
 
 public class OBSCASupportData1   {
-  /**
-   * This field allows a PISP to request specific SCA Exemption for a Payment Initiation
-   */
-  public enum RequestedSCAExemptionTypeEnum {
-    BILLPAYMENT("BillPayment"),
-
-      CONTACTLESSTRAVEL("ContactlessTravel"),
-
-      ECOMMERCEGOODS("EcommerceGoods"),
-
-      ECOMMERCESERVICES("EcommerceServices"),
-
-      KIOSK("Kiosk"),
-
-      PARKING("Parking"),
-
-      PARTYTOPARTY("PartyToParty");
-
-      private String value;
-
-      RequestedSCAExemptionTypeEnum(String value) {
-          this.value = value;
-      }
-
-      @JsonValue
-      public String getValue() {
-          return value;
-      }
-
-      @Override
-      public String toString() {
-          return String.valueOf(value);
-      }
-
-      @JsonCreator
-      public static RequestedSCAExemptionTypeEnum fromValue(String value) {
-          for (RequestedSCAExemptionTypeEnum b : RequestedSCAExemptionTypeEnum.values()) {
-              if (b.value.equals(value)) {
-                  return b;
-              }
-          }
-          throw new IllegalArgumentException("Unexpected value '" + value + "'");
-      }
-  }
 
     @JsonProperty("RequestedSCAExemptionType")
-    private RequestedSCAExemptionTypeEnum requestedSCAExemptionType;
-
-    /**
-     * Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP
-     */
-    public enum AppliedAuthenticationApproachEnum {
-        CA("CA"),
-
-        SCA("SCA");
-
-        private String value;
-
-        AppliedAuthenticationApproachEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static AppliedAuthenticationApproachEnum fromValue(String value) {
-            for (AppliedAuthenticationApproachEnum b : AppliedAuthenticationApproachEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-    }
+    private OBRequestedSCAExemptionTypeEnum requestedSCAExemptionType;
 
     @JsonProperty("AppliedAuthenticationApproach")
-    private AppliedAuthenticationApproachEnum appliedAuthenticationApproach;
+    private OBAppliedAuthenticationApproachEnum appliedAuthenticationApproach;
 
     @JsonProperty("ReferencePaymentOrderId")
     private String referencePaymentOrderId;
 
-    public OBSCASupportData1 requestedSCAExemptionType(RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+    public OBSCASupportData1 requestedSCAExemptionType(OBRequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
         this.requestedSCAExemptionType = requestedSCAExemptionType;
         return this;
     }
@@ -136,15 +55,15 @@ public class OBSCASupportData1   {
      * @return requestedSCAExemptionType
      */
     @ApiModelProperty(value = "This field allows a PISP to request specific SCA Exemption for a Payment Initiation")
-    public RequestedSCAExemptionTypeEnum getRequestedSCAExemptionType() {
+    public OBRequestedSCAExemptionTypeEnum getRequestedSCAExemptionType() {
         return requestedSCAExemptionType;
     }
 
-    public void setRequestedSCAExemptionType(RequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
+    public void setRequestedSCAExemptionType(OBRequestedSCAExemptionTypeEnum requestedSCAExemptionType) {
         this.requestedSCAExemptionType = requestedSCAExemptionType;
     }
 
-    public OBSCASupportData1 appliedAuthenticationApproach(AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+    public OBSCASupportData1 appliedAuthenticationApproach(OBAppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
         this.appliedAuthenticationApproach = appliedAuthenticationApproach;
         return this;
     }
@@ -155,11 +74,11 @@ public class OBSCASupportData1   {
      * @return appliedAuthenticationApproach
      */
     @ApiModelProperty(value = "Specifies a character string with a maximum length of 40 characters. Usage: This field indicates whether the PSU was subject to SCA performed by the TPP")
-    public AppliedAuthenticationApproachEnum getAppliedAuthenticationApproach() {
+    public OBAppliedAuthenticationApproachEnum getAppliedAuthenticationApproach() {
         return appliedAuthenticationApproach;
     }
 
-    public void setAppliedAuthenticationApproach(AppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
+    public void setAppliedAuthenticationApproach(OBAppliedAuthenticationApproachEnum appliedAuthenticationApproach) {
         this.appliedAuthenticationApproach = appliedAuthenticationApproach;
     }
 

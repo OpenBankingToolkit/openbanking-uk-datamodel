@@ -22,7 +22,6 @@ package uk.org.openbanking.datamodel.service.converter.payment;
 
 import org.junit.Test;
 import uk.org.openbanking.datamodel.payment.*;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataAuthorisation.AuthorisationTypeEnum;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBWriteDomesticScheduledConsentConverter.toOBWriteDomesticScheduledConsent3;
@@ -49,7 +48,7 @@ public class OBWriteDomesticScheduledConsentConverterTest {
 
     private OBWriteDomesticScheduledConsent3Data expectedOBWriteDomesticScheduledConsent3Data(OBWriteDataDomesticScheduledConsent2 data) {
         return (new OBWriteDomesticScheduledConsent3Data())
-                .permission(OBWriteDomesticScheduledConsent3Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(expectedOBWriteDomesticScheduled2DataInitiation(data.getInitiation()))
                 .authorisation(expectedOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()))
                 .scASupportData(null);
@@ -83,7 +82,7 @@ public class OBWriteDomesticScheduledConsentConverterTest {
 
     private OBWriteDomesticConsent3DataAuthorisation expectedOBWriteDomesticConsent3DataAuthorisation(OBAuthorisation1 authorisation) {
         return (new OBWriteDomesticConsent3DataAuthorisation())
-                .authorisationType(AuthorisationTypeEnum.valueOf(authorisation.getAuthorisationType().name()))
+                .authorisationType(authorisation.getAuthorisationType())
                 .completionDateTime(authorisation.getCompletionDateTime());
     }
 }

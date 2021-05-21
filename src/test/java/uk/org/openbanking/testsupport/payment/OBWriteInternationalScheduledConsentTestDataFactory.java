@@ -97,7 +97,7 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
 
     public static OBWriteInternationalScheduledConsent3Data aValidOBWriteInternationalScheduledConsent3Data() {
         return (new OBWriteInternationalScheduledConsent3Data())
-                .permission(OBWriteInternationalScheduledConsent3Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(aValidOBWriteInternationalScheduled2DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
                 .scASupportData(new OBWriteDomesticConsent3DataSCASupportData());
@@ -105,7 +105,7 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
 
     public static OBWriteInternationalScheduledConsent4Data aValidOBWriteInternationalScheduledConsent4Data() {
         return (new OBWriteInternationalScheduledConsent4Data())
-                .permission(OBWriteInternationalScheduledConsent4Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(aValidOBWriteInternationalScheduled3DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent3DataAuthorisation())
                 .scASupportData(aValidOBWriteDomesticConsent3DataSCASupportData());
@@ -113,11 +113,11 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
 
     public static OBWriteInternationalScheduledConsent5Data aValidOBWriteInternationalScheduledConsent5Data() {
         return (new OBWriteInternationalScheduledConsent5Data())
-                .permission(OBWriteInternationalScheduledConsent5Data.PermissionEnum.CREATE)
+                .permission(OBExternalPermissions2Code.CREATE)
                 .initiation(aValidOBWriteInternationalScheduled3DataInitiation())
                 .authorisation(aValidOBWriteDomesticConsent4DataAuthorisation())
                 .scASupportData(aValidOBSCASupportData1())
-                .readRefundAccount(OBWriteInternationalScheduledConsent5Data.ReadRefundAccountEnum.NO);
+                .readRefundAccount(OBReadRefundAccountEnum.NO);
     }
 
     public static OBInternationalScheduled1 aValidOBInternationalScheduled1() {
@@ -164,7 +164,7 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
                 .instructionIdentification(INSTRUCTION_IDENTIFICATION)
                 .endToEndIdentification(END_TO_END_IDENTIFICATION)
                 .localInstrument(LOCAL_INSTRUMENT)
-                .instructionPriority(OBWriteInternationalScheduled2DataInitiation.InstructionPriorityEnum.URGENT)
+                .instructionPriority(OBPriority2Code.URGENT)
                 .purpose(PURPOSE)
                 .chargeBearer(OBChargeBearerType1Code.SHARED)
                 .requestedExecutionDateTime(DateTime.now().plusDays(1))
@@ -184,7 +184,7 @@ public class OBWriteInternationalScheduledConsentTestDataFactory {
                 .instructionIdentification(INSTRUCTION_IDENTIFICATION)
                 .endToEndIdentification(END_TO_END_IDENTIFICATION)
                 .localInstrument(LOCAL_INSTRUMENT)
-                .instructionPriority(OBWriteInternationalScheduled3DataInitiation.InstructionPriorityEnum.URGENT)
+                .instructionPriority(OBPriority2Code.URGENT)
                 .purpose(PURPOSE)
                 .extendedPurpose("Extended purpose")
                 .chargeBearer(OBChargeBearerType1Code.SHARED)

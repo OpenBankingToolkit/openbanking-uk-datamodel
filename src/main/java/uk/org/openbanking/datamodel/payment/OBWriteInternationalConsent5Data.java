@@ -31,9 +31,7 @@
  */
 package uk.org.openbanking.datamodel.payment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -45,43 +43,9 @@ import java.util.Objects;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-19T14:14:13.501+01:00")
 public class OBWriteInternationalConsent5Data {
-    /**
-     * Specifies to share the refund account details with PISP
-     */
-    public enum ReadRefundAccountEnum {
-        NO("No"),
-
-        YES("Yes");
-
-        private String value;
-
-        ReadRefundAccountEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ReadRefundAccountEnum fromValue(String text) {
-            for (ReadRefundAccountEnum b : ReadRefundAccountEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
 
     @JsonProperty("ReadRefundAccount")
-    private ReadRefundAccountEnum readRefundAccount = null;
+    private OBReadRefundAccountEnum readRefundAccount = null;
 
     @JsonProperty("Initiation")
     private OBWriteInternational3DataInitiation initiation = null;
@@ -92,7 +56,7 @@ public class OBWriteInternationalConsent5Data {
     @JsonProperty("SCASupportData")
     private OBSCASupportData1 scASupportData = null;
 
-    public OBWriteInternationalConsent5Data readRefundAccount(ReadRefundAccountEnum readRefundAccount) {
+    public OBWriteInternationalConsent5Data readRefundAccount(OBReadRefundAccountEnum readRefundAccount) {
         this.readRefundAccount = readRefundAccount;
         return this;
     }
@@ -103,11 +67,11 @@ public class OBWriteInternationalConsent5Data {
      * @return readRefundAccount
      **/
     @ApiModelProperty(value = "Specifies to share the refund account details with PISP")
-    public ReadRefundAccountEnum getReadRefundAccount() {
+    public OBReadRefundAccountEnum getReadRefundAccount() {
         return readRefundAccount;
     }
 
-    public void setReadRefundAccount(ReadRefundAccountEnum readRefundAccount) {
+    public void setReadRefundAccount(OBReadRefundAccountEnum readRefundAccount) {
         this.readRefundAccount = readRefundAccount;
     }
 

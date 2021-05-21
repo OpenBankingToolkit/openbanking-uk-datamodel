@@ -22,7 +22,6 @@ package uk.org.openbanking.datamodel.service.converter.payment;
 
 import org.junit.Test;
 import uk.org.openbanking.datamodel.payment.*;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataAuthorisation.AuthorisationTypeEnum;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBWriteInternationalConsentConverter.toOBWriteInternationalConsent4;
@@ -59,7 +58,7 @@ public class OBWriteInternationalConsentConverterTest {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(OBWriteInternational3DataInitiation.InstructionPriorityEnum.valueOf(initiation.getInstructionPriority().name()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .extendedPurpose(null)
                 .chargeBearer(initiation.getChargeBearer())
@@ -71,7 +70,7 @@ public class OBWriteInternationalConsentConverterTest {
                 .exchangeRateInformation((new OBWriteInternational3DataInitiationExchangeRateInformation())
                         .unitCurrency(initiation.getExchangeRateInformation().getUnitCurrency())
                         .exchangeRate(initiation.getExchangeRateInformation().getExchangeRate())
-                        .rateType(OBWriteInternational3DataInitiationExchangeRateInformation.RateTypeEnum.valueOf(initiation.getExchangeRateInformation().getRateType().name()))
+                        .rateType(initiation.getExchangeRateInformation().getRateType())
                         .contractIdentification(initiation.getExchangeRateInformation().getContractIdentification()))
                 .debtorAccount((new OBWriteDomestic2DataInitiationDebtorAccount())
                         .schemeName(initiation.getDebtorAccount().getSchemeName())
@@ -99,7 +98,7 @@ public class OBWriteInternationalConsentConverterTest {
 
     private OBWriteDomesticConsent3DataAuthorisation expectedOBWriteDomesticConsent3DataAuthorisation(OBAuthorisation1 authorisation) {
         return (new OBWriteDomesticConsent3DataAuthorisation())
-                .authorisationType(AuthorisationTypeEnum.valueOf(authorisation.getAuthorisationType().name()))
+                .authorisationType(authorisation.getAuthorisationType())
                 .completionDateTime(authorisation.getCompletionDateTime());
     }
 }

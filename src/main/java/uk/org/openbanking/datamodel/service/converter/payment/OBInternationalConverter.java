@@ -37,8 +37,6 @@ import static uk.org.openbanking.datamodel.service.converter.payment.OBInternati
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBPartyIdentification43;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBWriteInternational3DataInitiationCreditor;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.toOBWriteInternational3DataInitiationCreditorAgent;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBPriorityCodeConverter.toOBPriority2Code;
-import static uk.org.openbanking.datamodel.service.converter.payment.OBPriorityCodeConverter.toOBWriteInternational3DataInitiationInstructionPriorityEnum;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBRemittanceInformation1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
@@ -67,7 +65,7 @@ public class OBInternationalConverter {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(toOBPriority2Code(initiation.getInstructionPriority()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .chargeBearer(initiation.getChargeBearer())
                 .currencyOfTransfer(initiation.getCurrencyOfTransfer())
@@ -104,7 +102,7 @@ public class OBInternationalConverter {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(toOBPriority2Code(initiation.getInstructionPriority()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .chargeBearer(initiation.getChargeBearer())
                 .currencyOfTransfer(initiation.getCurrencyOfTransfer())
@@ -124,7 +122,7 @@ public class OBInternationalConverter {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(toOBWriteInternational3DataInitiationInstructionPriorityEnum(initiation.getInstructionPriority()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .extendedPurpose(null)
                 .chargeBearer(initiation.getChargeBearer())
@@ -146,7 +144,7 @@ public class OBInternationalConverter {
                 .instructionIdentification(initiation.getInstructionIdentification())
                 .endToEndIdentification(initiation.getEndToEndIdentification())
                 .localInstrument(initiation.getLocalInstrument())
-                .instructionPriority(toOBWriteInternational3DataInitiationInstructionPriorityEnum(initiation.getInstructionPriority()))
+                .instructionPriority(initiation.getInstructionPriority())
                 .purpose(initiation.getPurpose())
                 .chargeBearer(initiation.getChargeBearer())
                 .currencyOfTransfer(initiation.getCurrencyOfTransfer())

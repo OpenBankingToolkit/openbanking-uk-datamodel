@@ -24,11 +24,10 @@ import org.junit.Test;
 import uk.org.openbanking.datamodel.payment.OBAuthorisation1;
 import uk.org.openbanking.datamodel.payment.OBExternalAuthorisation1Code;
 import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataAuthorisation;
-import uk.org.openbanking.datamodel.payment.OBWriteDomesticConsent3DataAuthorisation.AuthorisationTypeEnum;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBAuthorisation1;
 import static uk.org.openbanking.datamodel.service.converter.payment.OBConsentAuthorisationConverter.toOBWriteDomesticConsent3DataAuthorisation;
-import static org.assertj.core.api.Assertions.assertThat;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBAuthorisation1;
 import static uk.org.openbanking.testsupport.payment.OBConsentAuthorisationTestDataFactory.aValidOBWriteDomesticConsent3DataAuthorisation;
 
@@ -46,7 +45,7 @@ public class OBConsentAuthorisationConverterTest {
         OBWriteDomesticConsent3DataAuthorisation obWriteDomesticConsent3DataAuthorisation = toOBWriteDomesticConsent3DataAuthorisation(obAuthorisation1);
 
         // Then
-        assertThat(obWriteDomesticConsent3DataAuthorisation.getAuthorisationType()).isEqualTo(AuthorisationTypeEnum.ANY);
+        assertThat(obWriteDomesticConsent3DataAuthorisation.getAuthorisationType()).isEqualTo(OBExternalAuthorisation1Code.ANY);
         assertThat(obWriteDomesticConsent3DataAuthorisation.getCompletionDateTime()).isEqualTo(obAuthorisation1.getCompletionDateTime());
     }
 

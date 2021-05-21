@@ -20,9 +20,7 @@
  */
 package uk.org.openbanking.datamodel.payment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.joda.time.DateTime;
@@ -49,43 +47,8 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
     @JsonProperty("LocalInstrument")
     private String localInstrument;
 
-    /**
-     * Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.
-     */
-    public enum InstructionPriorityEnum {
-        NORMAL("Normal"),
-
-        URGENT("Urgent");
-
-        private String value;
-
-        InstructionPriorityEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static InstructionPriorityEnum fromValue(String value) {
-            for (InstructionPriorityEnum b : InstructionPriorityEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-    }
-
     @JsonProperty("InstructionPriority")
-    private InstructionPriorityEnum instructionPriority;
+    private OBPriority2Code instructionPriority;
 
     @JsonProperty("Purpose")
     private String purpose;
@@ -191,7 +154,7 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
         this.localInstrument = localInstrument;
     }
 
-    public OBWriteInternationalScheduledConsentResponse6DataInitiation instructionPriority(InstructionPriorityEnum instructionPriority) {
+    public OBWriteInternationalScheduledConsentResponse6DataInitiation instructionPriority(OBPriority2Code instructionPriority) {
         this.instructionPriority = instructionPriority;
         return this;
     }
@@ -202,11 +165,11 @@ public class OBWriteInternationalScheduledConsentResponse6DataInitiation {
      * @return instructionPriority
      */
     @ApiModelProperty(value = "Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.")
-    public InstructionPriorityEnum getInstructionPriority() {
+    public OBPriority2Code getInstructionPriority() {
         return instructionPriority;
     }
 
-    public void setInstructionPriority(InstructionPriorityEnum instructionPriority) {
+    public void setInstructionPriority(OBPriority2Code instructionPriority) {
         this.instructionPriority = instructionPriority;
     }
 

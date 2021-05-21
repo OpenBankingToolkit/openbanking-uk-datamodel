@@ -82,7 +82,7 @@ public class OBExchangeRateConverterTest {
         // Then
         assertThat(exchangeRateInformation.getUnitCurrency()).isEqualTo(sourceExchangeRate.getUnitCurrency());
         assertThat(exchangeRateInformation.getExchangeRate()).isEqualTo(sourceExchangeRate.getExchangeRate());
-        assertThat(exchangeRateInformation.getRateType()).isEqualTo(OBWriteInternational3DataInitiationExchangeRateInformation.RateTypeEnum.AGREED);
+        assertThat(exchangeRateInformation.getRateType()).isEqualTo(OBExchangeRateType2Code.AGREED);
         assertThat(exchangeRateInformation.getContractIdentification()).isEqualTo(sourceExchangeRate.getContractIdentification());
     }
 

@@ -63,14 +63,14 @@ public class OBWriteInternationalStandingOrderConsentConverterTest {
 
     private OBWriteInternationalStandingOrderConsent5Data expectedOBWriteInternationalStandingOrderConsent5Data(OBWriteDataInternationalStandingOrderConsent2 data) {
         return (new OBWriteInternationalStandingOrderConsent5Data())
-                .permission(OBWriteInternationalStandingOrderConsent5Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .permission(data.getPermission())
                 .initiation(expectedOBWriteInternationalStandingOrder4DataInitiation(data.getInitiation()))
                 .authorisation(expectedOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()));
     }
 
     private OBWriteInternationalStandingOrderConsent5Data expectedOBWriteInternationalStandingOrderConsent5Data(OBWriteDataInternationalStandingOrderConsent3 data) {
         return (new OBWriteInternationalStandingOrderConsent5Data())
-                .permission(OBWriteInternationalStandingOrderConsent5Data.PermissionEnum.valueOf(data.getPermission().name()))
+                .permission(data.getPermission())
                 .initiation(expectedOBWriteInternationalStandingOrder4DataInitiation(data.getInitiation()))
                 .authorisation(expectedOBWriteDomesticConsent3DataAuthorisation(data.getAuthorisation()));
     }
@@ -149,7 +149,7 @@ public class OBWriteInternationalStandingOrderConsentConverterTest {
 
     private OBWriteDomesticConsent3DataAuthorisation expectedOBWriteDomesticConsent3DataAuthorisation(OBAuthorisation1 authorisation) {
         return (new OBWriteDomesticConsent3DataAuthorisation())
-                .authorisationType(OBWriteDomesticConsent3DataAuthorisation.AuthorisationTypeEnum.valueOf(authorisation.getAuthorisationType().name()))
+                .authorisationType(authorisation.getAuthorisationType())
                 .completionDateTime(authorisation.getCompletionDateTime());
     }
 }

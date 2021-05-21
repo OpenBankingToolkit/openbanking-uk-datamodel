@@ -33,9 +33,7 @@
 
 package uk.org.openbanking.datamodel.payment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.joda.time.DateTime;
@@ -50,48 +48,14 @@ import java.util.Objects;
 @ApiModel(description = "The authorisation type request from the TPP.")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-19T14:14:13.501+01:00")
 public class OBWriteDomesticConsent4DataAuthorisation {
-    /**
-     * Type of authorisation flow requested.
-     */
-    public enum AuthorisationTypeEnum {
-        ANY("Any"),
-
-        SINGLE("Single");
-
-        private String value;
-
-        AuthorisationTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static AuthorisationTypeEnum fromValue(String text) {
-            for (AuthorisationTypeEnum b : AuthorisationTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
 
     @JsonProperty("AuthorisationType")
-    private AuthorisationTypeEnum authorisationType = null;
+    private OBExternalAuthorisation1Code authorisationType = null;
 
     @JsonProperty("CompletionDateTime")
     private DateTime completionDateTime = null;
 
-    public OBWriteDomesticConsent4DataAuthorisation authorisationType(AuthorisationTypeEnum authorisationType) {
+    public OBWriteDomesticConsent4DataAuthorisation authorisationType(OBExternalAuthorisation1Code authorisationType) {
         this.authorisationType = authorisationType;
         return this;
     }
@@ -103,11 +67,11 @@ public class OBWriteDomesticConsent4DataAuthorisation {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "Type of authorisation flow requested.")
-    public AuthorisationTypeEnum getAuthorisationType() {
+    public OBExternalAuthorisation1Code getAuthorisationType() {
         return authorisationType;
     }
 
-    public void setAuthorisationType(AuthorisationTypeEnum authorisationType) {
+    public void setAuthorisationType(OBExternalAuthorisation1Code authorisationType) {
         this.authorisationType = authorisationType;
     }
 

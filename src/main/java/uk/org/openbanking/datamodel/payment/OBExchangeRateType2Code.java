@@ -25,6 +25,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Specifies the type used to complete the currency exchange.
+ *
+ * <p>
+ * N.B. This enum should be used instead of all the equivalent 'RateType' inner enums that are created in
+ * classes such as {@link OBWriteInternational3DataInitiationExchangeRateInformation} or
+ * {@link OBWriteInternationalConsentResponse4DataExchangeRateInformation} etc. This makes migrating to new API versions
+ * considerably easier.
  */
 public enum OBExchangeRateType2Code {
   
