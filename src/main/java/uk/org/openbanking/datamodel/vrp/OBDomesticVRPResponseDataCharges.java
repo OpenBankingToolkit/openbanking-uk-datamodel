@@ -34,8 +34,7 @@ import java.util.Objects;
  * Set of elements used to provide details of a charge for the payment initiation.
  */
 @ApiModel(description = "Set of elements used to provide details of a charge for the payment initiation.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPResponseDataCharges {
     @JsonProperty("ChargeBearer")
     private OBChargeBearerType1Code chargeBearer; // use existing class, rather than duplicating for VRPs
@@ -53,7 +52,6 @@ public class OBDomesticVRPResponseDataCharges {
 
     /**
      * Get chargeBearer
-     *
      * @return chargeBearer
      */
     @ApiModelProperty(required = true, value = "")
@@ -76,7 +74,6 @@ public class OBDomesticVRPResponseDataCharges {
 
     /**
      * Get type
-     *
      * @return type
      */
     @ApiModelProperty(required = true, value = "")
@@ -99,7 +96,6 @@ public class OBDomesticVRPResponseDataCharges {
 
     /**
      * Get amount
-     *
      * @return amount
      */
     @ApiModelProperty(required = true, value = "")

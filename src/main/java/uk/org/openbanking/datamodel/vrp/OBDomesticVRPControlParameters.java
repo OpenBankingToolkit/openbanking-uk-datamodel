@@ -35,8 +35,7 @@ import java.util.Objects;
 /**
  * OBDomesticVRPControlParameters
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPControlParameters {
     @JsonProperty("ValidFromDateTime")
     @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
@@ -62,7 +61,7 @@ public class OBDomesticVRPControlParameters {
     private List<String> psUAuthenticationMethods = null;
 
     @JsonProperty("SupplementaryData")
-    private OBSupplementaryData1 supplementaryData; // use existing OBSupplementaryData1 for Payments
+    private OBSupplementaryData1 supplementaryData;  // use existing OBSupplementaryData1 for Payments
 
     public OBDomesticVRPControlParameters validFromDateTime(DateTime validFromDateTime) {
         this.validFromDateTime = validFromDateTime;
@@ -71,7 +70,6 @@ public class OBDomesticVRPControlParameters {
 
     /**
      * ^ Start date time for which the consent remains valid. | ISODateTime
-     *
      * @return validFromDateTime
      */
     @ApiModelProperty(value = "^ Start date time for which the consent remains valid. | ISODateTime")
@@ -93,7 +91,6 @@ public class OBDomesticVRPControlParameters {
 
     /**
      * ^ End date time for which the consent remains valid. | ISODateTime
-     *
      * @return validToDateTime
      */
     @ApiModelProperty(value = "^ End date time for which the consent remains valid. | ISODateTime")
@@ -115,7 +112,6 @@ public class OBDomesticVRPControlParameters {
 
     /**
      * Get maximumIndividualAmount
-     *
      * @return maximumIndividualAmount
      */
     @ApiModelProperty(value = "")
@@ -145,7 +141,6 @@ public class OBDomesticVRPControlParameters {
 
     /**
      * Get periodicLimits
-     *
      * @return periodicLimits
      */
     @ApiModelProperty(value = "")
@@ -172,7 +167,6 @@ public class OBDomesticVRPControlParameters {
 
     /**
      * ^ The types of payments that can be made under this VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments.  | OBVRPConsentType - Namespaced Enumeration
-     *
      * @return vrPType
      */
     @ApiModelProperty(required = true, value = "^ The types of payments that can be made under this VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments.  | OBVRPConsentType - Namespaced Enumeration")
@@ -202,7 +196,6 @@ public class OBDomesticVRPControlParameters {
 
     /**
      * ^ Indicates that the PSU authentication methods supported.  | OBVRPAuthenticationMethods - Namespaced Enumeration
-     *
      * @return psUAuthenticationMethods
      */
     @ApiModelProperty(value = "^ Indicates that the PSU authentication methods supported.  | OBVRPAuthenticationMethods - Namespaced Enumeration")
@@ -223,12 +216,10 @@ public class OBDomesticVRPControlParameters {
 
     /**
      * ^ Additional information that can not be captured in the structured fields and/or any other specific block
-     *
      * @return supplementaryData
      */
     @ApiModelProperty(value = "^ Additional information that can not be captured in the structured fields and/or any other specific block")
 
-    @Valid
 
     public OBSupplementaryData1 getSupplementaryData() {
         return supplementaryData;

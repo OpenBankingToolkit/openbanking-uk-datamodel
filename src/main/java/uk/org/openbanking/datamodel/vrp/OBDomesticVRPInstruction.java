@@ -22,7 +22,10 @@ package uk.org.openbanking.datamodel.vrp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import uk.org.openbanking.datamodel.payment.*;
+import uk.org.openbanking.datamodel.payment.OBActiveOrHistoricCurrencyAndAmount;
+import uk.org.openbanking.datamodel.payment.OBBranchAndFinancialInstitutionIdentification6;
+import uk.org.openbanking.datamodel.payment.OBCashAccountCreditor3;
+import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -32,8 +35,7 @@ import java.util.Objects;
 /**
  * OBDomesticVRPInstruction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPInstruction {
     @JsonProperty("InstructionIdentification")
     private String instructionIdentification;
@@ -42,19 +44,23 @@ public class OBDomesticVRPInstruction {
     private String endToEndIdentification;
 
     @JsonProperty("RemittanceInformation")
-    private OBRemittanceInformation1 remittanceInformation; // use existing RemittanceInformation1, rather than duplicating it for VRPs
+    private OBVRPRemittanceInformation remittanceInformation;
+    // duplicating it for VRPs
 
     @JsonProperty("LocalInstrument")
     private String localInstrument;
 
     @JsonProperty("InstructedAmount")
-    private OBActiveOrHistoricCurrencyAndAmount instructedAmount; // use existing one for Payments, rather than duplicating it for VRPs
+    private OBActiveOrHistoricCurrencyAndAmount instructedAmount; // use existing one for Payments, rather than
+    // duplicating it for VRPs
 
     @JsonProperty("CreditorAgent")
-    private OBBranchAndFinancialInstitutionIdentification6 creditorAgent; // use existing one for Payments, rather than duplicating it for VRPs
+    private OBBranchAndFinancialInstitutionIdentification6 creditorAgent; // use existing one for Payments, rather than
+    // duplicating it for VRPs
 
     @JsonProperty("CreditorAccount")
-    private OBCashAccountCreditor3 creditorAccount; // use existing one for Payments, rather than duplicating it for VRPs
+    private OBCashAccountCreditor3 creditorAccount; // use existing one for Payments, rather than duplicating it for
+    // VRPs
 
     @JsonProperty("SupplementaryData")
     private OBSupplementaryData1 supplementaryData; // use existing one for Payments, rather than duplicating it for VRPs
@@ -66,7 +72,6 @@ public class OBDomesticVRPInstruction {
 
     /**
      * Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction.  Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction.  It can be included in several messages related to the instruction.
-     *
      * @return instructionIdentification
      */
     @ApiModelProperty(required = true, value = "Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction.  Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction.  It can be included in several messages related to the instruction.")
@@ -88,7 +93,6 @@ public class OBDomesticVRPInstruction {
 
     /**
      * Unique identification assigned by the initiating party to unambiguously identify the transaction.  This identification is passed on, unchanged, throughout the entire end-to-end chain.  Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction.  It can be included in several messages related to the transaction.  OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field
-     *
      * @return endToEndIdentification
      */
     @ApiModelProperty(required = true, value = "Unique identification assigned by the initiating party to unambiguously identify the transaction.  This identification is passed on, unchanged, throughout the entire end-to-end chain.  Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction.  It can be included in several messages related to the transaction.  OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field")
@@ -103,25 +107,24 @@ public class OBDomesticVRPInstruction {
         this.endToEndIdentification = endToEndIdentification;
     }
 
-    public OBDomesticVRPInstruction remittanceInformation(OBRemittanceInformation1 remittanceInformation) {
+    public OBDomesticVRPInstruction remittanceInformation(OBVRPRemittanceInformation remittanceInformation) {
         this.remittanceInformation = remittanceInformation;
         return this;
     }
 
     /**
      * Get remittanceInformation
-     *
      * @return remittanceInformation
      */
     @ApiModelProperty(value = "")
 
     @Valid
 
-    public OBRemittanceInformation1 getRemittanceInformation() {
+    public OBVRPRemittanceInformation getRemittanceInformation() {
         return remittanceInformation;
     }
 
-    public void setRemittanceInformation(OBRemittanceInformation1 remittanceInformation) {
+    public void setRemittanceInformation(OBVRPRemittanceInformation remittanceInformation) {
         this.remittanceInformation = remittanceInformation;
     }
 
@@ -132,7 +135,6 @@ public class OBDomesticVRPInstruction {
 
     /**
      * User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
-     *
      * @return localInstrument
      */
     @ApiModelProperty(value = "User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.")
@@ -153,7 +155,6 @@ public class OBDomesticVRPInstruction {
 
     /**
      * Get instructedAmount
-     *
      * @return instructedAmount
      */
     @ApiModelProperty(value = "")
@@ -175,7 +176,6 @@ public class OBDomesticVRPInstruction {
 
     /**
      * Get creditorAgent
-     *
      * @return creditorAgent
      */
     @ApiModelProperty(value = "")
@@ -197,7 +197,6 @@ public class OBDomesticVRPInstruction {
 
     /**
      * Get creditorAccount
-     *
      * @return creditorAccount
      */
     @ApiModelProperty(required = true, value = "")
@@ -220,12 +219,10 @@ public class OBDomesticVRPInstruction {
 
     /**
      * ^ Additional information that can not be captured in the structured fields and/or any other specific block
-     *
      * @return supplementaryData
      */
     @ApiModelProperty(value = "^ Additional information that can not be captured in the structured fields and/or any other specific block")
 
-    @Valid
 
     public OBSupplementaryData1 getSupplementaryData() {
         return supplementaryData;

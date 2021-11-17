@@ -28,36 +28,36 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum OBExternalStatus2Code {
 
-  AUTHORISED("Authorised"),
+    AUTHORISED("Authorised"),
 
-  AWAITINGFURTHERAUTHORISATION("AwaitingFurtherAuthorisation"),
+    AWAITINGFURTHERAUTHORISATION("AwaitingFurtherAuthorisation"),
 
-  REJECTED("Rejected");
+    REJECTED("Rejected");
 
-  private String value;
+    private final String value;
 
-  OBExternalStatus2Code(String value) {
-    this.value = value;
-  }
-
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  @JsonCreator
-  public static OBExternalStatus2Code fromValue(String value) {
-    for (OBExternalStatus2Code b : OBExternalStatus2Code.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
+    OBExternalStatus2Code(String value) {
+        this.value = value;
     }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
+
+    @JsonValue
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static OBExternalStatus2Code fromValue(String value) {
+        for (OBExternalStatus2Code b : OBExternalStatus2Code.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
 }
 

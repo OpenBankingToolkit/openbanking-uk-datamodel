@@ -56,7 +56,8 @@
         <!-- plugins -->
         <license-maven-plugin.version>3.0</license-maven-plugin.version>
         <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
-        <openapi-generator.version>4.3.1</openapi-generator.version>
+	<!-- <openapi-generator.version>4.3.1</openapi-generator.version> -->
+        <openapi-generator.version>5.1.0</openapi-generator.version>
     </properties>
 
     <dependencies>
@@ -204,18 +205,21 @@
                                 </goals>
                                 <configuration>
                                     <!-- Only one input file is supported. Uncomment the relevant spec as required -->
-                                    <inputSpec>${project.basedir}/src/main/resources/specification/account-info-openapi.yaml</inputSpec>
+				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/account-info-openapi.yaml</inputSpec>-->
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/confirmation-funds-openapi.yaml</inputSpec>-->
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/event-notifications-openapi.yaml</inputSpec>-->
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/events-openapi.yaml</inputSpec>-->
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/payment-initiation-openapi.yaml</inputSpec>-->
-                                    <!--<inputSpec>${project.basedir}/src/main/resources/specification/vrp-openapi.yaml</inputSpec>-->
+                                    <inputSpec>${project.basedir}/src/main/resources/specification/vrp-openapi.yaml</inputSpec>
                                     <output>${project.build.directory}/generated-sources/swagger</output>
                                     <generatorName>spring</generatorName>
                                     <!-- Change the package here as per the chosen spec above -->
                                     <modelPackage>
-                                        uk.org.openbanking.datamodel.account
+                                        uk.org.openbanking.datamodel.vrp
                                     </modelPackage>
+				    <apiPackage>
+					com.forgerock.openbanking.aspsp.rs.api.vrp
+				    </apiPackage>
                                     <generateApis>false</generateApis>
                                     <configOptions>
                                         <dateLibrary>joda</dateLibrary>

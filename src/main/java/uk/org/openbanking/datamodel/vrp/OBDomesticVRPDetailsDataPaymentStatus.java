@@ -34,8 +34,7 @@ import java.util.Objects;
 /**
  * OBDomesticVRPDetailsDataPaymentStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPDetailsDataPaymentStatus {
     @JsonProperty("PaymentTransactionId")
     private String paymentTransactionId;
@@ -128,7 +127,6 @@ public class OBDomesticVRPDetailsDataPaymentStatus {
 
     /**
      * Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable.
-     *
      * @return paymentTransactionId
      */
     @ApiModelProperty(required = true, value = "Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable.")
@@ -150,7 +148,6 @@ public class OBDomesticVRPDetailsDataPaymentStatus {
 
     /**
      * Status of a transfer, as assigned by the transaction administrator.
-     *
      * @return status
      */
     @ApiModelProperty(required = true, value = "Status of a transfer, as assigned by the transaction administrator.")
@@ -172,7 +169,6 @@ public class OBDomesticVRPDetailsDataPaymentStatus {
 
     /**
      * Date and time at which the status was assigned to the transfer.
-     *
      * @return statusUpdateDateTime
      */
     @ApiModelProperty(required = true, value = "Date and time at which the status was assigned to the transfer. ")
@@ -195,7 +191,6 @@ public class OBDomesticVRPDetailsDataPaymentStatus {
 
     /**
      * Get statusDetail
-     *
      * @return statusDetail
      */
     @ApiModelProperty(value = "")

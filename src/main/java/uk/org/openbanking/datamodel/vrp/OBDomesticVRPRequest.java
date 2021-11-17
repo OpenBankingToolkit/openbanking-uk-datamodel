@@ -31,8 +31,7 @@ import java.util.Objects;
 /**
  * OBDomesticVRPRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPRequest {
     @JsonProperty("Data")
     private OBDomesticVRPRequestData data;
@@ -47,7 +46,6 @@ public class OBDomesticVRPRequest {
 
     /**
      * Get data
-     *
      * @return data
      */
     @ApiModelProperty(required = true, value = "")
@@ -70,7 +68,6 @@ public class OBDomesticVRPRequest {
 
     /**
      * Get risk
-     *
      * @return risk
      */
     @ApiModelProperty(required = true, value = "")

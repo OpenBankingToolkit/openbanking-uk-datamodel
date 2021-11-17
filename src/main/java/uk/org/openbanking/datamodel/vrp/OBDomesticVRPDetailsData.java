@@ -31,8 +31,7 @@ import java.util.Objects;
 /**
  * OBDomesticVRPDetailsData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPDetailsData {
     @JsonProperty("PaymentStatus")
     @Valid
@@ -53,7 +52,6 @@ public class OBDomesticVRPDetailsData {
 
     /**
      * Get paymentStatus
-     *
      * @return paymentStatus
      */
     @ApiModelProperty(value = "")
