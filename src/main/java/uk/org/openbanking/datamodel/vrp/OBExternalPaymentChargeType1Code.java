@@ -34,7 +34,7 @@ public enum OBExternalPaymentChargeType1Code {
 
     MONEYTRANSFEROUT("UK.OBIE.MoneyTransferOut");
 
-    private String value;
+    private final String value;
 
     OBExternalPaymentChargeType1Code(String value) {
         this.value = value;

@@ -29,8 +29,7 @@ import java.util.Objects;
 /**
  * OBDomesticVRPControlParametersMaximumIndividualAmount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPControlParametersMaximumIndividualAmount {
     @JsonProperty("Amount")
     private String amount;
@@ -45,7 +44,6 @@ public class OBDomesticVRPControlParametersMaximumIndividualAmount {
 
     /**
      * ^ A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.
-     *
      * @return amount
      */
     @ApiModelProperty(required = true, value = "^ A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.")
@@ -67,7 +65,6 @@ public class OBDomesticVRPControlParametersMaximumIndividualAmount {
 
     /**
      * ^ A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\".   | ActiveOrHistoricCurrencyCode
-     *
      * @return currency
      */
     @ApiModelProperty(required = true, value = "^ A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 \"Codes for the representation of currencies and funds\".   | ActiveOrHistoricCurrencyCode")

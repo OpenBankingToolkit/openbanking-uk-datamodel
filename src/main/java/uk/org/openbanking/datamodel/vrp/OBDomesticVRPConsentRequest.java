@@ -31,100 +31,97 @@ import java.util.Objects;
 /**
  * OBDomesticVRPConsentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPConsentRequest {
-  @JsonProperty("Data")
-  private OBDomesticVRPConsentRequestData data;
+    @JsonProperty("Data")
+    private OBDomesticVRPConsentRequestData data;
 
-  @JsonProperty("Risk")
-  private OBRisk1 risk; // use existing OBRisk1, rather than duplicating for VRPs
+    @JsonProperty("Risk")
+    private OBRisk1 risk; // use existing OBRisk1, rather than duplicating for VRPs
 
-  public OBDomesticVRPConsentRequest data(OBDomesticVRPConsentRequestData data) {
-    this.data = data;
-    return this;
-  }
-
-  /**
-   * Get data
-   *
-   * @return data
-   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-
-  public OBDomesticVRPConsentRequestData getData() {
-    return data;
-  }
-
-  public void setData(OBDomesticVRPConsentRequestData data) {
-    this.data = data;
-  }
-
-  public OBDomesticVRPConsentRequest risk(OBRisk1 risk) {
-    this.risk = risk;
-    return this;
-  }
-
-  /**
-   * Get risk
-   *
-   * @return risk
-   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-
-  public OBRisk1 getRisk() {
-    return risk;
-  }
-
-  public void setRisk(OBRisk1 risk) {
-    this.risk = risk;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public OBDomesticVRPConsentRequest data(OBDomesticVRPConsentRequestData data) {
+        this.data = data;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get data
+     * @return data
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull
+
+    @Valid
+
+    public OBDomesticVRPConsentRequestData getData() {
+        return data;
     }
-    OBDomesticVRPConsentRequest obDomesticVRPConsentRequest = (OBDomesticVRPConsentRequest) o;
-    return Objects.equals(this.data, obDomesticVRPConsentRequest.data) &&
-            Objects.equals(this.risk, obDomesticVRPConsentRequest.risk);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(data, risk);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OBDomesticVRPConsentRequest {\n");
-
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    risk: ").append(toIndentedString(risk)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setData(OBDomesticVRPConsentRequestData data) {
+        this.data = data;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public OBDomesticVRPConsentRequest risk(OBRisk1 risk) {
+        this.risk = risk;
+        return this;
+    }
+
+    /**
+     * Get risk
+     * @return risk
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull
+
+    @Valid
+
+    public OBRisk1 getRisk() {
+        return risk;
+    }
+
+    public void setRisk(OBRisk1 risk) {
+        this.risk = risk;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        OBDomesticVRPConsentRequest obDomesticVRPConsentRequest = (OBDomesticVRPConsentRequest) o;
+        return Objects.equals(this.data, obDomesticVRPConsentRequest.data) &&
+                Objects.equals(this.risk, obDomesticVRPConsentRequest.risk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(data, risk);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OBDomesticVRPConsentRequest {\n");
+
+        sb.append("    data: ").append(toIndentedString(data)).append("\n");
+        sb.append("    risk: ").append(toIndentedString(risk)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

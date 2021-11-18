@@ -20,8 +20,11 @@
  */
 package uk.org.openbanking.datamodel.vrp;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
+
 import uk.org.openbanking.datamodel.payment.OBReadRefundAccountEnum;
 
 import javax.validation.Valid;
@@ -31,12 +34,12 @@ import java.util.Objects;
 /**
  * OBDomesticVRPConsentRequestData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPConsentRequestData {
 
     @JsonProperty("ReadRefundAccount")
-    private OBReadRefundAccountEnum readRefundAccount; // use existing enum for Payments, rather than duplicating it for VRPs
+    private OBReadRefundAccountEnum readRefundAccount; // use existing enum for Payments, rather than duplicating it for
+    // VRPs
 
     @JsonProperty("ControlParameters")
     private OBDomesticVRPControlParameters controlParameters;
@@ -51,7 +54,6 @@ public class OBDomesticVRPConsentRequestData {
 
     /**
      * Indicates whether information about RefundAccount should be included in the payment response.
-     *
      * @return readRefundAccount
      */
     @ApiModelProperty(value = "Indicates whether information about RefundAccount should be included in the payment response. ")
@@ -72,7 +74,6 @@ public class OBDomesticVRPConsentRequestData {
 
     /**
      * Get controlParameters
-     *
      * @return controlParameters
      */
     @ApiModelProperty(required = true, value = "")
@@ -95,7 +96,6 @@ public class OBDomesticVRPConsentRequestData {
 
     /**
      * Get initiation
-     *
      * @return initiation
      */
     @ApiModelProperty(required = true, value = "")

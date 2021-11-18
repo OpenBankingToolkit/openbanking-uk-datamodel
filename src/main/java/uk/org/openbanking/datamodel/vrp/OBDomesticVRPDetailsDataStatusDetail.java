@@ -32,8 +32,7 @@ import java.util.Objects;
 /**
  * OBDomesticVRPDetailsDataStatusDetail
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-21T09:44:44.818881+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
 public class OBDomesticVRPDetailsDataStatusDetail {
     @JsonProperty("LocalInstrument")
     private String localInstrument;
@@ -99,7 +98,6 @@ public class OBDomesticVRPDetailsDataStatusDetail {
 
     /**
      * User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
-     *
      * @return localInstrument
      */
     @ApiModelProperty(value = "User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.")
@@ -120,7 +118,6 @@ public class OBDomesticVRPDetailsDataStatusDetail {
 
     /**
      * Status of a transfer, as assigned by the transaction administrator.
-     *
      * @return status
      */
     @ApiModelProperty(required = true, value = "Status of a transfer, as assigned by the transaction administrator.")
@@ -142,7 +139,6 @@ public class OBDomesticVRPDetailsDataStatusDetail {
 
     /**
      * Reason Code provided for the status of a transfer.
-     *
      * @return statusReason
      */
     @ApiModelProperty(value = "Reason Code provided for the status of a transfer.")
@@ -163,7 +159,6 @@ public class OBDomesticVRPDetailsDataStatusDetail {
 
     /**
      * Reason provided for the status of a transfer.
-     *
      * @return statusReasonDescription
      */
     @ApiModelProperty(value = "Reason provided for the status of a transfer.")
