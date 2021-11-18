@@ -30,70 +30,71 @@ import java.util.Objects;
 /**
  * OBFundsConfirmation1
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-20T10:02:34.555654+01:00[Europe/London]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-18T09:57:44.731259Z[Europe/London]")
 public class OBFundsConfirmation1 {
-  @JsonProperty("Data")
-  // validation within OBFundsConfirmationData1 now mirrors OBFundsConfirmation1Data (to minimise impact)
-  private OBFundsConfirmationData1 data = null; // hand-edited (avoided switch to OBFundsConfirmation1Data)
+    @JsonProperty("Data")
+    private OBFundsConfirmation1Data data;
 
-  public OBFundsConfirmation1 data(OBFundsConfirmationData1 data) {
-    this.data = data;
-    return this;
-  }
-
-  /**
-   * Get data
-   *
-   * @return data
-   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-  @Valid
-  public OBFundsConfirmationData1 getData() {
-    return data;
-  }
-
-  public void setData(OBFundsConfirmationData1 data) {
-    this.data = data;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public OBFundsConfirmation1 data(OBFundsConfirmation1Data data) {
+        this.data = data;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get data
+     *
+     * @return data
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull
+
+    @Valid
+
+    public OBFundsConfirmation1Data getData() {
+        return data;
     }
-    OBFundsConfirmation1 obFundsConfirmation1 = (OBFundsConfirmation1) o;
-    return Objects.equals(this.data, obFundsConfirmation1.data);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(data);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OBFundsConfirmation1 {\n");
-
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setData(OBFundsConfirmation1Data data) {
+        this.data = data;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        OBFundsConfirmation1 obFundsConfirmation1 = (OBFundsConfirmation1) o;
+        return Objects.equals(this.data, obFundsConfirmation1.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(data);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OBFundsConfirmation1 {\n");
+
+        sb.append("    data: ").append(toIndentedString(data)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 
