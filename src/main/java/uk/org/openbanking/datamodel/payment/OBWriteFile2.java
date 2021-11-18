@@ -36,9 +36,9 @@ import java.util.Objects;
 
 public class OBWriteFile2   {
   @JsonProperty("Data")
-  private OBWriteDataFile2 data = null;
+  private OBWriteFile2Data data = null;
 
-  public OBWriteFile2 data(OBWriteDataFile2 data) {
+  public OBWriteFile2 data(OBWriteFile2Data data) {
     this.data = data;
     return this;
   }
@@ -52,11 +52,11 @@ public class OBWriteFile2   {
 
   @Valid
 
-  public OBWriteDataFile2 getData() {
+  public OBWriteFile2Data getData() {
     return data;
   }
 
-  public void setData(OBWriteDataFile2 data) {
+  public void setData(OBWriteFile2Data data) {
     this.data = data;
   }
 

@@ -21,8 +21,8 @@
 package uk.org.openbanking.datamodel.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -30,10 +30,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * OBReadProduct2Data
+ * Aligning with the read write specs structure.
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-10-01T11:26:57.876+01:00")
+@ApiModel(description = "Aligning with the read write specs structure.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-19T10:04:10.581299+01:00[Europe/London]")
 
 public class OBReadProduct2Data   {
   @JsonProperty("Product")
@@ -55,10 +55,11 @@ public class OBReadProduct2Data   {
 
   /**
    * Get product
+   *
    * @return product
-   **/
-  @Valid
+   */
   @ApiModelProperty(value = "")
+  @Valid
   public List<OBReadProduct2DataProduct> getProduct() {
     return product;
   }
@@ -69,7 +70,7 @@ public class OBReadProduct2Data   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -99,7 +100,7 @@ public class OBReadProduct2Data   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

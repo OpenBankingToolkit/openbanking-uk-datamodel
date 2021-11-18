@@ -33,9 +33,7 @@
 
 package uk.org.openbanking.datamodel.payment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -58,7 +56,7 @@ public class OBWriteInternational2DataInitiationExchangeRateInformation {
     @JsonProperty("ExchangeRate")
     private BigDecimal exchangeRate = null;
     @JsonProperty("RateType")
-    private RateTypeEnum rateType = null;
+    private OBExchangeRateType2Code rateType = null;
     @JsonProperty("ContractIdentification")
     private String contractIdentification = null;
 
@@ -103,7 +101,7 @@ public class OBWriteInternational2DataInitiationExchangeRateInformation {
         this.exchangeRate = exchangeRate;
     }
 
-    public OBWriteInternational2DataInitiationExchangeRateInformation rateType(RateTypeEnum rateType) {
+    public OBWriteInternational2DataInitiationExchangeRateInformation rateType(OBExchangeRateType2Code rateType) {
         this.rateType = rateType;
         return this;
     }
@@ -115,11 +113,11 @@ public class OBWriteInternational2DataInitiationExchangeRateInformation {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "Specifies the type used to complete the currency exchange.")
-    public RateTypeEnum getRateType() {
+    public OBExchangeRateType2Code getRateType() {
         return rateType;
     }
 
-    public void setRateType(RateTypeEnum rateType) {
+    public void setRateType(OBExchangeRateType2Code rateType) {
         this.rateType = rateType;
     }
 
@@ -186,43 +184,5 @@ public class OBWriteInternational2DataInitiationExchangeRateInformation {
         }
         return o.toString().replace("\n", "\n    ");
     }
-
-    /**
-     * Specifies the type used to complete the currency exchange.
-     */
-    public enum RateTypeEnum {
-        ACTUAL("Actual"),
-
-        AGREED("Agreed"),
-
-        INDICATIVE("Indicative");
-
-        private String value;
-
-        RateTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonCreator
-        public static RateTypeEnum fromValue(String text) {
-            for (RateTypeEnum b : RateTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
 }
 

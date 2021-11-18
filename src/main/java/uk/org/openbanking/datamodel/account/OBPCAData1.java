@@ -22,7 +22,6 @@ package uk.org.openbanking.datamodel.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import java.util.Objects;
@@ -30,23 +29,22 @@ import java.util.Objects;
 /**
  * OBPCAData1
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-25T23:06:46.214+01:00")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-19T10:04:10.581299+01:00[Europe/London]")
 
 public class OBPCAData1   {
   @JsonProperty("ProductDetails")
-  private OBPCAProductDetails1 productDetails = null;
+  private ProductDetails1 productDetails;
 
   @JsonProperty("CreditInterest")
-  private OBCreditInterest1 creditInterest = null;
+  private CreditInterest1 creditInterest;
 
   @JsonProperty("Overdraft")
-  private OBOverdraft1 overdraft = null;
+  private Overdraft1 overdraft;
 
   @JsonProperty("OtherFeesCharges")
-  private OBOtherFeesAndCharges1 otherFeesCharges = null;
+  private OtherFeesCharges otherFeesCharges;
 
-  public OBPCAData1 productDetails(OBPCAProductDetails1 productDetails) {
+  public OBPCAData1 productDetails(ProductDetails1 productDetails) {
     this.productDetails = productDetails;
     return this;
   }
@@ -54,20 +52,18 @@ public class OBPCAData1   {
   /**
    * Get productDetails
    * @return productDetails
-  **/
+  */
   @ApiModelProperty(value = "")
-
   @Valid
-
-  public OBPCAProductDetails1 getProductDetails() {
+  public ProductDetails1 getProductDetails() {
     return productDetails;
   }
 
-  public void setProductDetails(OBPCAProductDetails1 productDetails) {
+  public void setProductDetails(ProductDetails1 productDetails) {
     this.productDetails = productDetails;
   }
 
-  public OBPCAData1 creditInterest(OBCreditInterest1 creditInterest) {
+  public OBPCAData1 creditInterest(CreditInterest1 creditInterest) {
     this.creditInterest = creditInterest;
     return this;
   }
@@ -75,20 +71,18 @@ public class OBPCAData1   {
   /**
    * Get creditInterest
    * @return creditInterest
-  **/
+  */
   @ApiModelProperty(value = "")
-
   @Valid
-
-  public OBCreditInterest1 getCreditInterest() {
+  public CreditInterest1 getCreditInterest() {
     return creditInterest;
   }
 
-  public void setCreditInterest(OBCreditInterest1 creditInterest) {
+  public void setCreditInterest(CreditInterest1 creditInterest) {
     this.creditInterest = creditInterest;
   }
 
-  public OBPCAData1 overdraft(OBOverdraft1 overdraft) {
+  public OBPCAData1 overdraft(Overdraft1 overdraft) {
     this.overdraft = overdraft;
     return this;
   }
@@ -96,20 +90,18 @@ public class OBPCAData1   {
   /**
    * Get overdraft
    * @return overdraft
-  **/
+  */
   @ApiModelProperty(value = "")
-
   @Valid
-
-  public OBOverdraft1 getOverdraft() {
+  public Overdraft1 getOverdraft() {
     return overdraft;
   }
 
-  public void setOverdraft(OBOverdraft1 overdraft) {
+  public void setOverdraft(Overdraft1 overdraft) {
     this.overdraft = overdraft;
   }
 
-  public OBPCAData1 otherFeesCharges(OBOtherFeesAndCharges1 otherFeesCharges) {
+  public OBPCAData1 otherFeesCharges(OtherFeesCharges otherFeesCharges) {
     this.otherFeesCharges = otherFeesCharges;
     return this;
   }
@@ -117,16 +109,14 @@ public class OBPCAData1   {
   /**
    * Get otherFeesCharges
    * @return otherFeesCharges
-  **/
+  */
   @ApiModelProperty(value = "")
-
   @Valid
-
-  public OBOtherFeesAndCharges1 getOtherFeesCharges() {
+  public OtherFeesCharges getOtherFeesCharges() {
     return otherFeesCharges;
   }
 
-  public void setOtherFeesCharges(OBOtherFeesAndCharges1 otherFeesCharges) {
+  public void setOtherFeesCharges(OtherFeesCharges otherFeesCharges) {
     this.otherFeesCharges = otherFeesCharges;
   }
 
@@ -155,7 +145,7 @@ public class OBPCAData1   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OBPCAData1 {\n");
-
+    
     sb.append("    productDetails: ").append(toIndentedString(productDetails)).append("\n");
     sb.append("    creditInterest: ").append(toIndentedString(creditInterest)).append("\n");
     sb.append("    overdraft: ").append(toIndentedString(overdraft)).append("\n");

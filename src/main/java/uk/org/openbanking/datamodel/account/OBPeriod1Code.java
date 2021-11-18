@@ -24,40 +24,48 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The unit of period (days, weeks, months etc.) of the promotional length
+ * Period e.g. day, week, month etc. for which the fee/charge is capped
  */
 public enum OBPeriod1Code {
-    DAY("Day"),
+  
+  PACT("PACT"),
+  
+  PDAY("PDAY"),
+  
+  PHYR("PHYR"),
+  
+  PMTH("PMTH"),
+  
+  PQTR("PQTR"),
+  
+  PWEK("PWEK"),
+  
+  PYER("PYER");
 
-    HALF_YEAR("Half Year"),
+  private String value;
 
-    MONTH("Month"),
+  OBPeriod1Code(String value) {
+    this.value = value;
+  }
 
-    QUARTER("Quarter"),
+  @JsonValue
+  public String getValue() {
+    return value;
+  }
 
-    WEEK("Week"),
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
 
-    YEAR("Year");
-
-    private String value;
-
-    OBPeriod1Code(String value) {
-        this.value = value;
+  @JsonCreator
+  public static OBPeriod1Code fromValue(String value) {
+    for (OBPeriod1Code b : OBPeriod1Code.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
     }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OBPeriod1Code fromValue(String text) {
-        for (OBPeriod1Code b : OBPeriod1Code.values()) {
-            if (String.valueOf(b.value).equals(text)) {
-                return b;
-            }
-        }
-        return null;
-    }
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+  }
 }
+

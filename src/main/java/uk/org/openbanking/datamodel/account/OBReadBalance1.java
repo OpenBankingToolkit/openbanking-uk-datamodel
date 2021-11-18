@@ -22,7 +22,6 @@ package uk.org.openbanking.datamodel.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -31,18 +30,17 @@ import java.util.Objects;
 /**
  * OBReadBalance1
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-10-01T11:26:57.876+01:00")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-19T10:04:10.581299+01:00[Europe/London]")
 
-public class OBReadBalance1   {
+public class OBReadBalance1 {
   @JsonProperty("Data")
-  private OBReadBalance1Data data = null;
+  private OBReadBalance1Data data;
 
   @JsonProperty("Links")
-  private Links links = null;
+  private Links links;
 
   @JsonProperty("Meta")
-  private Meta meta = null;
+  private Meta meta;
 
   public OBReadBalance1 data(OBReadBalance1Data data) {
     this.data = data;
@@ -51,13 +49,12 @@ public class OBReadBalance1   {
 
   /**
    * Get data
+   *
    * @return data
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   @NotNull
-
   @Valid
-
   public OBReadBalance1Data getData() {
     return data;
   }
@@ -73,13 +70,11 @@ public class OBReadBalance1   {
 
   /**
    * Get links
+   *
    * @return links
-  **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
+   */
+  @ApiModelProperty(value = "")
   @Valid
-
   public Links getLinks() {
     return links;
   }
@@ -95,13 +90,11 @@ public class OBReadBalance1   {
 
   /**
    * Get meta
+   *
    * @return meta
-  **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
+   */
+  @ApiModelProperty(value = "")
   @Valid
-
   public Meta getMeta() {
     return meta;
   }
@@ -112,7 +105,7 @@ public class OBReadBalance1   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -121,8 +114,8 @@ public class OBReadBalance1   {
     }
     OBReadBalance1 obReadBalance1 = (OBReadBalance1) o;
     return Objects.equals(this.data, obReadBalance1.data) &&
-        Objects.equals(this.links, obReadBalance1.links) &&
-        Objects.equals(this.meta, obReadBalance1.meta);
+            Objects.equals(this.links, obReadBalance1.links) &&
+            Objects.equals(this.meta, obReadBalance1.meta);
   }
 
   @Override
@@ -134,7 +127,7 @@ public class OBReadBalance1   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OBReadBalance1 {\n");
-    
+
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
@@ -146,7 +139,7 @@ public class OBReadBalance1   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

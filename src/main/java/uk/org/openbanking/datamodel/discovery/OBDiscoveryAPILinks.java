@@ -28,12 +28,13 @@ import io.swagger.annotations.ApiModel;
         use = JsonTypeInfo.Id.NAME
 )
 @JsonSubTypes({
+        @JsonSubTypes.Type(value = GenericOBDiscoveryAPILinks.class, name = "GenericOBDiscoveryAPILinks"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksAccount1.class, name = "OBDiscoveryAPILinksAccount1"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksAccount2.class, name = "OBDiscoveryAPILinksAccount2"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksAccount3.class, name = "OBDiscoveryAPILinksAccount3"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksPayment1.class, name = "OBDiscoveryAPILinksPayment1"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksPayment3.class, name = "OBDiscoveryAPILinksPayment3"),
-        @JsonSubTypes.Type(value = OBDiscoveryAPILinksPayment3.class, name = "OBDiscoveryAPILinksPayment4"),
+        @JsonSubTypes.Type(value = OBDiscoveryAPILinksPayment4.class, name = "OBDiscoveryAPILinksPayment4"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksFundsConfirmation3.class, name = "OBDiscoveryAPILinksFundsConfirmation3"),
         @JsonSubTypes.Type(value = OBDiscoveryAPILinksEventNotification3.class, name = "OBDiscoveryAPILinksEventNotification3"),
 })

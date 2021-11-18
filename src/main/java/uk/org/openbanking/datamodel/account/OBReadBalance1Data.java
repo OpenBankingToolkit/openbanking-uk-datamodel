@@ -22,7 +22,6 @@ package uk.org.openbanking.datamodel.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -34,44 +33,43 @@ import java.util.Objects;
 /**
  * OBReadBalance1Data
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-10-01T11:26:57.876+01:00")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-05-19T10:04:10.581299+01:00[Europe/London]")
 
-public class OBReadBalance1Data   {
+public class OBReadBalance1Data {
   @JsonProperty("Balance")
   @Valid
-  private List<OBCashBalance1> balance = new ArrayList<OBCashBalance1>();
+  private List<OBReadBalance1DataBalance> balance = new ArrayList<OBReadBalance1DataBalance>();
 
-  public OBReadBalance1Data balance(List<OBCashBalance1> balance) {
+  public OBReadBalance1Data balance(List<OBReadBalance1DataBalance> balance) {
     this.balance = balance;
     return this;
   }
 
-  public OBReadBalance1Data addBalanceItem(OBCashBalance1 balanceItem) {
+  public OBReadBalance1Data addBalanceItem(OBReadBalance1DataBalance balanceItem) {
     this.balance.add(balanceItem);
     return this;
   }
 
   /**
-   * Set of elements used to define the balance details.
+   * Get balance
+   *
    * @return balance
-  **/
-  @ApiModelProperty(required = true, value = "Set of elements used to define the balance details.")
+   */
+  @ApiModelProperty(required = true, value = "")
   @NotNull
-
   @Valid
-@Size(min=1) 
-  public List<OBCashBalance1> getBalance() {
+  @Size(min = 1)
+  public List<OBReadBalance1DataBalance> getBalance() {
     return balance;
   }
 
-  public void setBalance(List<OBCashBalance1> balance) {
+  public void setBalance(List<OBReadBalance1DataBalance> balance) {
     this.balance = balance;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -91,7 +89,7 @@ public class OBReadBalance1Data   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OBReadBalance1Data {\n");
-    
+
     sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -101,7 +99,7 @@ public class OBReadBalance1Data   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

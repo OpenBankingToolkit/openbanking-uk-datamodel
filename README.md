@@ -4,47 +4,60 @@
 |---|---|
 |Build|[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FOpenBankingToolkit%2Fopenbanking-uk-datamodel%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/OpenBankingToolkit/openbanking-uk-datamodel/goto?ref=master)|
 |Code coverage|[![codecov](https://codecov.io/gh/OpenBankingToolkit/openbanking-uk-datamodel/branch/master/graph/badge.svg)](https://codecov.io/gh/OpenBankingToolkit/openbanking-uk-datamodel)
-|Bintray|[![Bintray](https://img.shields.io/bintray/v/openbanking-toolkit/OpenBankingToolkit/openbanking-uk-datamodel.svg?maxAge=2592000)](https://bintray.com/openbanking-toolkit/OpenBankingToolkit/openbanking-uk-datamodel)|
+|Release|[![GitHub release (latest by date)](https://img.shields.io/github/v/release/OpenBankingToolkit/openbanking-uk-datamodel.svg)](https://img.shields.io/github/v/release/OpenBankingToolkit/openbanking-uk-datamodel)
 |License|![license](https://img.shields.io/github/license/ACRA/acra.svg)|
 
 **_This repository is part of the Open Banking Tool kit. If you just landed to that repository looking for our tool kit,_
 _we recommend having a first read to_ https://github.com/OpenBankingToolkit/openbanking-toolkit**
 
-# OpenBanking-Java-SDK
-A Java SDK to help implementing the Open Banking standard : https://www.openbanking.org.uk/read-write-apis/  .
-This project is compiled with JDK 8.
+# OpenBanking uk datamodel
+A Java data model library (Generated classes from OB Swagger documentation) for Open Banking uk: https://www.openbanking.org.uk/read-write-apis/  .
+This project is compiled with JDK 11.
 
 ## Usage
 ```
 <dependency>
-    <groupId>com.forgerock.openbanking</groupId>
-    <artifactId>openbanking-sdk</artifactId>
+    <groupId>com.forgerock.openbanking.uk</groupId>
+    <artifactId>openbanking-uk-datamodel</artifactId>
 </dependency>
 
 ```
 
 ## Class generation
-Many of the classes are generated from OB Swagger documentation. When a new version of OB API is released, 
-the following steps are performed:
-1. Download the Swagger json files from OB Spec pages (e.g. for 3.1.1 accounts: https://openbanking.atlassian.net/wiki/spaces/DZ/pages/999622968/Account+and+Transaction+API+Specification+-+v3.1.1#AccountandTransactionAPISpecification-v3.1.1-SwaggerSpecification)
->Note: there are currently swagger files for Accounts, Payments, Funds Confirmation, ASPSP Callback and TPP Events - more may be available in future releases).
-1. Download `swagger-codegen-cli-2.4.5.jar`
-1. Run ```
-java -jar swagger-codegen-cli-2.4.5.jar generate \
-  -i {your_json_file} \
-  -DuseBeanValidation=true \
-  -Dmodels \
-  --model-package uk.org.openbanking.datamodel \
-  --group-id com.forgerock.openbanking \
-  --artifact-id openbanking-sdk \
-  -l java \
-  --library resttemplate \
-  -o generated```
- 1. Check the generated files and copy them into appropriate source directory. Do not overwrite existing files.
- 1. Remove Links, Meta, OBError1 and OBErrorResponse1 - we use shared generic versions of these classes.
- 1. Repeat generation for each new swagger json file
- 1. If using Intelij, run format and optimise imports on newly generated files. 
- 1. Increment the major or minor version in pom.xml
- 1. Run build to ensure everything compiles and copyrights are generated for new source files.
- 1. Commit and raise PR.  
 
+Many of the classes are generated from the OB Swagger documentation. The project is setup to make it easy to generate
+the  OB model classes and skeleton API classes using Maven. For efficiency, the default maven profile does not generate
+the code, but it is easy to do so using `code-gen` profile (see below).
+
+The configuration for the swagger generation is currently within this project's main `pom.xml` and the swagger
+specification is within `src/main/resources/specification`.
+
+When a new version of OB API is released, the following steps should be performed:
+1. Download the Swagger yaml files from OB Spec pages (https://github.com/OpenBankingUK/read-write-api-specs/releases).
+   As of v3.1.8, there are swagger files for Accounts, Payments, Funds Confirmation, Events and Variable Recurring Payments.
+1. Place the swagger files under `src/main/resources/specification` (replacing existing ones where applicable).
+1. Run ```mvn clean install -Pcode-gen```
+   > This will generate classes into `target/generated-sources/swagger`
+1. Check the generated files and copy them into the appropriate source folder (e.g. `src/main/java`).
+
+   > Note that these guidelines originally advised not to overwrite existing files, but this is flawed since OB regularly
+   makes changes/fixes to existing classes. Therefore, it is necessary to overwrite all files and then selectively rollback
+   the changes, depending on what's changed. This is a long and painstaking process!
+
+   > It is worth noting that a number of generated files appear to have changed significantly (e.g. `OBReadConsent1`
+   switching to `OBReadConsent1Data` and its new `PermissionsEnum`). However, it is important to compare the effect on
+   the resulting JSON (plus any changes to the validation), as the change often makes no difference to the API, and yet
+   the impact may be significant elsewhere (e.g. on `openbanking-aspsp`). As a result of this, we have  not switched
+   to `OBReadConsent1Data`.
+   
+   > Other notable changes include things like `OBEventSubscriptionResponse1Data` switching from a `String` to a `URL`
+   for the `callbackUrl` or `httpopenbankingOrgUkrid` within `OBEventSubject1` being renamed to
+   `httpColonOpenbankingOrgUkRid`, but the `@JsonProperty` annotation remaining the same. Again, neither of these make
+   any difference to the resulting JSON, so these changes have not been applied.
+
+1. Remove Links, Meta, OBError1 and OBErrorResponse1 - we use shared generic versions of these classes.
+1. Uncomment the relevant `<inputSpec>` listing within the `openapi-generator-maven-plugin` in the pom for the next
+   swagger spec (and repeat for each new swagger YAML file).
+1. If using Intellij, run format and optimise imports on newly generated files.
+1. Run build to ensure everything compiles and copyrights are generated for new source files.
+1. Commit and raise PR.

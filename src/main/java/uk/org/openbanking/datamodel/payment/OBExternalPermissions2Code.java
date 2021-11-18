@@ -25,6 +25,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Specifies the Open Banking service request types.
+ *
+ * <p>
+ * N.B. This enum should be used instead of all the equivalent 'Permission' inner enums that are created in
+ * classes such as {@link OBWriteDomesticScheduledConsent3Data} or {@link OBWriteDomesticScheduledConsent4Data}
+ * etc. This makes migrating to new API versions considerably easier.
  */
 public enum OBExternalPermissions2Code {
   

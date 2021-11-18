@@ -24,7 +24,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.
+ * Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply
+ * to the processing of the instruction.
+ *
+ * <p>
+ * N.B. This enum should be used instead of all the equivalent enums that are created in classes such as
+ * {@link OBWriteInternational2DataInitiation} or {@link OBWriteInternational3DataInitiation} etc. This makes
+ * migrating to new API versions considerably easier.
  */
 public enum OBPriority2Code {
   

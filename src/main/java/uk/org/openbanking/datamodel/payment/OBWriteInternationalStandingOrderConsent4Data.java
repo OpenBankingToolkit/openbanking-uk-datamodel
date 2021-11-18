@@ -33,9 +33,7 @@
 
 package uk.org.openbanking.datamodel.payment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -48,7 +46,7 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-13T16:03:12.161+01:00")
 public class OBWriteInternationalStandingOrderConsent4Data {
     @JsonProperty("Permission")
-    private PermissionEnum permission = null;
+    private OBExternalPermissions2Code permission = null;
     @JsonProperty("Initiation")
     private OBWriteInternationalStandingOrder3DataInitiation initiation = null;
     @JsonProperty("Authorisation")
@@ -56,7 +54,7 @@ public class OBWriteInternationalStandingOrderConsent4Data {
     @JsonProperty("SCASupportData")
     private OBWriteDomesticConsent3DataSCASupportData scASupportData = null;
 
-    public OBWriteInternationalStandingOrderConsent4Data permission(PermissionEnum permission) {
+    public OBWriteInternationalStandingOrderConsent4Data permission(OBExternalPermissions2Code permission) {
         this.permission = permission;
         return this;
     }
@@ -68,11 +66,11 @@ public class OBWriteInternationalStandingOrderConsent4Data {
      **/
     @NotNull
     @ApiModelProperty(required = true, value = "Specifies the Open Banking service request types.")
-    public PermissionEnum getPermission() {
+    public OBExternalPermissions2Code getPermission() {
         return permission;
     }
 
-    public void setPermission(PermissionEnum permission) {
+    public void setPermission(OBExternalPermissions2Code permission) {
         this.permission = permission;
     }
 
@@ -180,39 +178,5 @@ public class OBWriteInternationalStandingOrderConsent4Data {
         }
         return o.toString().replace("\n", "\n    ");
     }
-
-    /**
-     * Specifies the Open Banking service request types.
-     */
-    public enum PermissionEnum {
-        CREATE("Create");
-
-        private String value;
-
-        PermissionEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonCreator
-        public static PermissionEnum fromValue(String text) {
-            for (PermissionEnum b : PermissionEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
 }
 

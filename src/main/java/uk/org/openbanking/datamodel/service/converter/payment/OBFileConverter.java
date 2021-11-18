@@ -20,25 +20,19 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.*;
+import uk.org.openbanking.datamodel.payment.OBFile1;
+import uk.org.openbanking.datamodel.payment.OBFile2;
+import uk.org.openbanking.datamodel.payment.OBWriteFile2DataInitiation;
+
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccount3;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomestic2DataInitiationDebtorAccount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBRemittanceInformation1;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBRemittanceInformationConverter.toOBWriteDomestic2DataInitiationRemittanceInformation;
 
 public class OBFileConverter {
 
-    public static OBFile2 toOBFile2(OBFile1 obFile1) {
-        return new OBFile2()
-                .controlSum(obFile1.getControlSum())
-                .debtorAccount(obFile1.getDebtorAccount())
-                .fileHash(obFile1.getFileHash())
-                .fileReference(obFile1.getFileReference())
-                .fileType(obFile1.getFileType())
-                .localInstrument(obFile1.getLocalInstrument())
-                .numberOfTransactions(obFile1.getNumberOfTransactions())
-                .requestedExecutionDateTime(obFile1.getRequestedExecutionDateTime())
-                .remittanceInformation(obFile1.getRemittanceInformation());
-    }
-
     public static OBFile1 toOBFile1(OBFile2 obFile2) {
-        return new OBFile1()
+        return (new OBFile1())
                 .controlSum(obFile2.getControlSum())
                 .debtorAccount(obFile2.getDebtorAccount())
                 .fileHash(obFile2.getFileHash())
@@ -50,35 +44,73 @@ public class OBFileConverter {
                 .remittanceInformation(obFile2.getRemittanceInformation());
     }
 
-    public static OBWriteFileConsent2 toOBWriteFileConsent2(OBWriteFileConsent1 obWriteFileConsent1) {
-        return new OBWriteFileConsent2()
-                .data(new OBWriteDataFileConsent2()
-                        .authorisation(obWriteFileConsent1.getData().getAuthorisation())
-                        .initiation(toOBFile2(obWriteFileConsent1.getData().getInitiation()))
-                );
+    public static OBFile1 toOBFile1(OBWriteFile2DataInitiation initiation) {
+        return initiation == null ? null : (new OBFile1())
+                .fileType(initiation.getFileType())
+                .fileHash(initiation.getFileHash())
+                .fileReference(initiation.getFileReference())
+                .numberOfTransactions(initiation.getNumberOfTransactions())
+                .controlSum(initiation.getControlSum())
+                .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
+                .localInstrument(initiation.getLocalInstrument())
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()));
     }
 
-    public static OBWriteFileConsent1 toOBWriteFileConsent1(OBWriteFileConsent2 obWriteFileConsent2) {
-        return new OBWriteFileConsent1()
-                .data(new OBWriteDataFileConsent1()
-                        .authorisation(obWriteFileConsent2.getData().getAuthorisation())
-                        .initiation(toOBFile1(obWriteFileConsent2.getData().getInitiation()))
-                );
+    public static OBFile2 toOBFile2(OBFile1 obFile1) {
+        return (new OBFile2())
+                .controlSum(obFile1.getControlSum())
+                .debtorAccount(obFile1.getDebtorAccount())
+                .fileHash(obFile1.getFileHash())
+                .fileReference(obFile1.getFileReference())
+                .fileType(obFile1.getFileType())
+                .localInstrument(obFile1.getLocalInstrument())
+                .numberOfTransactions(obFile1.getNumberOfTransactions())
+                .requestedExecutionDateTime(obFile1.getRequestedExecutionDateTime())
+                .remittanceInformation(obFile1.getRemittanceInformation())
+                .supplementaryData(null);
     }
 
-    public static OBWriteFile2 toOBWriteFile2(OBWriteFile1 obWriteFile1) {
-        return new OBWriteFile2()
-                .data(new OBWriteDataFile2()
-                        .consentId(obWriteFile1.getData().getConsentId())
-                        .initiation(toOBFile2(obWriteFile1.getData().getInitiation()))
-                );
+    public static OBFile2 toOBFile2(OBWriteFile2DataInitiation initiation) {
+        return initiation == null ? null : (new OBFile2())
+                .fileType(initiation.getFileType())
+                .fileHash(initiation.getFileHash())
+                .fileReference(initiation.getFileReference())
+                .numberOfTransactions(initiation.getNumberOfTransactions())
+                .controlSum(initiation.getControlSum())
+                .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
+                .localInstrument(initiation.getLocalInstrument())
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .remittanceInformation(toOBRemittanceInformation1(initiation.getRemittanceInformation()))
+                .supplementaryData(initiation.getSupplementaryData());
     }
 
-    public static OBWriteFile1 toOBWriteFile1(OBWriteFile2 obWriteFile2) {
-        return new OBWriteFile1()
-                .data(new OBWriteDataFile1()
-                        .consentId(obWriteFile2.getData().getConsentId())
-                        .initiation(toOBFile1(obWriteFile2.getData().getInitiation()))
-                );
+    public static OBWriteFile2DataInitiation toOBWriteFile2DataInitiation(OBFile1 initiation) {
+        return initiation == null ? null : (new OBWriteFile2DataInitiation())
+                .fileType(initiation.getFileType())
+                .fileHash(initiation.getFileHash())
+                .fileReference(initiation.getFileReference())
+                .numberOfTransactions(initiation.getNumberOfTransactions())
+                .controlSum(initiation.getControlSum())
+                .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
+                .localInstrument(initiation.getLocalInstrument())
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(initiation.getDebtorAccount()))
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(initiation.getRemittanceInformation()))
+                .supplementaryData(null);
     }
+
+    public static OBWriteFile2DataInitiation toOBWriteFile2DataInitiation(OBFile2 initiation) {
+        return initiation == null ? null : (new OBWriteFile2DataInitiation())
+                .fileType(initiation.getFileType())
+                .fileHash(initiation.getFileHash())
+                .fileReference(initiation.getFileReference())
+                .numberOfTransactions(initiation.getNumberOfTransactions())
+                .controlSum(initiation.getControlSum())
+                .requestedExecutionDateTime(initiation.getRequestedExecutionDateTime())
+                .localInstrument(initiation.getLocalInstrument())
+                .debtorAccount(toOBWriteDomestic2DataInitiationDebtorAccount(initiation.getDebtorAccount()))
+                .remittanceInformation(toOBWriteDomestic2DataInitiationRemittanceInformation(initiation.getRemittanceInformation()))
+                .supplementaryData(initiation.getSupplementaryData());
+    }
+
 }

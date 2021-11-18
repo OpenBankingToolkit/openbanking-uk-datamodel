@@ -33,9 +33,7 @@
 
 package uk.org.openbanking.datamodel.payment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.joda.time.DateTime;
@@ -61,7 +59,7 @@ public class OBWriteInternationalScheduled2DataInitiation {
     @JsonProperty("LocalInstrument")
     private String localInstrument = null;
     @JsonProperty("InstructionPriority")
-    private InstructionPriorityEnum instructionPriority = null;
+    private OBPriority2Code instructionPriority = null;
     @JsonProperty("Purpose")
     private String purpose = null;
     @JsonProperty("ChargeBearer")
@@ -147,7 +145,7 @@ public class OBWriteInternationalScheduled2DataInitiation {
         this.localInstrument = localInstrument;
     }
 
-    public OBWriteInternationalScheduled2DataInitiation instructionPriority(InstructionPriorityEnum instructionPriority) {
+    public OBWriteInternationalScheduled2DataInitiation instructionPriority(OBPriority2Code instructionPriority) {
         this.instructionPriority = instructionPriority;
         return this;
     }
@@ -158,11 +156,11 @@ public class OBWriteInternationalScheduled2DataInitiation {
      * @return instructionPriority
      **/
     @ApiModelProperty(value = "Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.")
-    public InstructionPriorityEnum getInstructionPriority() {
+    public OBPriority2Code getInstructionPriority() {
         return instructionPriority;
     }
 
-    public void setInstructionPriority(InstructionPriorityEnum instructionPriority) {
+    public void setInstructionPriority(OBPriority2Code instructionPriority) {
         this.instructionPriority = instructionPriority;
     }
 
@@ -476,41 +474,5 @@ public class OBWriteInternationalScheduled2DataInitiation {
         }
         return o.toString().replace("\n", "\n    ");
     }
-
-    /**
-     * Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.
-     */
-    public enum InstructionPriorityEnum {
-        NORMAL("Normal"),
-
-        URGENT("Urgent");
-
-        private String value;
-
-        InstructionPriorityEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonCreator
-        public static InstructionPriorityEnum fromValue(String text) {
-            for (InstructionPriorityEnum b : InstructionPriorityEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
 }
 

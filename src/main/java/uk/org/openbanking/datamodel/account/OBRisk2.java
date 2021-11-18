@@ -38,52 +38,52 @@ import java.util.Objects;
 
 @JsonDeserialize(using = OBRisk2Deserializer.class)
 @JsonSerialize(using = OBRisk2Serializer.class)
-public class OBRisk2   {
+public class OBRisk2 {
 
-  private String data = "{}";
+    private String data = "{}";
 
-  public String getData() {
-    return data;
-  }
-
-  public void setData(String data) {
-    this.data = data;
-  }
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public String getData() {
+        return data;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public void setData(String data) {
+        this.data = data;
     }
-    return true;
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash();
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OBRisk2 {\n");
-    sb.append(data);
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        return true;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OBRisk2 {\n");
+        sb.append(data);
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

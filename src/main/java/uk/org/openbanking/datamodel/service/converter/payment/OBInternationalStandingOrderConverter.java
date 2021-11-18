@@ -20,81 +20,245 @@
  */
 package uk.org.openbanking.datamodel.service.converter.payment;
 
-import uk.org.openbanking.datamodel.payment.*;
+import uk.org.openbanking.datamodel.account.OBCashAccount3;
+import uk.org.openbanking.datamodel.payment.OBCashAccountCreditor3;
+import uk.org.openbanking.datamodel.payment.OBInternationalStandingOrder1;
+import uk.org.openbanking.datamodel.payment.OBInternationalStandingOrder2;
+import uk.org.openbanking.datamodel.payment.OBInternationalStandingOrder3;
+import uk.org.openbanking.datamodel.payment.OBWriteInternationalStandingOrder4DataInitiation;
+
+import static uk.org.openbanking.datamodel.service.converter.payment.CountryCodeHelper.determineCountryCode;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccount3;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccountCreditor3;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBCashAccountDebtor4;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAccountConverter.toOBWriteInternationalStandingOrder4DataInitiationCreditorAccount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBActiveOrHistoricCurrencyAndAmount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBDomestic2InstructedAmount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBAmountConverter.toOBWriteDomestic2DataInitiationInstructedAmount;
+import static uk.org.openbanking.datamodel.service.converter.payment.OBInternationalIdentifierConverter.*;
 
 public class OBInternationalStandingOrderConverter {
 
-    public static OBInternationalStandingOrder2 toOBInternationalStandingOrder2(OBInternationalStandingOrder1 obInternationalStandingOrder1) {
-        return new OBInternationalStandingOrder2()
-                .chargeBearer(obInternationalStandingOrder1.getChargeBearer())
-                .creditor(obInternationalStandingOrder1.getCreditor())
-                .creditorAccount(obInternationalStandingOrder1.getCreditorAccount())
-                .creditorAgent(obInternationalStandingOrder1.getCreditorAgent())
-                .currencyOfTransfer(obInternationalStandingOrder1.getCurrencyOfTransfer())
-                .debtorAccount(obInternationalStandingOrder1.getDebtorAccount())
-                .finalPaymentDateTime(obInternationalStandingOrder1.getFinalPaymentDateTime())
-                .firstPaymentDateTime(obInternationalStandingOrder1.getFirstPaymentDateTime())
-                .frequency(obInternationalStandingOrder1.getFrequency())
-                .instructedAmount(obInternationalStandingOrder1.getInstructedAmount())
-                .numberOfPayments(obInternationalStandingOrder1.getNumberOfPayments())
-                .purpose(obInternationalStandingOrder1.getPurpose())
-                .reference(obInternationalStandingOrder1.getReference())
-                ;
-    }
-
-
     public static OBInternationalStandingOrder1 toOBInternationalStandingOrder1(OBInternationalStandingOrder2 obInternationalStandingOrder2) {
-        return new OBInternationalStandingOrder1()
-                .chargeBearer(obInternationalStandingOrder2.getChargeBearer())
-                .creditor(obInternationalStandingOrder2.getCreditor())
-                .creditorAccount(obInternationalStandingOrder2.getCreditorAccount())
-                .creditorAgent(obInternationalStandingOrder2.getCreditorAgent())
-                .currencyOfTransfer(obInternationalStandingOrder2.getCurrencyOfTransfer())
-                .debtorAccount(obInternationalStandingOrder2.getDebtorAccount())
-                .finalPaymentDateTime(obInternationalStandingOrder2.getFinalPaymentDateTime())
-                .firstPaymentDateTime(obInternationalStandingOrder2.getFirstPaymentDateTime())
+        return (new OBInternationalStandingOrder1())
                 .frequency(obInternationalStandingOrder2.getFrequency())
-                .instructedAmount(obInternationalStandingOrder2.getInstructedAmount())
-                .numberOfPayments(obInternationalStandingOrder2.getNumberOfPayments())
-                .purpose(obInternationalStandingOrder2.getPurpose())
                 .reference(obInternationalStandingOrder2.getReference())
-                ;
+                .numberOfPayments(obInternationalStandingOrder2.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder2.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder2.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder2.getPurpose())
+                .chargeBearer(obInternationalStandingOrder2.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder2.getCurrencyOfTransfer())
+                .instructedAmount(obInternationalStandingOrder2.getInstructedAmount())
+                .debtorAccount(obInternationalStandingOrder2.getDebtorAccount())
+                .creditor(obInternationalStandingOrder2.getCreditor())
+                .creditorAgent(obInternationalStandingOrder2.getCreditorAgent())
+                .creditorAccount(obInternationalStandingOrder2.getCreditorAccount());
     }
 
-    public static OBWriteInternationalStandingOrderConsent2 toOBWriteInternationalStandingOrderConsent2(OBWriteInternationalStandingOrderConsent1 obWriteInternationalStandingOrderConsent1) {
-        return new OBWriteInternationalStandingOrderConsent2()
-                .data(new OBWriteDataInternationalStandingOrderConsent2()
-                        .authorisation(obWriteInternationalStandingOrderConsent1.getData().getAuthorisation())
-                        .initiation(toOBInternationalStandingOrder2(obWriteInternationalStandingOrderConsent1.getData().getInitiation()))
-                )
-                .risk(obWriteInternationalStandingOrderConsent1.getRisk());
+    public static OBInternationalStandingOrder1 toOBInternationalStandingOrder1(OBInternationalStandingOrder3 obInternationalStandingOrder3) {
+        return (new OBInternationalStandingOrder1())
+                .frequency(obInternationalStandingOrder3.getFrequency())
+                .reference(obInternationalStandingOrder3.getReference())
+                .numberOfPayments(obInternationalStandingOrder3.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder3.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder3.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder3.getPurpose())
+                .chargeBearer(obInternationalStandingOrder3.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder3.getCurrencyOfTransfer())
+                .instructedAmount(toOBActiveOrHistoricCurrencyAndAmount(obInternationalStandingOrder3.getInstructedAmount()))
+                .debtorAccount(toOBCashAccount3(obInternationalStandingOrder3.getDebtorAccount()))
+                .creditor(obInternationalStandingOrder3.getCreditor())
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification3(obInternationalStandingOrder3.getCreditorAgent()))
+                .creditorAccount(toOBCashAccount3(obInternationalStandingOrder3.getCreditorAccount()));
     }
 
-    public static OBWriteInternationalStandingOrderConsent1 toOBWriteInternationalStandingOrderConsent1(OBWriteInternationalStandingOrderConsent2 obWriteInternationalStandingOrderConsent2) {
-        return new OBWriteInternationalStandingOrderConsent1()
-                .data(new OBWriteDataInternationalStandingOrderConsent1()
-                        .authorisation(obWriteInternationalStandingOrderConsent2.getData().getAuthorisation())
-                        .initiation(toOBInternationalStandingOrder1(obWriteInternationalStandingOrderConsent2.getData().getInitiation()))
-                )
-                .risk(obWriteInternationalStandingOrderConsent2.getRisk());
+    public static OBInternationalStandingOrder2 toOBInternationalStandingOrder2(OBInternationalStandingOrder1 obInternationalStandingOrder1) {
+        return (new OBInternationalStandingOrder2())
+                .frequency(obInternationalStandingOrder1.getFrequency())
+                .reference(obInternationalStandingOrder1.getReference())
+                .numberOfPayments(obInternationalStandingOrder1.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder1.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder1.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder1.getPurpose())
+                .chargeBearer(obInternationalStandingOrder1.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder1.getCurrencyOfTransfer())
+                .instructedAmount(obInternationalStandingOrder1.getInstructedAmount())
+                .debtorAccount(obInternationalStandingOrder1.getDebtorAccount())
+                .creditor(obInternationalStandingOrder1.getCreditor())
+                .creditorAgent(obInternationalStandingOrder1.getCreditorAgent())
+                .creditorAccount(obInternationalStandingOrder1.getCreditorAccount())
+                .supplementaryData(null);
     }
 
-    public static OBWriteInternationalStandingOrder2 toOBWriteInternationalStandingOrder2(OBWriteInternationalStandingOrder1 obWriteInternationalStandingOrder1) {
-        return new OBWriteInternationalStandingOrder2()
-                .data(new OBWriteDataInternationalStandingOrder2()
-                        .consentId(obWriteInternationalStandingOrder1.getData().getConsentId())
-                        .initiation(toOBInternationalStandingOrder2(obWriteInternationalStandingOrder1.getData().getInitiation()))
-                )
-                .risk(obWriteInternationalStandingOrder1.getRisk());
+    public static OBInternationalStandingOrder3 toOBInternationalStandingOrder3(OBInternationalStandingOrder2 obInternationalStandingOrder2) {
+        return obInternationalStandingOrder2 == null ? null : (new OBInternationalStandingOrder3())
+                .frequency(obInternationalStandingOrder2.getFrequency())
+                .reference(obInternationalStandingOrder2.getReference())
+                .numberOfPayments(obInternationalStandingOrder2.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder2.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder2.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder2.getPurpose())
+                .chargeBearer(obInternationalStandingOrder2.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder2.getCurrencyOfTransfer())
+                .instructedAmount(toOBDomestic2InstructedAmount(obInternationalStandingOrder2.getInstructedAmount()))
+                .debtorAccount(toOBCashAccountDebtor4(obInternationalStandingOrder2.getDebtorAccount()))
+                .creditor(obInternationalStandingOrder2.getCreditor())
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification6(obInternationalStandingOrder2.getCreditorAgent()))
+                .creditorAccount(toOBCashAccountCreditor3(obInternationalStandingOrder2.getCreditorAccount()))
+                .supplementaryData(obInternationalStandingOrder2.getSupplementaryData());
     }
 
-    public static OBWriteInternationalStandingOrder1 toOBWriteInternationalStandingOrder1(OBWriteInternationalStandingOrder2 obWriteInternationalStandingOrder2) {
-        return new OBWriteInternationalStandingOrder1()
-                .data(new OBWriteDataInternationalStandingOrder1()
-                        .consentId(obWriteInternationalStandingOrder2.getData().getConsentId())
-                        .initiation(toOBInternationalStandingOrder1(obWriteInternationalStandingOrder2.getData().getInitiation()))
-                )
-                .risk(obWriteInternationalStandingOrder2.getRisk());
+    public static OBInternationalStandingOrder2 toOBInternationalStandingOrder2(OBInternationalStandingOrder3 obInternationalStandingOrder3) {
+        return (new OBInternationalStandingOrder2())
+                .frequency(obInternationalStandingOrder3.getFrequency())
+                .reference(obInternationalStandingOrder3.getReference())
+                .numberOfPayments(obInternationalStandingOrder3.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder3.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder3.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder3.getPurpose())
+                .chargeBearer(obInternationalStandingOrder3.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder3.getCurrencyOfTransfer())
+                .instructedAmount(toOBActiveOrHistoricCurrencyAndAmount(obInternationalStandingOrder3.getInstructedAmount()))
+                .debtorAccount(toOBCashAccount3(obInternationalStandingOrder3.getDebtorAccount()))
+                .creditor(obInternationalStandingOrder3.getCreditor())
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification3(obInternationalStandingOrder3.getCreditorAgent()))
+                .creditorAccount(toOBCashAccount3(obInternationalStandingOrder3.getCreditorAccount()))
+                .supplementaryData(obInternationalStandingOrder3.getSupplementaryData());
+    }
+
+    public static OBInternationalStandingOrder3 toOBInternationalStandingOrder3(OBInternationalStandingOrder1 initiation) {
+        return initiation == null ? null : (new OBInternationalStandingOrder3())
+                .frequency(initiation.getFrequency())
+                .reference(initiation.getReference())
+                .numberOfPayments(initiation.getNumberOfPayments())
+                .firstPaymentDateTime(initiation.getFirstPaymentDateTime())
+                .finalPaymentDateTime(initiation.getFinalPaymentDateTime())
+                .purpose(initiation.getPurpose())
+                .chargeBearer(initiation.getChargeBearer())
+                .currencyOfTransfer(initiation.getCurrencyOfTransfer())
+                .instructedAmount(toOBDomestic2InstructedAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccountDebtor4(initiation.getDebtorAccount()))
+                .creditor(initiation.getCreditor())
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification6(initiation.getCreditorAgent()))
+                .creditorAccount(toOBCashAccountCreditor3(initiation.getCreditorAccount()))
+                .supplementaryData(null);
+    }
+
+    public static OBInternationalStandingOrder1 toOBInternationalStandingOrder1(OBWriteInternationalStandingOrder4DataInitiation initiation) {
+        return initiation == null ? null : (new OBInternationalStandingOrder1())
+                .frequency(initiation.getFrequency())
+                .reference(initiation.getReference())
+                .numberOfPayments(initiation.getNumberOfPayments())
+                .firstPaymentDateTime(initiation.getFirstPaymentDateTime())
+                .finalPaymentDateTime(initiation.getFinalPaymentDateTime())
+                .purpose(initiation.getPurpose())
+                .chargeBearer(initiation.getChargeBearer())
+                .currencyOfTransfer(initiation.getCurrencyOfTransfer())
+                .instructedAmount(toOBActiveOrHistoricCurrencyAndAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .creditor(toOBPartyIdentification43(initiation.getCreditor()))
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification3(initiation.getCreditorAgent()))
+                .creditorAccount(toOBCashAccount3(initiation.getCreditorAccount()));
+    }
+
+    public static OBInternationalStandingOrder2 toOBInternationalStandingOrder2(OBWriteInternationalStandingOrder4DataInitiation initiation) {
+        return initiation == null ? null : (new OBInternationalStandingOrder2())
+                .frequency(initiation.getFrequency())
+                .reference(initiation.getReference())
+                .numberOfPayments(initiation.getNumberOfPayments())
+                .firstPaymentDateTime(initiation.getFirstPaymentDateTime())
+                .finalPaymentDateTime(initiation.getFinalPaymentDateTime())
+                .purpose(initiation.getPurpose())
+                .chargeBearer(initiation.getChargeBearer())
+                .currencyOfTransfer(initiation.getCurrencyOfTransfer())
+                .instructedAmount(toOBActiveOrHistoricCurrencyAndAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccount3(initiation.getDebtorAccount()))
+                .creditor(toOBPartyIdentification43(initiation.getCreditor()))
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification3(initiation.getCreditorAgent()))
+                .creditorAccount(toOBCashAccount3(initiation.getCreditorAccount()))
+                .supplementaryData(initiation.getSupplementaryData());
+    }
+
+    public static OBInternationalStandingOrder3 toOBInternationalStandingOrder3(OBWriteInternationalStandingOrder4DataInitiation initiation) {
+        return initiation == null ? null : (new OBInternationalStandingOrder3())
+                .frequency(initiation.getFrequency())
+                .reference(initiation.getReference())
+                .numberOfPayments(initiation.getNumberOfPayments())
+                .firstPaymentDateTime(initiation.getFirstPaymentDateTime())
+                .finalPaymentDateTime(initiation.getFinalPaymentDateTime())
+                .purpose(initiation.getPurpose())
+                .chargeBearer(initiation.getChargeBearer())
+                .currencyOfTransfer(initiation.getCurrencyOfTransfer())
+                .instructedAmount(toOBDomestic2InstructedAmount(initiation.getInstructedAmount()))
+                .debtorAccount(toOBCashAccountDebtor4(initiation.getDebtorAccount()))
+                .creditor(toOBPartyIdentification43(initiation.getCreditor()))
+                .creditorAgent(toOBBranchAndFinancialInstitutionIdentification6(initiation.getCreditorAgent()))
+                .creditorAccount(toOBCashAccountCreditor3(initiation.getCreditorAccount()))
+                .supplementaryData(initiation.getSupplementaryData());
+    }
+
+    public static OBWriteInternationalStandingOrder4DataInitiation toOBWriteInternationalStandingOrder4DataInitiation(OBInternationalStandingOrder1 obInternationalStandingOrder1) {
+        OBCashAccount3 creditorAccount = obInternationalStandingOrder1.getCreditorAccount();
+        return obInternationalStandingOrder1 == null ? null : (new OBWriteInternationalStandingOrder4DataInitiation())
+                .frequency(obInternationalStandingOrder1.getFrequency())
+                .reference(obInternationalStandingOrder1.getReference())
+                .numberOfPayments(obInternationalStandingOrder1.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder1.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder1.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder1.getPurpose())
+                .extendedPurpose(null)
+                .chargeBearer(obInternationalStandingOrder1.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder1.getCurrencyOfTransfer())
+                .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder1.getInstructedAmount()))
+                .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder1.getDebtorAccount()))
+                .creditor(toOBWriteInternationalScheduledConsentResponse6DataInitiationCreditor(obInternationalStandingOrder1.getCreditor()))
+                .creditorAgent(toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent(obInternationalStandingOrder1.getCreditorAgent()))
+                .creditorAccount(toOBWriteInternationalStandingOrder4DataInitiationCreditorAccount(creditorAccount))
+                .supplementaryData(null);
+    }
+
+    public static OBWriteInternationalStandingOrder4DataInitiation toOBWriteInternationalStandingOrder4DataInitiation(OBInternationalStandingOrder2 obInternationalStandingOrder2) {
+        OBCashAccount3 creditorAccount = obInternationalStandingOrder2.getCreditorAccount();
+        return obInternationalStandingOrder2 == null ? null : (new OBWriteInternationalStandingOrder4DataInitiation())
+                .frequency(obInternationalStandingOrder2.getFrequency())
+                .reference(obInternationalStandingOrder2.getReference())
+                .numberOfPayments(obInternationalStandingOrder2.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder2.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder2.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder2.getPurpose())
+                .chargeBearer(obInternationalStandingOrder2.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder2.getCurrencyOfTransfer())
+                .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder2.getInstructedAmount()))
+                .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder2.getDebtorAccount()))
+                .creditor(toOBWriteInternationalScheduledConsentResponse6DataInitiationCreditor(obInternationalStandingOrder2.getCreditor()))
+                .creditorAgent(OBInternationalIdentifierConverter.toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent(obInternationalStandingOrder2.getCreditorAgent()))
+                .creditorAccount(toOBWriteInternationalStandingOrder4DataInitiationCreditorAccount(creditorAccount))
+                .supplementaryData(obInternationalStandingOrder2.getSupplementaryData());
+    }
+
+
+    public static OBWriteInternationalStandingOrder4DataInitiation toOBWriteInternationalStandingOrder4DataInitiation(OBInternationalStandingOrder3 obInternationalStandingOrder3) {
+        OBCashAccountCreditor3 creditorAccount = obInternationalStandingOrder3.getCreditorAccount();
+        return obInternationalStandingOrder3 == null ? null : (new OBWriteInternationalStandingOrder4DataInitiation())
+                .frequency(obInternationalStandingOrder3.getFrequency())
+                .reference(obInternationalStandingOrder3.getReference())
+                .numberOfPayments(obInternationalStandingOrder3.getNumberOfPayments())
+                .firstPaymentDateTime(obInternationalStandingOrder3.getFirstPaymentDateTime())
+                .finalPaymentDateTime(obInternationalStandingOrder3.getFinalPaymentDateTime())
+                .purpose(obInternationalStandingOrder3.getPurpose())
+                .chargeBearer(obInternationalStandingOrder3.getChargeBearer())
+                .currencyOfTransfer(obInternationalStandingOrder3.getCurrencyOfTransfer())
+                .destinationCountryCode(determineCountryCode(creditorAccount.getSchemeName(), creditorAccount.getIdentification())) // to prevent validation error
+                .instructedAmount(toOBWriteDomestic2DataInitiationInstructedAmount(obInternationalStandingOrder3.getInstructedAmount()))
+                .debtorAccount(toOBWriteDomesticStandingOrder3DataInitiationDebtorAccount(obInternationalStandingOrder3.getDebtorAccount()))
+                .creditor(toOBWriteInternationalScheduledConsentResponse6DataInitiationCreditor(obInternationalStandingOrder3.getCreditor()))
+                .creditorAgent(OBInternationalIdentifierConverter.toOBWriteInternationalStandingOrder4DataInitiationCreditorAgent(obInternationalStandingOrder3.getCreditorAgent()))
+                .creditorAccount(toOBWriteInternationalStandingOrder4DataInitiationCreditorAccount(creditorAccount))
+                .supplementaryData(obInternationalStandingOrder3.getSupplementaryData());
     }
 
 }
