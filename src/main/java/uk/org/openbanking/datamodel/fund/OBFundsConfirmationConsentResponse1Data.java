@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 import org.joda.time.DateTime;
+import uk.org.openbanking.datamodel.account.OBExternalRequestStatus1Code;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -43,47 +44,9 @@ public class OBFundsConfirmationConsentResponse1Data {
     @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
     private DateTime creationDateTime;
 
-    /**
-     * Specifies the status of consent resource in code form.
-     */
-    public enum StatusEnum {
-        AUTHORISED("Authorised"),
-
-        AWAITINGAUTHORISATION("AwaitingAuthorisation"),
-
-        REJECTED("Rejected"),
-
-        REVOKED("Revoked");
-
-        private String value;
-
-        StatusEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static StatusEnum fromValue(String value) {
-            for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-    }
 
     @JsonProperty("Status")
-    private StatusEnum status;
+    private OBExternalRequestStatus1Code status;
 
     @JsonProperty("StatusUpdateDateTime")
     @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME)
@@ -141,7 +104,7 @@ public class OBFundsConfirmationConsentResponse1Data {
         this.creationDateTime = creationDateTime;
     }
 
-    public OBFundsConfirmationConsentResponse1Data status(StatusEnum status) {
+    public OBFundsConfirmationConsentResponse1Data status(OBExternalRequestStatus1Code status) {
         this.status = status;
         return this;
     }
@@ -155,11 +118,11 @@ public class OBFundsConfirmationConsentResponse1Data {
     @NotNull
 
 
-    public StatusEnum getStatus() {
+    public OBExternalRequestStatus1Code getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(OBExternalRequestStatus1Code status) {
         this.status = status;
     }
 
