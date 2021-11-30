@@ -205,21 +205,22 @@
                                 <configuration>
                                     <!-- Only one input file is supported. Uncomment the relevant spec as required -->
 				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/account-info-openapi.yaml</inputSpec>-->
-                                    <inputSpec>${project.basedir}/src/main/resources/specification/confirmation-funds-openapi.yaml</inputSpec>
+				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/confirmation-funds-openapi.yaml</inputSpec>-->
 				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/event-notifications-openapi.yaml</inputSpec>-->
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/events-openapi.yaml</inputSpec>-->
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/payment-initiation-openapi.yaml</inputSpec>-->
 				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/event-notifications-openapi.yaml</inputSpec>-->
+				    <inputSpec>${project.basedir}/src/main/resources/specification/vrp-openapi-3.1.9r3.yaml</inputSpec>-->
                                     <output>${project.build.directory}/generated-sources/swagger</output>
                                     <generatorName>spring</generatorName>
                                     <!-- Change the package here as per the chosen spec above -->
                                     <modelPackage>
-                                        uk.org.openbanking.datamodel.fund
+                                        uk.org.openbanking.datamodel.vrp
                                     </modelPackage>
 				    <apiPackage>
 					com.forgerock.openbanking.aspsp.rs.api.funds.v3_1_8
 				    </apiPackage>
-                                    <generateApis>true</generateApis>
+                                    <generateApis>false</generateApis>
                                     <configOptions>
                                         <dateLibrary>joda</dateLibrary>
                                     </configOptions>

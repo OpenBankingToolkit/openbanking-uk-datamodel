@@ -31,8 +31,7 @@ import static org.joda.time.DateTime.now;
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccountCreditor3;
 import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBBranchAndFinancialInstitutionIdentification6;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
-import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBCashAccountDebtorWithName;
-import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBDomesticVRPInitiation;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.*;
 
 public class OBDomesticVRPConsentRequestTestDataFactory {
 
@@ -70,7 +69,7 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
                 .vrPType(Arrays.asList("UK.OBIE.VRPType.Sweeping"))
                 .validFromDateTime(now)
                 .validToDateTime(now.plusDays(10))
-                .maximumIndividualAmount(aValidOBDomesticVRPControlParametersMaximumIndividualAmount())
+                .maximumIndividualAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
                 .periodicLimits(aValidOBDomesticVRPControlParametersPeriodicLimits())
                 .supplementaryData(new OBSupplementaryData1());
     }
@@ -82,7 +81,7 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
                 .vrPType(vrpTypes)
                 .validFromDateTime(now)
                 .validToDateTime(now.plusDays(10))
-                .maximumIndividualAmount(aValidOBDomesticVRPControlParametersMaximumIndividualAmount())
+                .maximumIndividualAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
                 .periodicLimits(aValidOBDomesticVRPControlParametersPeriodicLimits())
                 .supplementaryData(new OBSupplementaryData1());
     }
@@ -98,11 +97,6 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
     }
 
 
-    public static OBDomesticVRPControlParametersMaximumIndividualAmount aValidOBDomesticVRPControlParametersMaximumIndividualAmount() {
-        return (new OBDomesticVRPControlParametersMaximumIndividualAmount())
-                .amount(AMOUNT)
-                .currency(GBP);
-    }
 
     public static List<OBDomesticVRPControlParametersPeriodicLimits> aValidOBDomesticVRPControlParametersPeriodicLimits() {
         return Arrays.asList((new OBDomesticVRPControlParametersPeriodicLimits())

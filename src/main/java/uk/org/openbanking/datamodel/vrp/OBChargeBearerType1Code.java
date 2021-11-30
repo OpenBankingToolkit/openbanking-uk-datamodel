@@ -24,19 +24,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets OBExternalPaymentChargeType1Code
+ * Specifies which party/parties will bear the charges associated with the processing of the payment transaction.
  */
-public enum OBExternalPaymentChargeType1Code {
+public enum OBChargeBearerType1Code {
   
-  CHAPSOUT("UK.OBIE.CHAPSOut"),
+  BORNEBYCREDITOR("BorneByCreditor"),
   
-  BALANCETRANSFEROUT("UK.OBIE.BalanceTransferOut"),
+  BORNEBYDEBTOR("BorneByDebtor"),
   
-  MONEYTRANSFEROUT("UK.OBIE.MoneyTransferOut");
+  FOLLOWINGSERVICELEVEL("FollowingServiceLevel"),
+  
+  SHARED("Shared");
 
   private String value;
 
-  OBExternalPaymentChargeType1Code(String value) {
+  OBChargeBearerType1Code(String value) {
     this.value = value;
   }
 
@@ -51,8 +53,8 @@ public enum OBExternalPaymentChargeType1Code {
   }
 
   @JsonCreator
-  public static OBExternalPaymentChargeType1Code fromValue(String value) {
-    for (OBExternalPaymentChargeType1Code b : OBExternalPaymentChargeType1Code.values()) {
+  public static OBChargeBearerType1Code fromValue(String value) {
+    for (OBChargeBearerType1Code b : OBChargeBearerType1Code.values()) {
       if (b.value.equals(value)) {
         return b;
       }

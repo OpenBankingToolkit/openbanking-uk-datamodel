@@ -31,69 +31,69 @@ import java.util.Objects;
  * The OBVRPFundsConfirmationRequest object must be used to request funds availability for a specific amount in the Debtor Account included in the VRP consents.
  */
 @ApiModel(description = "The OBVRPFundsConfirmationRequest object must be used to request funds availability for a specific amount in the Debtor Account included in the VRP consents.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
-public class OBVRPFundsConfirmationRequest {
-    @JsonProperty("Data")
-    private OBVRPFundsConfirmationRequestData data;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-30T12:56:02.347748Z[Europe/London]")
+public class OBVRPFundsConfirmationRequest   {
+  @JsonProperty("Data")
+  private OBVRPFundsConfirmationRequestData data;
 
-    public OBVRPFundsConfirmationRequest data(OBVRPFundsConfirmationRequestData data) {
-        this.data = data;
-        return this;
+  public OBVRPFundsConfirmationRequest data(OBVRPFundsConfirmationRequestData data) {
+    this.data = data;
+    return this;
+  }
+
+  /**
+   * Get data
+   * @return data
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public OBVRPFundsConfirmationRequestData getData() {
+    return data;
+  }
+
+  public void setData(OBVRPFundsConfirmationRequestData data) {
+    this.data = data;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    /**
-     * Get data
-     * @return data
-     */
-    @ApiModelProperty(value = "")
-
-    @Valid
-
-    public OBVRPFundsConfirmationRequestData getData() {
-        return data;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    OBVRPFundsConfirmationRequest obVRPFundsConfirmationRequest = (OBVRPFundsConfirmationRequest) o;
+    return Objects.equals(this.data, obVRPFundsConfirmationRequest.data);
+  }
 
-    public void setData(OBVRPFundsConfirmationRequestData data) {
-        this.data = data;
+  @Override
+  public int hashCode() {
+    return Objects.hash(data);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class OBVRPFundsConfirmationRequest {\n");
+    
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OBVRPFundsConfirmationRequest obVRPFundsConfirmationRequest = (OBVRPFundsConfirmationRequest) o;
-        return Objects.equals(this.data, obVRPFundsConfirmationRequest.data);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(data);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class OBVRPFundsConfirmationRequest {\n");
-
-        sb.append("    data: ").append(toIndentedString(data)).append("\n");
-        sb.append("}");
-        return sb.toString();
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
 

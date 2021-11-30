@@ -23,9 +23,6 @@ package uk.org.openbanking.testsupport.vrp;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPInstruction;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequest;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequestData;
-import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccountCreditor3;
-import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBActiveOrHistoricCurrencyAndAmount;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBBranchAndFinancialInstitutionIdentification6;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.*;
 
@@ -41,7 +38,7 @@ public class OBDomesticVRPRequestTestDataFactory {
                 .risk(aValidOBRisk1());
     }
 
-    private static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData() {
+    public static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData() {
         return (new OBDomesticVRPRequestData())
                 .consentId("VRP_357f4d56-379f-4908-a608-2fca79242ed9")
                 .psUAuthenticationMethod("UK.OBIE.SCA")
@@ -50,7 +47,7 @@ public class OBDomesticVRPRequestTestDataFactory {
 
     }
 
-    private static OBDomesticVRPInstruction aValidOBDomesticVRPInstruction() {
+    public static OBDomesticVRPInstruction aValidOBDomesticVRPInstruction() {
         return (new OBDomesticVRPInstruction())
                 .creditorAccount(aValidOBCashAccountCreditor3())
                 .creditorAgent(aValidOBBranchAndFinancialInstitutionIdentification6())
