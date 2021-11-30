@@ -22,6 +22,7 @@ package uk.org.openbanking.datamodel.vrp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -55,7 +56,7 @@ public class OBDomesticVRPInstruction   {
   private OBCashAccountCreditor3 creditorAccount;
 
   @JsonProperty("SupplementaryData")
-  private Object supplementaryData;
+  private OBSupplementaryData1 supplementaryData;
 
   public OBDomesticVRPInstruction instructionIdentification(String instructionIdentification) {
     this.instructionIdentification = instructionIdentification;
@@ -204,7 +205,7 @@ public class OBDomesticVRPInstruction   {
     this.creditorAccount = creditorAccount;
   }
 
-  public OBDomesticVRPInstruction supplementaryData(Object supplementaryData) {
+  public OBDomesticVRPInstruction supplementaryData(OBSupplementaryData1 supplementaryData) {
     this.supplementaryData = supplementaryData;
     return this;
   }
@@ -216,11 +217,11 @@ public class OBDomesticVRPInstruction   {
   @ApiModelProperty(value = "Additional information that can not be captured in the structured fields and/or any other specific block. ")
 
 
-  public Object getSupplementaryData() {
+  public OBSupplementaryData1 getSupplementaryData() {
     return supplementaryData;
   }
 
-  public void setSupplementaryData(Object supplementaryData) {
+  public void setSupplementaryData(OBSupplementaryData1 supplementaryData) {
     this.supplementaryData = supplementaryData;
   }
 
