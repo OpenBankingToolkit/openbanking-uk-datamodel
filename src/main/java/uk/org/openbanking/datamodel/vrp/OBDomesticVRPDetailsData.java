@@ -31,78 +31,78 @@ import java.util.Objects;
 /**
  * OBDomesticVRPDetailsData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
-public class OBDomesticVRPDetailsData {
-    @JsonProperty("PaymentStatus")
-    @Valid
-    private List<OBDomesticVRPDetailsDataPaymentStatus> paymentStatus = null;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-30T12:56:02.347748Z[Europe/London]")
+public class OBDomesticVRPDetailsData   {
+  @JsonProperty("PaymentStatus")
+  @Valid
+  private List<OBDomesticVRPDetailsDataPaymentStatus> paymentStatus = null;
 
-    public OBDomesticVRPDetailsData paymentStatus(List<OBDomesticVRPDetailsDataPaymentStatus> paymentStatus) {
-        this.paymentStatus = paymentStatus;
-        return this;
+  public OBDomesticVRPDetailsData paymentStatus(List<OBDomesticVRPDetailsDataPaymentStatus> paymentStatus) {
+    this.paymentStatus = paymentStatus;
+    return this;
+  }
+
+  public OBDomesticVRPDetailsData addPaymentStatusItem(OBDomesticVRPDetailsDataPaymentStatus paymentStatusItem) {
+    if (this.paymentStatus == null) {
+      this.paymentStatus = new ArrayList<OBDomesticVRPDetailsDataPaymentStatus>();
     }
+    this.paymentStatus.add(paymentStatusItem);
+    return this;
+  }
 
-    public OBDomesticVRPDetailsData addPaymentStatusItem(OBDomesticVRPDetailsDataPaymentStatus paymentStatusItem) {
-        if (this.paymentStatus == null) {
-            this.paymentStatus = new ArrayList<OBDomesticVRPDetailsDataPaymentStatus>();
-        }
-        this.paymentStatus.add(paymentStatusItem);
-        return this;
+  /**
+   * Get paymentStatus
+   * @return paymentStatus
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<OBDomesticVRPDetailsDataPaymentStatus> getPaymentStatus() {
+    return paymentStatus;
+  }
+
+  public void setPaymentStatus(List<OBDomesticVRPDetailsDataPaymentStatus> paymentStatus) {
+    this.paymentStatus = paymentStatus;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    /**
-     * Get paymentStatus
-     * @return paymentStatus
-     */
-    @ApiModelProperty(value = "")
-
-    @Valid
-
-    public List<OBDomesticVRPDetailsDataPaymentStatus> getPaymentStatus() {
-        return paymentStatus;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    OBDomesticVRPDetailsData obDomesticVRPDetailsData = (OBDomesticVRPDetailsData) o;
+    return Objects.equals(this.paymentStatus, obDomesticVRPDetailsData.paymentStatus);
+  }
 
-    public void setPaymentStatus(List<OBDomesticVRPDetailsDataPaymentStatus> paymentStatus) {
-        this.paymentStatus = paymentStatus;
+  @Override
+  public int hashCode() {
+    return Objects.hash(paymentStatus);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class OBDomesticVRPDetailsData {\n");
+    
+    sb.append("    paymentStatus: ").append(toIndentedString(paymentStatus)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OBDomesticVRPDetailsData obDomesticVRPDetailsData = (OBDomesticVRPDetailsData) o;
-        return Objects.equals(this.paymentStatus, obDomesticVRPDetailsData.paymentStatus);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(paymentStatus);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class OBDomesticVRPDetailsData {\n");
-
-        sb.append("    paymentStatus: ").append(toIndentedString(paymentStatus)).append("\n");
-        sb.append("}");
-        return sb.toString();
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
 

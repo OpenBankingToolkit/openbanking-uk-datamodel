@@ -24,19 +24,29 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets OBExternalPaymentChargeType1Code
+ * Identifies the nature of the postal address.
  */
-public enum OBExternalPaymentChargeType1Code {
+public enum OBAddressTypeCode {
   
-  CHAPSOUT("UK.OBIE.CHAPSOut"),
+  BUSINESS("Business"),
   
-  BALANCETRANSFEROUT("UK.OBIE.BalanceTransferOut"),
+  CORRESPONDENCE("Correspondence"),
   
-  MONEYTRANSFEROUT("UK.OBIE.MoneyTransferOut");
+  DELIVERYTO("DeliveryTo"),
+  
+  MAILTO("MailTo"),
+  
+  POBOX("POBox"),
+  
+  POSTAL("Postal"),
+  
+  RESIDENTIAL("Residential"),
+  
+  STATEMENT("Statement");
 
   private String value;
 
-  OBExternalPaymentChargeType1Code(String value) {
+  OBAddressTypeCode(String value) {
     this.value = value;
   }
 
@@ -51,8 +61,8 @@ public enum OBExternalPaymentChargeType1Code {
   }
 
   @JsonCreator
-  public static OBExternalPaymentChargeType1Code fromValue(String value) {
-    for (OBExternalPaymentChargeType1Code b : OBExternalPaymentChargeType1Code.values()) {
+  public static OBAddressTypeCode fromValue(String value) {
+    for (OBAddressTypeCode b : OBAddressTypeCode.values()) {
       if (b.value.equals(value)) {
         return b;
       }

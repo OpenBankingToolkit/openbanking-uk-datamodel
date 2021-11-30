@@ -31,6 +31,7 @@ public class OBInternationalIdentifierTestDataFactory {
     private static final String CREDITOR_AGENT_NAME = "Creditor Agent Name";
     private static final String CREDITOR_NAME = "Creditor Name";
 
+
     public static OBBranchAndFinancialInstitutionIdentification3 aValidOBBranchAndFinancialInstitutionIdentification3() {
         return (new OBBranchAndFinancialInstitutionIdentification3())
                 .schemeName(SCHEME_NAME)

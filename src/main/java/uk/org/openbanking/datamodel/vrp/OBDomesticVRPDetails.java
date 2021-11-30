@@ -29,69 +29,69 @@ import java.util.Objects;
 /**
  * OBDomesticVRPDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
-public class OBDomesticVRPDetails {
-    @JsonProperty("Data")
-    private OBDomesticVRPDetailsData data;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-30T12:56:02.347748Z[Europe/London]")
+public class OBDomesticVRPDetails   {
+  @JsonProperty("Data")
+  private OBDomesticVRPDetailsData data;
 
-    public OBDomesticVRPDetails data(OBDomesticVRPDetailsData data) {
-        this.data = data;
-        return this;
+  public OBDomesticVRPDetails data(OBDomesticVRPDetailsData data) {
+    this.data = data;
+    return this;
+  }
+
+  /**
+   * Get data
+   * @return data
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public OBDomesticVRPDetailsData getData() {
+    return data;
+  }
+
+  public void setData(OBDomesticVRPDetailsData data) {
+    this.data = data;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    /**
-     * Get data
-     * @return data
-     */
-    @ApiModelProperty(value = "")
-
-    @Valid
-
-    public OBDomesticVRPDetailsData getData() {
-        return data;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    OBDomesticVRPDetails obDomesticVRPDetails = (OBDomesticVRPDetails) o;
+    return Objects.equals(this.data, obDomesticVRPDetails.data);
+  }
 
-    public void setData(OBDomesticVRPDetailsData data) {
-        this.data = data;
+  @Override
+  public int hashCode() {
+    return Objects.hash(data);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class OBDomesticVRPDetails {\n");
+    
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OBDomesticVRPDetails obDomesticVRPDetails = (OBDomesticVRPDetails) o;
-        return Objects.equals(this.data, obDomesticVRPDetails.data);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(data);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class OBDomesticVRPDetails {\n");
-
-        sb.append("    data: ").append(toIndentedString(data)).append("\n");
-        sb.append("}");
-        return sb.toString();
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
 

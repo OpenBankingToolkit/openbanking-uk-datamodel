@@ -23,9 +23,6 @@ package uk.org.openbanking.testsupport.vrp;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPInstruction;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequest;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequestData;
-import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccountCreditor3;
-import static uk.org.openbanking.testsupport.payment.OBAmountTestDataFactory.aValidOBActiveOrHistoricCurrencyAndAmount;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBBranchAndFinancialInstitutionIdentification6;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.*;
 

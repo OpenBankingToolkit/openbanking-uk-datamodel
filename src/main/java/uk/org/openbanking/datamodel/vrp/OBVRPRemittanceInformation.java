@@ -28,96 +28,96 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts&#39; receivable system. 
+ * Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts&#39; receivable system.
  */
-@ApiModel(description = "Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
-public class OBVRPRemittanceInformation {
-    @JsonProperty("Unstructured")
-    private String unstructured;
+@ApiModel(description = "Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-30T12:56:02.347748Z[Europe/London]")
+public class OBVRPRemittanceInformation   {
+  @JsonProperty("Unstructured")
+  private String unstructured;
 
-    @JsonProperty("Reference")
-    private String reference;
+  @JsonProperty("Reference")
+  private String reference;
 
-    public OBVRPRemittanceInformation unstructured(String unstructured) {
-        this.unstructured = unstructured;
-        return this;
+  public OBVRPRemittanceInformation unstructured(String unstructured) {
+    this.unstructured = unstructured;
+    return this;
+  }
+
+  /**
+   * Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form.
+   * @return unstructured
+  */
+  @ApiModelProperty(value = "Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form.")
+
+@Size(min=1,max=140) 
+  public String getUnstructured() {
+    return unstructured;
+  }
+
+  public void setUnstructured(String unstructured) {
+    this.unstructured = unstructured;
+  }
+
+  public OBVRPRemittanceInformation reference(String reference) {
+    this.reference = reference;
+    return this;
+  }
+
+  /**
+   * Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. The PISP must populate this with the same value as specified in the `Data.Initiation.RemittanceInformation.Reference` of the consent.
+   * @return reference
+  */
+  @ApiModelProperty(value = "Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. The PISP must populate this with the same value as specified in the `Data.Initiation.RemittanceInformation.Reference` of the consent.")
+
+@Size(min=1,max=35) 
+  public String getReference() {
+    return reference;
+  }
+
+  public void setReference(String reference) {
+    this.reference = reference;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    /**
-     * Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form.
-     * @return unstructured
-     */
-    @ApiModelProperty(value = "Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form.  ")
-
-    @Size(max = 140)
-    public String getUnstructured() {
-        return unstructured;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    OBVRPRemittanceInformation obVRPRemittanceInformation = (OBVRPRemittanceInformation) o;
+    return Objects.equals(this.unstructured, obVRPRemittanceInformation.unstructured) &&
+        Objects.equals(this.reference, obVRPRemittanceInformation.reference);
+  }
 
-    public void setUnstructured(String unstructured) {
-        this.unstructured = unstructured;
+  @Override
+  public int hashCode() {
+    return Objects.hash(unstructured, reference);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class OBVRPRemittanceInformation {\n");
+    
+    sb.append("    unstructured: ").append(toIndentedString(unstructured)).append("\n");
+    sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-
-    public OBVRPRemittanceInformation reference(String reference) {
-        this.reference = reference;
-        return this;
-    }
-
-    /**
-     * Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. The PISP must populate this with the same value as specified in the ControlParameters.Reference field of the consent.
-     * @return reference
-     */
-    @ApiModelProperty(value = "Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. The PISP must populate this with the same value as specified in the ControlParameters.Reference field of the consent. ")
-
-    @Size(max = 35)
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OBVRPRemittanceInformation obVRPRemittanceInformation = (OBVRPRemittanceInformation) o;
-        return Objects.equals(this.unstructured, obVRPRemittanceInformation.unstructured) &&
-                Objects.equals(this.reference, obVRPRemittanceInformation.reference);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(unstructured, reference);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class OBVRPRemittanceInformation {\n");
-
-        sb.append("    unstructured: ").append(toIndentedString(unstructured)).append("\n");
-        sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
-        sb.append("}");
-        return sb.toString();
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
 

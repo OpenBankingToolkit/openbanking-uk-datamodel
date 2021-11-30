@@ -22,8 +22,6 @@ package uk.org.openbanking.datamodel.vrp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import uk.org.openbanking.datamodel.account.Links;
-import uk.org.openbanking.datamodel.account.Meta;
 import uk.org.openbanking.datamodel.payment.OBRisk1;
 
 import javax.validation.Valid;
@@ -33,150 +31,150 @@ import java.util.Objects;
 /**
  * OBDomesticVRPResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-17T16:24:12.845482Z[Europe/London]")
-public class OBDomesticVRPResponse {
-    @JsonProperty("Data")
-    private OBDomesticVRPResponseData data;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-30T12:56:02.347748Z[Europe/London]")
+public class OBDomesticVRPResponse   {
+  @JsonProperty("Data")
+  private OBDomesticVRPResponseData data;
 
-    @JsonProperty("Risk")
-    private OBRisk1 risk; // use existing OBRisk1 for Payments, rather than duplicating it for VRPs
+  @JsonProperty("Risk")
+  private OBRisk1 risk;
 
-    @JsonProperty("Links")
-    private Links links; // use existing acounts Link class, rather than duplicating it for VRPs
+  @JsonProperty("Links")
+  private Links links;
 
-    @JsonProperty("Meta")
-    private Meta meta; // use existing accounts Meta class, rather than duplicating it for VRPs
+  @JsonProperty("Meta")
+  private Object meta;
 
-    public OBDomesticVRPResponse data(OBDomesticVRPResponseData data) {
-        this.data = data;
-        return this;
+  public OBDomesticVRPResponse data(OBDomesticVRPResponseData data) {
+    this.data = data;
+    return this;
+  }
+
+  /**
+   * Get data
+   * @return data
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  @Valid
+
+  public OBDomesticVRPResponseData getData() {
+    return data;
+  }
+
+  public void setData(OBDomesticVRPResponseData data) {
+    this.data = data;
+  }
+
+  public OBDomesticVRPResponse risk(OBRisk1 risk) {
+    this.risk = risk;
+    return this;
+  }
+
+  /**
+   * Get risk
+   * @return risk
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  @Valid
+
+  public OBRisk1 getRisk() {
+    return risk;
+  }
+
+  public void setRisk(OBRisk1 risk) {
+    this.risk = risk;
+  }
+
+  public OBDomesticVRPResponse links(Links links) {
+    this.links = links;
+    return this;
+  }
+
+  /**
+   * Get links
+   * @return links
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  @Valid
+
+  public Links getLinks() {
+    return links;
+  }
+
+  public void setLinks(Links links) {
+    this.links = links;
+  }
+
+  public OBDomesticVRPResponse meta(Object meta) {
+    this.meta = meta;
+    return this;
+  }
+
+  /**
+   * Meta Data relevant to the payload. At present no fields are used for VRP.
+   * @return meta
+  */
+  @ApiModelProperty(required = true, value = "Meta Data relevant to the payload. At present no fields are used for VRP.")
+  @NotNull
+
+
+  public Object getMeta() {
+    return meta;
+  }
+
+  public void setMeta(Object meta) {
+    this.meta = meta;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    /**
-     * Get data
-     * @return data
-     */
-    @ApiModelProperty(required = true, value = "")
-    @NotNull
-
-    @Valid
-
-    public OBDomesticVRPResponseData getData() {
-        return data;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    OBDomesticVRPResponse obDomesticVRPResponse = (OBDomesticVRPResponse) o;
+    return Objects.equals(this.data, obDomesticVRPResponse.data) &&
+        Objects.equals(this.risk, obDomesticVRPResponse.risk) &&
+        Objects.equals(this.links, obDomesticVRPResponse.links) &&
+        Objects.equals(this.meta, obDomesticVRPResponse.meta);
+  }
 
-    public void setData(OBDomesticVRPResponseData data) {
-        this.data = data;
+  @Override
+  public int hashCode() {
+    return Objects.hash(data, risk, links, meta);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class OBDomesticVRPResponse {\n");
+    
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    risk: ").append(toIndentedString(risk)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-
-    public OBDomesticVRPResponse risk(OBRisk1 risk) {
-        this.risk = risk;
-        return this;
-    }
-
-    /**
-     * Get risk
-     * @return risk
-     */
-    @ApiModelProperty(required = true, value = "")
-    @NotNull
-
-    @Valid
-
-    public OBRisk1 getRisk() {
-        return risk;
-    }
-
-    public void setRisk(OBRisk1 risk) {
-        this.risk = risk;
-    }
-
-    public OBDomesticVRPResponse links(Links links) {
-        this.links = links;
-        return this;
-    }
-
-    /**
-     * Get links
-     * @return links
-     */
-    @ApiModelProperty(required = true, value = "")
-    @NotNull
-
-    @Valid
-
-    public Links getLinks() {
-        return links;
-    }
-
-    public void setLinks(Links links) {
-        this.links = links;
-    }
-
-    public OBDomesticVRPResponse meta(Meta meta) {
-        this.meta = meta;
-        return this;
-    }
-
-    /**
-     * Meta Data relevant to the payload. At present no fields are used for VRP.
-     * @return meta
-     */
-    @ApiModelProperty(required = true, value = "Meta Data relevant to the payload. At present no fields are used for VRP.")
-    @NotNull
-
-
-    public Meta getMeta() {
-        return meta;
-    }
-
-    public void setMeta(Meta meta) {
-        this.meta = meta;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OBDomesticVRPResponse obDomesticVRPResponse = (OBDomesticVRPResponse) o;
-        return Objects.equals(this.data, obDomesticVRPResponse.data) &&
-                Objects.equals(this.risk, obDomesticVRPResponse.risk) &&
-                Objects.equals(this.links, obDomesticVRPResponse.links) &&
-                Objects.equals(this.meta, obDomesticVRPResponse.meta);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(data, risk, links, meta);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class OBDomesticVRPResponse {\n");
-
-        sb.append("    data: ").append(toIndentedString(data)).append("\n");
-        sb.append("    risk: ").append(toIndentedString(risk)).append("\n");
-        sb.append("    links: ").append(toIndentedString(links)).append("\n");
-        sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
-        sb.append("}");
-        return sb.toString();
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
 

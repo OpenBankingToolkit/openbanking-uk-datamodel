@@ -28,10 +28,10 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * OBCashAccountDebtorWithName
+ * OBCashAccountCreditor3
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-30T12:56:02.347748Z[Europe/London]")
-public class OBCashAccountDebtorWithName   {
+public class OBCashAccountCreditor3   {
   @JsonProperty("SchemeName")
   private String schemeName;
 
@@ -44,7 +44,7 @@ public class OBCashAccountDebtorWithName   {
   @JsonProperty("SecondaryIdentification")
   private String secondaryIdentification;
 
-  public OBCashAccountDebtorWithName schemeName(String schemeName) {
+  public OBCashAccountCreditor3 schemeName(String schemeName) {
     this.schemeName = schemeName;
     return this;
   }
@@ -65,16 +65,16 @@ public class OBCashAccountDebtorWithName   {
     this.schemeName = schemeName;
   }
 
-  public OBCashAccountDebtorWithName identification(String identification) {
+  public OBCashAccountCreditor3 identification(String identification) {
     this.identification = identification;
     return this;
   }
 
   /**
-   * ^ Identification assigned by an institution to identify an account. This identification is known by the account owner.
+   * Identification assigned by an institution to identify an account. This identification is known by the account owner.
    * @return identification
   */
-  @ApiModelProperty(required = true, value = "^ Identification assigned by an institution to identify an account. This identification is known by the account owner.")
+  @ApiModelProperty(required = true, value = "Identification assigned by an institution to identify an account. This identification is known by the account owner.")
   @NotNull
 
 @Size(min=1,max=256) 
@@ -86,16 +86,16 @@ public class OBCashAccountDebtorWithName   {
     this.identification = identification;
   }
 
-  public OBCashAccountDebtorWithName name(String name) {
+  public OBCashAccountCreditor3 name(String name) {
     this.name = name;
     return this;
   }
 
   /**
-   * ^ Name of the account, as assigned by the account servicing institution.  Usage The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account.
+   * Name of the account, as assigned by the account servicing institution. Usage: the account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account.
    * @return name
   */
-  @ApiModelProperty(required = true, value = "^ Name of the account, as assigned by the account servicing institution.  Usage The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account.")
+  @ApiModelProperty(required = true, value = "Name of the account, as assigned by the account servicing institution. Usage: the account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account.")
   @NotNull
 
 @Size(min=1,max=350) 
@@ -107,16 +107,16 @@ public class OBCashAccountDebtorWithName   {
     this.name = name;
   }
 
-  public OBCashAccountDebtorWithName secondaryIdentification(String secondaryIdentification) {
+  public OBCashAccountCreditor3 secondaryIdentification(String secondaryIdentification) {
     this.secondaryIdentification = secondaryIdentification;
     return this;
   }
 
   /**
-   * ^ This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination)
+   * This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination)
    * @return secondaryIdentification
   */
-  @ApiModelProperty(value = "^ This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination)")
+  @ApiModelProperty(value = "This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination)")
 
 @Size(min=1,max=34) 
   public String getSecondaryIdentification() {
@@ -136,11 +136,11 @@ public class OBCashAccountDebtorWithName   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OBCashAccountDebtorWithName obCashAccountDebtorWithName = (OBCashAccountDebtorWithName) o;
-    return Objects.equals(this.schemeName, obCashAccountDebtorWithName.schemeName) &&
-        Objects.equals(this.identification, obCashAccountDebtorWithName.identification) &&
-        Objects.equals(this.name, obCashAccountDebtorWithName.name) &&
-        Objects.equals(this.secondaryIdentification, obCashAccountDebtorWithName.secondaryIdentification);
+    OBCashAccountCreditor3 obCashAccountCreditor3 = (OBCashAccountCreditor3) o;
+    return Objects.equals(this.schemeName, obCashAccountCreditor3.schemeName) &&
+        Objects.equals(this.identification, obCashAccountCreditor3.identification) &&
+        Objects.equals(this.name, obCashAccountCreditor3.name) &&
+        Objects.equals(this.secondaryIdentification, obCashAccountCreditor3.secondaryIdentification);
   }
 
   @Override
@@ -151,7 +151,7 @@ public class OBCashAccountDebtorWithName   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OBCashAccountDebtorWithName {\n");
+    sb.append("class OBCashAccountCreditor3 {\n");
     
     sb.append("    schemeName: ").append(toIndentedString(schemeName)).append("\n");
     sb.append("    identification: ").append(toIndentedString(identification)).append("\n");

@@ -27,37 +27,37 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Gets or Sets OBExternalStatus2Code
  */
 public enum OBExternalStatus2Code {
+  
+  AUTHORISED("Authorised"),
+  
+  AWAITINGFURTHERAUTHORISATION("AwaitingFurtherAuthorisation"),
+  
+  REJECTED("Rejected");
 
-    AUTHORISED("Authorised"),
+  private String value;
 
-    AWAITINGFURTHERAUTHORISATION("AwaitingFurtherAuthorisation"),
+  OBExternalStatus2Code(String value) {
+    this.value = value;
+  }
 
-    REJECTED("Rejected");
+  @JsonValue
+  public String getValue() {
+    return value;
+  }
 
-    private final String value;
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
 
-    OBExternalStatus2Code(String value) {
-        this.value = value;
+  @JsonCreator
+  public static OBExternalStatus2Code fromValue(String value) {
+    for (OBExternalStatus2Code b : OBExternalStatus2Code.values()) {
+      if (b.value.equals(value)) {
+        return b;
+      }
     }
-
-    @JsonValue
-    public String getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static OBExternalStatus2Code fromValue(String value) {
-        for (OBExternalStatus2Code b : OBExternalStatus2Code.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
+  }
 }
 
