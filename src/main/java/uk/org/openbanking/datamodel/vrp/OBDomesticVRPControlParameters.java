@@ -23,6 +23,7 @@ package uk.org.openbanking.datamodel.vrp;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import org.joda.time.DateTime;
+import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -60,7 +61,7 @@ public class OBDomesticVRPControlParameters   {
   private List<String> psUAuthenticationMethods = new ArrayList<String>();
 
   @JsonProperty("SupplementaryData")
-  private Object supplementaryData;
+  private OBSupplementaryData1 supplementaryData;
 
   public OBDomesticVRPControlParameters validFromDateTime(DateTime validFromDateTime) {
     this.validFromDateTime = validFromDateTime;
@@ -206,7 +207,7 @@ public class OBDomesticVRPControlParameters   {
     this.psUAuthenticationMethods = psUAuthenticationMethods;
   }
 
-  public OBDomesticVRPControlParameters supplementaryData(Object supplementaryData) {
+  public OBDomesticVRPControlParameters supplementaryData(OBSupplementaryData1 supplementaryData) {
     this.supplementaryData = supplementaryData;
     return this;
   }
@@ -218,11 +219,11 @@ public class OBDomesticVRPControlParameters   {
   @ApiModelProperty(value = "^ Additional information that can not be captured in the structured fields and/or any other specific block")
 
 
-  public Object getSupplementaryData() {
+  public OBSupplementaryData1 getSupplementaryData() {
     return supplementaryData;
   }
 
-  public void setSupplementaryData(Object supplementaryData) {
+  public void setSupplementaryData(OBSupplementaryData1 supplementaryData) {
     this.supplementaryData = supplementaryData;
   }
 
