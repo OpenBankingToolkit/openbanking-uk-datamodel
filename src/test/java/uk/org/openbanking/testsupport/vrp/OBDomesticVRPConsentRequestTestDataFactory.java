@@ -31,6 +31,8 @@ import static org.joda.time.DateTime.now;
 import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccountCreditor3;
 import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBBranchAndFinancialInstitutionIdentification6;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBCashAccountDebtorWithName;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBDomesticVRPInitiation;
 
 public class OBDomesticVRPConsentRequestTestDataFactory {
 
@@ -85,13 +87,7 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
                 .supplementaryData(new OBSupplementaryData1());
     }
 
-    public static OBDomesticVRPInitiation aValidOBDomesticVRPInitiation() {
-        return (new OBDomesticVRPInitiation())
-                .creditorAccount(aValidOBCashAccountCreditor3())
-                .debtorAccount(aValidOBCashAccountDebtorWithName())
-                .creditorAgent(aValidOBBranchAndFinancialInstitutionIdentification6())
-                .remittanceInformation(aValidOBDomesticVRPInitiationRemittanceInformation());
-    }
+
 
     public static OBCashAccountDebtorWithName aValidOBCashAccountDebtorWithName() {
         return (new OBCashAccountDebtorWithName())
@@ -101,11 +97,6 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
                 .secondaryIdentification("11");
     }
 
-    public static OBDomesticVRPInitiationRemittanceInformation aValidOBDomesticVRPInitiationRemittanceInformation() {
-        return (new OBDomesticVRPInitiationRemittanceInformation())
-                .unstructured("Internal ops code 5120103")
-                .reference("FRESCO-037");
-    }
 
     public static OBDomesticVRPControlParametersMaximumIndividualAmount aValidOBDomesticVRPControlParametersMaximumIndividualAmount() {
         return (new OBDomesticVRPControlParametersMaximumIndividualAmount())
