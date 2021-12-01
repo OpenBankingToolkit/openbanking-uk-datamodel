@@ -103,4 +103,11 @@ public class OBDomesticVRPCommonTestDataFactory {
                 .country("UK");
     }
 
+    public static OBDomesticVRPResponseDataCharges aValidOBDomesticVRPResponseDataCharges(){
+        return (new OBDomesticVRPResponseDataCharges())
+                .amount(aValidOBActiveOrHistoricCurrencyAndAmount())
+                .chargeBearer(OBChargeBearerType1Code.BORNEBYCREDITOR)
+                .type(OBExternalPaymentChargeType1Code.BALANCETRANSFEROUT);
+    }
+
 }
