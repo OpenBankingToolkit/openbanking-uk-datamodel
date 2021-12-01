@@ -29,8 +29,7 @@ import java.util.List;
 public class OBDomesticVRPResponseTestDataFactory {
 
     public static OBDomesticVRPResponseData aValidOBDomesticVRPResponseData(OBDomesticVRPRequest request) {
-        OBDomesticVRPResponseData domesticVRPResponse = new OBDomesticVRPResponseData();
-        domesticVRPResponse
+        return (new OBDomesticVRPResponseData())
                 .domesticVRPId("123456")
                 .consentId("VRP_1233456")
                 .creationDateTime(new DateTime())
@@ -43,7 +42,5 @@ public class OBDomesticVRPResponseTestDataFactory {
                 .initiation(OBDomesticVRPCommonTestDataFactory.aValidOBDomesticVRPInitiation())
                 .instruction(OBDomesticVRPRequestTestDataFactory.aValidOBDomesticVRPInstruction())
                 .debtorAccount(OBDomesticVRPCommonTestDataFactory.aValidOBCashAccountDebtorWithName());
-
-        return domesticVRPResponse;
     }
 }

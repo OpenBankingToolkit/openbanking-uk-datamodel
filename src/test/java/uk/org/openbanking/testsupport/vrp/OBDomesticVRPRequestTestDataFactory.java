@@ -23,6 +23,9 @@ package uk.org.openbanking.testsupport.vrp;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPInstruction;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequest;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequestData;
+import uk.org.openbanking.datamodel.vrp.namespace.OBExternalLocalInstrument1Code;
+import uk.org.openbanking.datamodel.vrp.namespace.OBVRPAuthenticationMethods;
+
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.*;
 
@@ -30,7 +33,7 @@ public class OBDomesticVRPRequestTestDataFactory {
 
     public static String INSTRUCTION_IDENTIFICATION = "32409753409ASFD";
     private static final String END_TO_END_IDENTIFICATION = "12345678";
-    private static final String LOCAL_INSTRUMENT = "UK.OBIE.BACS";
+    private static final String LOCAL_INSTRUMENT = OBExternalLocalInstrument1Code.BACS.getValue();
 
     public static OBDomesticVRPRequest aValidOBDomesticVRPRequest(){
         return (new OBDomesticVRPRequest())
@@ -41,7 +44,7 @@ public class OBDomesticVRPRequestTestDataFactory {
     public static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData() {
         return (new OBDomesticVRPRequestData())
                 .consentId("VRP_357f4d56-379f-4908-a608-2fca79242ed9")
-                .psUAuthenticationMethod("UK.OBIE.SCA")
+                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA.getValue())
                 .initiation(aValidOBDomesticVRPInitiation())
                 .instruction(aValidOBDomesticVRPInstruction());
 
