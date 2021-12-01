@@ -54,7 +54,12 @@ When a new version of OB API is released, the following steps should be performe
    for the `callbackUrl` or `httpopenbankingOrgUkrid` within `OBEventSubject1` being renamed to
    `httpColonOpenbankingOrgUkRid`, but the `@JsonProperty` annotation remaining the same. Again, neither of these make
    any difference to the resulting JSON, so these changes have not been applied.
-
+   
+   > TO BE AWARE: the yaml spec used on the client to generate the source
+   is the version spec 1.1 it means that the keys  `y|Y|yes|Yes|YES|n|N|no|No|NO` `|true|True|TRUE|false|False|FALSE`
+   `|on|On|ON|off|Off|OFF` will be evaluated to boolean `true` and `false` when these keys aren't enclosed in quotes. Check these keys in the yaml file to identify the classes
+   that must be change manually to the proper key value.
+   
 1. Remove Links, Meta, OBError1 and OBErrorResponse1 - we use shared generic versions of these classes.
 1. Uncomment the relevant `<inputSpec>` listing within the `openapi-generator-maven-plugin` in the pom for the next
    swagger spec (and repeat for each new swagger YAML file).
