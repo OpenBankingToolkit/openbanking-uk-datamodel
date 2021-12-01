@@ -38,9 +38,10 @@ public class OBDomesticVRPConsentRequestData   {
    * Indicates whether information about RefundAccount should be included in the payment response. 
    */
   public enum ReadRefundAccountEnum {
-    TRUE("true"),
+
+    YES("Yes"),
     
-    FALSE("false");
+    NO("No");
 
     private String value;
 
