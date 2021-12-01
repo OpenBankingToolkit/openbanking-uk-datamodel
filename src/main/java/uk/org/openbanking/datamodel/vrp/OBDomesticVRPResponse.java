@@ -28,6 +28,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+import uk.org.openbanking.datamodel.account.Links;
+
 /**
  * OBDomesticVRPResponse
  */
