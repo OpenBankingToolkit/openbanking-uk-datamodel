@@ -23,20 +23,26 @@ package uk.org.openbanking.testsupport.vrp;
 import org.joda.time.DateTime;
 import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 import uk.org.openbanking.datamodel.vrp.*;
+import uk.org.openbanking.datamodel.vrp.namespace.OBExternalAccountIdentification4Code;
+import uk.org.openbanking.datamodel.vrp.namespace.OBVRPAuthenticationMethods;
+import uk.org.openbanking.datamodel.vrp.namespace.OBVRPConsentType;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.joda.time.DateTime.now;
-import static uk.org.openbanking.testsupport.payment.OBAccountTestDataFactory.aValidOBCashAccountCreditor3;
-import static uk.org.openbanking.testsupport.payment.OBInternationalIdentifierTestDataFactory.aValidOBBranchAndFinancialInstitutionIdentification6;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
-import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.*;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBActiveOrHistoricCurrencyAndAmount;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBDomesticVRPInitiation;
 
 public class OBDomesticVRPConsentRequestTestDataFactory {
 
     private static final String GBP = "GBP";
     private static final String AMOUNT = "10.01";
+    private static final String ACCOUNT_SCHEME_NAME = OBExternalAccountIdentification4Code.SORT_CODE_ACCOUNT_NUMBER.getValue();
+    private static final String ACCOUNT_IDENTIFICATION = "08080021325698";
+    private static final String ACCOUNT_NAME = "Mr Tim Burgess";
+    private static final String ACCOUNT_SECONDARY_IDENTIFICATION = "11";
 
     public static OBDomesticVRPConsentRequest aValidOBDomesticVRPConsentRequest() {
         return (new OBDomesticVRPConsentRequest())
@@ -65,8 +71,8 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
     public static OBDomesticVRPControlParameters aValidOBDomesticVRPControlParameters() {
         DateTime now = now();
         return (new OBDomesticVRPControlParameters())
-                .psUAuthenticationMethods(Arrays.asList("UK.OBIE.SCA"))
-                .vrPType(Arrays.asList("UK.OBIE.VRPType.Sweeping"))
+                .psUAuthenticationMethods(Arrays.asList(OBVRPAuthenticationMethods.SCA.getValue()))
+                .vrPType(Arrays.asList(OBVRPConsentType.SWEEPING.getValue()))
                 .validFromDateTime(now)
                 .validToDateTime(now.plusDays(10))
                 .maximumIndividualAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
@@ -87,15 +93,13 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
     }
 
 
-
     public static OBCashAccountDebtorWithName aValidOBCashAccountDebtorWithName() {
         return (new OBCashAccountDebtorWithName())
-                .schemeName("UK.OBIE.SortCodeAccountNumber")
-                .identification("08080021325698")
-                .name("Mr Tim Burgess")
-                .secondaryIdentification("11");
+                .schemeName(ACCOUNT_SCHEME_NAME)
+                .identification(ACCOUNT_IDENTIFICATION)
+                .name(ACCOUNT_NAME)
+                .secondaryIdentification(ACCOUNT_SECONDARY_IDENTIFICATION);
     }
-
 
 
     public static List<OBDomesticVRPControlParametersPeriodicLimits> aValidOBDomesticVRPControlParametersPeriodicLimits() {

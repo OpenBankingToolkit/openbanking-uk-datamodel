@@ -20,11 +20,9 @@
  */
 package uk.org.openbanking.testsupport.vrp;
 
-import uk.org.openbanking.datamodel.payment.OBExternalPaymentContext1Code;
 import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 import uk.org.openbanking.datamodel.vrp.*;
-
-import java.util.Collections;
+import uk.org.openbanking.datamodel.vrp.namespace.OBExternalAccountIdentification4Code;
 
 
 public class OBDomesticVRPCommonTestDataFactory {
@@ -34,12 +32,12 @@ public class OBDomesticVRPCommonTestDataFactory {
     private static final String CURRENCY = "GBP";
     private static final String CASH_ACCOUNT_IDENTIFICATION = "08080021325698";
     private static final String CASH_ACCOUNT_NAME = "Mr Tim Burgess";
-    private static final String CAS_ACCOUNT_SCHEME_NAME = "UK.OBIE.SortCodeAccountNumber";
+    private static final String CAS_ACCOUNT_SCHEME_NAME = OBExternalAccountIdentification4Code.SORT_CODE_ACCOUNT_NUMBER.getValue();
     private static final String CASH_ACCOUNT_SECONDARY_IDENTIFICATION = "11";
 
     public static OBCashAccountDebtorWithName aValidOBCashAccountDebtorWithName() {
         return (new OBCashAccountDebtorWithName())
-                .schemeName("UK.OBIE.SortCodeAccountNumber")
+                .schemeName(CAS_ACCOUNT_SCHEME_NAME)
                 .identification("08080021325698")
                 .name("Mr Tim Burgess")
                 .secondaryIdentification("11");
@@ -65,19 +63,19 @@ public class OBDomesticVRPCommonTestDataFactory {
                 .reference("FRESCO-037");
     }
 
-    public static OBSupplementaryData1 aValidOBSupplementaryData1(){
+    public static OBSupplementaryData1 aValidOBSupplementaryData1() {
         OBSupplementaryData1 supplementaryData1 = new OBSupplementaryData1();
         supplementaryData1.setData(SUPPLEMENTARY_DATA);
         return supplementaryData1;
     }
-    
-    public static OBActiveOrHistoricCurrencyAndAmount aValidOBActiveOrHistoricCurrencyAndAmount(){
+
+    public static OBActiveOrHistoricCurrencyAndAmount aValidOBActiveOrHistoricCurrencyAndAmount() {
         return (new OBActiveOrHistoricCurrencyAndAmount())
                 .amount(AMOUNT)
                 .currency(CURRENCY);
     }
-    
-    public static OBCashAccountCreditor3 aValidOBCashAccountCreditor3(){
+
+    public static OBCashAccountCreditor3 aValidOBCashAccountCreditor3() {
         return (new OBCashAccountCreditor3())
                 .identification(CASH_ACCOUNT_IDENTIFICATION)
                 .name(CASH_ACCOUNT_NAME)
@@ -103,7 +101,7 @@ public class OBDomesticVRPCommonTestDataFactory {
                 .country("UK");
     }
 
-    public static OBDomesticVRPResponseDataCharges aValidOBDomesticVRPResponseDataCharges(){
+    public static OBDomesticVRPResponseDataCharges aValidOBDomesticVRPResponseDataCharges() {
         return (new OBDomesticVRPResponseDataCharges())
                 .amount(aValidOBActiveOrHistoricCurrencyAndAmount())
                 .chargeBearer(OBChargeBearerType1Code.BORNEBYCREDITOR)
