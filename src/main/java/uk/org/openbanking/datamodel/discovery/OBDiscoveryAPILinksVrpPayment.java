@@ -157,7 +157,6 @@ public class OBDiscoveryAPILinksVrpPayment implements OBDiscoveryAPILinks {
     @Override
     public String toString() {
         return "OBDiscoveryAPILinksVrpPayment{" +
-
                 ", createDomesticVrpPaymentConsent='" + createDomesticVrpPaymentConsent + '\'' +
                 ", getDomesticVrpPaymentConsent='" + getDomesticVrpPaymentConsent + '\'' +
                 ", deleteDomesticVrpPaymentConsent='" + deleteDomesticVrpPaymentConsent + '\'' +
