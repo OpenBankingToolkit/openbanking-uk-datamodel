@@ -64,6 +64,7 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
 
     public static OBDomesticVRPConsentRequestData aValidOBDomesticVRPConsentRequestData(List<String> psuAuthenticationMethods, List<String> vrpTypes) {
         return (new OBDomesticVRPConsentRequestData())
+                .readRefundAccount(OBDomesticVRPConsentRequestData.ReadRefundAccountEnum.YES)
                 .controlParameters(aValidOBDomesticVRPControlParameters(psuAuthenticationMethods, vrpTypes))
                 .initiation(aValidOBDomesticVRPInitiation());
     }
