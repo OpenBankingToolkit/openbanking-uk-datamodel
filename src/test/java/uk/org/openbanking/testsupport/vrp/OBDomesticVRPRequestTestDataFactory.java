@@ -23,27 +23,39 @@ package uk.org.openbanking.testsupport.vrp;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPInstruction;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequest;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequestData;
-import uk.org.openbanking.datamodel.vrp.namespace.OBExternalLocalInstrument1Code;
 import uk.org.openbanking.datamodel.vrp.namespace.OBVRPAuthenticationMethods;
+
+import java.util.UUID;
 
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.*;
 
 public class OBDomesticVRPRequestTestDataFactory {
 
-    public static String INSTRUCTION_IDENTIFICATION = "32409753409ASFD";
-    private static final String END_TO_END_IDENTIFICATION = "12345678";
-    private static final String LOCAL_INSTRUMENT = OBExternalLocalInstrument1Code.BACS.getValue();
-
-    public static OBDomesticVRPRequest aValidOBDomesticVRPRequest(){
+    public static OBDomesticVRPRequest aValidOBDomesticVRPRequest() {
         return (new OBDomesticVRPRequest())
                 .data(aValidOBDomesticVRPRequestData())
                 .risk(aValidOBRisk1());
     }
 
+    public static OBDomesticVRPRequest aValidOBDomesticVRPRequest(String consentId) {
+        return (new OBDomesticVRPRequest())
+                .data(aValidOBDomesticVRPRequestData(consentId))
+                .risk(aValidOBRisk1());
+    }
+
     public static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData() {
         return (new OBDomesticVRPRequestData())
-                .consentId("VRP_357f4d56-379f-4908-a608-2fca79242ed9")
+                .consentId(ConstantsVRPTestData.CONSENT_PREFIX + UUID.randomUUID())
+                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA.getValue())
+                .initiation(aValidOBDomesticVRPInitiation())
+                .instruction(aValidOBDomesticVRPInstruction());
+
+    }
+
+    public static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData(String consentId) {
+        return (new OBDomesticVRPRequestData())
+                .consentId(consentId)
                 .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA.getValue())
                 .initiation(aValidOBDomesticVRPInitiation())
                 .instruction(aValidOBDomesticVRPInstruction());
@@ -54,10 +66,10 @@ public class OBDomesticVRPRequestTestDataFactory {
         return (new OBDomesticVRPInstruction())
                 .creditorAccount(aValidOBCashAccountCreditor3())
                 .creditorAgent(aValidOBBranchAndFinancialInstitutionIdentification6())
-                .instructionIdentification(INSTRUCTION_IDENTIFICATION)
+                .instructionIdentification(ConstantsVRPTestData.INSTRUCTION_IDENTIFICATION)
                 .instructedAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
-                .endToEndIdentification(END_TO_END_IDENTIFICATION)
-                .localInstrument(LOCAL_INSTRUMENT)
+                .endToEndIdentification(ConstantsVRPTestData.END_TO_END_IDENTIFICATION)
+                .localInstrument(ConstantsVRPTestData.LOCAL_INSTRUMENT)
                 .remittanceInformation(aValidOBVRPRemittanceInformation())
                 .supplementaryData(aValidOBSupplementaryData1());
     }

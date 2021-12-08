@@ -23,7 +23,6 @@ package uk.org.openbanking.testsupport.vrp;
 import org.joda.time.DateTime;
 import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 import uk.org.openbanking.datamodel.vrp.*;
-import uk.org.openbanking.datamodel.vrp.namespace.OBExternalAccountIdentification4Code;
 import uk.org.openbanking.datamodel.vrp.namespace.OBVRPAuthenticationMethods;
 import uk.org.openbanking.datamodel.vrp.namespace.OBVRPConsentType;
 
@@ -36,13 +35,6 @@ import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFact
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBDomesticVRPInitiation;
 
 public class OBDomesticVRPConsentRequestTestDataFactory {
-
-    private static final String GBP = "GBP";
-    private static final String AMOUNT = "10.01";
-    private static final String ACCOUNT_SCHEME_NAME = OBExternalAccountIdentification4Code.SORT_CODE_ACCOUNT_NUMBER.getValue();
-    private static final String ACCOUNT_IDENTIFICATION = "08080021325698";
-    private static final String ACCOUNT_NAME = "Mr Tim Burgess";
-    private static final String ACCOUNT_SECONDARY_IDENTIFICATION = "11";
 
     public static OBDomesticVRPConsentRequest aValidOBDomesticVRPConsentRequest() {
         return (new OBDomesticVRPConsentRequest())
@@ -96,17 +88,17 @@ public class OBDomesticVRPConsentRequestTestDataFactory {
 
     public static OBCashAccountDebtorWithName aValidOBCashAccountDebtorWithName() {
         return (new OBCashAccountDebtorWithName())
-                .schemeName(ACCOUNT_SCHEME_NAME)
-                .identification(ACCOUNT_IDENTIFICATION)
-                .name(ACCOUNT_NAME)
-                .secondaryIdentification(ACCOUNT_SECONDARY_IDENTIFICATION);
+                .schemeName(ConstantsVRPTestData.ACCOUNT_SCHEME_NAME)
+                .identification(ConstantsVRPTestData.ACCOUNT_IDENTIFICATION)
+                .name(ConstantsVRPTestData.ACCOUNT_NAME)
+                .secondaryIdentification(ConstantsVRPTestData.ACCOUNT_SECONDARY_IDENTIFICATION);
     }
 
 
     public static List<OBDomesticVRPControlParametersPeriodicLimits> aValidOBDomesticVRPControlParametersPeriodicLimits() {
         return Arrays.asList((new OBDomesticVRPControlParametersPeriodicLimits())
-                .amount(AMOUNT)
-                .currency(GBP)
+                .amount(ConstantsVRPTestData.AMOUNT)
+                .currency(ConstantsVRPTestData.GBP)
                 .periodAlignment(OBDomesticVRPControlParametersPeriodicLimits.PeriodAlignmentEnum.CALENDAR)
                 .periodType(OBDomesticVRPControlParametersPeriodicLimits.PeriodTypeEnum.MONTH));
     }
