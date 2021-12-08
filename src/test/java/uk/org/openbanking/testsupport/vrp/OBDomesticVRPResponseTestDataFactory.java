@@ -31,7 +31,7 @@ public class OBDomesticVRPResponseTestDataFactory {
     public static OBDomesticVRPResponseData aValidOBDomesticVRPResponseData(OBDomesticVRPRequest request) {
         return (new OBDomesticVRPResponseData())
                 .domesticVRPId("123456")
-                .consentId("VRP_1233456")
+                .consentId(ConstantsVRPTestData.CONSENT_PREFIX + "1233456")
                 .creationDateTime(new DateTime())
                 .status(OBDomesticVRPResponseData.StatusEnum.ACCEPTEDSETTLEMENTCOMPLETED)
                 .statusUpdateDateTime(new DateTime())

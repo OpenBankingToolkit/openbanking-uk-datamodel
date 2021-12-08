@@ -22,25 +22,16 @@ package uk.org.openbanking.testsupport.vrp;
 
 import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 import uk.org.openbanking.datamodel.vrp.*;
-import uk.org.openbanking.datamodel.vrp.namespace.OBExternalAccountIdentification4Code;
 
 
 public class OBDomesticVRPCommonTestDataFactory {
 
-    private final static String SUPPLEMENTARY_DATA = "SUPPLEMENTARY_DATA";
-    private static final String AMOUNT = "10.01";
-    private static final String CURRENCY = "GBP";
-    private static final String CASH_ACCOUNT_IDENTIFICATION = "08080021325698";
-    private static final String CASH_ACCOUNT_NAME = "Mr Tim Burgess";
-    private static final String CAS_ACCOUNT_SCHEME_NAME = OBExternalAccountIdentification4Code.SORT_CODE_ACCOUNT_NUMBER.getValue();
-    private static final String CASH_ACCOUNT_SECONDARY_IDENTIFICATION = "11";
-
     public static OBCashAccountDebtorWithName aValidOBCashAccountDebtorWithName() {
         return (new OBCashAccountDebtorWithName())
-                .schemeName(CAS_ACCOUNT_SCHEME_NAME)
-                .identification("08080021325698")
-                .name("Mr Tim Burgess")
-                .secondaryIdentification("11");
+                .schemeName(ConstantsVRPTestData.ACCOUNT_SCHEME_NAME)
+                .identification(ConstantsVRPTestData.ACCOUNT_IDENTIFICATION)
+                .name(ConstantsVRPTestData.ACCOUNT_NAME)
+                .secondaryIdentification(ConstantsVRPTestData.ACCOUNT_SECONDARY_IDENTIFICATION);
     }
 
     public static OBDomesticVRPInitiation aValidOBDomesticVRPInitiation() {
@@ -53,52 +44,52 @@ public class OBDomesticVRPCommonTestDataFactory {
 
     public static OBDomesticVRPInitiationRemittanceInformation aValidOBDomesticVRPInitiationRemittanceInformation() {
         return (new OBDomesticVRPInitiationRemittanceInformation())
-                .unstructured("Internal ops code 5120103")
-                .reference("FRESCO-037");
+                .unstructured(ConstantsVRPTestData.UNSTRUCTURED)
+                .reference(ConstantsVRPTestData.REFERENCE);
     }
 
     public static OBVRPRemittanceInformation aValidOBVRPRemittanceInformation() {
         return (new OBVRPRemittanceInformation())
-                .unstructured("Internal ops code 5120103")
-                .reference("FRESCO-037");
+                .unstructured(ConstantsVRPTestData.UNSTRUCTURED)
+                .reference(ConstantsVRPTestData.REFERENCE);
     }
 
     public static OBSupplementaryData1 aValidOBSupplementaryData1() {
         OBSupplementaryData1 supplementaryData1 = new OBSupplementaryData1();
-        supplementaryData1.setData(SUPPLEMENTARY_DATA);
+        supplementaryData1.setData(ConstantsVRPTestData.SUPPLEMENTARY_DATA);
         return supplementaryData1;
     }
 
     public static OBActiveOrHistoricCurrencyAndAmount aValidOBActiveOrHistoricCurrencyAndAmount() {
         return (new OBActiveOrHistoricCurrencyAndAmount())
-                .amount(AMOUNT)
-                .currency(CURRENCY);
+                .amount(ConstantsVRPTestData.AMOUNT)
+                .currency(ConstantsVRPTestData.GBP);
     }
 
     public static OBCashAccountCreditor3 aValidOBCashAccountCreditor3() {
         return (new OBCashAccountCreditor3())
-                .identification(CASH_ACCOUNT_IDENTIFICATION)
-                .name(CASH_ACCOUNT_NAME)
-                .schemeName(CAS_ACCOUNT_SCHEME_NAME)
-                .secondaryIdentification(CASH_ACCOUNT_SECONDARY_IDENTIFICATION);
+                .identification(ConstantsVRPTestData.ACCOUNT_IDENTIFICATION)
+                .name(ConstantsVRPTestData.ACCOUNT_NAME)
+                .schemeName(ConstantsVRPTestData.ACCOUNT_SCHEME_NAME)
+                .secondaryIdentification(ConstantsVRPTestData.ACCOUNT_SECONDARY_IDENTIFICATION);
     }
 
     public static OBBranchAndFinancialInstitutionIdentification6 aValidOBBranchAndFinancialInstitutionIdentification6() {
         return (new OBBranchAndFinancialInstitutionIdentification6())
-                .schemeName(CAS_ACCOUNT_SCHEME_NAME)
-                .identification(CASH_ACCOUNT_IDENTIFICATION)
-                .name(CASH_ACCOUNT_NAME)
+                .schemeName(ConstantsVRPTestData.ACCOUNT_SCHEME_NAME)
+                .identification(ConstantsVRPTestData.ACCOUNT_IDENTIFICATION)
+                .name(ConstantsVRPTestData.ACCOUNT_NAME)
                 .postalAddress(aValidOBPostalAddress6());
     }
 
     public static OBPostalAddress6 aValidOBPostalAddress6() {
         return (new OBPostalAddress6())
                 .addressType(OBAddressTypeCode.RESIDENTIAL)
-                .buildingNumber("1")
-                .streetName("The Mall")
-                .postCode("WC1 1AB")
-                .townName("London")
-                .country("UK");
+                .buildingNumber(ConstantsVRPTestData.BUILDING_NUMBER)
+                .streetName(ConstantsVRPTestData.STREET_NAME)
+                .postCode(ConstantsVRPTestData.POSTCODE)
+                .townName(ConstantsVRPTestData.TOWN_NAME)
+                .country(ConstantsVRPTestData.COUNTRY);
     }
 
     public static OBDomesticVRPResponseDataCharges aValidOBDomesticVRPResponseDataCharges() {
