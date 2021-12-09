@@ -34,6 +34,8 @@ public enum OBStandardErrorCodes1 implements StandardErrorCode {
     UK_OBIE_HEADER_INVALID("UK.OBIE.Header.Invalid"),
     UK_OBIE_HEADER_MISSING("UK.OBIE.Header.Missing"),
 
+    UK_OBIE_REAUTHENTICATE("UK.OBIE.Reauthenticate"),
+
     UK_OBIE_PARAMETER_INVALID("UK.OBIE.Parameter.Invalid"),
     UK_OBIE_PARAMETER_MISSING("UK.OBIE.Parameter.Missing"),
 
@@ -43,6 +45,9 @@ public enum OBStandardErrorCodes1 implements StandardErrorCode {
     UK_OBIE_RESOURCE_NOT_FOUND("UK.OBIE.Resource.NotFound"),
 
     UK_OBIE_RULES_AFTER_CUT_OFF_DATE_TIME("UK.OBIE.rules.AfterCutOffDateTime"),
+    UK_OBIE_RULES_DUPLICATE_REFERENCE("UK.OBIE.Rules.DuplicateReference"),
+    UK_OBIE_RULES_FAILS_CONTROL_PARAMETERS("UK.OBIE.Rules.FailsControlParameters"),
+
 
     UK_OBIE_SIGNATURE_INVALID("UK.OBIE.Signature.Invalid"),
     UK_OBIE_SIGNATURE_INVALID_CLAIM("UK.OBIE.Signature.InvalidClaim"),
@@ -62,6 +67,7 @@ public enum OBStandardErrorCodes1 implements StandardErrorCode {
     UK_OBIE_INVALID_CONSENT_STATUS("UK.OBIE.Resource.InvalidConsentStatus"),
 
     ;
+
 
     private String value;
 
