@@ -64,9 +64,7 @@ public enum OBStandardErrorCodes1 implements StandardErrorCode {
     UK_OBIE_UNSUPPORTED_SCHEME("UK.OBIE.Unsupported.Scheme"),
     UK_OBIE_UNSUPPORTED_UNEXPECTED_ERROR("UK.OBIE.Unsupported.UnexpectedError"),
 
-    UK_OBIE_INVALID_CONSENT_STATUS("UK.OBIE.Resource.InvalidConsentStatus"),
-
-    UK_OBIE_FAILS_CONTROL_PARAMETERS("UK.OBIE.Rules.FailsControlParameters");
+    UK_OBIE_INVALID_CONSENT_STATUS("UK.OBIE.Resource.InvalidConsentStatus");
 
     private String value;
 
