@@ -35,7 +35,7 @@ public interface ConstantsVRPTestData {
     String ACCOUNT_SECONDARY_IDENTIFICATION = "11";
     String REFERENCE = "FRESCO-037";
     String UNSTRUCTURED = "Internal ops code 5120103";
-    String SUPPLEMENTARY_DATA = "SUPPLEMENTARY_DATA";
+    String SUPPLEMENTARY_DATA = "{}";
     String ACCOUNT_IDENTIFICATION = "08080021325698";
     String ACCOUNT_NAME = "Mr Tim Burgess";
     String ACCOUNT_SCHEME_NAME = OBExternalAccountIdentification4Code.SORT_CODE_ACCOUNT_NUMBER.getValue();
