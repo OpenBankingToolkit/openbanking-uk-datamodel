@@ -68,7 +68,12 @@ public enum OBExternalPermissions1Code {
   
   READTRANSACTIONSDEBITS("ReadTransactionsDebits"),
   
-  READTRANSACTIONSDETAIL("ReadTransactionsDetail");
+  READTRANSACTIONSDETAIL("ReadTransactionsDetail"),
+
+  // Added to support the CustomerInfo consent request via /account-access-consent endpoint.
+  // Issue #815 & #824
+  READCUSTOMERINFOCONSENT("ReadCustomerInfoPSU");
+
 
   private String value;
 
