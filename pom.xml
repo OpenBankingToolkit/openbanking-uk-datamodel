@@ -27,7 +27,7 @@
     <groupId>com.forgerock.openbanking.uk</groupId>
     <artifactId>openbanking-uk-datamodel</artifactId>
     <packaging>jar</packaging>
-    <version>3.1.8.3-SNAPSHOT</version>
+    <version>3.1.8.4-SNAPSHOT</version>
     <name>openbanking-uk-datamodel</name>
     <description>
         A Java UK Data Model, generated from the swagger, to help implementing the Open Banking standard :
@@ -210,7 +210,7 @@
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/events-openapi.yaml</inputSpec>-->
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/payment-initiation-openapi.yaml</inputSpec>-->
 				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/event-notifications-openapi.yaml</inputSpec>-->
-				    <inputSpec>${project.basedir}/src/main/resources/specification/vrp-openapi-3.1.9r3.yaml</inputSpec>-->
+				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/vrp-openapi-3.1.9r3.yaml</inputSpec>-->
                                     <output>${project.build.directory}/generated-sources/swagger</output>
                                     <generatorName>spring</generatorName>
                                     <!-- Change the package here as per the chosen spec above -->
