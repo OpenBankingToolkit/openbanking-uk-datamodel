@@ -211,16 +211,17 @@
                                     <!--<inputSpec>${project.basedir}/src/main/resources/specification/payment-initiation-openapi.yaml</inputSpec>-->
 				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/event-notifications-openapi.yaml</inputSpec>-->
 				    <!--<inputSpec>${project.basedir}/src/main/resources/specification/vrp-openapi-3.1.9r3.yaml</inputSpec>-->
+				    <inputSpec>${project.basedir}/src/main/resources/specification/customer-info-v1.0.yaml</inputSpec>
                                     <output>${project.build.directory}/generated-sources/swagger</output>
                                     <generatorName>spring</generatorName>
                                     <!-- Change the package here as per the chosen spec above -->
                                     <modelPackage>
-                                        uk.org.openbanking.datamodel.vrp
+                                        uk.org.openbanking.datamodel.customerinfo
                                     </modelPackage>
 				    <apiPackage>
-					com.forgerock.openbanking.aspsp.rs.api.funds.v3_1_8
+					com.forgerock.openbanking.aspsp.rs.api.customerinfo.v1_0
 				    </apiPackage>
-                                    <generateApis>false</generateApis>
+                                    <generateApis>true</generateApis>
                                     <configOptions>
                                         <dateLibrary>joda</dateLibrary>
                                     </configOptions>
