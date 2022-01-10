@@ -49,6 +49,9 @@ public class OBDiscovery {
     @JsonProperty("EventNotificationAPI")
     private List<OBDiscoveryAPI<OBDiscoveryAPILinks>> eventNotificationAPIs;
 
+    @JsonProperty("CustomerInfoAPI")
+    private List<OBDiscoveryAPI<OBDiscoveryAPILinks>> infoAPIs;
+
     public String getFinancialId() {
         return financialId;
     }
@@ -92,6 +95,14 @@ public class OBDiscovery {
             this.accountAndTransactionAPIs = new ArrayList<>();
         }
         this.accountAndTransactionAPIs.add(accountAndTransactionAPI);
+        return this;
+    }
+
+    public OBDiscovery addInfoAPI(OBDiscoveryAPI<OBDiscoveryAPILinks> infoAPIs){
+        if (this.infoAPIs == null){
+            this.infoAPIs = new ArrayList<>();
+        }
+        this.infoAPIs.add(infoAPIs);
         return this;
     }
 
