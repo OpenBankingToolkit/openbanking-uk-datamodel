@@ -20,15 +20,14 @@
     under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.forgerock.openbanking.uk</groupId>
     <artifactId>openbanking-uk-datamodel</artifactId>
     <packaging>jar</packaging>
-    <version>3.1.9.0-SNAPSHOT</version>
+    <version>3.1.9.0</version>
     <name>openbanking-uk-datamodel</name>
     <description>
         A Java UK Data Model, generated from the swagger, to help implementing the Open Banking standard :
@@ -236,7 +235,7 @@
         <developerConnection>scm:git:git@github.com:OpenBankingToolkit/openbanking-uk-datamodel.git
         </developerConnection>
         <url>https://github.com/OpenBankingToolkit/openbanking-uk-datamodel.git</url>
-        <tag>HEAD</tag>
+        <tag>3.1.9.0</tag>
     </scm>
 
     <distributionManagement>
