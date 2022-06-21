@@ -31,149 +31,175 @@ import java.util.Objects;
 /**
  * OBDomesticVRPRequestData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-11-30T12:56:02.347748Z[Europe/London]")
-public class OBDomesticVRPRequestData   {
-  @JsonProperty("ConsentId")
-  private String consentId;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-06-21T08:45:28.716207+01:00[Europe/London]")
+public class OBDomesticVRPRequestData {
+    @JsonProperty("ConsentId")
+    private String consentId;
 
-  @JsonProperty("PSUAuthenticationMethod")
-  private String psUAuthenticationMethod;
+    @JsonProperty("PSUAuthenticationMethod")
+    private String psUAuthenticationMethod = null;
 
-  @JsonProperty("Initiation")
-  private OBDomesticVRPInitiation initiation;
+    @JsonProperty("PSUInteractionType")
+    private OBVRPInteractionTypes psUInteractionType = null;
 
-  @JsonProperty("Instruction")
-  private OBDomesticVRPInstruction instruction;
+    @JsonProperty("Initiation")
+    private OBDomesticVRPInitiation initiation;
 
-  public OBDomesticVRPRequestData consentId(String consentId) {
-    this.consentId = consentId;
-    return this;
-  }
+    @JsonProperty("Instruction")
+    private OBDomesticVRPInstruction instruction;
 
-  /**
-   * Identifier for the Domestic VRP Consent that this payment is made under.
-   * @return consentId
-  */
-  @ApiModelProperty(required = true, value = "Identifier for the Domestic VRP Consent that this payment is made under.")
-  @NotNull
-
-@Size(min=1,max=128) 
-  public String getConsentId() {
-    return consentId;
-  }
-
-  public void setConsentId(String consentId) {
-    this.consentId = consentId;
-  }
-
-  public OBDomesticVRPRequestData psUAuthenticationMethod(String psUAuthenticationMethod) {
-    this.psUAuthenticationMethod = psUAuthenticationMethod;
-    return this;
-  }
-
-  /**
-   * Get psUAuthenticationMethod
-   * @return psUAuthenticationMethod
-  */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-
-  public String getPsUAuthenticationMethod() {
-    return psUAuthenticationMethod;
-  }
-
-  public void setPsUAuthenticationMethod(String psUAuthenticationMethod) {
-    this.psUAuthenticationMethod = psUAuthenticationMethod;
-  }
-
-  public OBDomesticVRPRequestData initiation(OBDomesticVRPInitiation initiation) {
-    this.initiation = initiation;
-    return this;
-  }
-
-  /**
-   * Get initiation
-   * @return initiation
-  */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-
-  public OBDomesticVRPInitiation getInitiation() {
-    return initiation;
-  }
-
-  public void setInitiation(OBDomesticVRPInitiation initiation) {
-    this.initiation = initiation;
-  }
-
-  public OBDomesticVRPRequestData instruction(OBDomesticVRPInstruction instruction) {
-    this.instruction = instruction;
-    return this;
-  }
-
-  /**
-   * Get instruction
-   * @return instruction
-  */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-
-  public OBDomesticVRPInstruction getInstruction() {
-    return instruction;
-  }
-
-  public void setInstruction(OBDomesticVRPInstruction instruction) {
-    this.instruction = instruction;
-  }
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public OBDomesticVRPRequestData consentId(String consentId) {
+        this.consentId = consentId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Identifier for the Domestic VRP Consent that this payment is made under.
+     * @return consentId
+     */
+    @ApiModelProperty(required = true, value = "Identifier for the Domestic VRP Consent that this payment is made under.")
+    @NotNull
+
+    @Size(min = 1, max = 128)
+    public String getConsentId() {
+        return consentId;
     }
-    OBDomesticVRPRequestData obDomesticVRPRequestData = (OBDomesticVRPRequestData) o;
-    return Objects.equals(this.consentId, obDomesticVRPRequestData.consentId) &&
-        Objects.equals(this.psUAuthenticationMethod, obDomesticVRPRequestData.psUAuthenticationMethod) &&
-        Objects.equals(this.initiation, obDomesticVRPRequestData.initiation) &&
-        Objects.equals(this.instruction, obDomesticVRPRequestData.instruction);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(consentId, psUAuthenticationMethod, initiation, instruction);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OBDomesticVRPRequestData {\n");
-    
-    sb.append("    consentId: ").append(toIndentedString(consentId)).append("\n");
-    sb.append("    psUAuthenticationMethod: ").append(toIndentedString(psUAuthenticationMethod)).append("\n");
-    sb.append("    initiation: ").append(toIndentedString(initiation)).append("\n");
-    sb.append("    instruction: ").append(toIndentedString(instruction)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setConsentId(String consentId) {
+        this.consentId = consentId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public OBDomesticVRPRequestData psUAuthenticationMethod(String psUAuthenticationMethod) {
+        this.psUAuthenticationMethod = psUAuthenticationMethod;
+        return this;
+    }
+
+    /**
+     * Get psUAuthenticationMethod
+     * @return psUAuthenticationMethod
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull
+
+
+    public String getPsUAuthenticationMethod() {
+        return psUAuthenticationMethod;
+    }
+
+    public void setPsUAuthenticationMethod(String psUAuthenticationMethod) {
+        this.psUAuthenticationMethod = psUAuthenticationMethod;
+    }
+
+    public OBDomesticVRPRequestData psUInteractionType(OBVRPInteractionTypes psUInteractionType) {
+        this.psUInteractionType = psUInteractionType;
+        return this;
+    }
+
+    /**
+     * Get psUInteractionType
+     * @return psUInteractionType
+     */
+    @ApiModelProperty(value = "")
+
+    @Valid
+
+    public OBVRPInteractionTypes getPsUInteractionType() {
+        return psUInteractionType;
+    }
+
+    public void setPsUInteractionType(OBVRPInteractionTypes psUInteractionType) {
+        this.psUInteractionType = psUInteractionType;
+    }
+
+    public OBDomesticVRPRequestData initiation(OBDomesticVRPInitiation initiation) {
+        this.initiation = initiation;
+        return this;
+    }
+
+    /**
+     * Get initiation
+     * @return initiation
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull
+
+    @Valid
+
+    public OBDomesticVRPInitiation getInitiation() {
+        return initiation;
+    }
+
+    public void setInitiation(OBDomesticVRPInitiation initiation) {
+        this.initiation = initiation;
+    }
+
+    public OBDomesticVRPRequestData instruction(OBDomesticVRPInstruction instruction) {
+        this.instruction = instruction;
+        return this;
+    }
+
+    /**
+     * Get instruction
+     * @return instruction
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull
+
+    @Valid
+
+    public OBDomesticVRPInstruction getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(OBDomesticVRPInstruction instruction) {
+        this.instruction = instruction;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        OBDomesticVRPRequestData obDomesticVRPRequestData = (OBDomesticVRPRequestData) o;
+        return Objects.equals(this.consentId, obDomesticVRPRequestData.consentId) &&
+                Objects.equals(this.psUAuthenticationMethod, obDomesticVRPRequestData.psUAuthenticationMethod) &&
+                Objects.equals(this.psUInteractionType, obDomesticVRPRequestData.psUInteractionType) &&
+                Objects.equals(this.initiation, obDomesticVRPRequestData.initiation) &&
+                Objects.equals(this.instruction, obDomesticVRPRequestData.instruction);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(consentId, psUAuthenticationMethod, psUInteractionType, initiation, instruction);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OBDomesticVRPRequestData {\n");
+
+        sb.append("    consentId: ").append(toIndentedString(consentId)).append("\n");
+        sb.append("    psUAuthenticationMethod: ").append(toIndentedString(psUAuthenticationMethod)).append("\n");
+        sb.append("    psUInteractionType: ").append(toIndentedString(psUInteractionType)).append("\n");
+        sb.append("    initiation: ").append(toIndentedString(initiation)).append("\n");
+        sb.append("    instruction: ").append(toIndentedString(instruction)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 
