@@ -20,6 +20,7 @@
  */
 package uk.org.openbanking.testsupport.vrp;
 
+import uk.org.openbanking.datamodel.vrp.OBVRPInteractionTypes;
 import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPInstruction;
 import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPRequest;
 import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPRequestData;
@@ -54,7 +55,8 @@ public class OBDomesticVRPRequestTestDataFactory3_1_10 {
                 .consentId(ConstantsVRPTestData.CONSENT_PREFIX + UUID.randomUUID())
                 .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA.getValue())
                 .initiation(aValidOBDomesticVRPInitiation3_1_10())
-                .instruction(aValidOBDomesticVRPInstruction());
+                .instruction(aValidOBDomesticVRPInstruction())
+                .psUInteractionType(OBVRPInteractionTypes.INSESSION);
 
     }
 

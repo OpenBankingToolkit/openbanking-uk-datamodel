@@ -24,6 +24,7 @@ import org.joda.time.DateTime;
 import uk.org.openbanking.datamodel.payment.OBSupplementaryData1;
 import uk.org.openbanking.datamodel.vrp.OBCashAccountDebtorWithName;
 import uk.org.openbanking.datamodel.vrp.OBDomesticVRPControlParametersPeriodicLimits;
+import uk.org.openbanking.datamodel.vrp.OBVRPInteractionTypes;
 import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPConsentRequest;
 import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPConsentRequestData;
 import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPControlParameters;
@@ -74,7 +75,8 @@ public class OBDomesticVRPConsentRequestTestDataFactory3_1_10 {
                 .validToDateTime(now.plusDays(10))
                 .maximumIndividualAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
                 .periodicLimits(aValidOBDomesticVRPControlParametersPeriodicLimits())
-                .supplementaryData(new OBSupplementaryData1());
+                .supplementaryData(new OBSupplementaryData1())
+                .psUInteractionTypes(List.of(OBVRPInteractionTypes.INSESSION));
     }
 
     public static OBDomesticVRPControlParameters aValidOBDomesticVRPControlParameters(List<String> psuAuthenticationMethods, List<String> vrpTypes) {
