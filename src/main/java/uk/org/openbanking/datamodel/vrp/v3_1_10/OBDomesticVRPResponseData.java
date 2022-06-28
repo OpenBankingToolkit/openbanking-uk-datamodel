@@ -18,13 +18,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package uk.org.openbanking.datamodel.vrp;
+package uk.org.openbanking.datamodel.vrp.v3_1_10;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 import org.joda.time.DateTime;
+import uk.org.openbanking.datamodel.vrp.OBCashAccountDebtorWithName;
+import uk.org.openbanking.datamodel.vrp.OBDomesticVRPResponseDataCharges;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

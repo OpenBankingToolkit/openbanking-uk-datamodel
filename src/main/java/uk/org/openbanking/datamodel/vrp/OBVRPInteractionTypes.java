@@ -18,63 +18,44 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package uk.org.openbanking.datamodel.payment;
+package uk.org.openbanking.datamodel.vrp;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Specifies the payment context
+ * Gets or Sets OBVRPInteractionTypes
  */
-public enum OBExternalPaymentContext1Code {
+public enum OBVRPInteractionTypes {
 
-    BILLINGGOODSANDSERVICESINADVANCE("BillingGoodsAndServicesInAdvance"),
+    INSESSION("InSession"),
 
-    BILLINGGOODSANDSERVICESINARREARS("BillingGoodsAndServicesInArrears"),
-
-    PISPPAYEE("PispPayee"),
-
-    ECOMMERCEMERCHANTINITIATEDPAYMENT("EcommerceMerchantInitiatedPayment"),
-
-    FACETOFACEPOINTOFSALE("FaceToFacePointOfSale"),
-
-    TRANSFERTOSELF("TransferToSelf"),
-
-    TRANSFERTOTHIRDPARTY("TransferToThirdParty"),
-
-    BILLPAYMENT("BillPayment"),
-
-    ECOMMERCEGOODS("EcommerceGoods"),
-
-    ECOMMERCESERVICES("EcommerceServices"),
-
-    OTHER("Other"),
-
-    PARTYTOPARTY("PartyToParty");
+    OFFSESSION("OffSession");
 
     private String value;
 
-    OBExternalPaymentContext1Code(String value) {
+    OBVRPInteractionTypes(String value) {
         this.value = value;
     }
 
-    @Override
     @JsonValue
+    public String getValue() {
+        return value;
+    }
+
+    @Override
     public String toString() {
         return String.valueOf(value);
     }
 
     @JsonCreator
-    public static OBExternalPaymentContext1Code fromValue(String text) {
-        if (text == null) {
-            return null;
-        }
-        for (OBExternalPaymentContext1Code b : OBExternalPaymentContext1Code.values()) {
-            if (String.valueOf(b.value).equals(text)) {
+    public static OBVRPInteractionTypes fromValue(String value) {
+        for (OBVRPInteractionTypes b : OBVRPInteractionTypes.values()) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        throw new IllegalArgumentException("PaymentContextCode is not one of the valid values");
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 }
 

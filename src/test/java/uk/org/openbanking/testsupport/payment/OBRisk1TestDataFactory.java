@@ -20,6 +20,7 @@
  */
 package uk.org.openbanking.testsupport.payment;
 
+import uk.org.openbanking.datamodel.payment.OBExternalExtendedAccountType1Code;
 import uk.org.openbanking.datamodel.payment.OBExternalPaymentContext1Code;
 import uk.org.openbanking.datamodel.payment.OBRisk1;
 import uk.org.openbanking.datamodel.payment.OBRisk1DeliveryAddress;
@@ -37,6 +38,18 @@ public class OBRisk1TestDataFactory {
                 .merchantCategoryCode("mct1")
                 .paymentContextCode(OBExternalPaymentContext1Code.OTHER)
                 .deliveryAddress(aValidOBRisk1DeliveryAddress());
+    }
+
+    public static OBRisk1 aValidOBRisk1_3_1_10() {
+        return new OBRisk1()
+                .merchantCustomerIdentification("merchantId123")
+                .merchantCategoryCode("mct1")
+                .paymentContextCode(OBExternalPaymentContext1Code.PARTYTOPARTY)
+                .deliveryAddress(aValidOBRisk1DeliveryAddress())
+                .paymentPurposeCode("ABCD")
+                .beneficiaryPrepopulatedIndicator(true)
+                .contractPresentInidicator(true)
+                .beneficiaryAccountType(OBExternalExtendedAccountType1Code.PERSONAL);
     }
 
     public static OBRisk1DeliveryAddress aValidOBRisk1DeliveryAddress() {

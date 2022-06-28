@@ -34,6 +34,7 @@ import static uk.org.openbanking.testsupport.payment.OBPostalAddress6TestDataFac
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBRemittanceInformation1;
 import static uk.org.openbanking.testsupport.payment.OBRemittanceInformationTestDataFactory.aValidOBWriteDomestic2DataInitiationRemittanceInformation;
 import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
+import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1_3_1_10;
 import static uk.org.openbanking.testsupport.payment.OBWriteDomesticScaSupportDataTestDataFactory.*;
 
 /**
@@ -61,6 +62,12 @@ public class OBWriteDomesticConsentTestDataFactory {
         return (new OBWriteDomesticConsent4())
                 .data(aValidOBWriteDomesticConsent4Data())
                 .risk(aValidOBRisk1());
+    }
+
+    public static OBWriteDomesticConsent4 aValidOBWriteDomesticConsent4_3_1_10() {
+        return (new OBWriteDomesticConsent4())
+                .data(aValidOBWriteDomesticConsent4Data())
+                .risk(aValidOBRisk1_3_1_10());
     }
 
     public static OBWriteDataDomesticConsent2 aValidOBWriteDataDomesticConsent2() {

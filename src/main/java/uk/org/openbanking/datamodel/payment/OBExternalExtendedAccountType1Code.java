@@ -24,57 +24,64 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Specifies the payment context
+ * Specifies the extended type of account.
  */
-public enum OBExternalPaymentContext1Code {
+public enum OBExternalExtendedAccountType1Code {
 
-    BILLINGGOODSANDSERVICESINADVANCE("BillingGoodsAndServicesInAdvance"),
+    BUSINESS("Business"),
 
-    BILLINGGOODSANDSERVICESINARREARS("BillingGoodsAndServicesInArrears"),
+    BUSINESSSAVINGSACCOUNT("BusinessSavingsAccount"),
 
-    PISPPAYEE("PispPayee"),
+    CHARITY("Charity"),
 
-    ECOMMERCEMERCHANTINITIATEDPAYMENT("EcommerceMerchantInitiatedPayment"),
+    COLLECTION("Collection"),
 
-    FACETOFACEPOINTOFSALE("FaceToFacePointOfSale"),
+    CORPORATE("Corporate"),
 
-    TRANSFERTOSELF("TransferToSelf"),
+    EWALLET("Ewallet"),
 
-    TRANSFERTOTHIRDPARTY("TransferToThirdParty"),
+    GOVERNMENT("Government"),
 
-    BILLPAYMENT("BillPayment"),
+    INVESTMENT("Investment"),
 
-    ECOMMERCEGOODS("EcommerceGoods"),
+    ISA("ISA"),
 
-    ECOMMERCESERVICES("EcommerceServices"),
+    JOINTPERSONAL("JointPersonal"),
 
-    OTHER("Other"),
+    PENSION("Pension"),
 
-    PARTYTOPARTY("PartyToParty");
+    PERSONAL("Personal"),
+
+    PERSONALSAVINGSACCOUNT("PersonalSavingsAccount"),
+
+    PREMIER("Premier"),
+
+    WEALTH("Wealth");
 
     private String value;
 
-    OBExternalPaymentContext1Code(String value) {
+    OBExternalExtendedAccountType1Code(String value) {
         this.value = value;
     }
 
-    @Override
     @JsonValue
+    public String getValue() {
+        return value;
+    }
+
+    @Override
     public String toString() {
         return String.valueOf(value);
     }
 
     @JsonCreator
-    public static OBExternalPaymentContext1Code fromValue(String text) {
-        if (text == null) {
-            return null;
-        }
-        for (OBExternalPaymentContext1Code b : OBExternalPaymentContext1Code.values()) {
-            if (String.valueOf(b.value).equals(text)) {
+    public static OBExternalExtendedAccountType1Code fromValue(String value) {
+        for (OBExternalExtendedAccountType1Code b : OBExternalExtendedAccountType1Code.values()) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        throw new IllegalArgumentException("PaymentContextCode is not one of the valid values");
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 }
 

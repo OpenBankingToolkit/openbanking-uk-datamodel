@@ -18,10 +18,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package uk.org.openbanking.datamodel.vrp;
+package uk.org.openbanking.datamodel.vrp.v3_1_10;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+import uk.org.openbanking.datamodel.vrp.OBVRPInteractionTypes;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

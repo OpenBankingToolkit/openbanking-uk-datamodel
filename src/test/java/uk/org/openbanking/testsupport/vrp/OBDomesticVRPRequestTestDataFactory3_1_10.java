@@ -20,63 +20,57 @@
  */
 package uk.org.openbanking.testsupport.vrp;
 
-import uk.org.openbanking.datamodel.vrp.OBDomesticVRPInstruction;
-import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequest;
-import uk.org.openbanking.datamodel.vrp.OBDomesticVRPRequestData;
+import uk.org.openbanking.datamodel.vrp.OBVRPInteractionTypes;
+import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPInstruction;
+import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPRequest;
+import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPRequestData;
 import uk.org.openbanking.datamodel.vrp.namespace.OBVRPAuthenticationMethods;
-import uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPInitiation;
 
 import java.util.UUID;
 
-import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
-import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.*;
+import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1_3_1_10;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBActiveOrHistoricCurrencyAndAmount;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBCashAccountCreditor3;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBDomesticVRPInitiation3_1_10;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBPostalAddress6;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBSupplementaryData1;
+import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBVRPRemittanceInformation;
 
-public class OBDomesticVRPRequestTestDataFactory {
+public class OBDomesticVRPRequestTestDataFactory3_1_10 {
 
     public static OBDomesticVRPRequest aValidOBDomesticVRPRequest() {
         return (new OBDomesticVRPRequest())
                 .data(aValidOBDomesticVRPRequestData())
-                .risk(aValidOBRisk1());
+                .risk(aValidOBRisk1_3_1_10());
     }
 
     public static OBDomesticVRPRequest aValidOBDomesticVRPRequest(String consentId) {
         return (new OBDomesticVRPRequest())
                 .data(aValidOBDomesticVRPRequestData(consentId))
-                .risk(aValidOBRisk1());
+                .risk(aValidOBRisk1_3_1_10());
     }
 
     public static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData() {
         return (new OBDomesticVRPRequestData())
                 .consentId(ConstantsVRPTestData.CONSENT_PREFIX + UUID.randomUUID())
-                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA.getValue())
-                .initiation(aValidOBDomesticVRPInitiation())
-                .instruction(aValidOBDomesticVRPInstruction());
+                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA_NOT_REQUIRED.getValue())
+                .initiation(aValidOBDomesticVRPInitiation3_1_10())
+                .instruction(aValidOBDomesticVRPInstruction())
+                .psUInteractionType(OBVRPInteractionTypes.INSESSION);
 
     }
 
     public static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData(String consentId) {
         return (new OBDomesticVRPRequestData())
                 .consentId(consentId)
-                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA.getValue())
-                .initiation(aValidOBDomesticVRPInitiation())
+                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA_NOT_REQUIRED.getValue())
+                .initiation(aValidOBDomesticVRPInitiation3_1_10())
                 .instruction(aValidOBDomesticVRPInstruction());
 
     }
 
     public static OBDomesticVRPInstruction aValidOBDomesticVRPInstruction() {
         return (new OBDomesticVRPInstruction())
-                .creditorAccount(aValidOBCashAccountCreditor3())
-                .creditorAgent(aValidOBBranchAndFinancialInstitutionIdentification6())
-                .instructionIdentification(ConstantsVRPTestData.INSTRUCTION_IDENTIFICATION)
-                .instructedAmount(aValidOBActiveOrHistoricCurrencyAndAmount())
-                .endToEndIdentification(ConstantsVRPTestData.END_TO_END_IDENTIFICATION)
-                .localInstrument(ConstantsVRPTestData.LOCAL_INSTRUMENT)
-                .remittanceInformation(aValidOBVRPRemittanceInformation())
-                .supplementaryData(aValidOBSupplementaryData1());
-    }
-
-    public static uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPInstruction aValidOBDomesticVRPInstruction3_1_10() {
-        return (new uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPInstruction ())
                 .creditorAccount(aValidOBCashAccountCreditor3())
                 .creditorPostalAddress(aValidOBPostalAddress6())
                 .instructionIdentification(ConstantsVRPTestData.INSTRUCTION_IDENTIFICATION)

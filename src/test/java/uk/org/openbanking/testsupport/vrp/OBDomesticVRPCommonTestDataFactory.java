@@ -42,6 +42,14 @@ public class OBDomesticVRPCommonTestDataFactory {
                 .remittanceInformation(aValidOBDomesticVRPInitiationRemittanceInformation());
     }
 
+    public static uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPInitiation aValidOBDomesticVRPInitiation3_1_10() {
+        return (new uk.org.openbanking.datamodel.vrp.v3_1_10.OBDomesticVRPInitiation())
+                .creditorAccount(aValidOBCashAccountCreditor3())
+                .debtorAccount(aValidOBCashAccountDebtorWithName())
+                .creditorPostalAddress(aValidOBPostalAddress6())
+                .remittanceInformation(aValidOBDomesticVRPInitiationRemittanceInformation());
+    }
+
     public static OBDomesticVRPInitiationRemittanceInformation aValidOBDomesticVRPInitiationRemittanceInformation() {
         return (new OBDomesticVRPInitiationRemittanceInformation())
                 .unstructured(ConstantsVRPTestData.UNSTRUCTURED)
