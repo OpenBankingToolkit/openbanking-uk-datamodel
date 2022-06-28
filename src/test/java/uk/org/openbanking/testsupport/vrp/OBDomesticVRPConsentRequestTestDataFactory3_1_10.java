@@ -35,7 +35,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.joda.time.DateTime.now;
-import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
+import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1_3_1_10;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBActiveOrHistoricCurrencyAndAmount;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBDomesticVRPInitiation3_1_10;
 
@@ -44,13 +44,13 @@ public class OBDomesticVRPConsentRequestTestDataFactory3_1_10 {
     public static OBDomesticVRPConsentRequest aValidOBDomesticVRPConsentRequest() {
         return (new OBDomesticVRPConsentRequest())
                 .data(aValidOBDomesticVRPConsentRequestData())
-                .risk(aValidOBRisk1());
+                .risk(aValidOBRisk1_3_1_10());
     }
 
     public static OBDomesticVRPConsentRequest aValidOBDomesticVRPConsentRequest(List<String> psuAuthenticationMethods, List<String> vrpTypes) {
         return (new OBDomesticVRPConsentRequest())
                 .data(aValidOBDomesticVRPConsentRequestData(psuAuthenticationMethods, vrpTypes))
-                .risk(aValidOBRisk1());
+                .risk(aValidOBRisk1_3_1_10());
     }
 
     public static OBDomesticVRPConsentRequestData aValidOBDomesticVRPConsentRequestData() {
@@ -69,7 +69,7 @@ public class OBDomesticVRPConsentRequestTestDataFactory3_1_10 {
     public static OBDomesticVRPControlParameters aValidOBDomesticVRPControlParameters() {
         DateTime now = now();
         return (new OBDomesticVRPControlParameters())
-                .psUAuthenticationMethods(Arrays.asList(OBVRPAuthenticationMethods.SCA.getValue()))
+                .psUAuthenticationMethods(Arrays.asList(OBVRPAuthenticationMethods.SCA_NOT_REQUIRED.getValue()))
                 .vrPType(Arrays.asList(OBVRPConsentType.SWEEPING.getValue()))
                 .validFromDateTime(now)
                 .validToDateTime(now.plusDays(10))

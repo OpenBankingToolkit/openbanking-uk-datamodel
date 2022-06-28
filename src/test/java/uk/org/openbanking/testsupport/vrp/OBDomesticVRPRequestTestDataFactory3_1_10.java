@@ -28,7 +28,7 @@ import uk.org.openbanking.datamodel.vrp.namespace.OBVRPAuthenticationMethods;
 
 import java.util.UUID;
 
-import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1;
+import static uk.org.openbanking.testsupport.payment.OBRisk1TestDataFactory.aValidOBRisk1_3_1_10;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBActiveOrHistoricCurrencyAndAmount;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBCashAccountCreditor3;
 import static uk.org.openbanking.testsupport.vrp.OBDomesticVRPCommonTestDataFactory.aValidOBDomesticVRPInitiation3_1_10;
@@ -41,19 +41,19 @@ public class OBDomesticVRPRequestTestDataFactory3_1_10 {
     public static OBDomesticVRPRequest aValidOBDomesticVRPRequest() {
         return (new OBDomesticVRPRequest())
                 .data(aValidOBDomesticVRPRequestData())
-                .risk(aValidOBRisk1());
+                .risk(aValidOBRisk1_3_1_10());
     }
 
     public static OBDomesticVRPRequest aValidOBDomesticVRPRequest(String consentId) {
         return (new OBDomesticVRPRequest())
                 .data(aValidOBDomesticVRPRequestData(consentId))
-                .risk(aValidOBRisk1());
+                .risk(aValidOBRisk1_3_1_10());
     }
 
     public static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData() {
         return (new OBDomesticVRPRequestData())
                 .consentId(ConstantsVRPTestData.CONSENT_PREFIX + UUID.randomUUID())
-                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA.getValue())
+                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA_NOT_REQUIRED.getValue())
                 .initiation(aValidOBDomesticVRPInitiation3_1_10())
                 .instruction(aValidOBDomesticVRPInstruction())
                 .psUInteractionType(OBVRPInteractionTypes.INSESSION);
@@ -63,7 +63,7 @@ public class OBDomesticVRPRequestTestDataFactory3_1_10 {
     public static OBDomesticVRPRequestData aValidOBDomesticVRPRequestData(String consentId) {
         return (new OBDomesticVRPRequestData())
                 .consentId(consentId)
-                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA.getValue())
+                .psUAuthenticationMethod(OBVRPAuthenticationMethods.SCA_NOT_REQUIRED.getValue())
                 .initiation(aValidOBDomesticVRPInitiation3_1_10())
                 .instruction(aValidOBDomesticVRPInstruction());
 
